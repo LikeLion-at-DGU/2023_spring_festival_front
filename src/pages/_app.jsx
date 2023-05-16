@@ -1,9 +1,17 @@
 import Layout from "components/layout/Layout";
+import styled from "styled-components";
 
+const Body = styled.div`
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-color: #F5F5F5;
+`
 
 export default function App({Component, pageProps}){
     return(
-        <div className="Container">
+        <Body className="Container">
             <Layout>
                 <Component {...pageProps}/>
             </Layout>
@@ -70,6 +78,6 @@ export default function App({Component, pageProps}){
                      `
                 }
             </style>
-        </div>
+        </Body>
     )
 }
