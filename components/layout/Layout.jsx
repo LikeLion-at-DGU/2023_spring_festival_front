@@ -1,13 +1,17 @@
 import Footer from "./Footer";
 import HeadTitle from "./Head";
 import NavBar from "./NavBar";
+import styled from "styled-components";
+
+const Conttent = styled.div`
+`
 
 export default function Layout( {children} ){
         return(
             <>
                 <HeadTitle/>
                 <NavBar />
-                    <div>{children}</div>
+                <Conttent>{children}</Conttent>
                 <Footer/>
             </>
         )

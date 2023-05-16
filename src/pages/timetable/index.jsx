@@ -4,10 +4,10 @@ const Container = styled.div`
   
 `
 
-export default function Main(){
+export default function TimeTable(){
   return(
     <Container>
-      여기는 메인페이지 입니다 하항
+      여기는 타입테이블 페이지 입니다 하항
     </Container>
   )
 }
