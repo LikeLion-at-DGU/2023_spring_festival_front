@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import Footer from "./Footer";
 import HeadTitle from "./Head";
 import NavBar from "./NavBar";
@@ -13,15 +14,22 @@ const Wrapper = styled.div`
 `
 
 const Content = styled.div`
-    
+    min-height: 83vh;
+    width: 100%;
+    border: 1px solid black;
 `
 
 export default function Layout( {children} ){
+    // 랜더링시 사이즈 맞게하는 코드였지만.. 일단 주석처리만
+    //useEffect(()=>{
+    //    document.getElementById("outWrapper").style.minHeight = `${window.innerHeight - 56 - 100}px`;
+    //}, [])
+    
         return(
             <Wrapper>
                 <HeadTitle/>
                 <NavBar />
-                <Content>{children}</Content>
+                <Content id="outWrapper">{children}</Content>
                 <Footer/>
             </Wrapper>
         )
