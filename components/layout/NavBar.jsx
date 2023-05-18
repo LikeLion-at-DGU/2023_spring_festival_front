@@ -4,12 +4,12 @@ import styled from "styled-components";
 
 const Container = styled.nav`
     width: 100%;
-    height: 56px;
+    height: 70px;
     display: flex;
     align-items: center;
     position: relative;
     justify-content: space-between;
-    padding: 16px;
+    padding: 0 26px;
 `
 
 const Title = styled.div`
@@ -22,9 +22,9 @@ const NavToggle = styled(FontAwesomeIcon)`
     font-size: 25px;
     position: fixed;
     right: 0;
-    margin-right: 16px;
+    margin-right: 26px;
     width: 25px;
-    top : 11px;
+    top : 18px;
     @media (min-width: 430px) {
         position: absolute;
     }
