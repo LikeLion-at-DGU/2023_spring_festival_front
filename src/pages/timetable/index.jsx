@@ -27,12 +27,13 @@ const DateBox = styled.section`
   align-items: center;
   gap: 5px;
   font-weight: 900;
+  color: ${(props) => (props.date ? `${primaryColor}` : `${secondaryColor}`)};
+  cursor: pointer;
 `;
 
 const DateNum = styled.span`
   font-size: 36px;
   text-shadow: 2px 2px 0px #ffffff, 5px 4px 0px rgba(0, 0, 0, 0.15);
-  color: ${primaryColor};
   font-family: "yg-jalnan";
 `;
 
@@ -70,10 +71,24 @@ const ToggleBox = styled.section`
 
 export default function TimeTable() {
   // State 관리----------------------------------------
+  const [firstDate, setFirstDate] = useState(true);
+  const [secondDate, setSecondDate] = useState(false);
   const [performance, setPerformance] = useState(false);
   const [specialGuest, setSpecialGuest] = useState(true);
 
   // Function 관리-------------------------------------
+  const handleFirstDate = () => {
+    if (!firstDate) {
+      setFirstDate(true);
+      setSecondDate(false);
+    }
+  };
+  const handleSecondDate = () => {
+    if (!secondDate) {
+      setFirstDate(false);
+      setSecondDate(true);
+    }
+  };
   const handleShrink = () => {
     setPerformance(!performance);
   };
@@ -86,26 +101,26 @@ export default function TimeTable() {
     <>
       <Container>
         <DateSection>
-          <DateBox>
+          <DateBox date={firstDate} onClick={handleFirstDate}>
             <DateNum>24</DateNum>
             <DateWeek>WED.</DateWeek>
           </DateBox>
-          <DateBox>
+          <DateBox date={secondDate} onClick={handleSecondDate}>
             <DateNum>25</DateNum>
             <DateWeek>THR.</DateWeek>
           </DateBox>
         </DateSection>
         <br /> <br />
-        <ToggleBox onClick={handleShrink} isOpen={performance}>
+        <ToggleBox isOpen={performance} onClick={handleShrink}>
           <ToggleHeader>
-            <IconBox>▶</IconBox>
+            <IconBox>{performance ? "▼" : "▶"} </IconBox>
             PERFORMANCE
           </ToggleHeader>
         </ToggleBox>
         <br />
-        <ToggleBox onClick={handleGrow} isOpen={specialGuest}>
+        <ToggleBox isOpen={specialGuest} onClick={handleGrow}>
           <ToggleHeader>
-            <IconBox>▼</IconBox>
+            <IconBox>{specialGuest ? "▼" : "▶"}</IconBox>
             SPECIAL GUEST
           </ToggleHeader>
         </ToggleBox>
