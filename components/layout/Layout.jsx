@@ -30,7 +30,7 @@ const Gradation = styled.div`
     margin-top: 60px;
     height: 270px;
     position: absolute;
-    background: linear-gradient(180deg, rgba(255, 233, 240, 0) 0%, rgba(255, 233, 240, 0.892708) 75.83%, rgba(255, 233, 240, 0) 100%);
+    background: linear-gradient(180deg, rgba(255, 233, 240, 0) 0%, rgba(255, 233, 240, 0.892708) 47.83%, rgba(255, 233, 240, 0) 100%);
 `
 
 export default function Layout( {children} ){
