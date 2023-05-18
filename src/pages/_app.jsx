@@ -75,6 +75,12 @@ export default function App({Component, pageProps}){
                          text-decoration: none;
                          color:inherit;
                      }
+                     @font-face {
+                        font-family: 'TmonMonsori';
+                        src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/TmonMonsori.woff') format('woff');
+                        font-weight: normal;
+                        font-style: normal;
+                      }
                      `
                 }
             </style>
