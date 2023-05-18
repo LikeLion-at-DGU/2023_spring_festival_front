@@ -55,18 +55,11 @@ const IconBox = styled.section`
   font-size: 24px;
 `;
 
-const ToggleHeader = styled.section`
-  width: 100%;
-  height: 60px;
-  display: flex;
-  align-items: center;
-  font-family: "yg-jalnan";
-`;
-
 const ToggleBox = styled.section`
   width: 100%;
-  height: ${(props) => (props.isOpen ? "45vh" : "60px")};
+  height: ${(props) => (props.isOpen ? "50vh" : "60px")};
   display: flex;
+  flex-direction: column;
   box-shadow: 3px 3px 20px -10px rgba(0, 0, 0, 0.7);
   border-radius: 30px;
   background-color: #fff;
@@ -79,6 +72,59 @@ const ToggleBox = styled.section`
   transition: all 0.5s;
   cursor: pointer;
 `;
+
+const ToggleHeader = styled.section`
+  width: 100%;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  font-family: "yg-jalnan";
+`;
+
+const LocationHeader = styled.section`
+  width: 100%;
+  height: 50px;
+  display: flex;
+  align-items: flex-end;
+  color: ${secondaryColor};
+  padding-left: 15px;
+  display: ${(props) => (props.isOpen ? "" : "none")};
+`;
+
+const CardSection = styled.section`
+  width: 100%;
+  height: 300px;
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 15px;
+  overflow-x: auto;
+  padding: 10px;
+  *::-webkit-scrollbar {
+    width: 2px;
+    height: 2px;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background: ${primaryColor};
+    border-radius: 10px;
+  }
+  display: ${(props) => (props.isOpen ? "" : "none")};
+`;
+
+const Card = styled.div`
+  min-width: 200px;
+  min-height: 250px;
+  border: 1px solid black;
+  border-radius: 10px;
+`;
+
+// const ImgBox = styled.div`
+//   background-image: url({pin});
+//   background-position: center;
+//   background-repeat: no-repeat;
+//   background-size: contain;
+// `;
 
 export default function TimeTable() {
   // State 관리----------------------------------------
@@ -143,6 +189,16 @@ export default function TimeTable() {
             <IconBox>{specialGuest ? "▼" : "▶"}</IconBox>
             SPECIAL GUEST
           </ToggleHeader>
+          <LocationHeader isOpen={specialGuest}>대운동장</LocationHeader>
+          <CardSection isOpen={specialGuest}>
+            <Card></Card>
+            <Card></Card>
+            <Card></Card>
+            <Card></Card>
+            <Card></Card>
+            <Card></Card>
+            <Card></Card>
+          </CardSection>
         </ToggleBox>
       </Container>
       <style jsx>{`
