@@ -1,8 +1,16 @@
-import { useState } from "react";
-import styled from "styled-components";
+import { useCallback, useEffect, useState } from "react";
+import styled, { keyframes } from "styled-components";
 
 const primaryColor = "#FC8CAE";
 const secondaryColor = "#525252";
+
+const Landing = keyframes`
+  from {
+    transform: translate(-100%);
+  } to {
+    transform: translate(0%);
+  }
+`;
 
 const Container = styled.div`
   width: 100%;
@@ -65,6 +73,9 @@ const ToggleBox = styled.section`
   color: ${primaryColor};
   font-weight: 700;
   padding-left: 15px;
+  animation: ${Landing} 1s ease;
+  animation-delay: ${(props) => (props.delay ? `1s` : ``)};
+  display: ${(props) => (props.delay ? "none" : "")};
   transition: all 0.5s;
   cursor: pointer;
 `;
@@ -75,26 +86,35 @@ export default function TimeTable() {
   const [secondDate, setSecondDate] = useState(false);
   const [performance, setPerformance] = useState(false);
   const [specialGuest, setSpecialGuest] = useState(true);
+  const [mount, setMount] = useState(true);
 
   // Function 관리-------------------------------------
-  const handleFirstDate = () => {
+  const handleFirstDate = useCallback(() => {
     if (!firstDate) {
       setFirstDate(true);
       setSecondDate(false);
     }
-  };
-  const handleSecondDate = () => {
+  }, [firstDate]);
+
+  const handleSecondDate = useCallback(() => {
     if (!secondDate) {
       setFirstDate(false);
       setSecondDate(true);
     }
-  };
-  const handleShrink = () => {
+  }, [secondDate]);
+
+  const handleShrink = useCallback(() => {
     setPerformance(!performance);
-  };
-  const handleGrow = () => {
+  }, [performance]);
+
+  const handleGrow = useCallback(() => {
     setSpecialGuest(!specialGuest);
-  };
+  }, [specialGuest]);
+
+  // ComponentDidMount--------------------------------
+  useEffect(() => {
+    setTimeout(() => setMount(!mount), 500);
+  }, []);
 
   //
   return (
@@ -118,7 +138,7 @@ export default function TimeTable() {
           </ToggleHeader>
         </ToggleBox>
         <br />
-        <ToggleBox isOpen={specialGuest} onClick={handleGrow}>
+        <ToggleBox isOpen={specialGuest} delay={mount} onClick={handleGrow}>
           <ToggleHeader>
             <IconBox>{specialGuest ? "▼" : "▶"}</IconBox>
             SPECIAL GUEST
