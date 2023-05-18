@@ -17,6 +17,7 @@ const Title = styled.div`
     font-size: 24px;
 `
 
+
 const NavToggle = styled(FontAwesomeIcon)`
     font-size: 25px;
     position: fixed;
