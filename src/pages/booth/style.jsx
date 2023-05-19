@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import Image from "next/image";
 import { motion } from 'framer-motion';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export const Container = styled.div`
   width: 100%;
@@ -145,5 +146,30 @@ export const RankBoothDetailLocation = styled.p`
   font-size: 11px;
   font-weight: 400;
   color: #FC8CAE;
-  margin-top:5px
+  margin-top:5px;
+  `
+export const RankBoothHeartWrapper = styled.div`
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 10px;
+  margin-left: 30px;
+`
+export const HeartWrapper = styled.div`
+  display: flex;
+`
+export const HeartCntWrapper = styled.div`
+  display: flex;
+  font-size: 11px;
+  font-weight: 400;
+  color:#979797;
+`
+
+export const HeartIcon = styled(FontAwesomeIcon)`
+  
+width: 20px;
+margin-bottom: 3px;
+
 `

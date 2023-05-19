@@ -1,12 +1,23 @@
-import { RankBoothDetail, RankBoothDetailLocation, RankBoothDetailTitle, RankBoothImage, RankText, RankWrapper, RannkBoothDetailOperator, RecomandRowCardWrapper } from "@/pages/booth/style";
+import { HeartCntWrapper, HeartIcon, HeartWrapper, RankBoothDetail, RankBoothDetailLocation, RankBoothDetailTitle, RankBoothHeartWrapper, RankBoothImage, RankText, RankWrapper, RannkBoothDetailOperator, RecomandRowCardWrapper } from "@/pages/booth/style";
 import Image from "next/image";
 import styled from "styled-components";
 import DeafultImage from "../image/common/booth_deafault.png"
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import React, { useState } from "react";
+import {faHeart } from '@fortawesome/free-solid-svg-icons'
+import {faHeart as emptyHeart } from '@fortawesome/free-regular-svg-icons'
 
 
 
 // 부스정보 props로 받아서 사용하기 
 function RecomandRowCard() {
+
+    const [isLiked, setIsLiked] = useState(false);
+
+    const handleClick = () => {
+        setIsLiked(!isLiked);
+    }
     return (
         <RecomandRowCardWrapper>
             {/* 랭킹 글자  */}
@@ -29,9 +40,15 @@ function RecomandRowCard() {
                     명진관 1번 부스
                 </RankBoothDetailLocation>
             </RankBoothDetail>
-                <RankBoothHeartWrapper>
+            <RankBoothHeartWrapper>
+                <HeartIcon icon={ isLiked ? faHeart: emptyHeart  } onClick={handleClick} size="2xs"/>
 
-                </RankBoothHeartWrapper>
+                
+                <HeartCntWrapper>
+                157
+                </HeartCntWrapper>
+            </RankBoothHeartWrapper>
+            
         </RecomandRowCardWrapper>
         
     );
