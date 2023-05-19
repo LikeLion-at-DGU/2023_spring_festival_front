@@ -23,7 +23,7 @@ const Container = styled.div`
   z-index: 1;
 `;
 
-const DateSection = styled.section`
+export const DateSection = styled.section`
   width: 100%;
   height: 120px;
   display: flex;
@@ -32,7 +32,7 @@ const DateSection = styled.section`
   gap: 30px;
 `;
 
-const DateBox = styled.section`
+export const DateBox = styled.section`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -43,13 +43,13 @@ const DateBox = styled.section`
   cursor: pointer;
 `;
 
-const DateNum = styled.span`
+export const DateNum = styled.span`
   font-size: 36px;
   text-shadow: 2px 2px 0px #ffffff, 5px 4px 0px rgba(0, 0, 0, 0.15);
   font-family: "yg-jalnan";
 `;
 
-const DateWeek = styled.span`
+export const DateWeek = styled.span`
   font-size: 14px;
   font-family: "yg-jalnan";
 `;
