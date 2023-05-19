@@ -69,3 +69,45 @@ border-radius: 40px;
 
 transition: 0.5s all;
 `;
+
+
+export const RecommandHeader = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 1rem;
+  margin-top: 70px;
+  font-weight: bold;
+  color: #FC8CAE;
+`;
+export const RecommandTitle = styled.h1`
+  font-size: 20px;
+  margin-bottom: 12px;
+`
+
+// Search
+
+export const SearchWrapper = styled.div`
+background-color: #fff;
+`
+
+export const RecomandRowCardWrapper = styled.div`
+  display: flex;
+  width: 334px;
+  height: 100px;
+  box-shadow: 2px 2px 8px rgba(41, 39, 39, 0.4);
+  border-radius: 10px;
+  background-color: #FFFFFF;
+  z-index: 1;
+  flex-direction: row;
+  padding : 10px 21px 10px 12px;
+`
+
+export const RankWrapper = styled.div`
+display: flex;
+align-items: center;
+;
+`
+export const RankText = styled.h1`
+
+`
