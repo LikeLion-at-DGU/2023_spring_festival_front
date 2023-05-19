@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 
-const URL = "";
+const APIURL = "";
 
 const nextConfig = {
   reactStrictMode: true,
@@ -51,7 +51,8 @@ const nextConfig = {
 
       // Booth 댓글 관련 API
       {
-        // 각 부스 댓글 리스트 (GET) + 각 부스 댓글 생성 (POST)
+        // 각 부스 댓글 리스트 (GET)
+        // 각 부스 댓글 생성 (POST)
         source: "/store/:store_id/respond",
         destination: `http://${APIURL}/api/booths/:store_id/comments`,
       },
@@ -79,7 +80,8 @@ const nextConfig = {
 
       // Booth 좋아요 관련 API
       {
-        // 좋아요 생성 (POST) + 좋아요 삭제 (DELETE)
+        // 좋아요 생성 (POST)
+        // 좋아요 삭제 (DELETE)
         source: "/store/:reaction_id/love",
         destination: `http://${APIURL}/api/booths/:store_id/likes`,
       },
