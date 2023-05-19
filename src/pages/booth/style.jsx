@@ -1,5 +1,7 @@
 import styled from "styled-components";
+import Image from "next/image";
 import { motion } from 'framer-motion';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export const Container = styled.div`
   width: 100%;
@@ -69,3 +71,105 @@ border-radius: 40px;
 
 transition: 0.5s all;
 `;
+
+
+export const RecommandHeader = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 1rem;
+  margin-top: 70px;
+  font-weight: bold;
+  color: #FC8CAE;
+`;
+export const RecommandTitle = styled.h1`
+  font-size: 20px;
+  margin-bottom: 12px;
+`
+
+// Search
+
+export const SearchWrapper = styled.div`
+background-color: #fff;
+`
+
+export const RecomandRowCardWrapper = styled.div`
+  display: flex;
+  width: 334px;
+  height: 100px;
+  box-shadow: 2px 2px 8px rgba(41, 39, 39, 0.4);
+  border-radius: 10px;
+  background-color: #FFFFFF;
+  z-index: 1;
+  flex-direction: row;
+  padding : 10px 21px 10px 12px;
+`
+
+export const RankWrapper = styled.div`
+display: flex;
+align-items: center;
+;
+`
+export const RankText = styled.h1`
+`
+
+export const RankBoothImage = styled(Image)`
+display: flex;
+  width: 80px;
+  height: 80px;
+  border-radius: 6px;
+  margin-left: 10px;
+  margin-right: 15px;
+`
+export const RankBoothDetail = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-top: 30px;
+  margin-bottom: 10px;
+`
+export const RankBoothDetailTitle = styled.h1`
+  font-size: 14px;
+  color: #525252;
+  font-weight: 700;
+  font-family: 'yg-jalnan';
+`
+
+export const RannkBoothDetailOperator = styled.p`
+  font-size: 11px;
+  font-family: 'AppleSDGothicNeoM00';
+  color: #979797;
+  font-weight: 400;
+  margin-top: 3px;
+
+`
+export const RankBoothDetailLocation = styled.p`
+  font-size: 11px;
+  font-weight: 400;
+  color: #FC8CAE;
+  margin-top:5px;
+  `
+export const RankBoothHeartWrapper = styled.div`
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 10px;
+  margin-left: 30px;
+`
+export const HeartWrapper = styled.div`
+  display: flex;
+`
+export const HeartCntWrapper = styled.div`
+  display: flex;
+  font-size: 11px;
+  font-weight: 400;
+  color:#979797;
+`
+
+export const HeartIcon = styled(FontAwesomeIcon)`
+  
+width: 20px;
+margin-bottom: 3px;
+
+`

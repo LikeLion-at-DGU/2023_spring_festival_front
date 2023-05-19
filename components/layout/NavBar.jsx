@@ -39,7 +39,7 @@ export default function HeadBar(){
     const [modalOpen, setModalOpen] = useState(false);
     
     const showModal = () => {
-        setModalOpen(true);
+        setModalOpen(i=>!i);
     };
 
     return(
@@ -47,8 +47,8 @@ export default function HeadBar(){
             <Title>
                 다시, 봄
             </Title>
-            <NavToggle icon={faBars} onClick={showModal}/>
-            {modalOpen && <Modal setModalOpen={setModalOpen} />}
+            <NavToggle icon={faBars} onClick={()=>showModal()}/>
+            {modalOpen && <Modal setModalOpen={setModalOpen}/>}
         </Container>
     )
 };
