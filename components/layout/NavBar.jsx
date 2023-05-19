@@ -1,6 +1,8 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import styled from "styled-components";
+import Modal from "../nav/Modal";
+import { useState } from "react";
 
 const Container = styled.nav`
     width: 100%;
@@ -33,12 +35,20 @@ const NavToggle = styled(FontAwesomeIcon)`
 
 
 export default function HeadBar(){
+
+    const [modalOpen, setModalOpen] = useState(false);
+    
+    const showModal = () => {
+        setModalOpen(true);
+    };
+
     return(
         <Container>
             <Title>
                 다시, 봄
             </Title>
-            <NavToggle icon={faBars}  />
+            <NavToggle icon={faBars} onClick={showModal}/>
+            {modalOpen && <Modal setModalOpen={setModalOpen} />}
         </Container>
     )
-}
+};
