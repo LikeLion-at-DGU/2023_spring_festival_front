@@ -37,3 +37,9 @@ export const BoxDay = styled.span`
   transition: all 0.3s;
   color: ${(props) => (props.isActive ? '#FC8CAE' : '#525252')};
 `;
+
+export const LocationImg = styled.img`
+  margin-top: 1.8rem;
+  margin-bottom: 10px;
+  width: 90%;
+`;
