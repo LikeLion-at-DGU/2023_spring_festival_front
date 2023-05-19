@@ -1,9 +1,9 @@
 import { useRouter } from "next/router";
 import Image from 'next/image';
-import time from "../image/timetable.svg"
-import booth from "../image/booth.svg"
-import about from "../image/about.svg"
-import notice from "../image/notice.svg"
+import time from "../image/common/timetable.svg"
+import booth from "../image/common/booth.svg"
+import about from "../image/common/about.svg"
+import notice from "../image/common/notice.svg"
 import styled from 'styled-components';
 import { useEffect, useState } from 'react';
 

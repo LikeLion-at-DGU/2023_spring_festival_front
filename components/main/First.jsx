@@ -1,8 +1,8 @@
 import styled from "styled-components";
 import Image from 'next/image';
-import da from "../image/main_da.svg";
-import si from "../image/main_si.svg";
-import bom from "../image/main_bom.svg";
+import da from "../image/main/main_da.svg";
+import si from "../image/main/main_si.svg";
+import bom from "../image/main/main_bom.svg";
 
 
 const Container = styled.div`
