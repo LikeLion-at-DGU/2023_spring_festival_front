@@ -43,3 +43,6 @@ export const LocationImg = styled.img`
   margin-bottom: 10px;
   width: 90%;
 `;
+export const BuildingContainer = styled.div`
+margin-top: 10px;
+`;

@@ -4,11 +4,14 @@ import { React, useEffect, useState} from "react";
 import styled from "styled-components";
 import { motion } from 'framer-motion';
 import { DateNum, DateWeek } from "../timetable";
-import { BoxDate, BoxDay, Container, DateContainer, DayBox, LocationImg } from "./style";
+import { BoxDate, BoxDay, BuildingContainer, Container, DateContainer, DayBox, LocationImg } from "./style";
 
 import boothMap from "../../../components/image/booth/exampleMap.png";
 import MapPing from "components/image/booth/MapPing";
 
+// loading 창 
+import Fade from '@mui/material/Fade';
+import CircularProgress from '@mui/material/CircularProgress';
 // 날짜 배열 
 const dayArray = [
   {
@@ -169,7 +172,6 @@ export default function Booth(){
           <div style={{ position: 'relative' }}>
             <LocationImg alt={isBuilding} src={boothMap} className="fadeIn" />
             {MapPing(isBuilding)}
-            {/* <BuildingLocationImage src={mainMapIcon} /> */}
           </div>
           <BuildingContainer>
             {buildingArray.map((bu) => {
@@ -224,8 +226,8 @@ export default function Booth(){
       )}
         
       
+  
       
-      }
 
 
 
