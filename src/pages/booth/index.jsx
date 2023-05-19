@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 import { DateNum, DateWeek } from "../timetable";
 import { BoxDate, BoxDay, BuildingContainer, BuildingDetail, Container, DateContainer, DayBox, LocationImg } from "./style";
 
-import boothMap from "../../../components/booth/images/exampleMap.png";
+// import boothMap from "../../../components/booth/images/exampleMap.png";
 
 import MapPing from "components/booth/MapPing";
 // 날짜 배열 
