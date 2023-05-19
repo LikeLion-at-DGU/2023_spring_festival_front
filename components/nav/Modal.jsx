@@ -5,7 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from "next/router";
 import styled, { keyframes } from "styled-components";
-import nav_logo from "../image/nav_logo.svg";
+import nav_logo from "../image/common/nav_logo.svg";
 // import { motion } from "framer-motion";
 
 const slideIn = keyframes`
