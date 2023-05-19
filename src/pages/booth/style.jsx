@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import Image from "next/image";
 import { motion } from 'framer-motion';
 
 export const Container = styled.div`
@@ -109,5 +110,40 @@ align-items: center;
 ;
 `
 export const RankText = styled.h1`
+`
 
+export const RankBoothImage = styled(Image)`
+display: flex;
+  width: 80px;
+  height: 80px;
+  border-radius: 6px;
+  margin-left: 10px;
+  margin-right: 15px;
+`
+export const RankBoothDetail = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-top: 30px;
+  margin-bottom: 10px;
+`
+export const RankBoothDetailTitle = styled.h1`
+  font-size: 14px;
+  color: #525252;
+  font-weight: 700;
+  font-family: 'yg-jalnan';
+`
+
+export const RannkBoothDetailOperator = styled.p`
+  font-size: 11px;
+  font-family: 'AppleSDGothicNeoM00';
+  color: #979797;
+  font-weight: 400;
+  margin-top: 3px;
+
+`
+export const RankBoothDetailLocation = styled.p`
+  font-size: 11px;
+  font-weight: 400;
+  color: #FC8CAE;
+  margin-top:5px
 `
