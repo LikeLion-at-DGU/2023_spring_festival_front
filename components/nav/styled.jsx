@@ -1,26 +1,33 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import styled, { keyframes } from "styled-components";
+import styled, { keyframes, css } from "styled-components";
+import { motion } from "framer-motion";
 
 
 export const slideIn = keyframes`
-    0% {
+    
+    from {
+        opacity: 0;
         transform: translateX(100%);
     }
-    100% {
+    to {
+        opacity: 1;
         transform: translateX(0);
     }
 `;
 
 export const slideOut = keyframes`
-    0% {
+    from {
+        opacity: 1;
         transform: translateX(0);
     }
-    100% {
+    to {
+        opacity: 0;
         transform: translateX(100%);
     }
 `;
 
 export const ModalWrapper = styled.div`
+
     background: #FFFFFF;
     z-index: 100;
     height: 100vh;
@@ -33,8 +40,14 @@ export const ModalWrapper = styled.div`
     justify-content: space-between;
     width: 70%;
     right: 0;
-    animation-name: ${(props) => props.isVisible ? slideIn : slideOut };
-    animation-duration: 3;
+    /* visibility: hidden; */
+    /* visibility: ${(props)=> !(props.isVisible || props.modalOpen)? 'hidden' : 'visible'}; */
+
+    /* display: ${(props) => props.modalOpen? "flex" : "none" }; */
+    /* opacity: ${(props) => ( props.isVisible ? 1 : 0)}; */
+    animation-name: ${(props) => (props.isVisible ? slideIn : slideOut) };
+    animation-duration: 0.5s;
+    /* animation-fill-mode: forwards; */
 `;
 
 export const ModalOverlay = styled.div`

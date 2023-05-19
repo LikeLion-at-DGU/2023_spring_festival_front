@@ -14,24 +14,28 @@ import {
     ModalPageSection,
     ModalFooter
 } from './styled';
-// import { motion } from "framer-motion";
 
 export default function Modal({setModalOpen}) {
 
-    // 모달창 애니메이션    
+    // 모달창 애니메이션 
     const [isVisible, setIsVisible] = useState(false);
+    // 모달 처음 마운트 됨을 설정
+    const [isMounted, setIsMounted] = useState(false);
 
     useEffect(() => {
-        setIsVisible(true); 
-      }, []);
+        setIsMounted(true);
+        setIsVisible(true);
+    }, []);
 
     
-      // 모달창 닫기
+    // 모달창 닫기
     const closeModal = () => {
+        
         setIsVisible(false);
-        setTimeout(()=>{
+
+        setTimeout(()=> {
             setModalOpen(false);
-        }, 300);
+        }, 500)
     };
 
 
@@ -62,10 +66,15 @@ export default function Modal({setModalOpen}) {
     // router
     const router = useRouter();
 
+    // 모달이 완전히 열린 후 렌더링
+    if (!isMounted) {
+        return null;
+    }
+
     return(
         <>
             <ModalOverlay />
-            <ModalWrapper ref={outSection}>
+            <ModalWrapper ref={outSection} isVisible={isVisible}>
                 <ModalButton icon={faArrowLeftLong} onClick={closeModal} />
                 <ModalHeader>
                     <ModalTitle>동국대학교<br/>봄 백상대동제</ModalTitle>
@@ -84,11 +93,11 @@ export default function Modal({setModalOpen}) {
                             onClick={closeModal}
                             >notice</ModalPageSection>
                     </Link>
-                    <Link href="/" passHref>
+                    <Link href="/timetable" passHref>
                         <ModalPageSection
-                            is_active = {router.pathname === '/timeline'}
+                            is_active = {router.pathname === '/timetable'}
                             onClick={closeModal}
-                            >timeline</ModalPageSection>
+                            >timetable</ModalPageSection>
                     </Link>
                     <Link href="/booth" passHref>
                         <ModalPageSection
@@ -102,10 +111,6 @@ export default function Modal({setModalOpen}) {
                             onClick={closeModal}
                             >about</ModalPageSection>
                     </Link>
-                    {/* <ModalPageSection href='/notice' onClick={closeModal}>notice</ModalPageSection>
-                    <ModalPageSection href='/timeline' onClick={closeModal}>timeline</ModalPageSection>
-                    <ModalPageSection href='/booth' onClick={closeModal}>booth</ModalPageSection>
-                    <ModalPageSection href='/about' onClick={closeModal}>about</ModalPageSection> */}
                 </ModalPages>
                 <ModalFooter>©DGU LIKELION. All rights reserved.</ModalFooter>
             </ModalWrapper>
