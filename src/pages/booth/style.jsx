@@ -5,6 +5,7 @@ export const Container = styled.div`
   width: 100%;
   text-align: center;
   padding: 2rem 0rem 9rem 0;
+  z-index: 1;
   
 `
 // 날짜 컨테이너
@@ -44,5 +45,27 @@ export const LocationImg = styled.img`
   width: 90%;
 `;
 export const BuildingContainer = styled.div`
+background-color: #ffffff;
+border-radius: 20px;
 margin-top: 10px;
+
+`;
+
+export const BuildingDetail = styled(motion.button)`
+border: none;
+align-items: center;
+padding: 0px;
+// 애플폰트
+font-family: '';
+font-size: 14px;
+width: 71px;
+height: 28px;
+margin: 3px;
+color: ${(props) => (props.isActive ? '#ffffff' : '#525252')};
+background-color: ${(props) => (props.isActive ? '#525252' : '#ffffff')};
+
+border-radius: 40px;
+
+
+transition: 0.5s all;
 `;

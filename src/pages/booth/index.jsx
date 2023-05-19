@@ -4,14 +4,11 @@ import { React, useEffect, useState} from "react";
 import styled from "styled-components";
 import { motion } from 'framer-motion';
 import { DateNum, DateWeek } from "../timetable";
-import { BoxDate, BoxDay, BuildingContainer, Container, DateContainer, DayBox, LocationImg } from "./style";
+import { BoxDate, BoxDay, BuildingContainer, BuildingDetail, Container, DateContainer, DayBox, LocationImg } from "./style";
 
-import boothMap from "../../../components/image/booth/exampleMap.png";
-import MapPing from "components/image/booth/MapPing";
+import boothMap from "../../../components/booth/images/exampleMap.png";
 
-// loading 창 
-import Fade from '@mui/material/Fade';
-import CircularProgress from '@mui/material/CircularProgress';
+import MapPing from "components/booth/MapPing";
 // 날짜 배열 
 const dayArray = [
   {
@@ -154,7 +151,7 @@ export default function Booth(){
   };
 
   // 부스가 존재하면
-  return isExist ? (
+  return(
     <Container>
        <DateContainer>
         {/* api호출 방법 :/api/booths?day={day}&location={location} */}
@@ -166,15 +163,19 @@ export default function Booth(){
         ))}
       </DateContainer>
       {/* 로딩  */}
-      {isLoading ? (
-        <>
+
+      <div>여기지도
+
+      </div>
           {/* 지도 이미지 */}
-          <div style={{ position: 'relative' }}>
+          {/* <div style={{ position: 'relative' }}>
             <LocationImg alt={isBuilding} src={boothMap} className="fadeIn" />
             {MapPing(isBuilding)}
-          </div>
+          </div> */}
+
           <BuildingContainer>
             {buildingArray.map((bu) => {
+              console.log(bu);
               return (
                 <BuildingDetail
                   key={bu.id}
@@ -188,51 +189,10 @@ export default function Booth(){
               );
             })}
           </BuildingContainer>
-          {/* map으로 카드 뜨게 만들기 */}
-          <BoothCardContainer>
-            {booth.length != 0 ? (
-              // 등록된 부스가 있을때
-              booth.map((boo) => {
-                // console.log(boo.images[0].storedFilePath);
-                return (
-                  <Boothcard
-                    key={boo.id}
-                    boothId={boo.id}
-                    title={boo.title}
-                    intro={boo.introduction}
-                    type={boo.boothType}
-                    locationName={boo.location}
-                    isLike={boo.isLike}
-                    likeCount={boo.likeCnt}
-                    boothImage={boo.images[0]}
-                  />
-                );
-              })
-            ) : (
-              // 등록된 부스가 없을때
-              <Stack sx={{ width: '328px', margin: '30px auto' }} spacing={2}>
-                <div className="no-results__text">
-                  <img src={boothsearchC} className="noResultImg" />
-                  <p>등록되어 있는 부스가 없습니다.</p>
-                </div>
-              </Stack>
-            )}
-          </BoothCardContainer>
-        </>
-      ) : (
-        <Fade in="true" unmountOnExit style={{ margin: '100px auto' }}>
-          <CircularProgress />
-        </Fade>
-      )}
-        
-      
-  
-      
 
 
 
+    
     </Container>
-  ) :(
-    <div>부스가 없습니다.</div>
   )
 }

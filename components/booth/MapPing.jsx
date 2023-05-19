@@ -1,4 +1,5 @@
-import mainMapIcon from '../../image/pin.png'
+import mainMapIcon from '../image/pin.png'
+import Image from 'next/image'
 
 export const MapPing = (key)=> {
     switch (key) {
@@ -6,7 +7,7 @@ export const MapPing = (key)=> {
           //오키
         return (
             <>
-                <img
+                <Image
                     src={`${mainMapIcon}`}
                     className="fadeIn"
                     style={{
@@ -40,7 +41,7 @@ export const MapPing = (key)=> {
           //오키
           return (
             <>
-              <img
+              <Image
                 src={`${mainMapIcon}`}
                 className="fadeIn"
                 style={{
