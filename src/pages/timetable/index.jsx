@@ -95,12 +95,7 @@ export default function TimeTable() {
             </ImgBox>
             대운동장
           </LocationHeader>
-          <CardSection isOpen={specialGuest}>
-            {[...ImgData]}
-            {/* <Card>
-              <Image src={Idle} alt="아이들" placeholder="blur" fill />
-            </Card> */}
-          </CardSection>
+          <CardSection isOpen={specialGuest}>{[...ImgData]}</CardSection>
         </ToggleBox>
       </Container>
       <style jsx>{`

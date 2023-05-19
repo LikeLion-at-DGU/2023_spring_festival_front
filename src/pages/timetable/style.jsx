@@ -74,7 +74,7 @@ export const ToggleBox = styled.section`
 
 export const ToggleHeader = styled.section`
   width: 100%;
-  height: 60px;
+  min-height: 60px;
   display: flex;
   align-items: center;
   font-family: "yg-jalnan";
@@ -103,7 +103,6 @@ export const CardSection = styled.section`
     width: 2px;
     height: 2px;
   }
-
   ::-webkit-scrollbar-thumb {
     background: ${primaryColor};
     border-radius: 10px;
