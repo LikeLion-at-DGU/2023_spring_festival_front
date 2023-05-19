@@ -1,5 +1,9 @@
 import { useCallback, useEffect, useState } from "react";
 import styled, { keyframes } from "styled-components";
+import Image from "next/image";
+import Idle from "../../../public/imgSample1.png";
+import Bol4 from "../../../public/imgSample2.png";
+import Pin from "../../../public/pin.png";
 
 const primaryColor = "#FC8CAE";
 const secondaryColor = "#525252";
@@ -66,9 +70,9 @@ const ToggleBox = styled.section`
   color: ${primaryColor};
   font-weight: 700;
   padding-left: 15px;
-  animation: ${Landing} 1s ease;
+  /* animation: ${Landing} 1s ease; */
   animation-delay: ${(props) => (props.delay ? `1s` : ``)};
-  display: ${(props) => (props.delay ? "none" : "")};
+  /* display: ${(props) => (props.delay ? "none" : "")}; */
   transition: all 0.5s;
   cursor: pointer;
 `;
@@ -112,21 +116,44 @@ const CardSection = styled.section`
   display: ${(props) => (props.isOpen ? "" : "none")};
 `;
 
+const ImgBox = styled.section`
+  width: 35px;
+  height: 20px;
+  position: relative;
+`;
+
 const Card = styled.div`
   min-width: 200px;
   min-height: 250px;
-  border: 1px solid black;
-  border-radius: 10px;
+  position: relative;
+  object-fit: cover;
 `;
 
-// const ImgBox = styled.div`
-//   background-image: url({pin});
-//   background-position: center;
-//   background-repeat: no-repeat;
-//   background-size: contain;
-// `;
+const ImgTitle = styled.span`
+  position: absolute;
+  left: 20px;
+  bottom: 20px;
+  font-size: 20px;
+  color: white;
+`;
 
 export default function TimeTable() {
+  const ImgArray = [
+    { id: 1, name: "(여자)아이들", src: Idle },
+    { id: 2, name: "볼빨간사춘기", src: Bol4 },
+    { id: 3, name: "(여자)아이들", src: Idle },
+    { id: 4, name: "볼빨간사춘기", src: Bol4 },
+  ];
+
+  const ImgData = [
+    ImgArray.map((img) => (
+      <Card key={img.id}>
+        <Image src={img.src} alt={img.name} fill />
+        <ImgTitle>{img.name}</ImgTitle>
+      </Card>
+    )),
+  ];
+
   // State 관리----------------------------------------
   const [firstDate, setFirstDate] = useState(true);
   const [secondDate, setSecondDate] = useState(false);
@@ -189,15 +216,17 @@ export default function TimeTable() {
             <IconBox>{specialGuest ? "▼" : "▶"}</IconBox>
             SPECIAL GUEST
           </ToggleHeader>
-          <LocationHeader isOpen={specialGuest}>대운동장</LocationHeader>
+          <LocationHeader isOpen={specialGuest}>
+            <ImgBox>
+              <Image src={Pin} alt="pin" fill />
+            </ImgBox>
+            대운동장
+          </LocationHeader>
           <CardSection isOpen={specialGuest}>
-            <Card></Card>
-            <Card></Card>
-            <Card></Card>
-            <Card></Card>
-            <Card></Card>
-            <Card></Card>
-            <Card></Card>
+            {[...ImgData]}
+            {/* <Card>
+              <Image src={Idle} alt="아이들" placeholder="blur" fill />
+            </Card> */}
           </CardSection>
         </ToggleBox>
       </Container>
