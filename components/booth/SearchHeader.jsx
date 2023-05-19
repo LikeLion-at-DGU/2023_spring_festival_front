@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/router';
 import styled from 'styled-components';
 import { AiOutlineSearch } from 'react-icons/ai';
 
@@ -35,16 +35,13 @@ const Input = styled.div`
   }
 `;
 
-function SearchHeader() {
-    const [searchValue, setSearchValue] = useState('');
-    const navigate = useNavigate();
+function SearchHeader({searchValue,setSearchValue }) {
+    
+    
   
     const handleChange = (e) => {
       const value = e.target.value;
-      setSearchValue(value);
-      navigate(`/search?q=${value}`);
-      
-      
+      setSearchValue(value);      
     };
 
     return (
@@ -55,6 +52,7 @@ function SearchHeader() {
             onChange={handleChange}
             type="text"
             placeholder="검색어를 입력해주세요."
+
             />
         <AiOutlineSearch size={15} color='#DDE1DF' />
         </Input>

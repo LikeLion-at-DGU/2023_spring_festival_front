@@ -22,9 +22,6 @@ export default function PageTitle() {
     }else if(router.pathname === "/booth"){
       setPage(4);
     }
-    else if(router.pathname === "/booth/search"){
-      setPage(4);
-    }
   })
 
   const Img = styled(Image)`
