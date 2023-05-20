@@ -11,7 +11,7 @@ function Search() {
     {
       id: 1,
       name: "으아아앙악..",
-      type: "야간부스",
+      type: "주간부스",
       operator: "뭐리",
       logo_image: "https://www.pngplay.com/wp-content/uploads/3/Apple-Siri-Logo-Download-Free-PNG.png",
       like_cnt: 100,
@@ -174,7 +174,8 @@ function Search() {
                   logoImage={booth.logo_image}
                   likeCnt={booth.like_cnt}
                   isLike={booth.is_liked}
-                  location={booth.location}              
+                  location={booth.location}     
+                  type={booth.type}         
                 />
               </div>
             ))}

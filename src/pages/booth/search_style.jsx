@@ -37,6 +37,36 @@ export const BoothCardWrapper = styled.div`
     box-shadow: 2px 2px 8px rgba(41, 39, 39, 0.4);
     border-radius: 10px;
     margin : 10px 12px 10px 12px;
+    
+  
+  z-index: 1;
+  overflow: hidden;
+
+  /* &::before {
+    content: '';
+    position: absolute;
+    width: 96.13px;
+height: 26.01px;
+top : 9px;
+left: -20px;
+    background: #FFADDB;
+    transform: rotate(-45deg);
+    z-index: 2;
+  } */
+`
+export const Ribbon = styled.div`
+    position: absolute;
+    width: 96.13px;
+    height: 26.01px;
+    top : -110px;
+    left: -30px;
+    padding: 7px 0px 0px 13px;
+    background: #FFADDB;
+    transform: rotate(-45deg);
+    z-index: 2;
+    color: #FFFFFF;
+    font-family: yg-jalnan;
+    font-size: 12px;
 `
 export const BoothCardImage = styled(Image)`
     width: 160px;
