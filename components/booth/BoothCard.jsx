@@ -20,29 +20,37 @@ import {
 } from "@/pages/booth/style";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
-import { faHeart } from "@fortawesome/free-solid-svg-icons";
-import { faHeart as emptyHeart } from "@fortawesome/free-regular-svg-icons";
+import {faHeart } from '@fortawesome/free-solid-svg-icons'
+import {faHeart as emptyHeart } from '@fortawesome/free-regular-svg-icons'
+import Link from 'next/link';
 
-function BoothCard({ name, operator, logoImage, likeCnt, isLike, location, type }) {
-  return (
-    <BoothCardWrapper>
-      <BoothCardImage src={DeafultImage} />
-      <BoothCardDetailWrapper>
-        <Ribbon>{type}</Ribbon>
-        <BoothCardDetailDes>
-          <RankBoothDetailTitle>{name}</RankBoothDetailTitle>
-          <RannkBoothDetailOperator>{operator}</RannkBoothDetailOperator>
-          <RankBoothDetailLocation>{location}</RankBoothDetailLocation>
-        </BoothCardDetailDes>
 
-        <BoothCardDetailHeartWrapper>
-          {/* 하트 어떻게..? */}
-          <CardDetailHeartIcon icon={isLike ? faHeart : emptyHeart} />
-          <CardDetailHeartCntWrapper>{likeCnt}</CardDetailHeartCntWrapper>
-        </BoothCardDetailHeartWrapper>
-      </BoothCardDetailWrapper>
-    </BoothCardWrapper>
-  );
+function BoothCard({id,name,operator,logoImage,likeCnt,isLike,location,type}) {
+    return (
+        <Link href={`/booth/detail/${id}`}>
+        <BoothCardWrapper>
+            <BoothCardImage src={DeafultImage}/>
+            <BoothCardDetailWrapper>
+                <Ribbon type={type}>{type}</Ribbon>
+                <BoothCardDetailDes>
+                    <RankBoothDetailTitle>{name}</RankBoothDetailTitle>
+                    <RannkBoothDetailOperator>{operator}</RannkBoothDetailOperator>
+                    <RankBoothDetailLocation>{location}</RankBoothDetailLocation>
+                </BoothCardDetailDes>
+                
+                <BoothCardDetailHeartWrapper>
+                    {/* 하트 어떻게..? */}
+                    <CardDetailHeartIcon icon={isLike ? faHeart : emptyHeart} />
+                    <CardDetailHeartCntWrapper>{likeCnt}</CardDetailHeartCntWrapper>
+                </BoothCardDetailHeartWrapper>
+                
+
+            </BoothCardDetailWrapper>
+
+            
+        </BoothCardWrapper>
+        </Link>
+    );
 }
 
 export default BoothCard;
