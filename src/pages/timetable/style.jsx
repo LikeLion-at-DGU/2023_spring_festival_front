@@ -55,7 +55,7 @@ export const IconBox = styled.section`
 
 export const PerfToggleBox = styled.section`
   width: 100%;
-  height: ${(props) => (props.isOpen ? "50vh" : "120px")};
+  height: ${(props) => (props.isOpen ? "500px" : "120px")};
   display: flex;
   flex-direction: column;
   box-shadow: 3px 3px 20px -10px rgba(0, 0, 0, 0.7);
@@ -72,7 +72,7 @@ export const PerfToggleBox = styled.section`
 
 export const GuestToggleBox = styled.section`
   width: 100%;
-  height: ${(props) => (props.isOpen ? "50vh" : "60px")};
+  height: ${(props) => (props.isOpen ? "500px" : "60px")};
   display: flex;
   flex-direction: column;
   box-shadow: 3px 3px 20px -10px rgba(0, 0, 0, 0.7);
