@@ -1,14 +1,6 @@
 import styled, { keyframes } from "styled-components";
 import { primaryColor, subPinkColor, secondaryColor } from "../_app";
 
-const Landing = keyframes`
-  from {
-    transform: translate(-100%);
-  } to {
-    transform: translate(0%);
-  }
-`;
-
 export const Container = styled.div`
   width: 100%;
   display: flex;
@@ -80,9 +72,7 @@ export const GuestToggleBox = styled.section`
   background-color: #fff;
   font-weight: 700;
   padding-left: 15px;
-  /* animation: ${Landing} 1s ease; */
   animation-delay: ${(props) => (props.delay ? `1s` : ``)};
-  /* display: ${(props) => (props.delay ? "none" : "")}; */
   transition: all 0.5s;
   cursor: pointer;
 `;
@@ -169,11 +159,8 @@ export const TableSection = styled.section`
   display: ${(props) => (props.isOpen ? "" : "none")};
   transition: all 0.5s;
   @media all and (max-width: 495px) {
-    height: 35px;
-    font-size: 15px;
-  }
-  @media all and (max-width: 450px) {
-    margin-top: -5px;
+    font-size: 14px;
+    gap: 40px;
   }
 `;
 

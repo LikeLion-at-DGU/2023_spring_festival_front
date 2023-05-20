@@ -1,12 +1,16 @@
 import { React, useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import {
+  BoothFilterSection,
   BoxDate,
   BoxDay,
   Container,
   DateContainer,
   DateSection,
   DayBox,
+  FilterSectionSub1,
+  FilterSectionSub2,
+  FilterSectionSub3,
   GuideMessage,
   MapSection,
   Pin1,
@@ -24,6 +28,7 @@ import { DateNum, DateWeek } from "../timetable/style";
 import Image from "next/image";
 import map from "../../../components/image/booth/campus_map.svg";
 import pin from "../../../components/image/booth/pin.png";
+import { BoothCardGridWrapper } from "./search_style";
 
 // 날짜 배열
 const dayArray = [
@@ -55,6 +60,7 @@ export default function Booth() {
   const [guideMessage, setGuideMessage] = useState("시작을 위해 지도를 클릭해주세요.");
   const [firstScene, setFirstScene] = useState(true);
   const [secondScene, setSecondScene] = useState(false);
+  const [isFocus, setIsFocus] = useState(0);
 
   const FirstMoved = useMemo(() => {
     return firstScene;
@@ -69,6 +75,7 @@ export default function Booth() {
 
   return (
     <Container>
+      {/* RankingSection------------------------- */}
       <RankingSection firstMoved={FirstMoved}>
         <RankingLeftSection>
           <RankingHotButton>HOT</RankingHotButton>
@@ -76,7 +83,7 @@ export default function Booth() {
         <RankingRightSection></RankingRightSection>
       </RankingSection>
       {/* DateSection---------------------------- */}
-      <DateSection firstMoved={FirstMoved}>
+      <DateSection firstMoved={FirstMoved} className="fadeIn">
         {dayArray.map((i) => (
           <DayBox key={i.id} onClick={() => setIsToday(i.id)}>
             <BoxDate isActive={isToday === i.id}>
@@ -88,28 +95,42 @@ export default function Booth() {
           </DayBox>
         ))}
       </DateSection>
+      {/* MapSection----------------------------- */}
       <MapSection onClick={handleMap} firstMoved={FirstMoved}>
         <Image src={map} alt="campus_map" fill />
-        <Pin1>
+        <Pin1 secondScene={secondScene}>
           <Image src={pin} alt="pin" fill style={{ objectFit: "cover" }} />
         </Pin1>
-        <Pin2>
+        <Pin2 secondScene={secondScene}>
           <Image src={pin} alt="pin" fill style={{ objectFit: "cover" }} />
         </Pin2>
-        <Pin3>
+        <Pin3 secondScene={secondScene}>
           <Image src={pin} alt="pin" fill style={{ objectFit: "cover" }} />
         </Pin3>
-        <Pin4>
+        <Pin4 secondScene={secondScene}>
           <Image src={pin} alt="pin" fill style={{ objectFit: "cover" }} />
         </Pin4>
-        <Pin5>
+        <Pin5 secondScene={secondScene}>
           <Image src={pin} alt="pin" fill style={{ objectFit: "cover" }} />
         </Pin5>
-        <Pin6>
+        <Pin6 secondScene={secondScene}>
           <Image src={pin} alt="pin" fill style={{ objectFit: "cover" }} />
         </Pin6>
       </MapSection>
       <GuideMessage>{guideMessage}</GuideMessage>
+      {/* GridSection---------------------------- */}
+      <BoothFilterSection>
+        <FilterSectionSub1 isFocus={isFocus} onClick={() => setIsFocus(0)}>
+          전체
+        </FilterSectionSub1>
+        <FilterSectionSub2 isFocus={isFocus} onClick={() => setIsFocus(1)}>
+          주간부스
+        </FilterSectionSub2>
+        <FilterSectionSub3 isFocus={isFocus} onClick={() => setIsFocus(2)}>
+          야간부스
+        </FilterSectionSub3>
+      </BoothFilterSection>
+      <BoothCardGridWrapper></BoothCardGridWrapper>
     </Container>
   );
 }
