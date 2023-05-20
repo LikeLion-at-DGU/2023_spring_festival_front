@@ -1,165 +1,47 @@
 import { useCallback, useEffect, useState } from "react";
-import styled, { keyframes } from "styled-components";
 import Image from "next/image";
-import Idle from "../../../public/imgSample1.png";
-import Bol4 from "../../../public/imgSample2.png";
-import Pin from "../../../public/pin.png";
 
-const primaryColor = "#FC8CAE";
-const secondaryColor = "#525252";
-
-const Landing = keyframes`
-  from {
-    transform: translate(-100%);
-  } to {
-    transform: translate(0%);
-  }
-`;
-
-const Container = styled.div`
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  z-index: 1;
-`;
-
-export const DateSection = styled.section`
-  width: 100%;
-  height: 120px;
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
-  gap: 30px;
-`;
-
-export const DateBox = styled.section`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 5px;
-  font-weight: 900;
-  color: ${(props) => (props.date ? `${primaryColor}` : `${secondaryColor}`)};
-  cursor: pointer;
-`;
-
-export const DateNum = styled.span`
-  font-size: 36px;
-  text-shadow: 2px 2px 0px #ffffff, 5px 4px 0px rgba(0, 0, 0, 0.15);
-  font-family: "yg-jalnan";
-`;
-
-export const DateWeek = styled.span`
-  font-size: 14px;
-  font-family: "yg-jalnan";
-`;
-
-const IconBox = styled.section`
-  margin: 0 10px;
-  font-size: 24px;
-`;
-
-const ToggleBox = styled.section`
-  width: 100%;
-  height: ${(props) => (props.isOpen ? "50vh" : "60px")};
-  display: flex;
-  flex-direction: column;
-  box-shadow: 3px 3px 20px -10px rgba(0, 0, 0, 0.7);
-  border-radius: 30px;
-  background-color: #fff;
-  color: ${primaryColor};
-  font-weight: 700;
-  padding-left: 15px;
-  /* animation: ${Landing} 1s ease; */
-  animation-delay: ${(props) => (props.delay ? `1s` : ``)};
-  /* display: ${(props) => (props.delay ? "none" : "")}; */
-  transition: all 0.5s;
-  cursor: pointer;
-`;
-
-const ToggleHeader = styled.section`
-  width: 100%;
-  height: 60px;
-  display: flex;
-  align-items: center;
-  font-family: "yg-jalnan";
-`;
-
-const LocationHeader = styled.section`
-  width: 100%;
-  height: 50px;
-  display: flex;
-  align-items: flex-end;
-  color: ${secondaryColor};
-  padding-left: 15px;
-  display: ${(props) => (props.isOpen ? "" : "none")};
-`;
-
-const CardSection = styled.section`
-  width: 100%;
-  height: 300px;
-  display: flex;
-  align-items: center;
-  flex-wrap: nowrap;
-  gap: 15px;
-  overflow-x: auto;
-  padding: 10px;
-  *::-webkit-scrollbar {
-    width: 2px;
-    height: 2px;
-  }
-
-  *::-webkit-scrollbar-thumb {
-    background: ${primaryColor};
-    border-radius: 10px;
-  }
-  display: ${(props) => (props.isOpen ? "" : "none")};
-`;
-
-const ImgBox = styled.section`
-  width: 35px;
-  height: 20px;
-  position: relative;
-`;
-
-const Card = styled.div`
-  min-width: 200px;
-  min-height: 250px;
-  position: relative;
-  object-fit: cover;
-`;
-
-const ImgTitle = styled.span`
-  position: absolute;
-  left: 20px;
-  bottom: 20px;
-  font-size: 20px;
-  color: white;
-`;
+import Pin from "../../../components/image/timetable/pin.png";
+import {
+  Card,
+  CardSection,
+  Container,
+  DateBox,
+  DateNum,
+  DateSection,
+  DateWeek,
+  IconBox,
+  ImgBox,
+  LocationHeader,
+  TableBand,
+  TableClock,
+  TableIndex,
+  TableSection,
+  TimeTableBox,
+  ToggleBox,
+  ToggleHeader,
+} from "./style";
+import { ImgArray, performance24, performance25 } from "./staticData";
 
 export default function TimeTable() {
-  const ImgArray = [
-    { id: 1, name: "(여자)아이들", src: Idle },
-    { id: 2, name: "볼빨간사춘기", src: Bol4 },
-    { id: 3, name: "(여자)아이들", src: Idle },
-    { id: 4, name: "볼빨간사춘기", src: Bol4 },
-  ];
-
-  const ImgData = [
-    ImgArray.map((img) => (
-      <Card key={img.id}>
-        <Image src={img.src} alt={img.name} fill />
-        <ImgTitle>{img.name}</ImgTitle>
-      </Card>
-    )),
-  ];
-
   // State 관리----------------------------------------
   const [firstDate, setFirstDate] = useState(true);
   const [secondDate, setSecondDate] = useState(false);
   const [performance, setPerformance] = useState(false);
-  const [specialGuest, setSpecialGuest] = useState(true);
-  const [mount, setMount] = useState(true);
+  const [specialGuest, setSpecialGuest] = useState(false);
+  // const [delay, setDelay] = useState(true);
+
+  // DATE 관리-----------------------------------------
+  const day = new Date();
+  const hours = day.getHours();
+  const minutes = day.getMinutes();
+  // 20일 오늘 기준 오늘이면 0, 하루 지났으면 1, 이틀 지났으면 2
+  const todate = day.getDate() - 20 === 0 ? 0 : day.getDate() - 20 === 1 ? 1 : 2;
+  const nowTime = parseInt(
+    `${hours.toString().padStart(2, "0")}${minutes.toString().padStart(2, "0")}`,
+    10
+  );
+  const [isToday, setIsToday] = useState(todate);
 
   // Function 관리-------------------------------------
   const handleFirstDate = useCallback(() => {
@@ -186,10 +68,45 @@ export default function TimeTable() {
 
   // ComponentDidMount--------------------------------
   useEffect(() => {
-    setTimeout(() => setMount(!mount), 500);
+    setTimeout(() => setSpecialGuest(!specialGuest), 500);
   }, []);
 
+  const Performance24Data = [
+    performance24.map((perf) => {
+      const start = parseInt(perf.startTime.replace(":", ""), 10);
+      const end = parseInt(perf.endTime.replace(":", ""), 10);
+      let isNow = false;
+      if (start <= nowTime && nowTime <= end) {
+        isNow = true;
+      }
+      return (
+        <TableSection key={perf.index} isOpen={performance} isNow={isNow}>
+          <TableIndex>{perf.index} </TableIndex>
+          <TableClock>{perf.startTime + " - " + perf.endTime}</TableClock>
+          <TableBand>{perf.name} </TableBand>
+        </TableSection>
+      );
+    }),
+  ];
+
+  const ImgData = [
+    ImgArray.map((img) => (
+      <Card key={img.id}>
+        <Image src={img.src} alt={img.name} fill />
+      </Card>
+    )),
+  ];
   //
+  // {dayArray.map((i) => (
+  //   <DayBox key={i.id} onClick={() => setIsToday(i.id)}>
+  //     <BoxDate isActive={isToday === i.id}>
+  //       <DateNum>{i.date}</DateNum>
+  //     </BoxDate>
+  //     <BoxDay isActive={isToday === i.id}>
+  //       <DateWeek>{i.day}</DateWeek>
+  //     </BoxDay>
+  //   </DayBox>
+  // ))}
   return (
     <>
       <Container>
@@ -204,14 +121,24 @@ export default function TimeTable() {
           </DateBox>
         </DateSection>
         <br /> <br />
-        <ToggleBox isOpen={performance} onClick={handleShrink}>
+        {/* PERFORMANCE-------------------------------------- */}
+        <ToggleBox isOpen={performance} onClick={handleShrink} className="fadeIn">
           <ToggleHeader>
             <IconBox>{performance ? "▼" : "▶"} </IconBox>
             PERFORMANCE
           </ToggleHeader>
+          <LocationHeader isOpen={performance}>
+            <ImgBox>
+              <Image src={Pin} alt="pin" fill />
+            </ImgBox>
+            대운동장
+          </LocationHeader>
+          <br /> <br />
+          <TimeTableBox>{[...Performance24Data]}</TimeTableBox>
         </ToggleBox>
         <br />
-        <ToggleBox isOpen={specialGuest} delay={mount} onClick={handleGrow}>
+        {/* SPECIAL GUEST------------------------------------ */}
+        <ToggleBox isOpen={specialGuest} onClick={handleGrow} className="fadeIn">
           <ToggleHeader>
             <IconBox>{specialGuest ? "▼" : "▶"}</IconBox>
             SPECIAL GUEST
@@ -222,19 +149,14 @@ export default function TimeTable() {
             </ImgBox>
             대운동장
           </LocationHeader>
-          <CardSection isOpen={specialGuest}>
-            {[...ImgData]}
-            {/* <Card>
-              <Image src={Idle} alt="아이들" placeholder="blur" fill />
-            </Card> */}
-          </CardSection>
+          <CardSection isOpen={specialGuest}>{[...ImgData]}</CardSection>
         </ToggleBox>
       </Container>
-      <style jsx>{`
+      {/* <style jsx>{`
         * {
           font-family: "yg-jalnan";
         }
-      `}</style>
+      `}</style> */}
     </>
   );
 }
