@@ -2,7 +2,7 @@ import SearchHeader from "components/booth/SearchHeader";
 import { useState } from "react";
 import { RecommandHeader, RecommandTitle } from "./style";
 import RecomandRowCard from "components/booth/RecomandRowCard";
-import { useTrail, useSpring, animated } from 'react-spring';
+import { useTrail, useSpring, animated, useTransition } from 'react-spring';
 import BoothCard from "components/booth/BoothCard";
 import { BoothCardGridWrapper, RecommandWrapper, SearchContentHeader, SearchContentWrapper, SearchNoResult } from "./search_style";
 
@@ -11,7 +11,7 @@ function Search() {
     {
       id: 1,
       name: "으아아앙악..",
-      type: "야간부스",
+      type: "주간부스",
       operator: "뭐리",
       logo_image: "https://www.pngplay.com/wp-content/uploads/3/Apple-Siri-Logo-Download-Free-PNG.png",
       like_cnt: 100,
@@ -148,14 +148,28 @@ function Search() {
   };
 
   // SearchBooth Redner function
-  const renderSearchBooth = () => {
+const filteredBooths = booth.filter((b) =>
+  b.name.includes(searchValue) ||
+  b.type.includes(searchValue) ||
+  b.operator.includes(searchValue) ||
+  b.location.includes(searchValue)
+);
+const trail = useTrail(filteredBooths.length, {
+  from: { opacity: 0, transform: 'translateY(20px)' },
+  to: { opacity: 1, transform: 'translateY(0)' },
+  leave: { opacity: 0, transform: 'translateY(20px)' },
+  delay: 200,
+});
 
-    const filteredBooths = booth.filter((b) =>
-    b.name.includes(searchValue) ||
-    b.type.includes(searchValue) ||
-    b.operator.includes(searchValue) ||
-    b.location.includes(searchValue)
-  );
+const transition = useTransition(filteredBooths, {
+    from: { opacity: 0, transform: 'translateY(20px)' },
+    enter: { opacity: 1, transform: 'translateY(0)' },
+    leave: { opacity: 0, transform: 'translateY(20px)' },
+    config: { duration: 300 },
+    keys: filteredBooths.map((b) => b.id),
+  });
+
+  const renderSearchBooth = () => {
   
     return (
       <SearchContentWrapper>
@@ -165,21 +179,21 @@ function Search() {
         {filteredBooths.length === 0 ? (
           <SearchNoResult>검색 결과가 없습니다.</SearchNoResult>
         ) : (
-            <BoothCardGridWrapper>
-            {filteredBooths.map((booth) => (
-              <div key={booth.id}>
-                <BoothCard 
-                  name={booth.name} 
-                  operator={booth.operator}
-                  logoImage={booth.logo_image}
-                  likeCnt={booth.like_cnt}
-                  isLike={booth.is_liked}
-                  location={booth.location}              
-                />
-              </div>
-            ))}
+          <BoothCardGridWrapper>
+        {transition((style, item) => (
+            <animated.div style={style}>
+              <BoothCard
+                name={item.name}
+                operator={item.operator}
+                logoImage={item.logo_image}
+                likeCnt={item.like_cnt}
+                isLike={item.is_liked}
+                location={item.location}
+                type={item.type}
+              />
+            </animated.div>
+          ))}
           </BoothCardGridWrapper>
-          
         )}
       </SearchContentWrapper>
     );
