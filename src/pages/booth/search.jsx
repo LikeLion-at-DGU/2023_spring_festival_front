@@ -4,7 +4,7 @@ import { RecommandHeader, RecommandTitle } from "./style";
 import RecomandRowCard from "components/booth/RecomandRowCard";
 import { useTrail, useSpring, animated } from 'react-spring';
 import BoothCard from "components/booth/BoothCard";
-import { SearchContentHeader, SearchContentWrapper } from "./search_style";
+import { BoothCardGridWrapper, RecommandWrapper, SearchContentHeader, SearchContentWrapper, SearchNoResult } from "./search_style";
 
 function Search() {
   const [booth, setBooth] = useState([
@@ -34,6 +34,19 @@ function Search() {
       section: "3",
       is_liked: true
     },
+    {
+    id: 3,
+    name: "서희찬이다!",
+    type: "야간부스",
+    operator: "멋쟁이사자처럼",
+    logo_image: "https://www.pngplay.com/wp-content/uploads/3/Apple-Siri-Logo-Download-Free-PNG.png",
+    like_cnt: 100,
+    start_at: "2023-05-23T18:00:07.687842+09:00",
+    end_at: "2023-05-23T23:00:07.687842+09:00",
+    location: "학생회관",
+    section: "3",
+    is_liked: true
+  },
   ]);
 
   const [recomandBooth, setRecomandBooth] = useState([
@@ -97,6 +110,7 @@ function Search() {
     const trail = useTrail(3, {
       from: { opacity: 0, transform: 'translateY(20px)' },
       to: { opacity: 1, transform: 'translateY(0)' },
+      leave: { opacity: 0, transform: 'translateY(20px)' },
       delay: 200,
     });
   
@@ -135,6 +149,7 @@ function Search() {
 
   // SearchBooth Redner function
   const renderSearchBooth = () => {
+
     const filteredBooths = booth.filter((b) =>
     b.name.includes(searchValue) ||
     b.type.includes(searchValue) ||
@@ -145,19 +160,26 @@ function Search() {
     return (
       <SearchContentWrapper>
         <SearchContentHeader>
-          {searchValue} 검색결과
+          '{searchValue}' 검색결과
         </SearchContentHeader>
         {filteredBooths.length === 0 ? (
-          <p>검색 결과가 없습니다.</p>
+          <SearchNoResult>검색 결과가 없습니다.</SearchNoResult>
         ) : (
-          filteredBooths.map((b) => (
-            <div key={b.id}>
-              <BoothCard booth={b} />
-              <p>{b.name}</p>
-              <p>{b.operator}</p>
-              {/* Render other booth information */}
-            </div>
-          ))
+            <BoothCardGridWrapper>
+            {filteredBooths.map((booth) => (
+              <div key={booth.id}>
+                <BoothCard 
+                  name={booth.name} 
+                  operator={booth.operator}
+                  logoImage={booth.logo_image}
+                  likeCnt={booth.like_cnt}
+                  isLike={booth.is_liked}
+                  location={booth.location}              
+                />
+              </div>
+            ))}
+          </BoothCardGridWrapper>
+          
         )}
       </SearchContentWrapper>
     );
@@ -171,6 +193,7 @@ function Search() {
         setSearchValue={setSearchValue}
       />
       {renderTopBooth()}
+
     </>
   );
 }

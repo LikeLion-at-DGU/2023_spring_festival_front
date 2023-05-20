@@ -85,6 +85,7 @@ export const RecommandHeader = styled.div`
 export const RecommandTitle = styled.h1`
   font-size: 20px;
   margin-bottom: 12px;
+  
 `
 
 // Search
