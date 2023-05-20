@@ -189,7 +189,7 @@ function Search() {
                 <animated.div key={idx} style={props}>
                   <RecomandRowCard
                     ranking={idx}
-                    booth={recomandBooth[idx].id}
+                    id={recomandBooth[idx].id}
                     logoImage={recomandBooth[idx].logo_image}
                     boothName={recomandBooth[idx].name}
                     boothOperator={recomandBooth[idx].operator}
@@ -262,6 +262,7 @@ const transition = useTransition(filteredBooths, {
         {transition((style, item) => (
             <animated.div style={style}>
               <BoothCard
+                id={item.id}
                 name={item.name}
                 operator={item.operator}
                 logoImage={item.logo_image}
@@ -279,6 +280,7 @@ const transition = useTransition(filteredBooths, {
   {trail.map((style, index) => (
     <animated.div key={index} style={style}>
       <BoothCard
+        id ={randomBooth[index].id}
         name={randomBooth[index].name}
         operator={randomBooth[index].operator}
         logoImage={randomBooth[index].logo_image}

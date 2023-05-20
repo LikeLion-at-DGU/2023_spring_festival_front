@@ -5,9 +5,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from "react";
 import {faHeart } from '@fortawesome/free-solid-svg-icons'
 import {faHeart as emptyHeart } from '@fortawesome/free-regular-svg-icons'
+import Link from 'next/link';
 
-function BoothCard({name,operator,logoImage,likeCnt,isLike,location,type}) {
+
+function BoothCard({id,name,operator,logoImage,likeCnt,isLike,location,type}) {
     return (
+        <Link href={`/booth/${id}`}>
         <BoothCardWrapper>
             <BoothCardImage src={DeafultImage}/>
             <BoothCardDetailWrapper>
@@ -29,6 +32,7 @@ function BoothCard({name,operator,logoImage,likeCnt,isLike,location,type}) {
 
             
         </BoothCardWrapper>
+        </Link>
     );
 }
 

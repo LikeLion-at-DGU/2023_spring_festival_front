@@ -7,12 +7,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useState } from "react";
 import {faHeart } from '@fortawesome/free-solid-svg-icons'
 import {faHeart as emptyHeart } from '@fortawesome/free-regular-svg-icons'
+import Link from 'next/link';
 
 
 
 // 부스정보 props로 받아서 사용하기 
 function RecomandRowCard(
-    {ranking,booth, logoImage, boothName, boothOperator, boothLocation, likeCnt, is_liked}
+    {ranking,id, logoImage, boothName, boothOperator, boothLocation, likeCnt, is_liked}
 ) {
 
 
@@ -24,6 +25,8 @@ function RecomandRowCard(
     const DetailLogoImage = logoImage ? logoImage : DeafultImage;
 
     return (
+        <Link href={`/booth/${id}`}>
+        
         <RecomandRowCardWrapper>
           {/* 랭킹 글자  */}
           <RankWrapper>
@@ -43,6 +46,7 @@ function RecomandRowCard(
             <HeartCntWrapper>{likeCnt}</HeartCntWrapper>
           </RankBoothHeartWrapper>
         </RecomandRowCardWrapper>
+        </Link>
       );
         
 }

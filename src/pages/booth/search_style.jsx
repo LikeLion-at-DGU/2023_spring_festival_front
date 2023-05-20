@@ -142,6 +142,7 @@ export const RecomandBoothWrapper = styled.div`
     display: grid;
 grid-template-rows: 2fr;
   grid-template-columns: 1fr 1fr;
+  padding: 0px 10px;
 `
 export const RecommandBoothTitle = styled.h1`
     font-size: 20px;
