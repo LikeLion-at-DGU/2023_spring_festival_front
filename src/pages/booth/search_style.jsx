@@ -61,12 +61,24 @@ export const Ribbon = styled.div`
     top : -110px;
     left: -30px;
     padding: 7px 0px 0px 13px;
-    background: #FFADDB;
+    
     transform: rotate(-45deg);
     z-index: 2;
     color: #FFFFFF;
     font-family: yg-jalnan;
     font-size: 12px;
+        background-color: ${(props) => {
+    switch (props.type) {
+      case '푸드트럭':
+        return '#71d570'; // Green color for 푸드트럭
+      case '주간부스':
+        return '#6b6bf9'; // Blue color for 주간부스
+      case '플리마켓':
+        return '#c782f8'; // Purple color for 플리마켓
+      default:
+        return '#FFADDB'; // Default color
+    }
+  }};
 `
 export const BoothCardImage = styled(Image)`
     width: 160px;

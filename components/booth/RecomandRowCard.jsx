@@ -25,7 +25,7 @@ function RecomandRowCard(
     const DetailLogoImage = logoImage ? logoImage : DeafultImage;
 
     return (
-        <Link href={`/booth/${id}`}>
+        <Link href={`/booth/detail/${id}`}>
         
         <RecomandRowCardWrapper>
           {/* 랭킹 글자  */}

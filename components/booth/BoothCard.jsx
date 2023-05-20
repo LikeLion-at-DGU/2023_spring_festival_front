@@ -10,11 +10,11 @@ import Link from 'next/link';
 
 function BoothCard({id,name,operator,logoImage,likeCnt,isLike,location,type}) {
     return (
-        <Link href={`/booth/${id}`}>
+        <Link href={`/booth/detail/${id}`}>
         <BoothCardWrapper>
             <BoothCardImage src={DeafultImage}/>
             <BoothCardDetailWrapper>
-                <Ribbon>{type}</Ribbon>
+                <Ribbon type={type}>{type}</Ribbon>
                 <BoothCardDetailDes>
                     <RankBoothDetailTitle>{name}</RankBoothDetailTitle>
                     <RannkBoothDetailOperator>{operator}</RannkBoothDetailOperator>

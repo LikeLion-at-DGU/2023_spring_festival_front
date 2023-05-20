@@ -1,13 +1,14 @@
 import SearchHeader from "components/booth/SearchHeader";
 import { useState } from "react";
-import { RecommandHeader, RecommandTitle } from "./style";
+import { RecommandHeader, RecommandTitle } from "../style";
 import RecomandRowCard from "components/booth/RecomandRowCard";
 import { useTrail, useSpring, animated, useTransition } from 'react-spring';
 import BoothCard from "components/booth/BoothCard";
-import { BoothCardGridWrapper, RecommandWrapper, SearchContentHeader, SearchContentWrapper, SearchNoResult } from "./search_style";
-import { RecomandBoothWrapper } from "./search_style";
-import { RecommandBoothTitle } from "./search_style";
-import { SearchContainer } from "./search_style";
+import { BoothCardGridWrapper, RecommandWrapper, SearchContentHeader, SearchContentWrapper, SearchNoResult } from "../search_style";
+import { RecomandBoothWrapper } from "../search_style";
+import { RecommandBoothTitle } from "../search_style";
+import { SearchContainer } from "../search_style";
+
 
 function Search() {
   const [booth, setBooth] = useState([
@@ -180,14 +181,14 @@ function Search() {
     });
   
     return (
-      <>
+    <>
         <animated.div style={fadeOut}>
-          {searchValue.length === 0 && (
+            {searchValue.length === 0 && (
             <RecommandHeader>
-              <RecommandTitle>실시간 인기 부스</RecommandTitle>
-              {trail.map((props, idx) => (
+                <RecommandTitle>실시간 인기 부스</RecommandTitle>
+                {trail.map((props, idx) => (
                 <animated.div key={idx} style={props}>
-                  <RecomandRowCard
+                    <RecomandRowCard
                     ranking={idx}
                     id={recomandBooth[idx].id}
                     logoImage={recomandBooth[idx].logo_image}
@@ -196,7 +197,7 @@ function Search() {
                     boothLocation={recomandBooth[idx].location}
                     likeCnt={recomandBooth[idx].like_cnt}
                     is_liked={recomandBooth[idx].is_liked}
-                  />
+                    />
                 </animated.div>
               ))}
             </RecommandHeader>
@@ -261,7 +262,7 @@ const transition = useTransition(filteredBooths, {
           <BoothCardGridWrapper>
         {transition((style, item) => (
             <animated.div style={style}>
-              <BoothCard
+            <BoothCard
                 id={item.id}
                 name={item.name}
                 operator={item.operator}
@@ -270,9 +271,9 @@ const transition = useTransition(filteredBooths, {
                 isLike={item.is_liked}
                 location={item.location}
                 type={item.type}
-              />
+            />
             </animated.div>
-          ))}
+            ))}
           </BoothCardGridWrapper>
         )}
             <RecommandBoothTitle>이런 부스는 어때요?</RecommandBoothTitle>
