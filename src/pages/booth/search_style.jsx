@@ -36,7 +36,49 @@ export const BoothCardWrapper = styled.div`
     background: #FFFFFF;
     box-shadow: 2px 2px 8px rgba(41, 39, 39, 0.4);
     border-radius: 10px;
-    margin : 10px 12px 10px 12px;
+    margin : 10px auto;
+    
+  
+  z-index: 1;
+  overflow: hidden;
+
+  /* &::before {
+    content: '';
+    position: absolute;
+    width: 96.13px;
+height: 26.01px;
+top : 9px;
+left: -20px;
+    background: #FFADDB;
+    transform: rotate(-45deg);
+    z-index: 2;
+  } */
+`
+export const Ribbon = styled.div`
+    position: absolute;
+    width: 96.13px;
+    height: 26.01px;
+    top : -110px;
+    left: -30px;
+    padding: 7px 0px 0px 13px;
+    box-shadow: 1px 1px 2px rgba(41, 39, 39, 0.4);
+    transform: rotate(-45deg);
+    z-index: 2;
+    color: #FFFFFF;
+    font-family: yg-jalnan;
+    font-size: 12px;
+        background-color: ${(props) => {
+    switch (props.type) {
+      case '푸드트럭':
+        return '#71d570'; // Green color for 푸드트럭
+      case '주간부스':
+        return '#6b6bf9'; // Blue color for 주간부스
+      case '플리마켓':
+        return '#c782f8'; // Purple color for 플리마켓
+      default:
+        return '#FFADDB'; // Default color
+    }
+  }};
 `
 export const BoothCardImage = styled(Image)`
     width: 160px;
@@ -49,6 +91,7 @@ export const BoothCardGridWrapper = styled.div`
   display: grid;
   grid-template-rows: 2fr;
   grid-template-columns: 1fr 1fr;
+  padding : 0px 10px;
     
 `
 export const BoothCardDetailWrapper = styled.div`
@@ -104,3 +147,21 @@ export const CardDetailHeartCntWrapper = styled.div`
   color: #979797;
 `;
 
+
+export const RecomandBoothWrapper = styled.div`
+
+    
+    display: grid;
+grid-template-rows: 2fr;
+  grid-template-columns: 1fr 1fr;
+  padding: 0px 10px;
+`
+export const RecommandBoothTitle = styled.h1`
+    font-size: 20px;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    color: #FC8CAE;
+`
+export const SearchContainer = styled.div`
+z-index: 1;
+`

@@ -5,6 +5,7 @@ import { AiOutlineSearch } from 'react-icons/ai';
 
 
 const SearchHeaderWrapper = styled.div`
+margin-top: 40px;
   height: 100%; /* 높이 설정 */
 
 `
@@ -56,7 +57,7 @@ function SearchHeader({searchValue,setSearchValue }) {
 
     return (
     <SearchHeaderWrapper>
-        <Input >
+        <Input>
             <input
             value={searchValue}
             onChange={handleChange}
