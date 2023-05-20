@@ -132,7 +132,9 @@ export default function Booth() {
         </FilterSectionSub3>
       </BoothFilterSection>
       <BoothCardGridWrapper>
-        <BoothCard name="코오오딩주점" operator="멋쟁이사자처럼" location="학생회관" />
+        <BoothCard name="코오오딩주점" operator="멋쟁이사자처럼" location="학생회관" type="ribon" />
+        <BoothCard name="코오오딩주점" operator="멋쟁이사자처럼" location="학생회관" type="ribon" />
+        <BoothCard name="코오오딩주점" operator="멋쟁이사자처럼" location="학생회관" type="ribon" />
       </BoothCardGridWrapper>
     </Container>
   );

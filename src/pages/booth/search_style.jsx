@@ -24,16 +24,6 @@ export const SearchNoResult = styled.h2`
 `;
 
 export const BoothCardWrapper = styled.div`
-  width: 160px;
-  height: 200px;
-  background: #ffffff;
-  box-shadow: 2px 2px 8px rgba(41, 39, 39, 0.4);
-  border-radius: 10px;
-  margin: 10px 12px 10px 12px;
-  position: relative;
-`;
-
-export const BoothCardImage = styled(Image)`
   position: relative; /* Add position relative */
   width: 160px;
   height: 200px;
@@ -41,14 +31,46 @@ export const BoothCardImage = styled(Image)`
   box-shadow: 2px 2px 8px rgba(41, 39, 39, 0.4);
   border-radius: 10px;
   margin: 10px 12px 10px 12px;
+
+  z-index: 1;
+  overflow: hidden;
+
+  /* &::before {
+    content: '';
+    position: absolute;
+    width: 96.13px;
+height: 26.01px;
+top : 9px;
+left: -20px;
+    background: #FFADDB;
+    transform: rotate(-45deg);
+    z-index: 2;
+  } */
+`;
+export const Ribbon = styled.div`
+  position: absolute;
+  width: 96.13px;
+  height: 26.01px;
+  top: -110px;
+  left: -30px;
+  padding: 7px 0px 0px 13px;
+  background: #ffaddb;
+  transform: rotate(-45deg);
+  z-index: 2;
+  color: #ffffff;
+  font-family: yg-jalnan;
+  font-size: 12px;
+`;
+export const BoothCardImage = styled(Image)`
+  width: 160px;
+  height: 160px;
+  border-radius: 10px; /* Add border radius to match the wrapper */
 `;
 
 export const BoothCardGridWrapper = styled.div`
-  width: 100%;
   display: grid;
   grid-template-rows: 2fr;
   grid-template-columns: 1fr 1fr;
-  border: 1px solid pink;
 `;
 export const BoothCardDetailWrapper = styled.div`
   display: flex;
@@ -59,6 +81,7 @@ export const BoothCardDetailWrapper = styled.div`
   width: 160px;
   height: 75px;
   background: #ffffff;
+
   border-radius: 0px 0px 10px 10px;
   z-index: 1;
 `;
@@ -82,6 +105,7 @@ export const BoothCardDetailHeartWrapper = styled.div`
   align-items: center;
   padding-top: 10px;
   margin-left: 30px;
+
   position: absolute; /* 추가 */
   top: 35%; /* 추가 */
   right: 10px; /* 추가 */
