@@ -37,10 +37,23 @@ function search() {
         end_at: "2023-05-23T23:00:07.687842+09:00",
 		location: "학생회관",
 		section: "2",
-		is_liked: true
+		is_liked: false
 	}, 
     {
 		id: 3,
+		name: "집가고싶다..",
+		type: "야간부스",
+		operator: "멋쟁이사자처럼",
+		logo_image: "https://www.pngplay.com/wp-content/uploads/3/Apple-Siri-Logo-Download-Free-PNG.png",
+		like_cnt: 100,
+        start_at: "2023-05-23T18:00:07.687842+09:00",
+        end_at: "2023-05-23T23:00:07.687842+09:00",
+		location: "학생회관",
+		section: "3",
+		is_liked: true
+	}, 
+    {
+		id: 4,
 		name: "집가고싶다..",
 		type: "야간부스",
 		operator: "멋쟁이사자처럼",
@@ -68,7 +81,7 @@ function search() {
 
             {/* 추천 행 카드 */}
             {/* 부스 탑 3만큼 뿌려주기 */}
-            {recomandBooth.map((booth,idx) => (
+            {recomandBooth.slice(0,3).map((booth,idx) => (
                 <RecomandRowCard
                 ranking = {idx}
                 booth={booth.id}
