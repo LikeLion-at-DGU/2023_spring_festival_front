@@ -61,7 +61,7 @@ export const Ribbon = styled.div`
     top : -110px;
     left: -30px;
     padding: 7px 0px 0px 13px;
-    
+    box-shadow: 1px 1px 2px rgba(41, 39, 39, 0.4);
     transform: rotate(-45deg);
     z-index: 2;
     color: #FFFFFF;

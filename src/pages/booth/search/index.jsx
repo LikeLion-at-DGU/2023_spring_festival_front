@@ -41,7 +41,7 @@ function Search() {
     {
     id: 3,
     name: "멋쟁이!",
-    type: "야간부스",
+    type: "푸드트럭",
     operator: "대나무숲",
     logo_image: "https://www.pngplay.com/wp-content/uploads/3/Apple-Siri-Logo-Download-Free-PNG.png",
     like_cnt: 130,
@@ -58,7 +58,7 @@ function Search() {
     {
       id: 1,
       name: "코딩주점",
-      type: "야간부스",
+      type: "주간부스",
       operator: "멋쟁이사자처럼",
       logo_image: "https://www.pngplay.com/wp-content/uploads/3/Apple-Siri-Logo-Download-Free-PNG.png",
       like_cnt: 100,
