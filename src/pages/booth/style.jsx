@@ -1,13 +1,15 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { primaryColor } from "../_app";
 
 export const Container = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
   padding-top: 20px;
+  z-index: 1;
 `;
 // 날짜 컨테이너
 export const DateContainer = styled.div`
@@ -27,6 +29,14 @@ export const DayBox = styled.div`
   cursor: pointer;
 `;
 // 준서------------------------------------------------
+export const FadeInOut = keyframes`
+  from {
+    opacity: 1;
+  } to {
+    opacity: 0.5;
+  }
+`;
+
 export const RankingSection = styled.section`
   width: 100%;
   height: 20vh;
@@ -36,13 +46,95 @@ export const RankingSection = styled.section`
   border: 1px solid black;
 `;
 
-export const MapSection = styled.section`
-  width: 100%;
-  height: 40vh;
-  border: 1px solid black;
+export const RankingLeftSection = styled.section`
+  width: 50%;
+  height: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  border: 1px solid pink;
+  padding-right: 10px;
 `;
 
-export const GuideBox = styled.h3``;
+export const RankingRightSection = styled.section`
+  width: 50%;
+  height: 100%;
+  border: 1px solid pink;
+`;
+
+export const RankingHotButton = styled.button`
+  width: 80px;
+  height: 30px;
+  background-color: transparent;
+  color: ${primaryColor};
+  font-weight: 700;
+  border: 1px solid ${primaryColor};
+  border-radius: 30px;
+`;
+
+export const MapSection = styled.section`
+  width: 100%;
+  height: 30vh;
+  cursor: pointer;
+  position: relative;
+`;
+
+export const Pin1 = styled.section`
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  left: 20%;
+  bottom: 15%;
+`;
+
+export const Pin2 = styled.section`
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  left: 25%;
+  bottom: 35%;
+`;
+
+export const Pin3 = styled.section`
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  left: 45%;
+  bottom: 45%;
+`;
+
+export const Pin4 = styled.section`
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  left: 65%;
+  bottom: 45%;
+`;
+
+export const Pin5 = styled.section`
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  left: 73%;
+  bottom: 53%;
+`;
+
+export const Pin6 = styled.section`
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  left: 78%;
+  bottom: 40%;
+`;
+
+export const GuideMessage = styled.h3`
+  width: 100%;
+  text-align: center;
+  color: ${primaryColor};
+  font-weight: 700;
+  font-size: 14px;
+  animation: ${FadeInOut} 1s infinite alternate;
+`;
 
 // 희찬------------------------------------------------
 export const BoxDate = styled.span`
