@@ -30,6 +30,7 @@ export const SearchNoResult = styled.h2`
 `
 
 export const BoothCardWrapper = styled.div`
+  position: relative; /* Add position relative */
     width: 160px;
     height : 200px;
     background: #FFFFFF;
@@ -40,6 +41,8 @@ export const BoothCardWrapper = styled.div`
 export const BoothCardImage = styled(Image)`
     width: 160px;
     height : 160px;
+    border-radius: 10px; /* Add border radius to match the wrapper */
+
 `
 
 export const BoothCardGridWrapper = styled.div`
@@ -48,3 +51,56 @@ export const BoothCardGridWrapper = styled.div`
   grid-template-columns: 1fr 1fr;
     
 `
+export const BoothCardDetailWrapper = styled.div`
+display: flex;
+flex-direction: row;
+  position: absolute;
+  top: 125px; /* Adjust the top position as needed */
+  left: 0px; /* Adjust the left position as needed */
+  width: 160px;
+  height: 75px;
+  background: #FFFFFF;
+  
+  border-radius: 0px 0px 10px 10px;
+  z-index: 1;
+`;
+
+export const BoothCardDetailDes = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-top: 15px;
+  margin-bottom: 10px;
+  padding-left: 12px;
+  align-self: center;
+  align-items: self-start;
+  flex-grow: 1; /* 추가 */
+`;
+
+export const BoothCardDetailHeartWrapper = styled.div`
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 10px;
+  margin-left: 30px;
+
+  position: absolute; /* 추가 */
+  top: 35%; /* 추가 */
+  right: 10px; /* 추가 */
+  transform: translateY(-50%); /* 추가 */
+`;
+
+export const CardDetailHeartIcon = styled(FontAwesomeIcon)`
+  width: 30px;
+  margin-bottom: 3px;
+  margin-top: 5px; /* 수정 */
+    color: #fc8cae;
+`;
+export const CardDetailHeartCntWrapper = styled.div`
+  display: flex;
+  font-size: 11px;
+  font-weight: 400;
+  color: #979797;
+`;
+
