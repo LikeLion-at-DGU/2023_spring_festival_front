@@ -37,6 +37,14 @@ export const FadeInOut = keyframes`
   }
 `;
 
+export const TranslateToTop = keyframes`
+  from {
+    transform: translate(0, 0);
+  } to {
+    transform: translate(0, 15%);
+  }
+`;
+
 export const RankingSection = styled.section`
   width: 100%;
   height: 20vh;
@@ -101,6 +109,7 @@ export const Pin3 = styled.section`
   position: absolute;
   left: 45%;
   bottom: 45%;
+  animation: ${FadeInOut} 1s infinite alternate;
 `;
 
 export const Pin4 = styled.section`
