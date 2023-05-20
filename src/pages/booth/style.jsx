@@ -12,11 +12,13 @@ export const Container = styled.div`
   z-index: 1;
 `;
 // 날짜 컨테이너
-export const DateContainer = styled.div`
+export const DateSection = styled.div`
   width: 100%;
+  height: 15vh;
   display: flex;
-  align-items: flex-end;
   justify-content: center;
+  align-items: center;
+  display: ${(props) => (props.firstMoved ? "none" : "")};
 `;
 
 export const DayBox = styled.div`
@@ -37,21 +39,14 @@ export const FadeInOut = keyframes`
   }
 `;
 
-export const TranslateToTop = keyframes`
-  from {
-    transform: translate(0, 0);
-  } to {
-    transform: translate(0, 15%);
-  }
-`;
-
 export const RankingSection = styled.section`
   width: 100%;
   height: 20vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 1px solid black;
+
+  display: ${(props) => (props.firstMoved ? "" : "none")};
 `;
 
 export const RankingLeftSection = styled.section`
@@ -85,6 +80,8 @@ export const MapSection = styled.section`
   height: 30vh;
   cursor: pointer;
   position: relative;
+  transition: all 0.5s;
+  margin-top: ${(props) => (props.firstMoved ? "0vh" : "-5vh")};
 `;
 
 export const Pin1 = styled.section`
