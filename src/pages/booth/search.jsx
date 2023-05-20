@@ -148,14 +148,20 @@ function Search() {
   };
 
   // SearchBooth Redner function
-  const renderSearchBooth = () => {
+  const filteredBooths = booth.filter((b) =>
+  b.name.includes(searchValue) ||
+  b.type.includes(searchValue) ||
+  b.operator.includes(searchValue) ||
+  b.location.includes(searchValue)
+);
+const trail = useTrail(filteredBooths.length, {
+  from: { opacity: 0, transform: 'translateY(20px)' },
+  to: { opacity: 1, transform: 'translateY(0)' },
+  leave: { opacity: 0, transform: 'translateY(20px)' },
+  delay: 200,
+});
 
-    const filteredBooths = booth.filter((b) =>
-    b.name.includes(searchValue) ||
-    b.type.includes(searchValue) ||
-    b.operator.includes(searchValue) ||
-    b.location.includes(searchValue)
-  );
+  const renderSearchBooth = () => {
   
     return (
       <SearchContentWrapper>
@@ -165,22 +171,21 @@ function Search() {
         {filteredBooths.length === 0 ? (
           <SearchNoResult>검색 결과가 없습니다.</SearchNoResult>
         ) : (
-            <BoothCardGridWrapper>
-            {filteredBooths.map((booth) => (
-              <div key={booth.id}>
+          <BoothCardGridWrapper>
+            {trail.map((props, index) => (
+              <animated.div key={filteredBooths[index].id} style={props}>
                 <BoothCard 
-                  name={booth.name} 
-                  operator={booth.operator}
-                  logoImage={booth.logo_image}
-                  likeCnt={booth.like_cnt}
-                  isLike={booth.is_liked}
-                  location={booth.location}     
-                  type={booth.type}         
+                  name={filteredBooths[index].name} 
+                  operator={filteredBooths[index].operator}
+                  logoImage={filteredBooths[index].logo_image}
+                  likeCnt={filteredBooths[index].like_cnt}
+                  isLike={filteredBooths[index].is_liked}
+                  location={filteredBooths[index].location}     
+                  type={filteredBooths[index].type}         
                 />
-              </div>
+              </animated.div>
             ))}
           </BoothCardGridWrapper>
-          
         )}
       </SearchContentWrapper>
     );
