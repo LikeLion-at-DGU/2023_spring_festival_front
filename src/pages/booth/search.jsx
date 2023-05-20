@@ -2,7 +2,7 @@ import SearchHeader from "components/booth/SearchHeader";
 import { useState } from "react";
 import { RecommandHeader, RecommandTitle } from "./style";
 import RecomandRowCard from "components/booth/RecomandRowCard";
-import { useTrail, useSpring, animated } from 'react-spring';
+import { useTrail, useSpring, animated, useTransition } from 'react-spring';
 import BoothCard from "components/booth/BoothCard";
 import { BoothCardGridWrapper, RecommandWrapper, SearchContentHeader, SearchContentWrapper, SearchNoResult } from "./search_style";
 
@@ -148,7 +148,7 @@ function Search() {
   };
 
   // SearchBooth Redner function
-  const filteredBooths = booth.filter((b) =>
+const filteredBooths = booth.filter((b) =>
   b.name.includes(searchValue) ||
   b.type.includes(searchValue) ||
   b.operator.includes(searchValue) ||
@@ -161,6 +161,14 @@ const trail = useTrail(filteredBooths.length, {
   delay: 200,
 });
 
+const transition = useTransition(filteredBooths, {
+    from: { opacity: 0, transform: 'translateY(20px)' },
+    enter: { opacity: 1, transform: 'translateY(0)' },
+    leave: { opacity: 0, transform: 'translateY(20px)' },
+    config: { duration: 300 },
+    keys: filteredBooths.map((b) => b.id),
+  });
+
   const renderSearchBooth = () => {
   
     return (
@@ -172,19 +180,19 @@ const trail = useTrail(filteredBooths.length, {
           <SearchNoResult>검색 결과가 없습니다.</SearchNoResult>
         ) : (
           <BoothCardGridWrapper>
-            {trail.map((props, index) => (
-              <animated.div key={filteredBooths[index].id} style={props}>
-                <BoothCard 
-                  name={filteredBooths[index].name} 
-                  operator={filteredBooths[index].operator}
-                  logoImage={filteredBooths[index].logo_image}
-                  likeCnt={filteredBooths[index].like_cnt}
-                  isLike={filteredBooths[index].is_liked}
-                  location={filteredBooths[index].location}     
-                  type={filteredBooths[index].type}         
-                />
-              </animated.div>
-            ))}
+        {transition((style, item) => (
+            <animated.div style={style}>
+              <BoothCard
+                name={item.name}
+                operator={item.operator}
+                logoImage={item.logo_image}
+                likeCnt={item.like_cnt}
+                isLike={item.is_liked}
+                location={item.location}
+                type={item.type}
+              />
+            </animated.div>
+          ))}
           </BoothCardGridWrapper>
         )}
       </SearchContentWrapper>
