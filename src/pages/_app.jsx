@@ -9,6 +9,10 @@ const Body = styled.div`
   background-color: #f5f5f5;
 `;
 
+export const primaryColor = "#FC8CAE";
+export const secondaryColor = "#525252";
+export const subPinkColor = "#FFE9F0";
+
 export default function App({ Component, pageProps }) {
   return (
     <Body className="Container">
