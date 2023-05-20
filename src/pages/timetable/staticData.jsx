@@ -6,6 +6,25 @@ import BeO from "../../../components/image/timetable/singerThumbnail5.png";
 import Punch from "../../../components/image/timetable/singerThumbnail6.png";
 import HighLight from "../../../components/image/timetable/singerThumbnail7.png";
 
+// 날짜 배열
+export const dayArray = [
+  {
+    id: 1,
+    date: 23,
+    day: "TUE",
+  },
+  {
+    id: 2,
+    date: 24,
+    day: "WED",
+  },
+  {
+    id: 3,
+    date: 25,
+    day: "THR",
+  },
+];
+
 export const ImgArray = [
   { id: 1, name: "윤딴딴", src: YunDDanDDan },
   { id: 2, name: "영케이", src: YoungK },

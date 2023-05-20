@@ -2,6 +2,7 @@ import styled, { keyframes } from "styled-components";
 
 const primaryColor = "#FC8CAE";
 const secondaryColor = "#525252";
+const subPinkColor = "#FFE9F0";
 
 const Landing = keyframes`
   from {
@@ -82,12 +83,49 @@ export const ToggleHeader = styled.section`
 
 export const LocationHeader = styled.section`
   width: 100%;
-  height: 50px;
+  height: 40px;
   display: flex;
   align-items: flex-end;
   color: ${secondaryColor};
   padding-left: 15px;
   display: ${(props) => (props.isOpen ? "" : "none")};
+`;
+
+export const TimeTableBox = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+`;
+
+export const TableSection = styled.section`
+  width: 100%;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  gap: 35px;
+  padding-left: 30px;
+  border: none;
+  border-radius: 30px;
+  background-color: ${(props) => (props.isNow ? `${subPinkColor}` : "")};
+  margin-bottom: 3px;
+  display: ${(props) => (props.isOpen ? "" : "none")};
+  transition: all 0.5s;
+`;
+
+export const TableIndex = styled.section`
+  color: ${primaryColor};
+  font-family: "Noto Sans KR", sans-serif;
+`;
+
+export const TableClock = styled.section`
+  color: ${secondaryColor};
+  font-family: "Noto Sans KR", sans-serif;
+  opacity: 0.7;
+`;
+
+export const TableBand = styled.section`
+  color: ${secondaryColor};
+  font-family: "Noto Sans KR", sans-serif;
 `;
 
 export const CardSection = styled.section`
