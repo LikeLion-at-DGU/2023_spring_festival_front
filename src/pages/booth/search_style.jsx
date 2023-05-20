@@ -1,33 +1,27 @@
 import styled from "styled-components";
 import Image from "next/image";
-import { motion } from 'framer-motion';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
-
+import { motion } from "framer-motion";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export const SearchContentWrapper = styled.div`
-margin-top: 60px;
-margin-bottom: 30px;
-color:#525252;
-font-size: 20px;
-font-weight: 600;
-z-index: 1;
-text-align: center;
-
-`
+  margin-top: 60px;
+  margin-bottom: 30px;
+  color: #525252;
+  font-size: 20px;
+  font-weight: 600;
+  z-index: 1;
+  text-align: center;
+`;
 export const SearchContentHeader = styled.h1`
-    font-size: 20px;
-    color : #525252;
-    margin-bottom: 25px;
-
-    
-`
+  font-size: 20px;
+  color: #525252;
+  margin-bottom: 25px;
+`;
 export const SearchNoResult = styled.h2`
-    
-    color:#979797;
-    font-size: 16px;
-    margin-bottom: 30px;
-`
+  color: #979797;
+  font-size: 16px;
+  margin-bottom: 30px;
+`;
 
 export const BoothCardWrapper = styled.div`
   position: relative; /* Add position relative */
@@ -38,7 +32,6 @@ export const BoothCardWrapper = styled.div`
     border-radius: 10px;
     margin : 10px auto;
     
-  
   z-index: 1;
   overflow: hidden;
 
@@ -53,7 +46,7 @@ left: -20px;
     transform: rotate(-45deg);
     z-index: 2;
   } */
-`
+`;
 export const Ribbon = styled.div`
     position: absolute;
     width: 96.13px;
@@ -81,11 +74,10 @@ export const Ribbon = styled.div`
   }};
 `
 export const BoothCardImage = styled(Image)`
-    width: 160px;
-    height : 160px;
-    border-radius: 10px; /* Add border radius to match the wrapper */
-
-`
+  width: 160px;
+  height: 160px;
+  border-radius: 10px; /* Add border radius to match the wrapper */
+`;
 
 export const BoothCardGridWrapper = styled.div`
   display: grid;
@@ -93,17 +85,18 @@ export const BoothCardGridWrapper = styled.div`
   grid-template-columns: 1fr 1fr;
   padding : 0px 10px;
     
-`
+`;
+
 export const BoothCardDetailWrapper = styled.div`
-display: flex;
-flex-direction: row;
+  display: flex;
+  flex-direction: row;
   position: absolute;
   top: 125px; /* Adjust the top position as needed */
   left: 0px; /* Adjust the left position as needed */
   width: 160px;
   height: 75px;
-  background: #FFFFFF;
-  
+  background: #ffffff;
+
   border-radius: 0px 0px 10px 10px;
   z-index: 1;
 `;
@@ -138,7 +131,7 @@ export const CardDetailHeartIcon = styled(FontAwesomeIcon)`
   width: 30px;
   margin-bottom: 3px;
   margin-top: 5px; /* 수정 */
-    color: #fc8cae;
+  color: #fc8cae;
 `;
 export const CardDetailHeartCntWrapper = styled.div`
   display: flex;
@@ -146,7 +139,6 @@ export const CardDetailHeartCntWrapper = styled.div`
   font-weight: 400;
   color: #979797;
 `;
-
 
 export const RecomandBoothWrapper = styled.div`
 

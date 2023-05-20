@@ -1,8 +1,8 @@
-import styled, { keyframes } from "styled-components";
+import styled, { css, keyframes } from "styled-components";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { primaryColor } from "../_app";
+import { primaryColor, secondaryColor } from "../_app";
 
 export const Container = styled.div`
   width: 100%;
@@ -45,7 +45,6 @@ export const RankingSection = styled.section`
   display: flex;
   justify-content: center;
   align-items: center;
-
   display: ${(props) => (props.firstMoved ? "" : "none")};
 `;
 
@@ -55,14 +54,12 @@ export const RankingLeftSection = styled.section`
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  border: 1px solid pink;
   padding-right: 10px;
 `;
 
 export const RankingRightSection = styled.section`
   width: 50%;
   height: 100%;
-  border: 1px solid pink;
 `;
 
 export const RankingHotButton = styled.button`
@@ -85,52 +82,100 @@ export const MapSection = styled.section`
 `;
 
 export const Pin1 = styled.section`
-  width: 40px;
-  height: 40px;
+  width: 35px;
+  height: 35px;
   position: absolute;
   left: 20%;
   bottom: 15%;
+  animation: ${(props) =>
+    props.secondScene
+      ? css`
+          ${FadeInOut} 2s infinite alternate 1s
+        `
+      : ""};
+  &:hover {
+    animation: "";
+  }
 `;
 
 export const Pin2 = styled.section`
-  width: 40px;
-  height: 40px;
+  width: 35px;
+  height: 35px;
   position: absolute;
   left: 25%;
   bottom: 35%;
+  animation: ${(props) =>
+    props.secondScene
+      ? css`
+          ${FadeInOut} 2s infinite alternate 2s
+        `
+      : ""};
+  &:hover {
+    animation: "";
+  }
 `;
 
 export const Pin3 = styled.section`
-  width: 40px;
-  height: 40px;
+  width: 35px;
+  height: 35px;
   position: absolute;
   left: 45%;
   bottom: 45%;
-  animation: ${FadeInOut} 1s infinite alternate;
+  animation: ${FadeInOut} 2s infinite alternate;
+  &:hover {
+    animation: "";
+  }
 `;
 
 export const Pin4 = styled.section`
-  width: 40px;
-  height: 40px;
+  width: 35px;
+  height: 35px;
   position: absolute;
-  left: 65%;
+  left: 62%;
   bottom: 45%;
+  animation: ${(props) =>
+    props.secondScene
+      ? css`
+          ${FadeInOut} 2s infinite alternate 3s
+        `
+      : ""};
+  &:hover {
+    animation: "";
+  }
 `;
 
 export const Pin5 = styled.section`
-  width: 40px;
-  height: 40px;
+  width: 35px;
+  height: 35px;
   position: absolute;
   left: 73%;
   bottom: 53%;
+  animation: ${(props) =>
+    props.secondScene
+      ? css`
+          ${FadeInOut} 2s infinite alternate 4s
+        `
+      : ""};
+  &:hover {
+    animation: "";
+  }
 `;
 
 export const Pin6 = styled.section`
-  width: 40px;
-  height: 40px;
+  width: 35px;
+  height: 35px;
   position: absolute;
   left: 78%;
-  bottom: 40%;
+  bottom: 35%;
+  animation: ${(props) =>
+    props.secondScene
+      ? css`
+          ${FadeInOut} 2s infinite alternate 5s
+        `
+      : ""};
+  &:hover {
+    animation: "";
+  }
 `;
 
 export const GuideMessage = styled.h3`
@@ -140,6 +185,51 @@ export const GuideMessage = styled.h3`
   font-weight: 700;
   font-size: 14px;
   animation: ${FadeInOut} 1s infinite alternate;
+`;
+
+export const BoothFilterSection = styled.section`
+  width: 100%;
+  height: 50px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  color: ${secondaryColor};
+  margin-top: 50px;
+`;
+
+export const FilterSectionSub1 = styled.span`
+  display: flex;
+  align-items: center;
+  height: 18px;
+  border-right: 4px solid ${secondaryColor};
+  padding: 10px;
+  font-family: "Noto Sans KR", sans-serif;
+  cursor: pointer;
+  transition: all 0.3s;
+  color: ${(props) => (props.isFocus === 0 ? `${primaryColor}` : "")};
+`;
+
+export const FilterSectionSub2 = styled.span`
+  display: flex;
+  align-items: center;
+  height: 18px;
+  border-right: 4px solid ${secondaryColor};
+  padding: 10px;
+  font-family: "Noto Sans KR", sans-serif;
+  cursor: pointer;
+  transition: all 0.3s;
+  color: ${(props) => (props.isFocus === 1 ? `${primaryColor}` : "")};
+`;
+
+export const FilterSectionSub3 = styled.span`
+  display: flex;
+  align-items: center;
+  height: 18px;
+  padding: 10px;
+  font-family: "Noto Sans KR", sans-serif;
+  cursor: pointer;
+  transition: all 0.3s;
+  color: ${(props) => (props.isFocus === 2 ? `${primaryColor}` : "")};
 `;
 
 // 희찬------------------------------------------------

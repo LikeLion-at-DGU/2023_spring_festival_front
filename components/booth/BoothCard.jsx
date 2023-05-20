@@ -1,7 +1,24 @@
-import { BoothCardDetailDes, BoothCardDetailHeartWrapper, BoothCardDetailWrapper, BoothCardImage, BoothCardWrapper, CardDetailHeartCntWrapper, CardDetailHeartIcon, Ribbon } from "@/pages/booth/search_style";
-import DeafultImage from "../image/common/booth_deafault.png"
-import { HeartCntWrapper, HeartIcon, RankBoothDetail, RankBoothDetailLocation, RankBoothDetailTitle, RankBoothHeartWrapper, RannkBoothDetailOperator } from "@/pages/booth/style";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  BoothCardDetailDes,
+  BoothCardDetailHeartWrapper,
+  BoothCardDetailWrapper,
+  BoothCardImage,
+  BoothCardWrapper,
+  CardDetailHeartCntWrapper,
+  CardDetailHeartIcon,
+  Ribbon,
+} from "@/pages/booth/search_style";
+import DeafultImage from "../image/common/booth_deafault.png";
+import {
+  HeartCntWrapper,
+  HeartIcon,
+  RankBoothDetail,
+  RankBoothDetailLocation,
+  RankBoothDetailTitle,
+  RankBoothHeartWrapper,
+  RannkBoothDetailOperator,
+} from "@/pages/booth/style";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import {faHeart } from '@fortawesome/free-solid-svg-icons'
 import {faHeart as emptyHeart } from '@fortawesome/free-regular-svg-icons'

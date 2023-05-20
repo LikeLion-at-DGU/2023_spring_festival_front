@@ -2,13 +2,12 @@ import SearchHeader from "components/booth/SearchHeader";
 import { useState } from "react";
 import { RecommandHeader, RecommandTitle } from "../style";
 import RecomandRowCard from "components/booth/RecomandRowCard";
-import { useTrail, useSpring, animated, useTransition } from 'react-spring';
+import { useTrail, useSpring, animated, useTransition } from "react-spring";
 import BoothCard from "components/booth/BoothCard";
 import { BoothCardGridWrapper, RecommandWrapper, SearchContentHeader, SearchContentWrapper, SearchNoResult } from "../search_style";
 import { RecomandBoothWrapper } from "../search_style";
 import { RecommandBoothTitle } from "../search_style";
 import { SearchContainer } from "../search_style";
-
 
 function Search() {
   const [booth, setBooth] = useState([
@@ -17,26 +16,28 @@ function Search() {
       name: "으아아앙악..",
       type: "주간부스",
       operator: "뭐리",
-      logo_image: "https://www.pngplay.com/wp-content/uploads/3/Apple-Siri-Logo-Download-Free-PNG.png",
+      logo_image:
+        "https://www.pngplay.com/wp-content/uploads/3/Apple-Siri-Logo-Download-Free-PNG.png",
       like_cnt: 100,
       start_at: "2023-05-23T18:00:07.687842+09:00",
       end_at: "2023-05-23T23:00:07.687842+09:00",
       location: "멋쟁이",
       section: "3",
-      is_liked: true
+      is_liked: true,
     },
     {
       id: 2,
       name: "서희찬..",
       type: "야간부스",
       operator: "멋쟁이사자처럼",
-      logo_image: "https://www.pngplay.com/wp-content/uploads/3/Apple-Siri-Logo-Download-Free-PNG.png",
+      logo_image:
+        "https://www.pngplay.com/wp-content/uploads/3/Apple-Siri-Logo-Download-Free-PNG.png",
       like_cnt: 100,
       start_at: "2023-05-23T18:00:07.687842+09:00",
       end_at: "2023-05-23T23:00:07.687842+09:00",
       location: "학생회관",
       section: "3",
-      is_liked: true
+      is_liked: true,
     },
     {
     id: 3,
@@ -60,13 +61,14 @@ function Search() {
       name: "코딩주점",
       type: "주간부스",
       operator: "멋쟁이사자처럼",
-      logo_image: "https://www.pngplay.com/wp-content/uploads/3/Apple-Siri-Logo-Download-Free-PNG.png",
+      logo_image:
+        "https://www.pngplay.com/wp-content/uploads/3/Apple-Siri-Logo-Download-Free-PNG.png",
       like_cnt: 100,
       start_at: "2023-05-23T18:00:07.687842+09:00",
       end_at: "2023-05-23T23:00:07.687842+09:00",
       location: "학생회관",
       section: "1",
-      is_liked: true
+      is_liked: true,
     },
     {
       id: 2,
@@ -79,35 +81,36 @@ function Search() {
       end_at: "2023-05-23T23:00:07.687842+09:00",
       location: "학생회관",
       section: "2",
-      is_liked: false
+      is_liked: false,
     },
     {
       id: 3,
       name: "집가고싶다..",
       type: "야간부스",
       operator: "멋쟁이사자처럼",
-      logo_image: "https://www.pngplay.com/wp-content/uploads/3/Apple-Siri-Logo-Download-Free-PNG.png",
+      logo_image:
+        "https://www.pngplay.com/wp-content/uploads/3/Apple-Siri-Logo-Download-Free-PNG.png",
       like_cnt: 100,
       start_at: "2023-05-23T18:00:07.687842+09:00",
       end_at: "2023-05-23T23:00:07.687842+09:00",
       location: "학생회관",
       section: "3",
-      is_liked: true
+      is_liked: true,
     },
     {
       id: 4,
       name: "집가고싶다..",
       type: "야간부스",
       operator: "멋쟁이사자처럼",
-      logo_image: "https://www.pngplay.com/wp-content/uploads/3/Apple-Siri-Logo-Download-Free-PNG.png",
+      logo_image:
+        "https://www.pngplay.com/wp-content/uploads/3/Apple-Siri-Logo-Download-Free-PNG.png",
       like_cnt: 100,
       start_at: "2023-05-23T18:00:07.687842+09:00",
       end_at: "2023-05-23T23:00:07.687842+09:00",
       location: "학생회관",
       section: "3",
-      is_liked: true
-    },
-    
+      is_liked: true,
+    },    
 ]);
   // 랜덤 추천, 매 호출 마다 다르값 불러옴 
   const [randomBooth, setRandomBooth] = useState([
@@ -169,17 +172,17 @@ function Search() {
 
   const renderTopBooth = () => {
     const trail = useTrail(3, {
-      from: { opacity: 0, transform: 'translateY(20px)' },
-      to: { opacity: 1, transform: 'translateY(0)' },
-      leave: { opacity: 0, transform: 'translateY(20px)' },
+      from: { opacity: 0, transform: "translateY(20px)" },
+      to: { opacity: 1, transform: "translateY(0)" },
+      leave: { opacity: 0, transform: "translateY(20px)" },
       delay: 200,
     });
-  
+
     const fadeOut = useSpring({
       opacity: searchValue.length === 0 ? 1 : 0,
       config: { duration: 300 },
     });
-  
+
     return (
     <>
         <animated.div style={fadeOut}>
@@ -234,24 +237,22 @@ function Search() {
     from: { opacity: 0, transform: 'translateY(20px)' },
     to: { opacity: 1, transform: 'translateY(0)' },
     leave: { opacity: 0, transform: 'translateY(20px)' },
+
     delay: 200,
   });
 
-const transition = useTransition(filteredBooths, {
-    from: { opacity: 0, transform: 'translateY(20px)' },
-    enter: { opacity: 1, transform: 'translateY(0)' },
-    leave: { opacity: 0, transform: 'translateY(20px)' },
+  const transition = useTransition(filteredBooths, {
+    from: { opacity: 0, transform: "translateY(20px)" },
+    enter: { opacity: 1, transform: "translateY(0)" },
+    leave: { opacity: 0, transform: "translateY(20px)" },
     config: { duration: 300 },
     keys: filteredBooths.map((b) => b.id),
   });
 
   const renderSearchBooth = () => {
-  
     return (
       <SearchContentWrapper>
-        <SearchContentHeader>
-          '{searchValue}' 검색결과
-        </SearchContentHeader>
+        <SearchContentHeader>'{searchValue}' 검색결과</SearchContentHeader>
         {filteredBooths.length === 0 ? (
           <SearchNoResult>
             검색 결과가 없습니다.
@@ -273,6 +274,7 @@ const transition = useTransition(filteredBooths, {
                 type={item.type}
             />
             </animated.div>
+
             ))}
           </BoothCardGridWrapper>
         )}
@@ -296,7 +298,6 @@ const transition = useTransition(filteredBooths, {
       </SearchContentWrapper>
     );
   };
-  
 
   return (
     <SearchContainer>
@@ -307,6 +308,7 @@ const transition = useTransition(filteredBooths, {
       {renderTopBooth()}
 
     </SearchContainer>
+
   );
 }
 
