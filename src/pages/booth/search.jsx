@@ -23,6 +23,8 @@ function search() {
             <RecommandTitle>실시간 인기 부스</RecommandTitle>
             {/* 추천 행 카드 */}
             <RecomandRowCard/>
+            <RecomandRowCard/>
+            <RecomandRowCard/>
         </RecommandHeader>
         </>
         ) : (

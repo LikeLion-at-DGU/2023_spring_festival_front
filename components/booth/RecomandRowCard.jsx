@@ -41,7 +41,7 @@ function RecomandRowCard() {
                 </RankBoothDetailLocation>
             </RankBoothDetail>
             <RankBoothHeartWrapper>
-                <HeartIcon icon={ isLiked ? faHeart: emptyHeart  } onClick={handleClick} size="2xs"/>
+                <HeartIcon icon={ isLiked ? faHeart: emptyHeart  } onClick={handleClick}/>
 
                 
                 <HeartCntWrapper>

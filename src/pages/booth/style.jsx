@@ -103,6 +103,7 @@ export const RecomandRowCardWrapper = styled.div`
   z-index: 1;
   flex-direction: row;
   padding : 10px 21px 10px 12px;
+  margin-top: 14px;
 `
 
 export const RankWrapper = styled.div`
@@ -124,8 +125,9 @@ display: flex;
 export const RankBoothDetail = styled.div`
   display: flex;
   flex-direction: column;
-  margin-top: 30px;
+  margin-top: 15px;
   margin-bottom: 10px;
+  align-self: center;
 `
 export const RankBoothDetailTitle = styled.h1`
   font-size: 14px;
@@ -169,7 +171,7 @@ export const HeartCntWrapper = styled.div`
 
 export const HeartIcon = styled(FontAwesomeIcon)`
   
-width: 20px;
+width: 30px;
 margin-bottom: 3px;
 
 `
