@@ -32,6 +32,7 @@ export const BoothCardWrapper = styled.div`
   margin: 10px 12px 10px 12px;
   position: relative;
 `;
+
 export const BoothCardImage = styled(Image)`
   position: relative; /* Add position relative */
   width: 160px;
@@ -81,7 +82,6 @@ export const BoothCardDetailHeartWrapper = styled.div`
   align-items: center;
   padding-top: 10px;
   margin-left: 30px;
-
   position: absolute; /* 추가 */
   top: 35%; /* 추가 */
   right: 10px; /* 추가 */
