@@ -1,8 +1,5 @@
 import styled, { keyframes } from "styled-components";
-
-const primaryColor = "#FC8CAE";
-const secondaryColor = "#525252";
-const subPinkColor = "#FFE9F0";
+import { primaryColor, subPinkColor, secondaryColor } from "../_app";
 
 const Landing = keyframes`
   from {
@@ -35,6 +32,7 @@ export const DateBox = styled.section`
   align-items: center;
   gap: 5px;
   font-weight: 900;
+  transition: all 0.5s;
   color: ${(props) => (props.date ? `${primaryColor}` : `${secondaryColor}`)};
   cursor: pointer;
 `;
@@ -170,6 +168,13 @@ export const TableSection = styled.section`
   margin-bottom: 3px;
   display: ${(props) => (props.isOpen ? "" : "none")};
   transition: all 0.5s;
+  @media all and (max-width: 495px) {
+    height: 35px;
+    font-size: 15px;
+  }
+  @media all and (max-width: 450px) {
+    margin-top: -5px;
+  }
 `;
 
 export const TableIndex = styled.section`
