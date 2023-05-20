@@ -1,10 +1,11 @@
-import { React, useEffect, useState } from "react";
+import { React, useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import {
   BoxDate,
   BoxDay,
   Container,
   DateContainer,
+  DateSection,
   DayBox,
   GuideMessage,
   MapSection,
@@ -52,21 +53,42 @@ export default function Booth() {
 
   // State 관리------------------------------------
   const [guideMessage, setGuideMessage] = useState("시작을 위해 지도를 클릭해주세요.");
+  const [firstScene, setFirstScene] = useState(true);
+  const [secondScene, setSecondScene] = useState(false);
+
+  const FirstMoved = useMemo(() => {
+    return firstScene;
+  }, [firstScene]);
 
   // Function 관리---------------------------------
   const handleMap = () => {
     setGuideMessage("원하시는 위치의 핀을 선택해주세요.");
+    setFirstScene(false);
+    setSecondScene(true);
   };
 
   return (
     <Container>
-      <RankingSection>
+      <RankingSection firstMoved={FirstMoved}>
         <RankingLeftSection>
           <RankingHotButton>HOT</RankingHotButton>
         </RankingLeftSection>
         <RankingRightSection></RankingRightSection>
       </RankingSection>
-      <MapSection onClick={handleMap}>
+      {/* DateSection---------------------------- */}
+      <DateSection firstMoved={FirstMoved}>
+        {dayArray.map((i) => (
+          <DayBox key={i.id} onClick={() => setIsToday(i.id)}>
+            <BoxDate isActive={isToday === i.id}>
+              <DateNum>{i.date}</DateNum>
+            </BoxDate>
+            <BoxDay isActive={isToday === i.id}>
+              <DateWeek>{i.day}</DateWeek>
+            </BoxDay>
+          </DayBox>
+        ))}
+      </DateSection>
+      <MapSection onClick={handleMap} firstMoved={FirstMoved}>
         <Image src={map} alt="campus_map" fill />
         <Pin1>
           <Image src={pin} alt="pin" fill style={{ objectFit: "cover" }} />
@@ -90,19 +112,4 @@ export default function Booth() {
       <GuideMessage>{guideMessage}</GuideMessage>
     </Container>
   );
-}
-
-{
-  /* <DateContainer>
-  {dayArray.map((i) => (
-    <DayBox key={i.id} onClick={() => setIsToday(i.id)}>
-      <BoxDate isActive={isToday === i.id}>
-        <DateNum>{i.date}</DateNum>
-      </BoxDate>
-      <BoxDay isActive={isToday === i.id}>
-        <DateWeek>{i.day}</DateWeek>
-      </BoxDay>
-    </DayBox>
-  ))}
-</DateContainer>; */
 }
