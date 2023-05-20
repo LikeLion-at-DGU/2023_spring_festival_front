@@ -36,7 +36,7 @@ export const BoothCardWrapper = styled.div`
     background: #FFFFFF;
     box-shadow: 2px 2px 8px rgba(41, 39, 39, 0.4);
     border-radius: 10px;
-    margin : 10px 12px 10px 12px;
+    margin : 10px auto;
     
   
   z-index: 1;
@@ -79,6 +79,7 @@ export const BoothCardGridWrapper = styled.div`
   display: grid;
   grid-template-rows: 2fr;
   grid-template-columns: 1fr 1fr;
+  padding : 0px 10px;
     
 `
 export const BoothCardDetailWrapper = styled.div`
@@ -134,3 +135,20 @@ export const CardDetailHeartCntWrapper = styled.div`
   color: #979797;
 `;
 
+
+export const RecomandBoothWrapper = styled.div`
+
+    
+    display: grid;
+grid-template-rows: 2fr;
+  grid-template-columns: 1fr 1fr;
+`
+export const RecommandBoothTitle = styled.h1`
+    font-size: 20px;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    color: #FC8CAE;
+`
+export const SearchContainer = styled.div`
+z-index: 1;
+`
