@@ -29,6 +29,7 @@ import Image from "next/image";
 import map from "../../../components/image/booth/campus_map.svg";
 import pin from "../../../components/image/booth/pin.png";
 import { BoothCardGridWrapper } from "./search_style";
+import BoothCard from "components/booth/BoothCard";
 
 // 날짜 배열
 const dayArray = [
@@ -130,7 +131,9 @@ export default function Booth() {
           야간부스
         </FilterSectionSub3>
       </BoothFilterSection>
-      <BoothCardGridWrapper></BoothCardGridWrapper>
+      <BoothCardGridWrapper>
+        <BoothCard name="코오오딩주점" operator="멋쟁이사자처럼" location="학생회관" />
+      </BoothCardGridWrapper>
     </Container>
   );
 }

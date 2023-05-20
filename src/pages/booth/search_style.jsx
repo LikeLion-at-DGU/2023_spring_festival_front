@@ -30,6 +30,7 @@ export const BoothCardWrapper = styled.div`
   box-shadow: 2px 2px 8px rgba(41, 39, 39, 0.4);
   border-radius: 10px;
   margin: 10px 12px 10px 12px;
+  position: relative;
 `;
 export const BoothCardImage = styled(Image)`
   position: relative; /* Add position relative */
