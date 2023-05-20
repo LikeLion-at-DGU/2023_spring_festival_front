@@ -87,7 +87,7 @@ export default function TimeTable() {
   const Performance24Thumbnail = performance24Array.map((perf) => {
     const start = parseInt(perf.startTime.replace(":", ""), 10);
     const end = parseInt(perf.endTime.replace(":", ""), 10);
-    if (start <= nowTime && nowTime <= end) {
+    if (start <= nowTime && nowTime <= end && date === dayArray[0].date) {
       nowPerformance24 = true;
       return (
         <ToggleSub isOpen={performance} key={perf.index}>
@@ -102,7 +102,7 @@ export default function TimeTable() {
   const Performance25Thumbnail = performance25Array.map((perf) => {
     const start = parseInt(perf.startTime.replace(":", ""), 10);
     const end = parseInt(perf.endTime.replace(":", ""), 10);
-    if (start <= nowTime && nowTime <= end) {
+    if (start <= nowTime && nowTime <= end && date === dayArray[1].date) {
       nowPerformance25 = true;
       return (
         <ToggleSub isOpen={performance} key={perf.index}>
@@ -119,7 +119,7 @@ export default function TimeTable() {
       const start = parseInt(perf.startTime.replace(":", ""), 10);
       const end = parseInt(perf.endTime.replace(":", ""), 10);
       let isNow = false;
-      if (start <= nowTime && nowTime <= end) {
+      if (start <= nowTime && nowTime <= end && date === dayArray[0].date) {
         isNow = true;
       }
       return (
@@ -137,7 +137,7 @@ export default function TimeTable() {
       const start = parseInt(perf.startTime.replace(":", ""), 10);
       const end = parseInt(perf.endTime.replace(":", ""), 10);
       let isNow = false;
-      if (start <= nowTime && nowTime <= end) {
+      if (start <= nowTime && nowTime <= end && date === dayArray[1].date) {
         isNow = true;
       }
       return (
