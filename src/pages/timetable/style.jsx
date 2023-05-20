@@ -55,7 +55,24 @@ export const IconBox = styled.section`
   font-size: 24px;
 `;
 
-export const ToggleBox = styled.section`
+export const PerfToggleBox = styled.section`
+  width: 100%;
+  height: ${(props) => (props.isOpen ? "50vh" : "120px")};
+  display: flex;
+  flex-direction: column;
+  box-shadow: 3px 3px 20px -10px rgba(0, 0, 0, 0.7);
+  border-radius: 30px;
+  background-color: #fff;
+  font-weight: 700;
+  padding-left: 15px;
+  /* animation: ${Landing} 1s ease; */
+  animation-delay: ${(props) => (props.delay ? `1s` : ``)};
+  /* display: ${(props) => (props.delay ? "none" : "")}; */
+  transition: all 0.5s;
+  cursor: pointer;
+`;
+
+export const GuestToggleBox = styled.section`
   width: 100%;
   height: ${(props) => (props.isOpen ? "50vh" : "60px")};
   display: flex;
@@ -63,7 +80,6 @@ export const ToggleBox = styled.section`
   box-shadow: 3px 3px 20px -10px rgba(0, 0, 0, 0.7);
   border-radius: 30px;
   background-color: #fff;
-  color: ${primaryColor};
   font-weight: 700;
   padding-left: 15px;
   /* animation: ${Landing} 1s ease; */
@@ -79,13 +95,57 @@ export const ToggleHeader = styled.section`
   display: flex;
   align-items: center;
   font-family: "yg-jalnan";
+  color: ${primaryColor};
+`;
+
+export const ToggleSub = styled.section`
+  width: 95%;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-radius: 30px;
+  background-color: ${subPinkColor};
+  padding-left: 15px;
+  display: ${(props) => (props.isOpen ? "none" : "")};
+`;
+
+export const SubItem1 = styled.section`
+  width: 60px;
+  height: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 400;
+  background-color: ${primaryColor};
+  color: #fff;
+  border-radius: 30px;
+`;
+
+export const SubItem2 = styled.span`
+  color: ${primaryColor};
+`;
+
+export const SubItem3 = styled.span`
+  color: ${secondaryColor};
+`;
+
+export const SubItem404 = styled.span`
+  width: 95%;
+  color: ${primaryColor};
+  font-size: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
 `;
 
 export const LocationHeader = styled.section`
   width: 100%;
   height: 40px;
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   color: ${secondaryColor};
   padding-left: 15px;
   display: ${(props) => (props.isOpen ? "" : "none")};
@@ -114,11 +174,13 @@ export const TableSection = styled.section`
 
 export const TableIndex = styled.section`
   color: ${primaryColor};
+  font-weight: 300;
   font-family: "Noto Sans KR", sans-serif;
 `;
 
 export const TableClock = styled.section`
-  color: ${secondaryColor};
+  color: ${(props) => (props.isNow ? `${primaryColor}` : "")};
+  font-weight: 500;
   font-family: "Noto Sans KR", sans-serif;
   opacity: 0.7;
 `;
@@ -134,12 +196,11 @@ export const CardSection = styled.section`
   display: flex;
   align-items: center;
   flex-wrap: nowrap;
-  gap: 15px;
+  gap: 5px;
   overflow-x: auto;
-  padding: 10px;
   ::-webkit-scrollbar {
-    width: 2px;
-    height: 2px;
+    width: 4px;
+    height: 4px;
   }
   ::-webkit-scrollbar-thumb {
     background: ${primaryColor};
@@ -149,8 +210,8 @@ export const CardSection = styled.section`
 `;
 
 export const ImgBox = styled.section`
-  width: 35px;
-  height: 20px;
+  width: 25px;
+  height: 25px;
   position: relative;
 `;
 
