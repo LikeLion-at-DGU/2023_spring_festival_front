@@ -1,6 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
 import Image from "next/image";
-
 import Pin from "../../../components/image/timetable/pin.png";
 import {
   Card,
@@ -10,60 +9,62 @@ import {
   DateNum,
   DateSection,
   DateWeek,
+  GuestToggleBox,
   IconBox,
   ImgBox,
   LocationHeader,
+  PerfToggleBox,
+  SubItem1,
+  SubItem2,
+  SubItem3,
   TableBand,
   TableClock,
   TableIndex,
   TableSection,
   TimeTableBox,
-  ToggleBox,
   ToggleHeader,
+  ToggleSub,
 } from "./style";
-import { ImgArray, performance24, performance25 } from "./staticData";
+import {
+  Guest24Array,
+  Guest25Array,
+  dayArray,
+  performance24Array,
+  performance25Array,
+} from "./staticData";
+import Performance404 from "components/timetable/Performance404";
 
 export default function TimeTable() {
-  // State 관리----------------------------------------
-  const [firstDate, setFirstDate] = useState(true);
-  const [secondDate, setSecondDate] = useState(false);
-  const [performance, setPerformance] = useState(false);
-  const [specialGuest, setSpecialGuest] = useState(false);
-
   // DATE 관리-----------------------------------------
   const day = new Date();
+  const date = day.getDate();
   const hours = day.getHours();
   const minutes = day.getMinutes();
   const nowTime = parseInt(
     `${hours.toString().padStart(2, "0")}${minutes.toString().padStart(2, "0")}`,
     10
   );
-  // 20일 오늘 기준 오늘이면 0, 하루 지났으면 1, 이틀 지났으면 2
-  const todate = day.getDate() - 20 === 0 ? 0 : day.getDate() - 20 === 1 ? 1 : 2;
-  const [isToday, setIsToday] = useState(todate);
-  const dayArray = [
-    {
-      id: 1,
-      date: 23,
-      day: "TUE",
-    },
-    {
-      id: 2,
-      date: 24,
-      day: "WED",
-    },
-    {
-      id: 3,
-      date: 25,
-      day: "THR",
-    },
-  ];
+  let nowPerformance24 = false;
+  let nowPerformance25 = false;
+
+  // State 관리----------------------------------------
+  const [firstDate, setFirstDate] = useState(true);
+  const [secondDate, setSecondDate] = useState(false);
+  const [performance, setPerformance] = useState(false);
+  const [specialGuest, setSpecialGuest] = useState(false);
+  const [clickedDate, setClickedDate] = useState(date);
+
+  // ComponentDidMount--------------------------------
+  useEffect(() => {
+    setTimeout(() => setSpecialGuest(true), 500);
+  }, []);
 
   // Function 관리-------------------------------------
   const handleFirstDate = useCallback(() => {
     if (!firstDate) {
       setFirstDate(true);
       setSecondDate(false);
+      setClickedDate(dayArray[0].date);
     }
   }, [firstDate]);
 
@@ -71,6 +72,7 @@ export default function TimeTable() {
     if (!secondDate) {
       setFirstDate(false);
       setSecondDate(true);
+      setClickedDate(dayArray[1].date);
     }
   }, [secondDate]);
 
@@ -82,13 +84,38 @@ export default function TimeTable() {
     setSpecialGuest(!specialGuest);
   }, [specialGuest]);
 
-  // ComponentDidMount--------------------------------
-  useEffect(() => {
-    setTimeout(() => setSpecialGuest(!specialGuest), 500);
-  }, []);
+  const Performance24Thumbnail = performance24Array.map((perf) => {
+    const start = parseInt(perf.startTime.replace(":", ""), 10);
+    const end = parseInt(perf.endTime.replace(":", ""), 10);
+    if (start <= nowTime && nowTime <= end) {
+      nowPerformance24 = true;
+      return (
+        <ToggleSub isOpen={performance} key={perf.index}>
+          <SubItem1>NOW</SubItem1>
+          <SubItem2>{perf.startTime + "-" + perf.endTime}</SubItem2>
+          <SubItem3>{perf.name}</SubItem3>
+        </ToggleSub>
+      );
+    }
+  });
+
+  const Performance25Thumbnail = performance25Array.map((perf) => {
+    const start = parseInt(perf.startTime.replace(":", ""), 10);
+    const end = parseInt(perf.endTime.replace(":", ""), 10);
+    if (start <= nowTime && nowTime <= end) {
+      nowPerformance25 = true;
+      return (
+        <ToggleSub isOpen={performance} key={perf.index}>
+          <SubItem1>NOW</SubItem1>
+          <SubItem2>{perf.startTime + "-" + perf.endTime}</SubItem2>
+          <SubItem3>{perf.name}</SubItem3>
+        </ToggleSub>
+      );
+    }
+  });
 
   const Performance24Data = [
-    performance24.map((perf) => {
+    performance24Array.map((perf) => {
       const start = parseInt(perf.startTime.replace(":", ""), 10);
       const end = parseInt(perf.endTime.replace(":", ""), 10);
       let isNow = false;
@@ -105,34 +132,68 @@ export default function TimeTable() {
     }),
   ];
 
-  const ImgData = [
-    ImgArray.map((img) => (
+  const Performance25Data = [
+    performance25Array.map((perf) => {
+      const start = parseInt(perf.startTime.replace(":", ""), 10);
+      const end = parseInt(perf.endTime.replace(":", ""), 10);
+      let isNow = false;
+      if (start <= nowTime && nowTime <= end) {
+        isNow = true;
+      }
+      return (
+        <TableSection key={perf.index} isOpen={performance} isNow={isNow}>
+          <TableIndex>{perf.index} </TableIndex>
+          <TableClock isNow={isNow}>{perf.startTime + " - " + perf.endTime}</TableClock>
+          <TableBand>{perf.name} </TableBand>
+        </TableSection>
+      );
+    }),
+  ];
+
+  const Guest24Data = [
+    Guest24Array.map((img) => (
+      <Card key={img.id}>
+        <Image src={img.src} alt={img.name} fill placeholder="blur" />
+      </Card>
+    )),
+  ];
+
+  const Guest25Data = [
+    Guest25Array.map((img) => (
       <Card key={img.id}>
         <Image src={img.src} alt={img.name} fill placeholder="blur" />
       </Card>
     )),
   ];
   //
+
   return (
     <>
       <Container>
         <DateSection>
           <DateBox date={firstDate} onClick={handleFirstDate}>
-            <DateNum>{dayArray[1].date} </DateNum>
-            <DateWeek>{dayArray[1].day}</DateWeek>
+            <DateNum>{dayArray[0].date} </DateNum>
+            <DateWeek>{dayArray[0].day}</DateWeek>
           </DateBox>
           <DateBox date={secondDate} onClick={handleSecondDate}>
-            <DateNum>{dayArray[2].date}</DateNum>
-            <DateWeek>{dayArray[2].day}</DateWeek>
+            <DateNum>{dayArray[1].date}</DateNum>
+            <DateWeek>{dayArray[1].day}</DateWeek>
           </DateBox>
         </DateSection>
         <br /> <br />
         {/* PERFORMANCE-------------------------------------- */}
-        <ToggleBox isOpen={performance} onClick={handleShrink} className="fadeIn">
+        <PerfToggleBox isOpen={performance} onClick={handleShrink} className="fadeIn">
           <ToggleHeader>
             <IconBox>{performance ? "▼" : "▶"} </IconBox>
             PERFORMANCE
           </ToggleHeader>
+          {clickedDate <= dayArray[0].date ? Performance24Thumbnail : Performance25Thumbnail}
+          <Performance404
+            nowPerf24={nowPerformance24}
+            nowPerf25={nowPerformance25}
+            clickedDate={clickedDate}
+            isOpen={performance}
+          />
           <LocationHeader isOpen={performance}>
             <ImgBox>
               <Image src={Pin} alt="pin" fill style={{ objectFit: "cover" }} />
@@ -140,24 +201,27 @@ export default function TimeTable() {
             대운동장
           </LocationHeader>
           <br />
-          <TimeTableBox>{[...Performance24Data]}</TimeTableBox>
-        </ToggleBox>
+          <TimeTableBox>
+            {clickedDate <= dayArray[0].date ? [...Performance24Data] : [...Performance25Data]}
+          </TimeTableBox>
+        </PerfToggleBox>
         <br />
         {/* SPECIAL GUEST------------------------------------ */}
-        <ToggleBox isOpen={specialGuest} onClick={handleGrow} className="fadeIn">
+        <GuestToggleBox isOpen={specialGuest} onClick={handleGrow} className="fadeIn">
           <ToggleHeader>
             <IconBox>{specialGuest ? "▼" : "▶"}</IconBox>
             SPECIAL GUEST
           </ToggleHeader>
-
           <LocationHeader isOpen={specialGuest}>
             <ImgBox>
               <Image src={Pin} alt="pin" fill style={{ objectFit: "cover" }} />
             </ImgBox>
             대운동장
           </LocationHeader>
-          <CardSection isOpen={specialGuest}>{[...ImgData]}</CardSection>
-        </ToggleBox>
+          <CardSection isOpen={specialGuest}>
+            {clickedDate <= dayArray[0].date ? [...Guest24Data] : [...Guest25Data]}
+          </CardSection>
+        </GuestToggleBox>
       </Container>
       {/* <style jsx>{`
         * {
