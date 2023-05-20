@@ -102,8 +102,11 @@ export const RecomandRowCardWrapper = styled.div`
   background-color: #FFFFFF;
   z-index: 1;
   flex-direction: row;
-  padding : 10px 21px 10px 12px;
-`
+  padding: 10px 21px 10px 12px;
+  margin-top: 14px;
+  position: relative; /* 추가 */
+`;
+
 
 export const RankWrapper = styled.div`
 display: flex;
@@ -124,8 +127,11 @@ display: flex;
 export const RankBoothDetail = styled.div`
   display: flex;
   flex-direction: column;
-  margin-top: 30px;
+  margin-top: 15px;
   margin-bottom: 10px;
+  align-self: center;
+  flex-grow: 1; /* 추가 */
+
 `
 export const RankBoothDetailTitle = styled.h1`
   font-size: 14px;
@@ -156,6 +162,11 @@ export const RankBoothHeartWrapper = styled.div`
   align-items: center;
   padding-top: 10px;
   margin-left: 30px;
+  position: absolute; /* 추가 */
+  top: 50%; /* 추가 */
+  right: 15px; /* 추가 */
+  transform: translateY(-50%); /* 추가 */
+
 `
 export const HeartWrapper = styled.div`
   display: flex;
@@ -169,7 +180,8 @@ export const HeartCntWrapper = styled.div`
 
 export const HeartIcon = styled(FontAwesomeIcon)`
   
-width: 20px;
+width: 30px;
 margin-bottom: 3px;
+margin-top: 5px; /* 수정 */
 
 `

@@ -27,6 +27,7 @@
     "react-dom": "18.2.0",
     "react-fullpage": "^0.1.19",
     "react-icons": "^4.8.0",
+    "react-spring": "^9.7.1",
     "styled-components": "^5.3.6"
   }
 }
