@@ -3,7 +3,7 @@ import { use, useState } from "react";
 import { RecommandHeader, RecommandTitle, SearchWrapper } from "./style";
 import RecomandRowCard from "components/booth/RecomandRowCard";
 
-
+import { useTrail, animated } from 'react-spring';
 
 
 
@@ -66,7 +66,7 @@ function search() {
 		is_liked: true
 	}, 
     ]);
-    
+      
     // 검색어 저장받음 
     const [searchValue, setSearchValue] = useState('');
 
@@ -74,27 +74,34 @@ function search() {
 
     // 탑 3 booth 렌더링 함수 
     const renderTopBooth = () => {
+        const trail = useTrail(3, {
+            from: { opacity: 0, transform: 'translateY(20px)' },
+            to: { opacity: 1, transform: 'translateY(0)' },
+            delay: 200,
+          });
+
         return booth.length === 0 ? (
         <>
-        <RecommandHeader>
-            <RecommandTitle>실시간 인기 부스</RecommandTitle>
+             <RecommandHeader>
+        <RecommandTitle>실시간 인기 부스</RecommandTitle>
 
-            {/* 추천 행 카드 */}
-            {/* 부스 탑 3만큼 뿌려주기 */}
-            {recomandBooth.slice(0,3).map((booth,idx) => (
-                <RecomandRowCard
-                ranking = {idx}
-                booth={booth.id}
-                logoImage = {booth.logo_image}
-                boothName = {booth.name} 
-                boothOperator = {booth.operator}
-                boothLocation = {booth.location}
-                likeCnt = {booth.like_cnt}
-                is_liked = {booth.is_liked}
-                />
-            ),)
-            }
-        </RecommandHeader>
+        {/* 추천 행 카드 */}
+        {/* 부스 탑 3만큼 뿌려주기 */}
+        {trail.map((props, idx) => (
+          <animated.div key={idx} style={props}>
+            <RecomandRowCard
+              ranking={idx}
+              booth={recomandBooth[idx].id}
+              logoImage={recomandBooth[idx].logo_image}
+              boothName={recomandBooth[idx].name}
+              boothOperator={recomandBooth[idx].operator}
+              boothLocation={recomandBooth[idx].location}
+              likeCnt={recomandBooth[idx].like_cnt}
+              is_liked={recomandBooth[idx].is_liked}
+            />
+          </animated.div>
+        ))}
+      </RecommandHeader>
         </>
         ) : (
         <>
