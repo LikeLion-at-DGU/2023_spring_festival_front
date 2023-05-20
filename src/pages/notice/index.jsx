@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import NoticeCard from "components/notice/NoticeCard";
 
 const Container = styled.div`
@@ -14,6 +14,8 @@ const TypeWrapper = styled.div`
   width: 100%;
   justify-content: center;
   display: flex;
+  font-family: 'ygotjalnanfont';
+  font-weight: 700;
 `;
 
 const Type = styled.button`
@@ -34,11 +36,38 @@ const TypeBody = styled.div`
   margin: 7% 0;
 `;
 
-export default function Booth(){
+export default function Notice(){
 
   // 타입
-  const [currentType, setCurrentType] = useState('전체');
-  const type = ['전체', '주요', '축제', '이벤트', '기타'];
+  const [currentType, setCurrentType] = useState('all');
+  const typeArray = [
+    {
+      id: 1,
+      type: 'all',
+      content: '전체'
+    },
+    {
+      id: 2,
+      type: 'main',
+      content: '주요'
+    },
+    {
+      id: 3,
+      type: 'festival',
+      content: '축제'
+    },
+    {
+      id: 4,
+      type: 'event',
+      content: '이벤트'
+    },
+    {
+      id: 5,
+      type: 'etc',
+      content: '기타'
+    },
+  ];
+
   const selectTypeHandler = (type) => {
     setCurrentType(type);
     console.log(currentType);
@@ -53,7 +82,7 @@ export default function Booth(){
         {
           "id": 1,
           "title": "main",
-          "type": "주요",
+          "type": "main",
           "content": "글이 길면 어때? 글이 길면 어때? 글이 길면 어때? 글이 길면 어때? 글이 길면 어때? 글이 길면 어때? 글이 길면 어때? 글이 길면 어때? 글이 길면 어때?",
           "created_at": "2023-05-13T07:47:07.687842+09:00",
           "images": []
@@ -61,15 +90,15 @@ export default function Booth(){
         {
           "id": 2,
           "title": "festival",
-          "type": "축제",
-          "content": "festival ㅅㅂ!",
+          "type": "festival",
+          "content": "festival!!Ds!",
           "created_at": "2023-05-13T07:47:07.687842+09:00",
           "images": []
         },
         {
           "id": 3,
           "title": "event",
-          "type": "이벤트",
+          "type": "event",
           "content": "글이 길면 어때? 글이 길면 어때? 글이 길면 어때? 글이 길면 어때? 글이 길면 어때? 글이 길면 어때? 글이 길면 어때? 글이 길면 어때? 글이 길면 어때?",
           "created_at": "2023-05-13T07:47:07.687842+09:00",
           "images": []
@@ -77,8 +106,8 @@ export default function Booth(){
         {
           "id": 4,
           "title": "etc",
-          "type": "기타",
-          "content": "etc ㅅㅂ!",
+          "type": "etc",
+          "content": "etc test",
           "created_at": "2023-05-13T07:47:07.687842+09:00",
           "images": []
         },
@@ -95,32 +124,30 @@ export default function Booth(){
     fetchNotice();
   }, []);
 
-  const typeNotices = notice.filter((notice)=>{
-    if(currentType === '전체') {
-      return true;
-    } else {
-      return notice.type === currentType;
-    }
-  });
+  const typeNotices = 
+    currentType === 'all' ? notice : notice.filter(
+      (notice)=>notice.type === currentType);
 
   return(
     <Container>
       <TypeWrapper>
-        {type.map((type)=>{
+        {typeArray.map((type)=>{
           return(
             <Type
-              key={type}
-              onClick={()=>selectTypeHandler(type)}
-              isSelected={type===currentType}
+              key={type.id}
+              onClick={()=>selectTypeHandler(type.type)}
+              isSelected={type.type===currentType}
             >
-              {type}
+              {type.content}
             </Type>
           )
         })}
       </TypeWrapper>
-      <TypeBody>
+      <TypeBody isVisible={typeNotices.length > 0}>
         {typeNotices.map((notice)=>(
           <NoticeCard 
+            key={notice.id}
+            id={notice.id}
             title={notice.title}
             content={notice.content}
             created_at={notice.created_at}

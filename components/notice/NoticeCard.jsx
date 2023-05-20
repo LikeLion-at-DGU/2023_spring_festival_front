@@ -9,7 +9,11 @@ const Container = styled.div`
     border-radius: 10px;
     padding: 25px;
     margin: 3% 0;
-    /* font-family: 'AppleSDGothicNeoM00'; */
+    font-family: 'AppleSDGothicNeoM00';
+`;
+
+const LinkBox = styled.a`
+  width  : 100%;
 `;
 
 const Header = styled.header`
@@ -20,9 +24,10 @@ const Header = styled.header`
 
 const Title = styled.div`
     color: #525252;
-    font-weight: 400;
+    font-weight: 600;
+    font-style: normal;
     font-size: 20px;
-    /* font-family: 'AppleSDGothicNeoB00'; */
+    font-family: 'AppleSDGothicNeoB00';
 `;
 
 const Date = styled.div`
@@ -47,7 +52,7 @@ const ImgBox = styled.div`
     align-items: center;
 `;
 
-const NoticeCard = ({title, content, created_at, images}) => {
+const NoticeCard = ({id, title, content, created_at, images}) => {
 
     const date = created_at.slice(0,10);
 
@@ -55,27 +60,30 @@ const NoticeCard = ({title, content, created_at, images}) => {
 
     return(
         <Container>
-            <Header>
-                <Title>{title}</Title>
-                <Date>{date}</Date>
-            </Header>
-            <Body>
-                { content.length <= 60 ? 
-                    <>{content}</> : <>{content.slice(0,60)}...</>
-                }
-            </Body>
-            { ( images && images.length > 0 ) &&
-            <ImgBox>
-                {images.map((image)=>{
-                    <Image
-                        key={image.id}
-                        src={image.url}
-                        alt={image.alt}
-                    />
-                })}
-            </ImgBox>
-            }
-            
+            <Link href="/notice/detail">
+                <LinkBox>
+                    <Header>
+                        <Title>{title}</Title>
+                        <Date>{date}</Date>
+                    </Header>
+                    <Body>
+                        { content.length <= 60 ? 
+                            <>{content}</> : <>{content.slice(0,60)}...</>
+                        }
+                    </Body>
+                    { ( images && images.length > 0 ) &&
+                    <ImgBox>
+                        {images.map((image)=>{
+                            <Image
+                                key={image.id}
+                                src={image.url}
+                                alt={image.alt}
+                            />
+                        })}
+                    </ImgBox>
+                    }
+                </LinkBox>
+            </Link>
         </Container>
     );
 };
