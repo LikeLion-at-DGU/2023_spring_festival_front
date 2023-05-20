@@ -63,7 +63,6 @@ export const ToggleBox = styled.section`
   box-shadow: 3px 3px 20px -10px rgba(0, 0, 0, 0.7);
   border-radius: 30px;
   background-color: #fff;
-  color: ${primaryColor};
   font-weight: 700;
   padding-left: 15px;
   /* animation: ${Landing} 1s ease; */
@@ -79,13 +78,14 @@ export const ToggleHeader = styled.section`
   display: flex;
   align-items: center;
   font-family: "yg-jalnan";
+  color: ${primaryColor};
 `;
 
 export const LocationHeader = styled.section`
   width: 100%;
   height: 40px;
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   color: ${secondaryColor};
   padding-left: 15px;
   display: ${(props) => (props.isOpen ? "" : "none")};
@@ -114,11 +114,13 @@ export const TableSection = styled.section`
 
 export const TableIndex = styled.section`
   color: ${primaryColor};
+  font-weight: 300;
   font-family: "Noto Sans KR", sans-serif;
 `;
 
 export const TableClock = styled.section`
-  color: ${secondaryColor};
+  color: ${(props) => (props.isNow ? `${primaryColor}` : "")};
+  font-weight: 500;
   font-family: "Noto Sans KR", sans-serif;
   opacity: 0.7;
 `;
@@ -136,10 +138,9 @@ export const CardSection = styled.section`
   flex-wrap: nowrap;
   gap: 15px;
   overflow-x: auto;
-  padding: 10px;
   ::-webkit-scrollbar {
-    width: 2px;
-    height: 2px;
+    width: 4px;
+    height: 4px;
   }
   ::-webkit-scrollbar-thumb {
     background: ${primaryColor};
@@ -149,8 +150,8 @@ export const CardSection = styled.section`
 `;
 
 export const ImgBox = styled.section`
-  width: 35px;
-  height: 20px;
+  width: 25px;
+  height: 25px;
   position: relative;
 `;
 

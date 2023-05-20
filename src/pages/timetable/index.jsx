@@ -29,19 +29,35 @@ export default function TimeTable() {
   const [secondDate, setSecondDate] = useState(false);
   const [performance, setPerformance] = useState(false);
   const [specialGuest, setSpecialGuest] = useState(false);
-  // const [delay, setDelay] = useState(true);
 
   // DATE 관리-----------------------------------------
   const day = new Date();
   const hours = day.getHours();
   const minutes = day.getMinutes();
-  // 20일 오늘 기준 오늘이면 0, 하루 지났으면 1, 이틀 지났으면 2
-  const todate = day.getDate() - 20 === 0 ? 0 : day.getDate() - 20 === 1 ? 1 : 2;
   const nowTime = parseInt(
     `${hours.toString().padStart(2, "0")}${minutes.toString().padStart(2, "0")}`,
     10
   );
+  // 20일 오늘 기준 오늘이면 0, 하루 지났으면 1, 이틀 지났으면 2
+  const todate = day.getDate() - 20 === 0 ? 0 : day.getDate() - 20 === 1 ? 1 : 2;
   const [isToday, setIsToday] = useState(todate);
+  const dayArray = [
+    {
+      id: 1,
+      date: 23,
+      day: "TUE",
+    },
+    {
+      id: 2,
+      date: 24,
+      day: "WED",
+    },
+    {
+      id: 3,
+      date: 25,
+      day: "THR",
+    },
+  ];
 
   // Function 관리-------------------------------------
   const handleFirstDate = useCallback(() => {
@@ -82,7 +98,7 @@ export default function TimeTable() {
       return (
         <TableSection key={perf.index} isOpen={performance} isNow={isNow}>
           <TableIndex>{perf.index} </TableIndex>
-          <TableClock>{perf.startTime + " - " + perf.endTime}</TableClock>
+          <TableClock isNow={isNow}>{perf.startTime + " - " + perf.endTime}</TableClock>
           <TableBand>{perf.name} </TableBand>
         </TableSection>
       );
@@ -92,32 +108,22 @@ export default function TimeTable() {
   const ImgData = [
     ImgArray.map((img) => (
       <Card key={img.id}>
-        <Image src={img.src} alt={img.name} fill />
+        <Image src={img.src} alt={img.name} fill placeholder="blur" />
       </Card>
     )),
   ];
   //
-  // {dayArray.map((i) => (
-  //   <DayBox key={i.id} onClick={() => setIsToday(i.id)}>
-  //     <BoxDate isActive={isToday === i.id}>
-  //       <DateNum>{i.date}</DateNum>
-  //     </BoxDate>
-  //     <BoxDay isActive={isToday === i.id}>
-  //       <DateWeek>{i.day}</DateWeek>
-  //     </BoxDay>
-  //   </DayBox>
-  // ))}
   return (
     <>
       <Container>
         <DateSection>
           <DateBox date={firstDate} onClick={handleFirstDate}>
-            <DateNum>24</DateNum>
-            <DateWeek>WED.</DateWeek>
+            <DateNum>{dayArray[1].date} </DateNum>
+            <DateWeek>{dayArray[1].day}</DateWeek>
           </DateBox>
           <DateBox date={secondDate} onClick={handleSecondDate}>
-            <DateNum>25</DateNum>
-            <DateWeek>THR.</DateWeek>
+            <DateNum>{dayArray[2].date}</DateNum>
+            <DateWeek>{dayArray[2].day}</DateWeek>
           </DateBox>
         </DateSection>
         <br /> <br />
@@ -129,11 +135,11 @@ export default function TimeTable() {
           </ToggleHeader>
           <LocationHeader isOpen={performance}>
             <ImgBox>
-              <Image src={Pin} alt="pin" fill />
+              <Image src={Pin} alt="pin" fill style={{ objectFit: "cover" }} />
             </ImgBox>
             대운동장
           </LocationHeader>
-          <br /> <br />
+          <br />
           <TimeTableBox>{[...Performance24Data]}</TimeTableBox>
         </ToggleBox>
         <br />
@@ -143,9 +149,10 @@ export default function TimeTable() {
             <IconBox>{specialGuest ? "▼" : "▶"}</IconBox>
             SPECIAL GUEST
           </ToggleHeader>
+
           <LocationHeader isOpen={specialGuest}>
             <ImgBox>
-              <Image src={Pin} alt="pin" fill />
+              <Image src={Pin} alt="pin" fill style={{ objectFit: "cover" }} />
             </ImgBox>
             대운동장
           </LocationHeader>
