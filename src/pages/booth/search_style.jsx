@@ -30,6 +30,7 @@ export const SearchNoResult = styled.h2`
 `
 
 export const BoothCardWrapper = styled.div`
+  position: relative; /* Add position relative */
     width: 160px;
     height : 200px;
     background: #FFFFFF;
@@ -40,6 +41,8 @@ export const BoothCardWrapper = styled.div`
 export const BoothCardImage = styled(Image)`
     width: 160px;
     height : 160px;
+    border-radius: 10px; /* Add border radius to match the wrapper */
+
 `
 
 export const BoothCardGridWrapper = styled.div`
@@ -48,3 +51,14 @@ export const BoothCardGridWrapper = styled.div`
   grid-template-columns: 1fr 1fr;
     
 `
+export const BoothCardDetailWrapper = styled.div`
+  position: absolute;
+  top: 125px; /* Adjust the top position as needed */
+  left: 0px; /* Adjust the left position as needed */
+  width: 160px;
+  height: 75px;
+  background: #FFFFFF;
+  
+  border-radius: 0px 0px 10px 10px;
+  z-index: 1;
+`;
