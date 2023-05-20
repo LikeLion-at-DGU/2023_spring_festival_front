@@ -18,15 +18,18 @@
     "@fortawesome/react-fontawesome": "^0.2.0",
     "@mui/material": "^5.13.1",
     "@next/font": "13.4.2",
+    "aos": "^2.3.4",
     "babel-plugin-styled-components": "^2.1.1",
     "eslint": "8.40.0",
     "eslint-config-next": "13.4.2",
     "framer-motion": "^10.12.12",
+    "gsap": "^3.11.5",
     "next": "13.4.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-fullpage": "^0.1.19",
     "react-icons": "^4.8.0",
+    "react-spring": "^9.7.1",
     "styled-components": "^5.3.6"
   }
 }

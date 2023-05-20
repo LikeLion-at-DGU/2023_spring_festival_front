@@ -9,6 +9,10 @@ const Body = styled.div`
   background-color: #f5f5f5;
 `;
 
+export const primaryColor = "#FC8CAE";
+export const secondaryColor = "#525252";
+export const subPinkColor = "#FFE9F0";
+
 export default function App({ Component, pageProps }) {
   return (
     <Body className="Container">
@@ -17,6 +21,7 @@ export default function App({ Component, pageProps }) {
       </Layout>
       <style jsx global>
         {`
+          @import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
           html,
           body,
           div,
@@ -172,6 +177,52 @@ export default function App({ Component, pageProps }) {
               format("woff");
             font-weight: normal;
             font-style: normal;
+          }
+          .notosanskr * {
+            font-family: "Noto Sans KR", sans-serif;
+          }
+          @keyframes fadeIn {
+            from {
+              opacity: 0;
+            }
+            to {
+              opacity: 1;
+            }
+          }
+          @keyframes fadeOut {
+            from {
+              opacity: 1;
+            }
+            to {
+              opacity: 0;
+            }
+          }
+
+          @-webkit-keyframes fadeIn {
+            from {
+              opacity: 0;
+            }
+            to {
+              opacity: 1;
+            }
+          }
+          @-webkit-keyframes fadeOut {
+            from {
+              opacity: 1;
+            }
+            to {
+              opacity: 0;
+            }
+          }
+
+          .fadeIn {
+            animation: fadeIn;
+            animation-duration: 0.8s;
+          }
+
+          .fadeOut {
+            animation: fadeOut;
+            animation-duration: 0.8s;
           }
         `}
       </style>
