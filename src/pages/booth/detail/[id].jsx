@@ -69,13 +69,13 @@ const BoothDetailPage = () => {
             id: 1,
             writer: "chan",
             content: "zzzz",
-            created_at: "2023-05-23",
+            created_at: "2023-05-21T21:24:42.354552",
             replies: [
                 {
                     id: 1,
                     writer: "adss",
                     content: "대박",
-                    created_at:"2023-05-23"
+                    created_at:"2023-05-21T21:24:42.354552"
                 },
             ]
         },
@@ -83,19 +83,19 @@ const BoothDetailPage = () => {
             id: 2,
             writer: "mens",
             content: "zzzz",
-            created_at: "2023-05-23",
+            created_at: "2023-05-21T21:24:42.354552",
             replies: [
                 {
                     id: 1,
                     writer: "adss",
                     content: "대박",
-                    created_at:"2023-05-23"
+                    created_at:"2023-05-21T21:24:42.354552"
                 },
                 {
                     id: 2,
                     writer: "adss",
                     content: "대박",
-                    created_at:"2023-05-23"
+                    created_at:"2023-05-21T21:24:42.354552"
                 },
             ]
         },
@@ -273,13 +273,13 @@ useEffect(() => {
                 <FontAwesomeIcon icon={faCircleExclamation} />
                 &nbsp;욕설이나 비방의 댓글은 필터링 기능에 의해 게시되지 않습니다.
                 </CommentWran>
-            </CommentInputWrapper>
+            </CommentInputWrapper>xw
                 
             <CommentListWrapper>
                 {comment.map((comment) => (
                     <CommentCard
                         key={comment.id}
-                        id={comment.id}
+                        CommentId={comment.id}
                         writer={comment.writer}
                         content={comment.content}
                         created_at={comment.created_at}
