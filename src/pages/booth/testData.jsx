@@ -8,8 +8,8 @@ export const testBoothDataArray = [
     like_cnt: 18,
     start_at: "2023-05-23",
     end_at: "2023-05-23",
-    location: "원흥관 9번",
-    section: "1",
+    location: "원흥관 4층",
+    section: 1,
     description: "나는 ㅋㅋ너는 ㅋㅋ 음악음악",
     menu: {
       메뉴1: 2000,
@@ -28,8 +28,8 @@ export const testBoothDataArray = [
     like_cnt: 12,
     start_at: "2023-05-24",
     end_at: "2023-05-25",
-    location: "헐떡고개 4번",
-    section: "2",
+    location: "학생회관",
+    section: 2,
     description: "오우예아~ 오우예아~",
     menu: {
       메뉴1: 7000,
@@ -48,8 +48,8 @@ export const testBoothDataArray = [
     like_cnt: 1,
     start_at: "2023-05-24",
     end_at: "2023-05-24",
-    location: "학생회관 8번",
-    section: "1",
+    location: "팔정도",
+    section: 4,
     description: "나는 ㅋㅋ너는 ㅋㅋ 음악음악",
     menu: {
       메뉴1: 22000,
@@ -68,8 +68,8 @@ export const testBoothDataArray = [
     like_cnt: 18,
     start_at: "2023-05-24",
     end_at: "2023-05-25",
-    location: "원흥관 지하 5층",
-    section: "1",
+    location: "혜화관",
+    section: 10,
     description: "너 납치된거야",
     menu: {
       메뉴1: 52000,
@@ -88,8 +88,8 @@ export const testBoothDataArray = [
     like_cnt: 2,
     start_at: "2023-05-23",
     end_at: "2023-05-24",
-    location: "로터스관 16층",
-    section: "1",
+    location: "이해랑예술극장",
+    section: 7,
     description: "100층 등반 시 졸업 가능",
     menu: {
       메뉴1: 262000,
@@ -102,52 +102,57 @@ export const testBoothDataArray = [
 ];
 
 export const boothSectorArray = [
+  // Section1
   [{ id: 1, location: "이해랑예술극장" }],
+  // Section2
   [
     { id: 2, location: "사회과학관" },
     { id: 3, location: "혜화관" },
     { id: 4, location: "혜화별관" },
   ],
+  // Section3
   [
     { id: 5, location: "명진관" },
     { id: 6, location: "팔정도" },
   ],
+  // Section4
   [{ id: 7, location: "원흥관 4층" }],
-
+  // Section5
   [{ id: 8, location: "만해광장" }],
+  // Section6
   [
     { id: 9, location: "학생회관" },
     { id: 10, location: "학림관" },
   ],
 ];
 
-const test = [
-  { id: 1, location: [{ idx: 1, name: "이해랑예술극장" }] },
-  {
-    id: 2,
-    location: [
-      { idx: 1, name: "사회과학관" },
-      { idx: 2, name: "혜화관" },
-      { idx: 3, name: "혜화별관" },
-    ],
-  },
-  {
-    id: 3,
-    location: [
-      { idx: 1, name: "명진관" },
-      { idx: 2, name: "팔정도" },
-    ],
-  },
-  { id: 4, location: [{ idx: 1, name: "원흥관 4층" }] },
-  { id: 5, location: [{ idx: 2, name: "만해광장" }] },
-  {
-    id: 6,
-    location: [
-      { idx: 1, name: "학생회관" },
-      { idx: 2, name: "학림관" },
-    ],
-  },
-];
+// const test = [
+//   { id: 1, location: [{ idx: 1, name: "이해랑예술극장" }] },
+//   {
+//     id: 2,
+//     location: [
+//       { idx: 1, name: "사회과학관" },
+//       { idx: 2, name: "혜화관" },
+//       { idx: 3, name: "혜화별관" },
+//     ],
+//   },
+//   {
+//     id: 3,
+//     location: [
+//       { idx: 1, name: "명진관" },
+//       { idx: 2, name: "팔정도" },
+//     ],
+//   },
+//   { id: 4, location: [{ idx: 1, name: "원흥관 4층" }] },
+//   { id: 5, location: [{ idx: 2, name: "만해광장" }] },
+//   {
+//     id: 6,
+//     location: [
+//       { idx: 1, name: "학생회관" },
+//       { idx: 2, name: "학림관" },
+//     ],
+//   },
+// ];
 
 // [1세션]
 // 1. 이해랑예술극장

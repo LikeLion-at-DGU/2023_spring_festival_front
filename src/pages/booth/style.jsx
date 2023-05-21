@@ -122,15 +122,17 @@ export const MapModalSection = styled.section`
 `;
 
 export const MapModalButton = styled.button`
-  width: 70px;
-  min-height: 35px;
+  width: 80px;
+  min-height: 40px;
+  border: none;
   border-radius: 30px;
-  background-color: ${secondaryColor};
-  color: #fff;
+  background-color: ${(props) => (props.clickedLocation ? `${secondaryColor}` : "transparent")};
+  color: ${(props) => (props.clickedLocation ? "#fff" : `${secondaryColor}`)};
   font-family: "Noto Sans KR", sans-serif;
   font-size: 10px;
   transition: all 0.3s;
   @media all and (max-width: 410px) {
+    width: 60px;
     min-height: 30px;
   }
   cursor: pointer;
@@ -294,7 +296,7 @@ export const FilterSectionSub1 = styled.span`
   font-family: "Noto Sans KR", sans-serif;
   cursor: pointer;
   transition: all 0.3s;
-  color: ${(props) => (props.isFocus === 0 ? `${primaryColor}` : "")};
+  color: ${(props) => (props.dayOrNight === "" ? `${primaryColor}` : "")};
 `;
 
 export const FilterSectionSub2 = styled.span`
@@ -306,7 +308,7 @@ export const FilterSectionSub2 = styled.span`
   font-family: "Noto Sans KR", sans-serif;
   cursor: pointer;
   transition: all 0.3s;
-  color: ${(props) => (props.isFocus === 1 ? `${primaryColor}` : "")};
+  color: ${(props) => (props.dayOrNight === "주간부스" ? `${primaryColor}` : "")};
 `;
 
 export const FilterSectionSub3 = styled.span`
@@ -317,7 +319,7 @@ export const FilterSectionSub3 = styled.span`
   font-family: "Noto Sans KR", sans-serif;
   cursor: pointer;
   transition: all 0.3s;
-  color: ${(props) => (props.isFocus === 2 ? `${primaryColor}` : "")};
+  color: ${(props) => (props.dayOrNight === "야간부스" ? `${primaryColor}` : "")};
 `;
 
 export const FilterSectionInput = styled.input`
