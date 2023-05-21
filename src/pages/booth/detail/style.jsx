@@ -1,0 +1,248 @@
+import styled from 'styled-components';
+import Image from 'next/image';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+export const BoothDetailCotainer = styled.div`
+margin-top: 25px;
+z-index: 1;
+display: flex;
+flex-direction: column;
+`
+
+export const BoothLogoImage = styled(Image)`
+width: 334px;
+height: 334px;
+box-shadow: 2px 2px 8px rgba(41, 39, 39, 0.4);
+border-radius: 10px;
+`
+export const BoothLogoWrapper = styled.div`
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  box-shadow: 2px 2px 8px rgba(41, 39, 39, 0.4);
+  border-radius: 10px;
+`
+export const DetailRibbon = styled.div`
+text-align: center;
+    position: absolute;
+    width: 147.83px;
+    height: 40px;
+    top : 10px;
+    left: -40px;
+    padding: 12px 10px 0px 5px;
+    transform: rotate(-45deg);
+    z-index: 2;
+    color: #FFFFFF;
+    font-family: yg-jalnan;
+    font-size: 16px;
+    font-weight: 700;
+    box-shadow: 2px 2px 8px rgba(41, 39, 39, 0.4);
+
+    background-color: ${(props) => {
+    switch (props.type) {
+      case '푸드트럭':
+        return '#71d570'; // Green color for 푸드트럭
+      case '주간부스':
+        return '#6b6bf9'; // Blue color for 주간부스
+      case '플리마켓':
+        return '#c782f8'; // Purple color for 플리마켓
+      default:
+        return '#FFADDB'; // Default color
+    }
+  }};
+`
+
+export const BoothDetailHeader = styled.div`
+margin-top: 31px;
+display: flex;
+flex-direction:  row;
+
+`
+export const BoothDetailOperator = styled.p`
+  color:#656565;
+  font-size: 14px;
+  font-weight: 500;
+  font-family: "Noto Sans KR";
+  margin-bottom: 10px;
+`
+
+export const BoothDetailTitle = styled.h1`
+  color:#545454;
+  font-size: 28px;
+  font-weight: 700;
+  font-family: "yg-jalnan";
+  margin-bottom: 5px;
+  
+`
+export const BoothDetailHeaderWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+`
+export const BoothDetailLoveShareWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-grow: 1;
+  justify-content: flex-end;
+  align-items: center;
+`
+
+export const DetailHeartWrapper = styled.div`
+display: flex;
+flex-direction: column;
+`
+
+export const DetailHeart = styled(FontAwesomeIcon)`
+  display: flex;
+  color: #fc8cae;
+  
+`
+
+export const DetailHeartCnt = styled.p`
+color: #979797;
+font-size: 12px;
+margin-top: 5px;
+text-align: center;
+`
+
+export const ShareIcon = styled(FontAwesomeIcon)`
+display: flex;
+margin-top: 10px;
+align-self: flex-start;
+margin-left: 13px;
+color: #fc8cae;
+`
+export const BoothDetailContent = styled.div`
+
+width: 334px;
+padding: 10px 15px;
+background: #FFF7F9;
+border-radius: 10px;
+margin-top: 13px;
+font-family: "Noto Sans KR";
+font-size: 14px;
+font-family: 400;
+line-height: 18.2px;
+
+`
+
+export const BoothDetailSeparator = styled.hr`
+  width: 334px;
+  border: 1px solid #D2D2D2;
+  margin: 24px 0px;
+`;
+
+
+
+
+export const BoothDetailLocation = styled.div`
+margin-top: 20px;
+  color:#656565;
+  font-size: 14px;
+  line-height: 25px;
+  font-weight: 500;
+`
+
+export const BoothDetailTime = styled.div`
+  color: #656565;
+  font-size: 14px;
+  line-height: 25px;
+  font-weight: 500;
+  
+`
+export const BoothDetailMenuWrapper = styled.div`
+  
+`
+export const BoothDetailMenuHeader = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  line-height: 30px;
+`
+export const BoothDetailMenuTitle = styled.p`
+  font-family: "yg-jalnan";
+  font-size: 18px;
+  
+
+`
+export const BoothDetailMenuAllSee = styled.p`
+color:#656565;
+font-weight: 500;
+`
+export const BoothMenuImage = styled(Image)`
+
+margin: 20px 0px;
+width: 250px;
+border-radius: 10px;
+height: 250px;
+box-shadow: 2px 2px 8px rgba(41, 39, 39, 0.4);
+`
+export const BoothImageWrapper = styled.div`
+  display: flex;
+`
+export const CommentWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+ `
+
+ export const CommentInputWrapper = styled.div`
+  display: flex;
+  margin-top: 15px;
+  color: #6B6B6B;
+  flex-direction: column;
+  font-size: 14px;
+  font-weight: 600;
+ `
+
+export const CommentInfWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+`
+export const CommentId = styled.p`
+flex-grow: 1;
+`
+export const CommentPassword = styled.p`
+margin-left: 10px;
+flex-grow: 1;
+  
+`
+export const CommentContent = styled.p`
+`
+
+export const CommentInput = styled.input`
+margin-left: 10px;
+  height: 30px;
+  width:100px;
+  border: 1px solid #C4C4C4;
+  border-radius: 20px;
+  padding-left: 10px;
+  &::placeholder{
+    font-family: 'AppleSDGothicNeoM00';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: -0.3px;
+    color: #CBCBCB;
+  }
+  
+`
+export const CommentContentInput = styled.textarea`
+margin-top: 10px;
+  padding:7px;
+  width: 333px;
+  border: 1px solid #C4C4C4;
+  border-radius: 20px;
+  height: 30px;
+
+  &::placeholder{
+    font-family: 'AppleSDGothicNeoM00';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: -0.3px;
+    color: #CBCBCB;
+  }
+`

@@ -23,7 +23,7 @@ const Content = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 0 25px;
+  /* padding: 0 25px; */
 `;
 
 const Gradation = styled.div`

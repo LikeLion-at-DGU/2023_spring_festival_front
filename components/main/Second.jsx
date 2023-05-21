@@ -3,7 +3,9 @@ import styled from "styled-components";
 const Container = styled.div`
     width: 100%;
     height: 90%;
-    border: 1.5px solid blue;
+    @media (max-device-height:840px) {
+        margin-top: 60px;
+    }
 `
 
 export default function Second(){
