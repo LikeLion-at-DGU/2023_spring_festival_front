@@ -401,3 +401,47 @@ export const ReplyFromContainer = styled.div`
 display: flex;
 flex-direction: row;
 `
+
+export const ModalDelWrapper = styled.div`
+padding-top: 30px;
+display: flex;
+flex-direction: column;
+align-items: center;
+`
+export const ModalDelHeader = styled.h1`
+  font-size: 18px;
+  font-weight: 700;
+  padding-bottom: 20px;
+  font-family: "yg-jalnan";
+
+`
+
+export const ModalDelDes = styled.p`
+  margin-bottom: 20px;
+  font-size: 14px;
+  
+`
+
+export const ModalDelInput = styled.input`
+  width: 200px;
+  height: 30px;
+  border: 1px solid #C4C4C4;
+  border-radius: 20px;
+  padding-left: 10px;
+  margin-bottom: 20px;
+`
+
+export const ModalDelBtnWrapper = styled.div`
+
+`
+export const MdoalBtn = styled.button`
+background-color: #FC8CAE;
+border: 1px solid #FC8CAE;
+font-size: 14px;
+color : white;
+border-radius: 10px;
+font-weight: 500;
+padding : 5px 10px;
+margin: 10px;
+
+`
