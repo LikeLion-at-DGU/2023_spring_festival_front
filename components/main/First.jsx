@@ -11,15 +11,15 @@ const Container = styled.div`
     height: 85%;
     //border: 1.5px solid black;
     position: relative;
-    @media (max-device-height:690px) {
+    /* @media (max-device-height:690px) {
         margin-top: -60px;
     }
     @media (max-device-height:690px) and (min-device-height:800px) {
-        margin-top: -30px;
+        margin-top: -40px;
     }
     @media (min-device-height:800px) {
         margin-top: 30px;
-    }
+    } */
 `
 
 const Img1 = styled(Image)`
@@ -50,7 +50,7 @@ const Menu = styled.div`
     position: absolute;
     font-size: 26px;
     line-height: 1.25;
-    top:11%;
+    top:100px;
     z-index: 10;
     display: flex;
     flex-direction: column;
@@ -73,7 +73,7 @@ const Date = styled.div`
     z-index: 10;
     div{
         font-family: "yg-jalnan";
-        font-size: 74px;
+        font-size: 68px;
     }
 
 `
