@@ -9,6 +9,7 @@ const Container = styled.div`
   @media (max-device-height:840px) {
         margin-top: -70px;
     }
+  padding: 0 25px;
 `
 
 const Scene = styled(Section)`
