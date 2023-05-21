@@ -69,13 +69,13 @@ const BoothDetailPage = () => {
             id: 1,
             writer: "chan",
             content: "zzzz",
-            created_at: "2023-05-23",
+            created_at: "2023-05-21T21:24:42.354552",
             replies: [
                 {
                     id: 1,
                     writer: "adss",
                     content: "대박",
-                    created_at:"2023-05-23"
+                    created_at:"2023-05-21T21:24:42.354552"
                 },
             ]
         },
@@ -83,19 +83,19 @@ const BoothDetailPage = () => {
             id: 2,
             writer: "mens",
             content: "zzzz",
-            created_at: "2023-05-23",
+            created_at: "2023-05-21T21:24:42.354552",
             replies: [
                 {
                     id: 1,
                     writer: "adss",
                     content: "대박",
-                    created_at:"2023-05-23"
+                    created_at:"2023-05-21T21:24:42.354552"
                 },
                 {
                     id: 2,
                     writer: "adss",
                     content: "대박",
-                    created_at:"2023-05-23"
+                    created_at:"2023-05-21T21:24:42.354552"
                 },
             ]
         },
@@ -279,7 +279,7 @@ useEffect(() => {
                 {comment.map((comment) => (
                     <CommentCard
                         key={comment.id}
-                        id={comment.id}
+                        CommentId={comment.id}
                         writer={comment.writer}
                         content={comment.content}
                         created_at={comment.created_at}
