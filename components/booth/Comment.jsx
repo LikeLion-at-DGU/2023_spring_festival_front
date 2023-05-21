@@ -1,8 +1,11 @@
-import { CommentCardFirstRow, CommentCardSecondRow, CommentCardWrapper, CommentHr, CommentId, CommentInfWrapper, CommentInput, CommentPassword, NameDate, ReplyCommentId, ReplyCommentInfWrapper, ReplyContent, ReplyContentWrapper, ReplyDelete, ReplyForm, ReplyFrist, ReplyFromContainer, ReplyInputContent, ReplyInputContentBtn, ReplySecond, ReplyWrapper } from "@/pages/booth/detail/style";
+import { CommentCardFirstRow, CommentCardSecondRow, CommentCardWrapper, CommentHr, CommentId, CommentInfWrapper, CommentInput, CommentPassword, MdoalBtn, ModalDelBtnWrapper, ModalDelDes, ModalDelHeader, ModalDelInput, ModalDelWrapper, NameDate, ReplyCommentId, ReplyCommentInfWrapper, ReplyContent, ReplyContentWrapper, ReplyDelete, ReplyForm, ReplyFrist, ReplyFromContainer, ReplyInputContent, ReplyInputContentBtn, ReplySecond, ReplyWrapper } from "@/pages/booth/detail/style";
 import { faTurnDownRight, faTurnUp } from "@fortawesome/free-solid-svg-icons";
 import { faTrashCan, } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
+import Modal from 'react-modal';
+import { ModalWrapper } from "components/nav/styled";
+
 
 
 
@@ -18,6 +21,24 @@ function CommentCard({commentId,writer,content,created_at,reply }) {
     const [isReply, setIsReply] = useState(false); // 답글인지 댓글인지 구분하기 위한 상태
     const [replyId, setReplyId] = useState('')
 
+    const customModalStyles = {
+        content: {
+          maxWidth: '400px',
+          margin: 'auto',
+          padding: '20px',
+          border: 'none',
+          borderRadius: '5px',
+          boxShadow: '0 0 10px rgba(0, 0, 0, 0.2)',
+          background: '#fff',
+          height: '300px', // 원하는 높이 값으로 수정해주세요
+        },
+        overlay: {
+          backgroundColor: 'rgba(0, 0, 0, 0.5)',
+          zIndex: '1000',
+        },
+      };
+      
+    
         // 댓글 내용
         const handleCommentContentChange = (event) => {
             const inputValue = event.target.value;
@@ -203,25 +224,39 @@ function CommentCard({commentId,writer,content,created_at,reply }) {
         )}
 
         </CommentCardWrapper>
-        {showDeleteModal && (
-        <div className="delete-modal">
-          <div className="delete-modal-content">
-            <h3>댓글 삭제</h3>
-            <p>댓글을 삭제하시겠습니까?</p>
-            <input
-                required
-              type="password"
-              placeholder="비밀번호"
-              value={deletePassword}
-              onChange={handleDeletePasswordChange}
-            />
-            <div className="delete-modal-buttons">
-              <button onClick={handleDeleteModalClose}>취소</button>
-              <button onClick={handleDeleteModalConfirm}>확인</button>
-            </div>
-          </div>
-        </div>
-      )}
+      <Modal
+      isOpen={showDeleteModal}
+      onRequestClose={handleDeleteModalClose}
+      style={customModalStyles}
+      contentLabel="댓글 삭제"
+    >
+        <ModalDelWrapper>
+            <ModalDelHeader>
+            댓글 삭제
+            </ModalDelHeader>
+            <ModalDelDes>
+            댓글을 삭제하시겠습니까?
+            </ModalDelDes>
+        <ModalDelInput
+          required
+          type="password"
+          placeholder="비밀번호"
+          value={deletePassword}
+          onChange={handleDeletePasswordChange}
+        />
+
+        
+            <ModalDelBtnWrapper>
+                <MdoalBtn onClick={handleDeleteModalClose}>
+                    뒤로가기
+                </MdoalBtn>
+                <MdoalBtn onClick={handleDeleteModalConfirm}>
+                    제출하기
+                </MdoalBtn>
+            </ModalDelBtnWrapper>
+        </ModalDelWrapper>
+    </Modal>
+    
 
         </>
     );
