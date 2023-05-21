@@ -273,7 +273,7 @@ useEffect(() => {
                 <FontAwesomeIcon icon={faCircleExclamation} />
                 &nbsp;욕설이나 비방의 댓글은 필터링 기능에 의해 게시되지 않습니다.
                 </CommentWran>
-            </CommentInputWrapper>
+            </CommentInputWrapper>xw
                 
             <CommentListWrapper>
                 {comment.map((comment) => (

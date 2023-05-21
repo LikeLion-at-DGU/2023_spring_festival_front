@@ -1,4 +1,4 @@
-import { CommentCardFirstRow, CommentCardSecondRow, CommentCardWrapper, CommentHr, CommentId, CommentInfWrapper, CommentInput, CommentPassword, NameDate, ReplyCommentId, ReplyCommentInfWrapper, ReplyContent, ReplyContentWrapper, ReplyDelete, ReplyForm, ReplyFrist, ReplyInputContent, ReplyInputContentBtn, ReplySecond, ReplyWrapper } from "@/pages/booth/detail/style";
+import { CommentCardFirstRow, CommentCardSecondRow, CommentCardWrapper, CommentHr, CommentId, CommentInfWrapper, CommentInput, CommentPassword, NameDate, ReplyCommentId, ReplyCommentInfWrapper, ReplyContent, ReplyContentWrapper, ReplyDelete, ReplyForm, ReplyFrist, ReplyFromContainer, ReplyInputContent, ReplyInputContentBtn, ReplySecond, ReplyWrapper } from "@/pages/booth/detail/style";
 import { faTurnDownRight, faTurnUp } from "@fortawesome/free-solid-svg-icons";
 import { faTrashCan, } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -52,7 +52,7 @@ function CommentCard({writer,content,created_at,reply }) {
             password: replyPassword,
             content : replyCommentContent,
           };
-          console.log(dummyCommentData);
+          console.log(formData);
       };
 
     return (
@@ -95,29 +95,32 @@ function CommentCard({writer,content,created_at,reply }) {
             </>
             {/* Reply 눌렀을때 */}
             {showReplyForm && (
-          <ReplyForm onSubmit={handleSubmitReply}>
-            <ReplyCommentInfWrapper>
-                <ReplyCommentId>
-                    작성자 명
-                    <CommentInput placeholder='닉네임'value={replyNickname}
-                    onChange={handleNicknameChange} required/>
-                </ReplyCommentId>
-                <CommentPassword style={{color:"#808080", fontSize:"12px"}}>
-                    비밀번호
-                    <CommentInput placeholder='숫자 4자리' inputMode='numeric' minLength={4} maxLength={4} type='password' value={replyPassword}
-                    onChange={handlePasswordChange} required />
-                </CommentPassword>
-            </ReplyCommentInfWrapper>
-            <ReplyContentWrapper>
-                <ReplyInputContent
-                    placeholder="댓글을 작성해주세요."
-                    required
-                    value={replyCommentContent}
-                    onChange={handleCommentContentChange}
-                />
-                <ReplyInputContentBtn type="submit">게시</ReplyInputContentBtn>
-            </ReplyContentWrapper>
-          </ReplyForm>
+                <ReplyFromContainer>
+                <FontAwesomeIcon icon={faTurnUp} size="xs" rotation={90} style={{marginRight:"7px",color:"#FC8CAE",marginTop:"7px",display:""}}/>
+                <ReplyForm onSubmit={handleSubmitReply}>
+                    <ReplyCommentInfWrapper>
+                        <ReplyCommentId>
+                            작성자 명
+                            <CommentInput placeholder='닉네임'value={replyNickname}
+                            onChange={handleNicknameChange} required/>
+                        </ReplyCommentId>
+                        <CommentPassword style={{color:"#808080", fontSize:"12px"}}>
+                            비밀번호
+                            <CommentInput placeholder='숫자 4자리' inputMode='numeric' minLength={4} maxLength={4} type='password' value={replyPassword}
+                            onChange={handlePasswordChange} required />
+                        </CommentPassword>
+                    </ReplyCommentInfWrapper>
+                    <ReplyContentWrapper>
+                        <ReplyInputContent
+                            placeholder="댓글을 작성해주세요."
+                            required
+                            value={replyCommentContent}
+                            onChange={handleCommentContentChange}
+                        />
+                        <ReplyInputContentBtn type="submit">게시</ReplyInputContentBtn>
+                    </ReplyContentWrapper>
+                </ReplyForm>
+          </ReplyFromContainer>
         )}
 
         </CommentCardWrapper>

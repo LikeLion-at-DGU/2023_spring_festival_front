@@ -367,7 +367,8 @@ export const ReplyContentWrapper = styled.div`
   align-items: baseline;
 `
 export const ReplyInputContentBtn = styled.button`
-  width: 50px;
+  width: 40px;
+  margin-right: 10px;
   height: 28px;
   background: #FC8CAE;
   color:#FFFFFF;
@@ -394,4 +395,8 @@ export const ReplyCommentInfWrapper = styled.div`
   flex-direction: row;
   justify-content: space-between;
   padding-top : 10px;
+`
+export const ReplyFromContainer = styled.div`
+display: flex;
+flex-direction: row;
 `
