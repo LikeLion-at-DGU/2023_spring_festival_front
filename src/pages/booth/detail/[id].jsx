@@ -5,11 +5,11 @@ import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import DeafultImage from "../../../../components/image/common/booth_deafault.png"
-import { BoothDetailContent, BoothDetailCotainer, BoothDetailHeader, BoothDetailHeaderWrapper, BoothDetailLine, BoothDetailLocation, BoothDetailLoveShareWrapper, BoothDetailMenuAllSee, BoothDetailMenuHeader, BoothDetailMenuTitle, BoothDetailMenuWrapper, BoothDetailOperator, BoothDetailSeparator, BoothDetailTime, BoothDetailTitle, BoothImageSlider, BoothImageWrapper, BoothLogoImage, BoothLogoWrapper, BoothMenuImage, CommentContent, CommentContentInput, CommentId, CommentInfWrapper, CommentInput, CommentInputWrapper, CommentPassword, CommentWrapper, DetailHeart, DetailHeartCnt, DetailHeartWrapper, DetailRibbon, DetailShareIcon, ShareIcon } from './style';
+import { BoothDetailContent, BoothDetailCotainer, BoothDetailHeader, BoothDetailHeaderWrapper, BoothDetailLine, BoothDetailLocation, BoothDetailLoveShareWrapper, BoothDetailMenuAllSee, BoothDetailMenuHeader, BoothDetailMenuTitle, BoothDetailMenuWrapper, BoothDetailOperator, BoothDetailSeparator, BoothDetailTime, BoothDetailTitle, BoothImageSlider, BoothImageWrapper, BoothLogoImage, BoothLogoWrapper, BoothMenuImage, CommentBtn, CommentContent, CommentContentInput, CommentId, CommentInfWrapper, CommentInput, CommentInputContainer, CommentInputWrapper, CommentPassword, CommentWrapper, DetailHeart, DetailHeartCnt, DetailHeartWrapper, DetailRibbon, DetailShareIcon, ShareIcon } from './style';
 import { BoothCardDetailHeartWrapper, CardDetailHeartCntWrapper, CardDetailHeartIcon, Ribbon } from '../search_style';
 import Booth from '..';
 import { faHeart, faShareNodes  } from "@fortawesome/free-solid-svg-icons";
-import { faHeart as emptyHeart,faClock } from "@fortawesome/free-regular-svg-icons";
+import { faHeart as emptyHeart,faClock,faPaperPlane } from "@fortawesome/free-regular-svg-icons";
 import { faLocationDot } from '@fortawesome/free-solid-svg-icons';
 
 import { RankBoothDetailLocation } from '../style';
@@ -28,7 +28,7 @@ const BoothDetailPage = () => {
         const inputValue = event.target.value;
         setCommentContent(inputValue);
     }
-    
+
     // 닉네임
     const handleNicknameChange = (event) => {
         const inputValue = event.target.value;
@@ -94,6 +94,43 @@ const BoothDetailPage = () => {
   };
 
 
+  // 댓글 등록
+  const handleSubmission = (event) => {
+    event.preventDefault(); // 폼 제출의 기본 동작인 페이지 새로고침을 방지합니다.
+
+    const formData = {
+        writer : nickname,
+        password: password,
+        content : commentContent,
+      };
+      const dummyCommentData = {
+        writer : nickname,
+        password: password,
+        content : commentContent,
+      }
+
+      console.log(dummyCommentData);
+
+    // 욕설 필터링 
+    
+    // 욕설 안걸렸을 시 통과 
+
+    //   // post보내기 
+    //   axios.post('reports', formData)
+    //     .then((response) => {
+    //       // console.log(response.data);
+    //     })
+    //     .catch((error) => {
+    //       // console.log( "제보 제출에러!");
+    //       // 오류 처리 로직을 추가합니다.
+    //       console.error('Error:', error);
+    //     });
+
+      // 성공했을시 ReportDone으로 이동          
+
+    // 성공했을시 페이지 새로고침 
+    // window.location.reload();
+  };
 
   return (
     <BoothDetailCotainer>
@@ -116,7 +153,7 @@ const BoothDetailPage = () => {
                     <DetailHeartCnt>{booth.like_cnt}</DetailHeartCnt>
                 </DetailHeartWrapper>
                 
-                <ShareIcon icon={faShareNodes} size='lg' onClick={handleCopyLink}/>
+                <ShareIcon icon={faPaperPlane} size='lg' onClick={handleCopyLink}/>
             </BoothDetailLoveShareWrapper>
 
         </BoothDetailHeader>
@@ -157,8 +194,9 @@ const BoothDetailPage = () => {
                     댓글 {comment.length}
             </BoothDetailMenuTitle>
 
-            {/* 댓글 인풋 */}
-            <CommentInputWrapper>
+            {/* 댓글 Form */}
+            
+            <CommentInputWrapper onSubmit={handleSubmission}>
                 <CommentInfWrapper>
                     <CommentId>
                         작성자 명
@@ -173,7 +211,9 @@ const BoothDetailPage = () => {
                 </CommentInfWrapper>
                 <CommentContent>
                     <CommentContentInput placeholder='숫자 4자리' required value={commentContent} onChange={handleCommentContentChange}/>
+                <CommentBtn>게시</CommentBtn>
                 </CommentContent>
+                
             </CommentInputWrapper>
         </CommentWrapper>
 

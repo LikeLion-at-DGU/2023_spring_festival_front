@@ -184,7 +184,7 @@ export const CommentWrapper = styled.div`
   flex-direction: column;
  `
 
- export const CommentInputWrapper = styled.div`
+ export const CommentInputWrapper = styled.form`
   display: flex;
   margin-top: 15px;
   color: #6B6B6B;
@@ -208,16 +208,20 @@ flex-grow: 1;
   
 `
 export const CommentContent = styled.p`
+  display: flex;
+  align-items: center;
+  position: relative;
 `
 
 export const CommentInput = styled.input`
-margin-left: 10px;
+  margin-left: 10px;
   height: 30px;
-  width:100px;
+  width: 100px;
   border: 1px solid #C4C4C4;
   border-radius: 20px;
   padding-left: 10px;
-  &::placeholder{
+
+  &::placeholder {
     font-family: 'AppleSDGothicNeoM00';
     font-style: normal;
     font-weight: 400;
@@ -228,15 +232,18 @@ margin-left: 10px;
   }
   
 `
-export const CommentContentInput = styled.textarea`
-margin-top: 10px;
-  padding:7px;
+export const CommentContentInput = styled.input`
+  margin-top: 10px;
+  padding: 7px;
   width: 333px;
   border: 1px solid #C4C4C4;
   border-radius: 20px;
   height: 30px;
+  resize: none;
+  overflow-y: hidden; /* Add this line to remove horizontal scroll */
 
-  &::placeholder{
+
+  &::placeholder {
     font-family: 'AppleSDGothicNeoM00';
     font-style: normal;
     font-weight: 400;
@@ -245,4 +252,17 @@ margin-top: 10px;
     letter-spacing: -0.3px;
     color: #CBCBCB;
   }
+`
+
+export const CommentBtn = styled.button`
+position: absolute;
+  right: 20px;
+  top: 65%;
+  transform: translateY(-50%);
+  background: white;
+  border: none;
+  color : #FC8CAE;
+  font-weight: 500;
+  font-size: 14px;
+
 `
