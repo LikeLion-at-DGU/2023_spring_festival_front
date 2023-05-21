@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import styled, { keyframes } from "styled-components";
 import NoticeCard from "components/notice/NoticeCard";
-import { animated, useTrail } from "react-spring";
 
 const Container = styled.div`
   width: 100%;
