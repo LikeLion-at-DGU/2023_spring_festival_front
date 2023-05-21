@@ -26,11 +26,13 @@ const BackButton = styled(FontAwesomeIcon)`
     color: #525252;
     top : 10px;
     left: 0;
-    font-size: 25px;
+    font-size: 20px;
+    width: 15px;
 `
 
 const Img = styled(Image)`
     margin: 0 auto;
+    padding-right: 5%;
 `;
 
 const NavToggle = styled(FontAwesomeIcon)`
@@ -54,6 +56,7 @@ export default function HeadBar(){
 
     // 디테일 페이지 구분을 위한 변수
     const router = useRouter();
+    console.log(router.pathname.split('/')[1]);
 
     return(
         <Container>
@@ -61,8 +64,13 @@ export default function HeadBar(){
             <Title>
                 다시, 봄
             </Title> : <>
-                <BackButton icon={faChevronLeft} style={{color: "#000000",}} />
-                <Img src={page_logo} alt="page_logo"/>
+                <BackButton 
+                    icon={faChevronLeft} 
+                    style={{color: "#000000",}}
+                    onClick={()=>router.back()} />
+                { router.pathname.split('/')[1] === 'notice' ?
+                    <Img src={page_logo} alt="page_logo"/>
+                : <></> }
             </>}
             <NavToggle icon={faBars} onClick={()=>showModal()}/>
             {modalOpen && <Modal setModalOpen={setModalOpen}/>}

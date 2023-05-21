@@ -67,49 +67,59 @@ export default function Modal({ setModalOpen }) {
     return null;
   }
 
-  return (
-    <>
-      <ModalOverlay />
-      <ModalWrapper ref={outSection} isVisible={isVisible}>
-        <ModalButton icon={faArrowLeftLong} onClick={closeModal} />
-        <ModalHeader>
-          <ModalTitle>
-            동국대학교
-            <br />봄 백상대동제
-          </ModalTitle>
-          <ModalTitle>
-            <Image src={nav_logo} alt="nav_logo" />
-          </ModalTitle>
-        </ModalHeader>
-        <ModalPages>
-          <Link href="/" passHref>
-            <ModalPageSection is_active={router.pathname === "/"} onClick={closeModal}>
-              main
-            </ModalPageSection>
-          </Link>
-          <Link href="/notice" passHref>
-            <ModalPageSection is_active={router.pathname === "/notice"} onClick={closeModal}>
-              notice
-            </ModalPageSection>
-          </Link>
-          <Link href="/timetable" passHref>
-            <ModalPageSection is_active={router.pathname === "/timetable"} onClick={closeModal}>
-              timetable
-            </ModalPageSection>
-          </Link>
-          <Link href="/booth" passHref>
-            <ModalPageSection is_active={router.pathname === "/booth"} onClick={closeModal}>
-              booth
-            </ModalPageSection>
-          </Link>
-          <Link href="/about" passHref>
-            <ModalPageSection is_active={router.pathname === "/about"} onClick={closeModal}>
-              about
-            </ModalPageSection>
-          </Link>
-        </ModalPages>
-        <ModalFooter>©DGU LIKELION. All rights reserved.</ModalFooter>
-      </ModalWrapper>
-    </>
-  );
+    return(
+        <>
+            <ModalOverlay />
+            <ModalWrapper ref={outSection} isVisible={isVisible}>
+                <ModalButton icon={faArrowLeftLong} onClick={closeModal} />
+                <ModalHeader>
+                    <ModalTitle>동국대학교<br/>봄 백상대동제</ModalTitle>
+                    <ModalTitle><Image src={nav_logo} alt="nav_logo"/></ModalTitle>
+                </ModalHeader>
+                <ModalPages>
+                    <Link href="/" passHref>
+                        <ModalPageSection
+                            is_active = {router.pathname === '/'}
+                            onClick={closeModal}
+                            >main</ModalPageSection>
+                    </Link>
+                    <Link href="/notice" passHref>
+                        <ModalPageSection
+                            is_active = {router.pathname === '/notice'}
+                            onClick={closeModal}
+                            >notice</ModalPageSection>
+                    </Link>
+                    <Link href="/timetable" passHref>
+                        <ModalPageSection
+                            is_active = {router.pathname === '/timetable'}
+                            onClick={closeModal}
+                            >timetable</ModalPageSection>
+                    </Link>
+                    <Link href="/booth" passHref>
+                        <ModalPageSection
+                            is_active = {router.pathname === '/booth'}
+                            onClick={closeModal}
+                            >booth</ModalPageSection>
+                    </Link>
+                    <Link href="/booth/search" passHref>
+                        <ModalPageSection
+                            is_active = {router.pathname === '/booth/search'}
+                            onClick={closeModal}
+                            style={{
+                                fontSize: '20px'
+                            }}
+                            >booth search</ModalPageSection>
+                    </Link>
+                    <Link href="/about" passHref>
+                        <ModalPageSection
+                            is_active = {router.pathname === '/about'}
+                            onClick={closeModal}
+                            >about</ModalPageSection>
+                    </Link>
+                </ModalPages>
+                <ModalFooter>©DGU LIKELION. All rights reserved.</ModalFooter>
+            </ModalWrapper>
+        </>
+        
+    );
 }

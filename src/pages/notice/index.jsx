@@ -112,6 +112,14 @@ export default function Notice(){
           "created_at": "2023-05-13T07:47:07.687842+09:00",
           "images": []
         },
+        {
+          "id": 5,
+          "title": "etc",
+          "type": "etc",
+          "content": "etc test",
+          "created_at": "2023-05-13T07:47:07.687842+09:00",
+          "images": []
+        },
       ];
 
       setNotice(noticeData);
@@ -129,6 +137,14 @@ export default function Notice(){
     currentType === 'all' ? notice : notice.filter(
       (notice)=>notice.type === currentType);
 
+  // 애니메이션
+  const trail = useTrail(typeNotices.length, {
+    opacity: 1,
+    transform: 'translateY(0)',
+    from: { opacity: 0, transform: 'translateY(50px)' },
+    config: { mass: 1, tension: 300, friction: 20 }
+  });
+
   return(
     <Container>
       <TypeWrapper>
@@ -145,13 +161,22 @@ export default function Notice(){
         })}
       </TypeWrapper>
       <TypeBody isVisible={typeNotices.length > 0}>
-        {typeNotices.map((notice)=>(
-          <NoticeCard 
+        {/* {typeNotices.map((notice)=>( */}
+        {trail.map((style, index) => (
+          <animated.div key={typeNotices[index].id} style={style}>
+            <NoticeCard 
+              key={typeNotices[index].id}
+              id={typeNotices[index].id}
+              notice={typeNotices[index]}
+            />
+          </animated.div>
+        ))}
+          {/* <NoticeCard 
             key={notice.id}
             id={notice.id}
             notice={notice}
-          />
-        ))}
+          /> */}
+        {/* ))} */}
         
       </TypeBody>
     </Container>
