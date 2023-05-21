@@ -1,9 +1,12 @@
 import styled from 'styled-components';
 import Image from 'next/image';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export const BoothDetailCotainer = styled.div`
 margin-top: 25px;
 z-index: 1;
+display: flex;
+flex-direction: column;
 `
 
 export const BoothLogoImage = styled(Image)`
@@ -11,7 +14,6 @@ width: 334px;
 height: 334px;
 box-shadow: 2px 2px 8px rgba(41, 39, 39, 0.4);
 border-radius: 10px;
-
 `
 export const BoothLogoWrapper = styled.div`
   position: relative;
@@ -50,3 +52,75 @@ text-align: center;
   }};
 `
 
+export const BoothDetailHeader = styled.div`
+margin-top: 31px;
+display: flex;
+flex-direction:  row;
+
+`
+export const BoothDetailOperator = styled.p`
+  color:#656565;
+  font-size: 14px;
+  font-weight: 500;
+  font-family: "Noto Sans KR";
+  margin-bottom: 10px;
+`
+
+export const BoothDetailTitle = styled.h1`
+  color:#545454;
+  font-size: 28px;
+  font-weight: 700;
+  font-family: "yg-jalnan";
+  margin-bottom: 5px;
+  
+`
+export const BoothDetailHeaderWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+`
+export const BoothDetailLoveShareWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-grow: 1;
+  justify-content: flex-end;
+  align-items: center;
+`
+
+export const DetailHeartWrapper = styled.div`
+display: flex;
+flex-direction: column;
+`
+
+export const DetailHeart = styled(FontAwesomeIcon)`
+  display: flex;
+  color: #fc8cae;
+  
+`
+
+export const DetailHeartCnt = styled.p`
+color: #979797;
+font-size: 12px;
+margin-top: 5px;
+text-align: center;
+`
+
+export const ShareIcon = styled(FontAwesomeIcon)`
+display: flex;
+margin-top: 10px;
+align-self: flex-start;
+margin-left: 13px;
+color: #fc8cae;
+`
+export const BoothDetailContent = styled.div`
+
+width: 334px;
+padding: 10px 15px;
+background: #FFF7F9;
+border-radius: 10px;
+margin-top: 13px;
+font-family: "Noto Sans KR";
+font-size: 14px;
+font-family: 400;
+line-height: 18.2px;
+
+`
