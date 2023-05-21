@@ -5,6 +5,7 @@ import Modal from "../nav/Modal";
 import { useState } from "react";
 import { useRouter } from 'next/router';
 import Image from 'next/image';
+import Link from 'next/link';
 import notice_page_logo from '../image/common/notice.svg';
 import booth_page_logo from '../image/common/booth.svg';
 
@@ -17,7 +18,7 @@ const Container = styled.nav`
     padding: 0 26px;
 `
 
-const Title = styled.div`
+const Title = styled(Link)`
     font-family: 'TmonMonsori';
     font-size: 24px;
 `
@@ -61,8 +62,8 @@ export default function HeadBar(){
     return(
         <Container>
             { !router.query.id && (router.pathname.split('/')[2] != 'search') ? 
-            <Title>
-                다시, 봄
+            <Title href="/">
+                    다시, 봄
             </Title> : <>
                 <BackButton 
                     icon={faChevronLeft} 
