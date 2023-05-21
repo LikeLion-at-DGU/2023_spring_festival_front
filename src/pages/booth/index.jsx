@@ -8,6 +8,7 @@ import {
   DateContainer,
   DateSection,
   DayBox,
+  FilterSectionInput,
   FilterSectionSub1,
   FilterSectionSub2,
   FilterSectionSub3,
@@ -30,6 +31,7 @@ import map from "../../../components/image/booth/campus_map.svg";
 import pin from "../../../components/image/booth/pin.png";
 import { BoothCardGridWrapper } from "./search_style";
 import BoothCard from "components/booth/BoothCard";
+import { testBoothData } from "./testData";
 
 // 날짜 배열
 const dayArray = [
@@ -53,7 +55,7 @@ const dayArray = [
 export default function Booth() {
   // DATE 관리-------------------------------------
   const day = new Date();
-  // 23일 -> 1, 24일 -> 2, 25일 -> 3 인덱싱--------
+  // 23일 -> 1, 24일 -> 2, 25일 -> 3 --------------
   const todate = day.getDate() === 24 ? 2 : day.getDate() === 25 ? 3 : 1;
   const [isToday, setIsToday] = useState(todate);
 
@@ -61,6 +63,8 @@ export default function Booth() {
   const [guideMessage, setGuideMessage] = useState("시작을 위해 지도를 클릭해주세요.");
   const [firstScene, setFirstScene] = useState(true);
   const [secondScene, setSecondScene] = useState(false);
+  const [thirdLeftScene, setThirdLeftScene] = useState(false);
+  const [thirdRightScene, setThirdRightScene] = useState(false);
   const [isFocus, setIsFocus] = useState(0);
 
   const FirstMoved = useMemo(() => {
@@ -68,12 +72,45 @@ export default function Booth() {
   }, [firstScene]);
 
   // Function 관리---------------------------------
-  const handleMap = () => {
+  const handleMap = async () => {
     setGuideMessage("원하시는 위치의 핀을 선택해주세요.");
     setFirstScene(false);
     setSecondScene(true);
   };
 
+  const handlePinLeft = async () => {
+    setThirdLeftScene(true);
+    setThirdRightScene(false);
+    setGuideMessage("전체 보기");
+  };
+
+  const handlePinRight = async () => {
+    setThirdRightScene(true);
+    setThirdLeftScene(false);
+    setGuideMessage("전체 보기");
+  };
+
+  const handlePinCenter = async () => {
+    if (secondScene && (thirdLeftScene || thirdRightScene)) {
+      setThirdLeftScene(false);
+      setThirdRightScene(false);
+    }
+  };
+
+  const boothData = testBoothData.map((booth) => {
+    return (
+      <BoothCard
+        key={booth.id}
+        name={booth.name}
+        type={booth.type}
+        operator={booth.operator}
+        likeCnt={booth.like_cnt}
+        isLike={booth.is_liked}
+        location={booth.location}
+      />
+    );
+  });
+  console.log(thirdLeftScene, thirdRightScene);
   return (
     <Container>
       {/* RankingSection------------------------- */}
@@ -97,30 +134,43 @@ export default function Booth() {
         ))}
       </DateSection>
       {/* MapSection----------------------------- */}
-      <MapSection onClick={handleMap} firstMoved={FirstMoved}>
+      <MapSection
+        onClick={handleMap}
+        firstMoved={FirstMoved}
+        secondScene={secondScene}
+        secondLeftMoved={thirdLeftScene}
+        secondRightMoved={thirdRightScene}
+        className="fadeIn"
+      >
         <Image src={map} alt="campus_map" fill />
-        <Pin1 secondScene={secondScene}>
+        <Pin1 onClick={handlePinLeft} secondScene={secondScene}>
           <Image src={pin} alt="pin" fill style={{ objectFit: "cover" }} />
         </Pin1>
-        <Pin2 secondScene={secondScene}>
+        <Pin2 onClick={handlePinLeft} secondScene={secondScene}>
           <Image src={pin} alt="pin" fill style={{ objectFit: "cover" }} />
         </Pin2>
-        <Pin3 secondScene={secondScene}>
+        <Pin3 onClick={handlePinLeft} secondScene={secondScene}>
           <Image src={pin} alt="pin" fill style={{ objectFit: "cover" }} />
         </Pin3>
-        <Pin4 secondScene={secondScene}>
+        <Pin4 onClick={handlePinRight} secondScene={secondScene}>
           <Image src={pin} alt="pin" fill style={{ objectFit: "cover" }} />
         </Pin4>
-        <Pin5 secondScene={secondScene}>
+        <Pin5 onClick={handlePinRight} secondScene={secondScene}>
           <Image src={pin} alt="pin" fill style={{ objectFit: "cover" }} />
         </Pin5>
-        <Pin6 secondScene={secondScene}>
+        <Pin6 onClick={handlePinRight} secondScene={secondScene}>
           <Image src={pin} alt="pin" fill style={{ objectFit: "cover" }} />
         </Pin6>
       </MapSection>
-      <GuideMessage>{guideMessage}</GuideMessage>
+      <GuideMessage
+        secondLeftMoved={thirdLeftScene}
+        secondRightMoved={thirdRightScene}
+        onClick={handlePinCenter}
+      >
+        {guideMessage}
+      </GuideMessage>
       {/* GridSection---------------------------- */}
-      <BoothFilterSection>
+      <BoothFilterSection firstMoved={FirstMoved} className="fadeIn">
         <FilterSectionSub1 isFocus={isFocus} onClick={() => setIsFocus(0)}>
           전체
         </FilterSectionSub1>
@@ -130,11 +180,11 @@ export default function Booth() {
         <FilterSectionSub3 isFocus={isFocus} onClick={() => setIsFocus(2)}>
           야간부스
         </FilterSectionSub3>
+        {/* 희찬 검색어 작업 연결 */}
+        <FilterSectionInput placeholder="검색어를 입력해주세요" />
       </BoothFilterSection>
-      <BoothCardGridWrapper>
-        <BoothCard name="코오오딩주점" operator="멋쟁이사자처럼" location="학생회관" type="ribon" />
-        <BoothCard name="코오오딩주점" operator="멋쟁이사자처럼" location="학생회관" type="ribon" />
-        <BoothCard name="코오오딩주점" operator="멋쟁이사자처럼" location="학생회관" type="ribon" />
+      <BoothCardGridWrapper firstMoved={FirstMoved} className="FadeIn">
+        {boothData}
       </BoothCardGridWrapper>
     </Container>
   );

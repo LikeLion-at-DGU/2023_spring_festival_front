@@ -2,7 +2,7 @@ import styled, { css, keyframes } from "styled-components";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { primaryColor, secondaryColor } from "../_app";
+import { primaryColor, secondaryColor, subPinkColor } from "../_app";
 
 export const Container = styled.div`
   width: 100%;
@@ -10,11 +10,12 @@ export const Container = styled.div`
   flex-direction: column;
   padding-top: 20px;
   z-index: 1;
+  overflow: hidden;
 `;
 // 날짜 컨테이너
 export const DateSection = styled.div`
   width: 100%;
-  height: 15vh;
+  height: 150px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -41,7 +42,7 @@ export const FadeInOut = keyframes`
 
 export const RankingSection = styled.section`
   width: 100%;
-  height: 20vh;
+  height: 200px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -74,11 +75,19 @@ export const RankingHotButton = styled.button`
 
 export const MapSection = styled.section`
   width: 100%;
-  height: 30vh;
+  height: 300px;
   cursor: pointer;
   position: relative;
-  transition: all 0.5s;
-  margin-top: ${(props) => (props.firstMoved ? "0vh" : "-5vh")};
+  transition: all 1s;
+  margin-top: ${(props) => (props.firstMoved ? "0vh" : "-50px")};
+  margin-left: ${(props) =>
+    props.secondLeftMoved && props.secondScene
+      ? "100px"
+      : props.secondRightMoved && props.secondScene
+      ? "-100px"
+      : ""};
+  margin-right: 50px;
+  z-index: 2;
 `;
 
 export const Pin1 = styled.section`
@@ -128,11 +137,12 @@ export const Pin3 = styled.section`
 `;
 
 export const Pin4 = styled.section`
+  /* 학생회관 4층 */
   width: 35px;
   height: 35px;
   position: absolute;
-  left: 62%;
-  bottom: 45%;
+  left: 73%;
+  bottom: 53%;
   animation: ${(props) =>
     props.secondScene
       ? css`
@@ -148,8 +158,8 @@ export const Pin5 = styled.section`
   width: 35px;
   height: 35px;
   position: absolute;
-  left: 73%;
-  bottom: 53%;
+  left: 62%;
+  bottom: 45%;
   animation: ${(props) =>
     props.secondScene
       ? css`
@@ -193,8 +203,13 @@ export const BoothFilterSection = styled.section`
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  font-size: 14px;
   color: ${secondaryColor};
   margin-top: 50px;
+  display: ${(props) => (props.firstMoved ? "none" : "flex")};
+  @media all and (max-width: 420px) {
+    font-size: 12px;
+  }
 `;
 
 export const FilterSectionSub1 = styled.span`
@@ -230,6 +245,17 @@ export const FilterSectionSub3 = styled.span`
   cursor: pointer;
   transition: all 0.3s;
   color: ${(props) => (props.isFocus === 2 ? `${primaryColor}` : "")};
+`;
+
+export const FilterSectionInput = styled.input`
+  width: 150px;
+  height: 22px;
+  padding: 10px;
+  border: none;
+  border-radius: 30px;
+  font-family: "Noto Sans KR", sans-serif;
+  background-color: ${subPinkColor};
+  margin-left: 5px;
 `;
 
 // 희찬------------------------------------------------
