@@ -263,12 +263,19 @@ useEffect(() => {
                 </BoothDetailMenuAllSee> */}
             </BoothDetailMenuHeader>
             <BoothImageWrapper>
-            <BoothMenuImage src={DeafultImage} 
-            alt="Booth Menu Image"
-            width={250}
-            height={250}
-            />
-            </BoothImageWrapper>
+                <BoothMenuImage src={DeafultImage} 
+                    alt="Booth Menu Image"
+                    width={250}
+                    height={250}
+                    />
+                </BoothImageWrapper>
+                <BoothImageWrapper>
+                    <BoothMenuImage src={DeafultImage} 
+                    alt="Booth Menu Image"
+                    width={250}
+                    height={250}
+                    />
+                </BoothImageWrapper>
         </BoothDetailMenuWrapper>
 
         {/* 댓글 */}

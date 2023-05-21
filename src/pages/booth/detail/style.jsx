@@ -46,6 +46,8 @@ text-align: center;
         return '#579AFF'; // Blue color for 주간부스
       case '플리마켓':
         return '#DF8CFC'; // Purple color for 플리마켓
+      case '학교부스':
+        return "#FFA665"
       default:
         return '#FFADDB'; // Default color
     }
@@ -169,16 +171,33 @@ color:#656565;
 font-weight: 500;
 `
 export const BoothMenuImage = styled(Image)`
-
-margin: 20px 0px;
-width: 250px;
-border-radius: 10px;
-height: 250px;
-box-shadow: 2px 2px 8px rgba(41, 39, 39, 0.4);
+  display: flex;
+  margin: 20px 0px;
+  width: 250px;
+  border-radius: 10px;
+  height: 250px;
+  box-shadow: 2px 2px 8px rgba(41, 39, 39, 0.4);
 `
 export const BoothImageWrapper = styled.div`
   display: flex;
 `
+
+export const BoothImageSlider = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-items: center;
+  align-items: center;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  ::-webkit-scrollbar {
+      width: 4px;
+      height: 4px;
+  }
+  ::-webkit-scrollbar-thumb {
+      border-radius: 10px;
+  }
+`
+
 export const CommentWrapper = styled.div`
   display: flex;
   flex-direction: column;
