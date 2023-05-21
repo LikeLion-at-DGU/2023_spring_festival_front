@@ -91,13 +91,13 @@ const nextConfig = {
       // Notice 관련 API
       {
         // 공지 리스트 (GET)
-        source: "/notice",
+        source: "/alarm",
         destination: `http://${APIURL}/api/notifications`,
       },
       {
         // 공지 디테일 (GET)
-        source: "/notice/:id",
-        destination: `http://${APIURL}/api/notifications/:id`,
+        source: "/alarm/:alarm_id",
+        destination: `http://${APIURL}/api/notifications/:alarm_id`,
       },
     ]
   }
