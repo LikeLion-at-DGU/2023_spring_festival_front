@@ -4,10 +4,10 @@ import NoticeCard from "components/notice/NoticeCard";
 import { animated, useTrail } from "react-spring";
 
 const Container = styled.div`
-  width: 100%;
+  width: 90%;
   display: flex;
   flex-direction: column;
-  margin-top: 25px;
+  margin-top: 5%;
   z-index: 1;
 `;
 
