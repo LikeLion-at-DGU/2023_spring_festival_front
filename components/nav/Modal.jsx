@@ -61,6 +61,8 @@ export default function Modal({ setModalOpen }) {
 
   // router
   const router = useRouter();
+  const currentPage = router.pathname.split('/')[1];
+  const boothSearch = router.pathname.split('/')[2];
 
   // 모달이 완전히 열린 후 렌더링
   if (!isMounted) {
@@ -79,31 +81,31 @@ export default function Modal({ setModalOpen }) {
                 <ModalPages>
                     <Link href="/" passHref>
                         <ModalPageSection
-                            is_active = {router.pathname === '/'}
+                            is_active = {currentPage === ''}
                             onClick={closeModal}
                             >main</ModalPageSection>
                     </Link>
                     <Link href="/notice" passHref>
                         <ModalPageSection
-                            is_active = {router.pathname === '/notice'}
+                            is_active = {currentPage === 'notice'}
                             onClick={closeModal}
                             >notice</ModalPageSection>
                     </Link>
                     <Link href="/timetable" passHref>
                         <ModalPageSection
-                            is_active = {router.pathname === '/timetable'}
+                            is_active = {currentPage === 'timetable'}
                             onClick={closeModal}
                             >timetable</ModalPageSection>
                     </Link>
                     <Link href="/booth" passHref>
                         <ModalPageSection
-                            is_active = {router.pathname === '/booth'}
+                            is_active = {currentPage === 'booth' && boothSearch != 'search'}
                             onClick={closeModal}
                             >booth</ModalPageSection>
                     </Link>
                     <Link href="/booth/search" passHref>
                         <ModalPageSection
-                            is_active = {router.pathname === '/booth/search'}
+                            is_active = {currentPage === 'booth' && boothSearch === 'search'}
                             onClick={closeModal}
                             style={{
                                 fontSize: '20px'
@@ -112,7 +114,7 @@ export default function Modal({ setModalOpen }) {
                     </Link>
                     <Link href="/about" passHref>
                         <ModalPageSection
-                            is_active = {router.pathname === '/about'}
+                            is_active = {currentPage === 'about'}
                             onClick={closeModal}
                             >about</ModalPageSection>
                     </Link>
