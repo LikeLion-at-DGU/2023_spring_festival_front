@@ -25,54 +25,58 @@ export const SearchNoResult = styled.h2`
 
 export const BoothCardWrapper = styled.div`
   position: relative; /* Add position relative */
-    width: 160px;
-    height : 200px;
-    background: #FFFFFF;
-    box-shadow: 2px 2px 8px rgba(41, 39, 39, 0.4);
-    border-radius: 10px;
-    margin : 10px auto;
-    
+  width: 160px;
+  height: 200px;
+  background: #ffffff;
+  box-shadow: 2px 2px 8px rgba(41, 39, 39, 0.4);
+  border-radius: 10px;
+  margin: 10px auto;
   z-index: 1;
   overflow: hidden;
+  /* 자식 요소 같이 반응형 적용 필요 */
+  @media all and (max-width: 430px) {
+    width: 128px;
+    height: 160px;
+  }
 
   /* &::before {
     content: '';
     position: absolute;
     width: 96.13px;
-height: 26.01px;
-top : 9px;
-left: -20px;
+    height: 26.01px;
+    top : 9px;
+    left: -20px;
     background: #FFADDB;
     transform: rotate(-45deg);
     z-index: 2;
   } */
 `;
 export const Ribbon = styled.div`
-    position: absolute;
-    width: 96.13px;
-    height: 26.01px;
-    top : -110px;
-    left: -30px;
-    padding: 7px 0px 0px 13px;
-    box-shadow: 1px 1px 2px rgba(41, 39, 39, 0.4);
-    transform: rotate(-45deg);
-    z-index: 2;
-    color: #FFFFFF;
-    font-family: yg-jalnan;
-    font-size: 12px;
-        background-color: ${(props) => {
+  position: absolute;
+  width: 96.13px;
+  height: 26.01px;
+  top: -110px;
+  left: -30px;
+  padding: 7px 0px 0px 13px;
+  box-shadow: 1px 1px 2px rgba(41, 39, 39, 0.4);
+  transform: rotate(-45deg);
+  z-index: 2;
+  color: #ffffff;
+  font-family: yg-jalnan;
+  font-size: 12px;
+  background-color: ${(props) => {
     switch (props.type) {
-      case '푸드트럭':
-        return '#71d570'; // Green color for 푸드트럭
-      case '주간부스':
-        return '#6b6bf9'; // Blue color for 주간부스
-      case '플리마켓':
-        return '#c782f8'; // Purple color for 플리마켓
+      case "푸드트럭":
+        return "#71d570"; // Green color for 푸드트럭
+      case "주간부스":
+        return "#6b6bf9"; // Blue color for 주간부스
+      case "플리마켓":
+        return "#c782f8"; // Purple color for 플리마켓
       default:
-        return '#FFADDB'; // Default color
+        return "#FFADDB"; // Default color
     }
   }};
-`
+`;
 export const BoothCardImage = styled(Image)`
   width: 160px;
   height: 160px;
@@ -83,8 +87,8 @@ export const BoothCardGridWrapper = styled.div`
   display: grid;
   grid-template-rows: 2fr;
   grid-template-columns: 1fr 1fr;
-  padding : 0px 10px;
-    
+  padding: 0px 10px;
+  display: ${(props) => (props.firstMoved ? "none" : "grid")};
 `;
 
 export const BoothCardDetailWrapper = styled.div`
@@ -141,19 +145,17 @@ export const CardDetailHeartCntWrapper = styled.div`
 `;
 
 export const RecomandBoothWrapper = styled.div`
-
-    
-    display: grid;
-grid-template-rows: 2fr;
+  display: grid;
+  grid-template-rows: 2fr;
   grid-template-columns: 1fr 1fr;
   padding: 0px 10px;
-`
+`;
 export const RecommandBoothTitle = styled.h1`
-    font-size: 20px;
-    margin-top: 40px;
-    margin-bottom: 20px;
-    color: #FC8CAE;
-`
+  font-size: 20px;
+  margin-top: 40px;
+  margin-bottom: 20px;
+  color: #fc8cae;
+`;
 export const SearchContainer = styled.div`
-z-index: 1;
-`
+  z-index: 1;
+`;
