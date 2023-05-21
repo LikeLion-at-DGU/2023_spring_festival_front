@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export const BoothDetailCotainer = styled.div`
 margin-top: 25px;
+width: 336px;
 z-index: 1;
 display: flex;
 flex-direction: column;
@@ -19,7 +20,6 @@ export const BoothLogoWrapper = styled.div`
   position: relative;
   z-index: 1;
   overflow: hidden;
-  box-shadow: 2px 2px 8px rgba(41, 39, 39, 0.4);
   border-radius: 10px;
 `
 export const DetailRibbon = styled.div`
@@ -172,7 +172,10 @@ font-weight: 500;
 `
 export const BoothMenuImage = styled(Image)`
   display: flex;
-  margin: 20px 0px;
+  flex: 0 0 auto;
+  margin-right: 10px;
+  scroll-snap-align: start;
+  margin: 20px 5px;
   width: 250px;
   border-radius: 10px;
   height: 250px;
@@ -184,11 +187,11 @@ export const BoothImageWrapper = styled.div`
 
 export const BoothImageSlider = styled.div`
   display: flex;
-  flex-direction: row;
-  justify-items: center;
   align-items: center;
   flex-wrap: nowrap;
-  overflow-x: auto;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
   ::-webkit-scrollbar {
       width: 4px;
       height: 4px;
