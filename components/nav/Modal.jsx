@@ -105,6 +105,15 @@ export default function Modal({setModalOpen}) {
                             onClick={closeModal}
                             >booth</ModalPageSection>
                     </Link>
+                    <Link href="/booth/search" passHref>
+                        <ModalPageSection
+                            is_active = {router.pathname === '/booth/search'}
+                            onClick={closeModal}
+                            style={{
+                                fontSize: '20px'
+                            }}
+                            >booth search</ModalPageSection>
+                    </Link>
                     <Link href="/about" passHref>
                         <ModalPageSection
                             is_active = {router.pathname === '/about'}

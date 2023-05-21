@@ -27,9 +27,9 @@ export const slideOut = keyframes`
 `;
 
 export const ModalWrapper = styled.div`
-
+    font-family: "yg-jalnan";
     background: #FFFFFF;
-    z-index: 100;
+    z-index: 120;
     height: 100vh;
     top: 0;
     position: absolute;
@@ -57,7 +57,7 @@ export const ModalOverlay = styled.div`
     width: 100%;
     height: 100%;
     background-color: #101010CC;
-    z-index: 99; 
+    z-index: 110; 
 `;
 
 export const ModalButton = styled(FontAwesomeIcon)`
@@ -85,11 +85,12 @@ export const ModalPages = styled.div`
     flex-direction: column;
     justify-content: space-between;
     gap: 4vh;
-    font-weight: 700;
     font-size: 32px;
 `;
 
 export const ModalPageSection = styled.a`
+    font-family: 'ygotjalnanfont';
+    font-weight: 700;
     width: 100%;
     display: flex;
     color: ${ ({is_active}) => ( !is_active ? '#525252' : '#FC8CAE') };
