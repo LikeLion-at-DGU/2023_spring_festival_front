@@ -41,11 +41,11 @@ text-align: center;
     background-color: ${(props) => {
     switch (props.type) {
       case '푸드트럭':
-        return '#71d570'; // Green color for 푸드트럭
+        return '#71D86F'; // Green color for 푸드트럭
       case '주간부스':
-        return '#6b6bf9'; // Blue color for 주간부스
+        return '#579AFF'; // Blue color for 주간부스
       case '플리마켓':
-        return '#c782f8'; // Purple color for 플리마켓
+        return '#DF8CFC'; // Purple color for 플리마켓
       default:
         return '#FFADDB'; // Default color
     }
