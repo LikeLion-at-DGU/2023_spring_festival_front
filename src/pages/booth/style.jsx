@@ -124,9 +124,10 @@ export const MapModalSection = styled.section`
 export const MapModalButton = styled.button`
   width: 70px;
   min-height: 35px;
+  border: none;
   border-radius: 30px;
-  background-color: ${secondaryColor};
-  color: #fff;
+  background-color: ${(props) => (props.clickedLocation ? `${secondaryColor}` : "transparent")};
+  color: ${(props) => (props.clickedLocation ? "#fff" : `${secondaryColor}`)};
   font-family: "Noto Sans KR", sans-serif;
   font-size: 10px;
   transition: all 0.3s;

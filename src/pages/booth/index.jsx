@@ -70,8 +70,12 @@ export default function Booth() {
   const [secondScene, setSecondScene] = useState(false);
   const [thirdLeftScene, setThirdLeftScene] = useState(false);
   const [thirdRightScene, setThirdRightScene] = useState(false);
+  // Booth Modal 디폴트 -> 가운데 핀 index
+  const [boothSector, setBoothSector] = useState(2);
+  // Booth Modal Button 디폴트 -> 전체
+  const [boothSectorDetail, setBoothSectorDetail] = useState(0);
+  // 디폴트 -> 전체 부스
   const [isFocus, setIsFocus] = useState(0);
-  const [boothSector, setBoothSector] = useState(1);
   const FirstMoved = useMemo(() => {
     return firstScene;
   }, [firstScene]);
@@ -147,20 +151,54 @@ export default function Booth() {
     );
   });
 
-  const boothSectorData = boothSectorArray[boothSector].map((s) => {
-    return <MapModalButton key={s.id}>{s.location}</MapModalButton>;
+  const boothSectorData = boothSectorArray[boothSector]?.map((sec) => {
+    let clickedLocation = false;
+    if (sec.id === boothSectorDetail) {
+      clickedLocation = true;
+      return (
+        <MapModalButton
+          key={sec.id}
+          clickedLocation={clickedLocation}
+          onClick={() => setBoothSectorDetail(sec.id)}
+        >
+          {sec.location}
+        </MapModalButton>
+      );
+    } else if (sec.id === 0) {
+      clickedLocation = true;
+      return (
+        <MapModalButton
+          key={sec.id}
+          clickedLocation={clickedLocation}
+          onClick={() => setBoothSectorDetail(sec.id)}
+        >
+          {sec.location}
+        </MapModalButton>
+      );
+    } else {
+      clickedLocation = false;
+      return (
+        <MapModalButton
+          key={sec.id}
+          clickedLocation={clickedLocation}
+          onClick={() => setBoothSectorDetail(sec.id)}
+        >
+          {sec.location}
+        </MapModalButton>
+      );
+    }
   });
 
-  const locationList = boothSectorArray[boothSector].map((loc) => {
+  const locationList = boothSectorArray[boothSector]?.map((loc) => {
     if (loc.length > 1) {
-      loc.map((loc2) => {
+      loc?.map((loc2) => {
         return (
           <SelectedLocation
             key={loc2.id}
             secondLeftMoved={thirdLeftScene}
             secondRightMoved={thirdRightScene}
           >
-            {loc2.location},{" "}
+            {loc2.location}
           </SelectedLocation>
         );
       });
@@ -208,11 +246,16 @@ export default function Booth() {
           secondRightMoved={thirdRightScene}
           className="fadeIn"
         >
-          {boothSectorArray[boothSector].length === 1 ? (
+          {boothSectorArray[boothSector]?.length === 1 ? (
             boothSectorData
           ) : (
             <>
-              <MapModalButton>전체</MapModalButton>
+              <MapModalButton
+                clickedLocation={boothSectorDetail === 0}
+                onClick={() => setBoothSectorDetail(0)}
+              >
+                전체
+              </MapModalButton>
               {boothSectorData}
             </>
           )}
