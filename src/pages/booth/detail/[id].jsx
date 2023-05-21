@@ -24,6 +24,25 @@ const BoothDetailPage = () => {
     const [nickname, setNickname] = useState('');
     const [commentContent, setCommentContent] = useState('');
 
+   
+  const handleHeartClick = async () => {
+    try {
+        // axios요청 보내기 
+    //   const response = await axios.post(`/api/booths/${booth.id}/likes`);
+        console.log("하트 클릭");
+
+      if (response.status === 200) {
+        console.log("하트 클릭 성공");
+      } else {
+        // Handle error case
+        console.log("하트 클릭 실패");
+      }
+    } catch (error) {
+      // Handle error case
+    }
+  };
+
+      
     // 댓글 내용
     const handleCommentContentChange = (event) => {
         const inputValue = event.target.value;
@@ -69,13 +88,13 @@ const BoothDetailPage = () => {
             id: 1,
             writer: "chan",
             content: "zzzz",
-            created_at: "2023-05-23",
+            created_at: "2023-05-21T21:24:42.354552",
             replies: [
                 {
                     id: 1,
                     writer: "adss",
                     content: "대박",
-                    created_at:"2023-05-23"
+                    created_at:"2023-05-21T21:24:42.354552"
                 },
             ]
         },
@@ -83,19 +102,19 @@ const BoothDetailPage = () => {
             id: 2,
             writer: "mens",
             content: "zzzz",
-            created_at: "2023-05-23",
+            created_at: "2023-05-21T21:24:42.354552",
             replies: [
                 {
                     id: 1,
                     writer: "adss",
                     content: "대박",
-                    created_at:"2023-05-23"
+                    created_at:"2023-05-21T21:24:42.354552"
                 },
                 {
                     id: 2,
                     writer: "adss",
                     content: "대박",
-                    created_at:"2023-05-23"
+                    created_at:"2023-05-21T21:24:42.354552"
                 },
             ]
         },
@@ -192,6 +211,7 @@ useEffect(() => {
     // window.location.reload();
   };
 
+
   return (
     <BoothDetailCotainer>
         <BoothLogoWrapper>
@@ -209,7 +229,11 @@ useEffect(() => {
             </BoothDetailHeaderWrapper>
             <BoothDetailLoveShareWrapper>
                 <DetailHeartWrapper>
-                    <DetailHeart icon={booth.is_liked ? faHeart : emptyHeart} size='lg'/>
+                    <DetailHeart
+                           icon={booth.is_liked ? faHeart : emptyHeart}
+                           size="lg"
+                           onClick={handleHeartClick}
+                     />
                     <DetailHeartCnt>{booth.like_cnt}</DetailHeartCnt>
                 </DetailHeartWrapper>
                 
@@ -239,7 +263,11 @@ useEffect(() => {
                 </BoothDetailMenuAllSee> */}
             </BoothDetailMenuHeader>
             <BoothImageWrapper>
-             <BoothMenuImage src={DeafultImage}/>
+            <BoothMenuImage src={DeafultImage} 
+            alt="Booth Menu Image"
+            width={250}
+            height={250}
+            />
             </BoothImageWrapper>
         </BoothDetailMenuWrapper>
 
@@ -273,13 +301,13 @@ useEffect(() => {
                 <FontAwesomeIcon icon={faCircleExclamation} />
                 &nbsp;욕설이나 비방의 댓글은 필터링 기능에 의해 게시되지 않습니다.
                 </CommentWran>
-            </CommentInputWrapper>
+            </CommentInputWrapper>xw
                 
             <CommentListWrapper>
                 {comment.map((comment) => (
                     <CommentCard
                         key={comment.id}
-                        id={comment.id}
+                        commentId={comment.id}
                         writer={comment.writer}
                         content={comment.content}
                         created_at={comment.created_at}
