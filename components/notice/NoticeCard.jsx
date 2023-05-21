@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from "next/router";
 
 const Container = styled.div`
     box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.15);
@@ -10,6 +11,7 @@ const Container = styled.div`
     padding: 25px;
     margin: 3% 0;
     font-family: 'AppleSDGothicNeoM00';
+    cursor: pointer;
 `;
 
 const LinkBox = styled.a`
@@ -53,14 +55,16 @@ const ImgBox = styled.div`
 `;
 
 const NoticeCard = ({id, title, content, created_at, images}) => {
-
     const date = created_at.slice(0,10);
 
     console.log(images)
 
+    const router = useRouter();
+
     return(
-        <Container>
-            <Link href="/notice/detail">
+        <Container
+        onClick = {()=>router.push(`notice/${id}`)}
+        >
                 <LinkBox>
                     <Header>
                         <Title>{title}</Title>
@@ -83,7 +87,7 @@ const NoticeCard = ({id, title, content, created_at, images}) => {
                     </ImgBox>
                     }
                 </LinkBox>
-            </Link>
+            
         </Container>
     );
 };

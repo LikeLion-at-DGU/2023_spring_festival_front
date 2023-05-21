@@ -27,6 +27,7 @@ const Type = styled.button`
   color: ${(props)=>props.isSelected ? '#FC8CAE' : '#979797'};
   font-size: 18px;
   line-height: 19px;
+  font-family: "yg-jalnan";
 `;
 
 const TypeBody = styled.div`
