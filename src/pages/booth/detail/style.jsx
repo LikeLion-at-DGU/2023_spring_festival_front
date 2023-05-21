@@ -41,11 +41,11 @@ text-align: center;
     background-color: ${(props) => {
     switch (props.type) {
       case '푸드트럭':
-        return '#71d570'; // Green color for 푸드트럭
+        return '#71D86F'; // Green color for 푸드트럭
       case '주간부스':
-        return '#6b6bf9'; // Blue color for 주간부스
+        return '#579AFF'; // Blue color for 주간부스
       case '플리마켓':
-        return '#c782f8'; // Purple color for 플리마켓
+        return '#DF8CFC'; // Purple color for 플리마켓
       default:
         return '#FFADDB'; // Default color
     }
@@ -338,4 +338,110 @@ export const ReplySecond = styled.div`
   display: flex;
   margin-top: 7px;
   flex-grow:1;
+`
+
+export const ReplyInputContent = styled.input`
+  display: flex;
+  border: 1px solid #C4C4C4;
+  margin-top: 10px;
+  padding: 7px;
+  width: 320px;
+  border-radius: 20px;
+  height: 30px;
+  resize: none;
+  margin-right: 10px;
+  &::placeholder {
+    font-family: 'AppleSDGothicNeoM00';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: -0.3px;
+    color: #CBCBCB;
+    padding-left: 13px;
+  }
+`
+export const ReplyContentWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+`
+export const ReplyInputContentBtn = styled.button`
+  width: 40px;
+  margin-right: 10px;
+  height: 28px;
+  background: #FC8CAE;
+  color:#FFFFFF;
+/* Main */
+
+  border: 1px solid #FC8CAE;
+  border-radius: 20px;
+  font-size:12px;
+`
+export const ReplyForm = styled.form`
+margin-top: 10px;
+background: #FFE9F0;
+border-radius: 10px;
+height: 86px;
+zoom: 0.8;
+padding-left: 20px;
+`
+export const ReplyCommentId = styled.p`
+  color : #808080;
+  font-size: 12px;
+  
+`
+export const ReplyCommentInfWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-top : 10px;
+`
+export const ReplyFromContainer = styled.div`
+display: flex;
+flex-direction: row;
+`
+
+export const ModalDelWrapper = styled.div`
+padding-top: 30px;
+display: flex;
+flex-direction: column;
+align-items: center;
+`
+export const ModalDelHeader = styled.h1`
+  font-size: 18px;
+  font-weight: 700;
+  padding-bottom: 20px;
+  font-family: "yg-jalnan";
+
+`
+
+export const ModalDelDes = styled.p`
+  margin-bottom: 20px;
+  font-size: 14px;
+  
+`
+
+export const ModalDelInput = styled.input`
+  width: 200px;
+  height: 30px;
+  border: 1px solid #C4C4C4;
+  border-radius: 20px;
+  padding-left: 10px;
+  margin-bottom: 20px;
+`
+
+export const ModalDelBtnWrapper = styled.div`
+
+`
+export const MdoalBtn = styled.button`
+background-color: #FC8CAE;
+border: 1px solid #FC8CAE;
+font-size: 14px;
+color : white;
+border-radius: 10px;
+font-weight: 500;
+padding : 5px 10px;
+margin: 10px;
+
 `

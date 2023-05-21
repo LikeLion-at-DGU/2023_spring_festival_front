@@ -65,6 +65,14 @@ export const Ribbon = styled.div`
   color: #ffffff;
   font-family: yg-jalnan;
   font-size: 12px;
+
+  padding-left: ${(props) =>
+    props.pageType === 'booth' ? '31px' : 'unset'};
+
+  /* Booth/search page specific styles */
+  background-color: ${(props) =>
+    props.pageType === 'booth/search' ? '#E5E5E5' : 'unset'};
+
   background-color: ${(props) => {
     switch (props.type) {
       case "푸드트럭":
@@ -76,6 +84,7 @@ export const Ribbon = styled.div`
       default:
         return "#FFADDB"; // Default color
     }
+    
   }};
 `;
 export const BoothCardImage = styled(Image)`

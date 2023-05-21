@@ -5,7 +5,8 @@ import Modal from "../nav/Modal";
 import { useState } from "react";
 import { useRouter } from 'next/router';
 import Image from 'next/image';
-import page_logo from '../image/common/notice.svg';
+import notice_page_logo from '../image/common/notice.svg';
+import booth_page_logo from '../image/common/booth.svg';
 
 const Container = styled.nav`
     width: 100%;
@@ -56,11 +57,11 @@ export default function HeadBar(){
 
     // 디테일 페이지 구분을 위한 변수
     const router = useRouter();
-    console.log(router.pathname.split('/')[1]);
+    console.log(router.pathname.split('/')[2]);
 
     return(
         <Container>
-            { !router.query.id  ? 
+            { !router.query.id && (router.pathname.split('/')[2] != 'search') ? 
             <Title>
                 다시, 봄
             </Title> : <>
@@ -68,9 +69,10 @@ export default function HeadBar(){
                     icon={faChevronLeft} 
                     style={{color: "#000000",}}
                     onClick={()=>router.back()} />
-                { router.pathname.split('/')[1] === 'notice' ?
-                    <Img src={page_logo} alt="page_logo"/>
-                : <></> }
+                { router.pathname.split('/')[1] === 'notice' &&
+                    <Img src={notice_page_logo} alt="notice_page_logo"/>}
+                { (router.pathname.split('/')[1] === 'booth') &&
+                    <Img src={booth_page_logo} alt="booth_page_logo"/>}
             </>}
             <NavToggle icon={faBars} onClick={()=>showModal()}/>
             {modalOpen && <Modal setModalOpen={setModalOpen}/>}
