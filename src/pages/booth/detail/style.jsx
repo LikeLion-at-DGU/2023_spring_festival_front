@@ -240,6 +240,7 @@ export const CommentContentInput = styled.input`
   border-radius: 20px;
   height: 30px;
   resize: none;
+  padding-left: 13px;
   overflow-y: hidden; /* Add this line to remove horizontal scroll */
 
 
@@ -265,4 +266,45 @@ position: absolute;
   font-weight: 500;
   font-size: 14px;
 
+`
+
+export const CommentWran = styled.span`
+margin-top: 10px;
+margin-left: 3px;
+margin-bottom: 24px;
+font-weight: 400;
+font-size: 12px;
+`
+export const CommentHr = styled.hr`
+
+  width: 334px;
+
+  border: 1px solid #F5F5F5;
+`
+
+export const CommentListWrapper = styled.div`
+`
+export const CommentCardWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+`
+export const CommentCardFirstRow = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 5px;
+`
+export const NameDate = styled.div`
+  color : #808080;
+  font-weight: 400;
+  font-size: 12px;
+
+`
+export const CommentCardSecondRow = styled.div`
+  display: flex;
+`
+
+export const ReplyDelete = styled.div`
+  display: flex;
+  color: #FC8CAE;
 `
