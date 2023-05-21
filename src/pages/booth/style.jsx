@@ -9,8 +9,7 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   padding-top: 20px;
-  z-index: 1;
-  overflow: hidden;
+  z-index: 100;
 `;
 // 날짜 컨테이너
 export const DateSection = styled.div`
@@ -73,21 +72,50 @@ export const RankingHotButton = styled.button`
   border-radius: 30px;
 `;
 
-export const MapSection = styled.section`
+export const MapContainer = styled.div`
   width: 100%;
   height: 300px;
-  cursor: pointer;
-  position: relative;
+  display: flex;
   transition: all 1s;
   margin-top: ${(props) => (props.firstMoved ? "0vh" : "-50px")};
+  overflow: hidden;
+`;
+
+export const MapSection = styled.section`
+  min-width: 100%;
+  height: 300px;
+  position: relative;
+  transition: all 1s;
   margin-left: ${(props) =>
     props.secondLeftMoved && props.secondScene
       ? "100px"
       : props.secondRightMoved && props.secondScene
       ? "-100px"
       : ""};
-  margin-right: 50px;
-  z-index: 2;
+  cursor: pointer;
+`;
+
+export const MapModalSection = styled.section`
+  width: 130px;
+  min-height: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  color: ${secondaryColor};
+  border-radius: 30px;
+  box-shadow: 3px 3px 20px -10px rgba(0, 0, 0, 0.7);
+`;
+
+export const MapModalButton = styled.button`
+  width: 110px;
+  height: 40px;
+  border-radius: 30px;
+  background-color: ${secondaryColor};
+  color: #fff;
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: 14px;
 `;
 
 export const Pin1 = styled.section`

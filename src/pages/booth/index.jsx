@@ -13,6 +13,9 @@ import {
   FilterSectionSub2,
   FilterSectionSub3,
   GuideMessage,
+  MapContainer,
+  MapModalButton,
+  MapModalSection,
   MapSection,
   Pin1,
   Pin2,
@@ -66,7 +69,6 @@ export default function Booth() {
   const [thirdLeftScene, setThirdLeftScene] = useState(false);
   const [thirdRightScene, setThirdRightScene] = useState(false);
   const [isFocus, setIsFocus] = useState(0);
-
   const FirstMoved = useMemo(() => {
     return firstScene;
   }, [firstScene]);
@@ -88,7 +90,6 @@ export default function Booth() {
 
   const handlePinRight = async () => {
     setGuideMessage("전체 보기");
-    console.log(guideMessage);
     setThirdRightScene(true);
     setThirdLeftScene(false);
   };
@@ -101,6 +102,7 @@ export default function Booth() {
     }
   };
 
+  // Data 관리-------------------------------------
   const boothData = testBoothData.map((booth) => {
     return (
       <BoothCard
@@ -137,35 +139,45 @@ export default function Booth() {
           </DayBox>
         ))}
       </DateSection>
-      {/* MapSection----------------------------- */}
-      <MapSection
-        onClick={handleMap}
-        firstMoved={FirstMoved}
-        secondScene={secondScene}
-        secondLeftMoved={thirdLeftScene}
-        secondRightMoved={thirdRightScene}
-        className="fadeIn"
-      >
-        <Image src={map} alt="campus_map" fill />
-        <Pin1 onClick={handlePinLeft} secondScene={secondScene}>
-          <Image src={pin} alt="pin" fill style={{ objectFit: "cover" }} />
-        </Pin1>
-        <Pin2 onClick={handlePinLeft} secondScene={secondScene}>
-          <Image src={pin} alt="pin" fill style={{ objectFit: "cover" }} />
-        </Pin2>
-        <Pin3 onClick={handlePinLeft} secondScene={secondScene}>
-          <Image src={pin} alt="pin" fill style={{ objectFit: "cover" }} />
-        </Pin3>
-        <Pin4 onClick={handlePinRight} secondScene={secondScene}>
-          <Image src={pin} alt="pin" fill style={{ objectFit: "cover" }} />
-        </Pin4>
-        <Pin5 onClick={handlePinRight} secondScene={secondScene}>
-          <Image src={pin} alt="pin" fill style={{ objectFit: "cover" }} />
-        </Pin5>
-        <Pin6 onClick={handlePinRight} secondScene={secondScene}>
-          <Image src={pin} alt="pin" fill style={{ objectFit: "cover" }} />
-        </Pin6>
-      </MapSection>
+      <MapContainer firstMoved={FirstMoved} onClick={handleMap} className="fadeIn">
+        {/* MapSection----------------------------- */}
+        <MapSection
+          secondScene={secondScene}
+          secondLeftMoved={thirdLeftScene}
+          secondRightMoved={thirdRightScene}
+        >
+          <Image src={map} alt="campus_map" fill />
+          <Pin1 onClick={handlePinLeft} secondScene={secondScene}>
+            <Image src={pin} alt="pin" fill style={{ objectFit: "cover" }} />
+          </Pin1>
+          <Pin2 onClick={handlePinLeft} secondScene={secondScene}>
+            <Image src={pin} alt="pin" fill style={{ objectFit: "cover" }} />
+          </Pin2>
+          <Pin3 onClick={handlePinLeft} secondScene={secondScene}>
+            <Image src={pin} alt="pin" fill style={{ objectFit: "cover" }} />
+          </Pin3>
+          <Pin4 onClick={handlePinRight} secondScene={secondScene}>
+            <Image src={pin} alt="pin" fill style={{ objectFit: "cover" }} />
+          </Pin4>
+          <Pin5 onClick={handlePinRight} secondScene={secondScene}>
+            <Image src={pin} alt="pin" fill style={{ objectFit: "cover" }} />
+          </Pin5>
+          <Pin6 onClick={handlePinRight} secondScene={secondScene}>
+            <Image src={pin} alt="pin" fill style={{ objectFit: "cover" }} />
+          </Pin6>
+        </MapSection>
+        {/* MapModalSection------------------------ */}
+        {/* <MapModalSection
+          firstMoved={FirstMoved}
+          secondScene={secondScene}
+          secondLeftMoved={thirdLeftScene}
+          secondRightMoved={thirdRightScene}
+          className="fadeIn"
+        >
+          <MapModalButton>전체</MapModalButton>
+        </MapModalSection> */}
+      </MapContainer>
+      {/* GuideLine------------------------------ */}
       <GuideMessage
         secondLeftMoved={thirdLeftScene}
         secondRightMoved={thirdRightScene}
@@ -184,7 +196,7 @@ export default function Booth() {
         <FilterSectionSub3 isFocus={isFocus} onClick={() => setIsFocus(2)}>
           야간부스
         </FilterSectionSub3>
-        {/* 희찬 검색어 작업 연결 */}
+        {/* 희찬 검색어 작업 연결------------------ */}
         <FilterSectionInput placeholder="검색어를 입력해주세요" />
       </BoothFilterSection>
       <BoothCardGridWrapper firstMoved={FirstMoved} className="FadeIn">
