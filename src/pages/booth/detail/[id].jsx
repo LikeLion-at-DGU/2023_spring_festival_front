@@ -222,10 +222,6 @@ useEffect(() => {
                     전체메뉴 보기
                 </BoothDetailMenuAllSee> */}
             </BoothDetailMenuHeader>
-
-
-            
-
             <BoothImageWrapper>
              <BoothMenuImage src={DeafultImage}/>
             </BoothImageWrapper>
