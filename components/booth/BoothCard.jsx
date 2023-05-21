@@ -23,7 +23,7 @@ function BoothCard({ id, name, operator, logoImage, likeCnt, isLike, location, t
   return (
     <Link href={`/booth/detail/${id}`}>
       <BoothCardWrapper>
-        <BoothCardImage src={DeafultImage} alt="부스 이미지"/>
+        <BoothCardImage src={DeafultImage} alt="부스 이미지" />
         <BoothCardDetailWrapper>
           <Ribbon type={type}>{type}</Ribbon>
           <BoothCardDetailDes>
