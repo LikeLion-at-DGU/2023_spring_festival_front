@@ -1,7 +1,9 @@
 import styled from "styled-components";
 import Image from 'next/image';
-import Link from 'next/link';
 import { useRouter } from "next/router";
+
+// test용 사진
+import test from '../image/about/about_seulgi.svg';
 
 const Container = styled.div`
     box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.15);
@@ -52,38 +54,58 @@ const ImgBox = styled.div`
     flex-direction: row;
     justify-items: center;
     align-items: center;
+    height: 100px;
+    align-items: center;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    ::-webkit-scrollbar {
+        width: 4px;
+        height: 4px;
+    }
+    ::-webkit-scrollbar-thumb {
+        border-radius: 10px;
+    }
 `;
 
-const NoticeCard = ({id, title, content, created_at, images}) => {
-    const date = created_at.slice(0,10);
+const Img = styled(Image)`
+    height: 90%;
+    margin-right: 2%;
+`;
 
-    console.log(images)
+const NoticeCard = ({id, notice}) => {
+    
+    const date = notice.created_at.slice(0,10);
 
     const router = useRouter();
 
     return(
         <Container
-        onClick = {()=>router.push(`notice/${id}`)}
+            onClick = {()=>router.push(`notice/${id}`)}
         >
                 <LinkBox>
                     <Header>
-                        <Title>{title}</Title>
+                        <Title>{notice.title}</Title>
                         <Date>{date}</Date>
                     </Header>
                     <Body>
-                        { content.length <= 60 ? 
-                            <>{content}</> : <>{content.slice(0,60)}...</>
+                        { notice.content.length <= 60 ? 
+                            <>{notice.content}</> : <>{notice.content.slice(0,60)}...</>
                         }
                     </Body>
-                    { ( images && images.length > 0 ) &&
+                    { ( notice.images && notice.images.length > 0 ) &&
                     <ImgBox>
-                        {images.map((image)=>{
+                        {notice.images.map((image)=>{
                             <Image
                                 key={image.id}
                                 src={image.url}
                                 alt={image.alt}
                             />
                         })}
+                        <Img src={test} alt="test"/>
+                        <Img src={test} alt="test"/>
+                        <Img src={test} alt="test"/>
+                        <Img src={test} alt="test"/>
+                        <Img src={test} alt="test"/>
                     </ImgBox>
                     }
                 </LinkBox>

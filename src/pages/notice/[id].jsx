@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import styled, { keyframes } from "styled-components";
-import NoticeCard from "components/notice/NoticeCard";
 import { useLocation, BrowserRouter as Router } from 'react-router-dom';
 import { faPaperPlane } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Image from 'next/image';
 
+// test용 사진
+import test from '../../../components/image/about/about_seulgi.svg';
 
 const Container = styled.div`
   width: 100%;
@@ -61,15 +63,6 @@ const Share = styled(FontAwesomeIcon)`
     color: #FC8CAE;
 `;
 
-const Author = styled.div`
-    font-family: 'AppleSDGothicNeoB00';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-    color: #A0A0A0;
-    padding: 1% 0;
-`;
-
 const Content = styled.div`
     font-family: 'AppleSDGothicNeoM00';
     font-style: normal;
@@ -81,9 +74,28 @@ const Content = styled.div`
 `;
 
 const ImgBox = styled.div`
-    
+    margin: 5px 0;
+    display: flex;
+    flex-direction: row;
+    justify-items: center;
+    align-items: center;
+    height: 140px;
+    align-items: center;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    ::-webkit-scrollbar {
+        width: 4px;
+        height: 4px;
+    }
+    ::-webkit-scrollbar-thumb {
+        border-radius: 10px;
+    }
 `;
 
+const Img = styled(Image)`
+    height: 90%;
+    margin-right: 2%;
+`;
 
 export default function Detail(){
 
@@ -170,7 +182,22 @@ export default function Detail(){
             <Content>
             {notice.content}
             </Content>
-            <ImgBox>사진자리~</ImgBox>
+            { ( notice.images && notice.images.length > 0 ) &&
+                <ImgBox>
+                    {notice.images.map((image)=>{
+                        <Img
+                            key={image.id}
+                            src={image.url}
+                            alt={image.alt}
+                        />
+                    })}
+                    <Img src={test} alt="test"/>
+                    <Img src={test} alt="test"/>
+                    <Img src={test} alt="test"/>
+                    <Img src={test} alt="test"/>
+                    <Img src={test} alt="test"/>
+                </ImgBox>
+            }
         </Body>
     </Container>
   )
