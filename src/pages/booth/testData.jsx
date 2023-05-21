@@ -1,4 +1,4 @@
-export const testBoothData = [
+export const testBoothDataArray = [
   {
     id: 1,
     name: "아ㅏ아아ㅏ악..",
@@ -98,6 +98,54 @@ export const testBoothData = [
     },
     menu_image: [],
     is_liked: true,
+  },
+];
+
+export const boothSectorArray = [
+  [{ id: 1, location: "이해랑예술극장" }],
+  [
+    { id: 2, location: "사회과학관" },
+    { id: 3, location: "혜화관" },
+    { id: 4, location: "혜화별관" },
+  ],
+  [
+    { id: 5, location: "명진관" },
+    { id: 6, location: "팔정도" },
+  ],
+  [{ id: 7, location: "원흥관 4층" }],
+
+  [{ id: 8, location: "만해광장" }],
+  [
+    { id: 9, location: "학생회관" },
+    { id: 10, location: "학림관" },
+  ],
+];
+
+const test = [
+  { id: 1, location: [{ idx: 1, name: "이해랑예술극장" }] },
+  {
+    id: 2,
+    location: [
+      { idx: 1, name: "사회과학관" },
+      { idx: 2, name: "혜화관" },
+      { idx: 3, name: "혜화별관" },
+    ],
+  },
+  {
+    id: 3,
+    location: [
+      { idx: 1, name: "명진관" },
+      { idx: 2, name: "팔정도" },
+    ],
+  },
+  { id: 4, location: [{ idx: 1, name: "원흥관 4층" }] },
+  { id: 5, location: [{ idx: 2, name: "만해광장" }] },
+  {
+    id: 6,
+    location: [
+      { idx: 1, name: "학생회관" },
+      { idx: 2, name: "학림관" },
+    ],
   },
 ];
 

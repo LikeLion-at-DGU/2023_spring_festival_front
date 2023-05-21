@@ -9,8 +9,7 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   padding-top: 20px;
-  z-index: 1;
-  overflow: hidden;
+  z-index: 100;
 `;
 // 날짜 컨테이너
 export const DateSection = styled.div`
@@ -73,21 +72,71 @@ export const RankingHotButton = styled.button`
   border-radius: 30px;
 `;
 
-export const MapSection = styled.section`
+export const MapContainer = styled.div`
   width: 100%;
   height: 300px;
-  cursor: pointer;
   position: relative;
+  display: flex;
   transition: all 1s;
   margin-top: ${(props) => (props.firstMoved ? "0vh" : "-50px")};
+  overflow: hidden;
+`;
+
+export const MapSection = styled.section`
+  min-width: 100%;
+  height: 300px;
+  position: relative;
+  transition: all 1s;
   margin-left: ${(props) =>
     props.secondLeftMoved && props.secondScene
-      ? "100px"
+      ? "80px"
       : props.secondRightMoved && props.secondScene
-      ? "-100px"
+      ? "-110px"
       : ""};
-  margin-right: 50px;
-  z-index: 2;
+  cursor: pointer;
+`;
+
+export const MapModalSection = styled.section`
+  width: 90px;
+  min-height: 50px;
+  position: absolute;
+  left: ${(props) => (!props.secondRightMoved && props.secondLeftMoved ? "3%" : "67%")};
+  top: ${(props) => (!props.secondRightMoved && props.secondLeftMoved ? "33%" : "55%")};
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 5px;
+  color: ${secondaryColor};
+  border-radius: 30px;
+  box-shadow: 3px 3px 20px -10px rgba(0, 0, 0, 0.7);
+  padding: 5px;
+  transition: all 1s;
+  z-index: 5;
+  display: ${(props) =>
+    props.secondScene && (props.secondLeftMoved || props.secondRightMoved) ? "flex" : "none"};
+  @media all and (max-width: 430px) {
+    width: 80px;
+    min-height: 30px;
+  }
+`;
+
+export const MapModalButton = styled.button`
+  width: 70px;
+  min-height: 35px;
+  border-radius: 30px;
+  background-color: ${secondaryColor};
+  color: #fff;
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: 10px;
+  transition: all 0.3s;
+  @media all and (max-width: 410px) {
+    min-height: 30px;
+  }
+  cursor: pointer;
+  &:hover {
+    box-shadow: 3px 3px 20px -10px rgba(0, 0, 0, 1);
+  }
 `;
 
 export const Pin1 = styled.section`
@@ -203,6 +252,23 @@ export const GuideMessage = styled.h3`
   cursor: ${(props) => (props.secondLeftMoved || props.secondRightMoved ? "pointer" : "")};
 `;
 
+export const LocationTextSection = styled.section`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+`;
+
+export const SelectedLocation = styled.h1`
+  font-size: 24px;
+  color: ${secondaryColor};
+  font-weight: 900;
+  border-left: 1px solid ${secondaryColor};
+  border-right: 1px solid ${secondaryColor};
+  padding: 5px;
+  display: ${(props) => (props.secondLeftMoved || props.secondRightMoved ? "inline" : "none")};
+`;
+
 export const BoothFilterSection = styled.section`
   width: 100%;
   height: 50px;
@@ -211,7 +277,8 @@ export const BoothFilterSection = styled.section`
   align-items: center;
   font-size: 14px;
   color: ${secondaryColor};
-  margin-top: 50px;
+  margin-left: 15px;
+
   display: ${(props) => (props.firstMoved ? "none" : "flex")};
   @media all and (max-width: 420px) {
     font-size: 12px;
