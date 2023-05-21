@@ -91,8 +91,24 @@ const BoothDetailPage = () => {
                     content: "대박",
                     created_at:"2023-05-23"
                 },
+                {
+                    id: 2,
+                    writer: "adss",
+                    content: "대박",
+                    created_at:"2023-05-23"
+                },
             ]
         },
+        {
+            id: 3,
+            writer: "mens",
+            content: "zzzz",
+            created_at: "2023-05-23",
+            replies: [
+
+            ]
+        },
+
     ]
     setComment(commentData);
     console.log(commentData);
@@ -267,8 +283,8 @@ useEffect(() => {
                         writer={comment.writer}
                         content={comment.content}
                         created_at={comment.created_at}
+                        reply = {comment.replies}
                     />
-                    
                     ))}
             </CommentListWrapper>
         </CommentWrapper>
