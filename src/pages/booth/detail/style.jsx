@@ -124,3 +124,31 @@ font-family: 400;
 line-height: 18.2px;
 
 `
+
+export const BoothDetailSeparator = styled.hr`
+  width: 334px;
+  border: 1px solid #D2D2D2;
+  margin: 24px 0px;
+`;
+
+
+
+
+export const BoothDetailLocation = styled.div`
+margin-top: 20px;
+  color:#656565;
+  font-size: 14px;
+  line-height: 25px;
+  font-weight: 500;
+`
+
+export const BoothDetailTime = styled.div`
+  color: #656565;
+  font-size: 14px;
+  line-height: 25px;
+  font-weight: 500;
+  
+`
+export const BoothDetailMenuWrapper = styled.div`
+  
+`

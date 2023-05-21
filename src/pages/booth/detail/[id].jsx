@@ -1,11 +1,15 @@
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import DeafultImage from "../../../../components/image/common/booth_deafault.png"
-import { BoothDetailContent, BoothDetailCotainer, BoothDetailHeader, BoothDetailHeaderWrapper, BoothDetailLoveShareWrapper, BoothDetailOperator, BoothDetailTitle, BoothLogoImage, BoothLogoWrapper, DetailHeart, DetailHeartCnt, DetailHeartWrapper, DetailRibbon, DetailShareIcon, ShareIcon } from './style';
+import { BoothDetailContent, BoothDetailCotainer, BoothDetailHeader, BoothDetailHeaderWrapper, BoothDetailLine, BoothDetailLocation, BoothDetailLoveShareWrapper, BoothDetailMenuWrapper, BoothDetailOperator, BoothDetailSeparator, BoothDetailTime, BoothDetailTitle, BoothLogoImage, BoothLogoWrapper, DetailHeart, DetailHeartCnt, DetailHeartWrapper, DetailRibbon, DetailShareIcon, ShareIcon } from './style';
 import { BoothCardDetailHeartWrapper, CardDetailHeartCntWrapper, CardDetailHeartIcon, Ribbon } from '../search_style';
 import Booth from '..';
 import { faHeart, faShareNodes  } from "@fortawesome/free-solid-svg-icons";
-import { faHeart as emptyHeart } from "@fortawesome/free-regular-svg-icons";
+import { faHeart as emptyHeart,faClock } from "@fortawesome/free-regular-svg-icons";
+import { faLocationDot } from '@fortawesome/free-solid-svg-icons';
+
+import { RankBoothDetailLocation } from '../style';
 
 
 
@@ -75,6 +79,19 @@ const BoothDetailPage = () => {
         <BoothDetailContent>
             {booth.description}
         </BoothDetailContent>
+        <BoothDetailLocation>
+        <FontAwesomeIcon icon={faLocationDot} style={{marginRight:"10px"}}/>
+            {booth.location}
+        </BoothDetailLocation>
+        <BoothDetailTime>
+        <FontAwesomeIcon icon={faClock} style={{marginRight:"10px"}}/>
+            {booth.start_at} ~ {booth.end_at}
+        </BoothDetailTime>
+        <BoothDetailSeparator />
+        <BoothDetailMenuWrapper>
+
+        </BoothDetailMenuWrapper>
+
 
     </BoothDetailCotainer>
   );
