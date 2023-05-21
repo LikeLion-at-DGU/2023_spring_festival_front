@@ -61,6 +61,7 @@ const Title = styled.div`
 
 const Share = styled(FontAwesomeIcon)`
     color: #FC8CAE;
+    cursor: pointer;
 `;
 
 const Content = styled.div`
@@ -172,12 +173,10 @@ export default function Detail(){
         <Body>
             <BodyHeader>
                 <Title>{notice.title}</Title>
-                <Router>
                     <Share
                         icon={faPaperPlane}
                         onClick={()=>handleCopy(`${location.pathname}`)}
                         ></Share>
-                </Router>
             </BodyHeader>
             <Content>
             {notice.content}
