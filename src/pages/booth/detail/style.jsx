@@ -376,6 +376,7 @@ export const ReplyInputContentBtn = styled.button`
 
   border: 1px solid #FC8CAE;
   border-radius: 20px;
+  font-size:12px;
 `
 export const ReplyForm = styled.form`
 margin-top: 10px;
