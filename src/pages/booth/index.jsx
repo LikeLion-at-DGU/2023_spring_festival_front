@@ -35,8 +35,9 @@ import Image from "next/image";
 import map from "../../../components/image/booth/campus_map.svg";
 import pin from "../../../components/image/booth/pin.png";
 import { BoothCardGridWrapper } from "./search_style";
-import BoothCard from "components/booth/BoothCard";
 import { boothSectorArray, testBoothDataArray } from "./testData";
+import FilteredBooth from "components/booth/FilteredBooth";
+import BoothCard from "components/booth/BoothCard";
 
 // 날짜 배열
 const dayArray = [
@@ -73,9 +74,9 @@ export default function Booth() {
   // Booth Modal 디폴트 -> 가운데 핀 index
   const [boothSector, setBoothSector] = useState(2);
   // Booth Modal Button 디폴트 -> 전체
-  const [boothSectorDetail, setBoothSectorDetail] = useState(0);
-  // 디폴트 -> 전체 부스
-  const [isFocus, setIsFocus] = useState(0);
+  const [boothSectorDetail, setBoothSectorDetail] = useState("");
+  // 디폴트 -> 전체 부스 / 낮 -> 1 / 밤 -> 2
+  const [dayOrNight, setDayOrNight] = useState("");
   const FirstMoved = useMemo(() => {
     return firstScene;
   }, [firstScene]);
@@ -136,24 +137,20 @@ export default function Booth() {
     }
   };
 
-  // Data 관리-------------------------------------
-  const boothData = testBoothDataArray.map((booth) => {
-    return (
-      <BoothCard
-        key={booth.id}
-        name={booth.name}
-        type={booth.type}
-        operator={booth.operator}
-        likeCnt={booth.like_cnt}
-        isLike={booth.is_liked}
-        location={booth.location}
-      />
-    );
-  });
-
   const boothSectorData = boothSectorArray[boothSector]?.map((sec) => {
     let clickedLocation = false;
-    if (sec.id === boothSectorDetail) {
+    if (sec.length === 1) {
+      clickedLocation = true;
+      return (
+        <MapModalButton
+          key={sec.id}
+          clickedLocation={true}
+          onClick={() => setBoothSectorDetail(sec.id)}
+        >
+          {sec.location}
+        </MapModalButton>
+      );
+    } else if (sec.id === boothSectorDetail) {
       clickedLocation = true;
       return (
         <MapModalButton
@@ -215,6 +212,7 @@ export default function Booth() {
     }
   });
 
+  //
   return (
     <Container>
       {/* RankingSection------------------------- */}
@@ -299,20 +297,20 @@ export default function Booth() {
       <LocationTextSection>{locationList}</LocationTextSection>
       {/* GridSection---------------------------- */}
       <BoothFilterSection firstMoved={FirstMoved} className="fadeIn">
-        <FilterSectionSub1 isFocus={isFocus} onClick={() => setIsFocus(0)}>
+        <FilterSectionSub1 dayOrNight={dayOrNight} onClick={() => setDayOrNight("")}>
           전체
         </FilterSectionSub1>
-        <FilterSectionSub2 isFocus={isFocus} onClick={() => setIsFocus(1)}>
+        <FilterSectionSub2 dayOrNight={dayOrNight} onClick={() => setDayOrNight("주간부스")}>
           주간부스
         </FilterSectionSub2>
-        <FilterSectionSub3 isFocus={isFocus} onClick={() => setIsFocus(2)}>
+        <FilterSectionSub3 dayOrNight={dayOrNight} onClick={() => setDayOrNight("야간부스")}>
           야간부스
         </FilterSectionSub3>
         {/* 희찬 검색어 작업 연결------------------ */}
         {/* <FilterSectionInput placeholder="검색어를 입력해주세요" /> */}
       </BoothFilterSection>
       <BoothCardGridWrapper firstMoved={FirstMoved} className="FadeIn">
-        {boothData}
+        <FilteredBooth dayOrNight={dayOrNight} />
       </BoothCardGridWrapper>
     </Container>
   );
