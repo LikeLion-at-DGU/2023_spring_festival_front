@@ -12,17 +12,17 @@ export default function PageTitle() {
   const router = useRouter();
   const [page, setPage] = useState(0);
 
-  useEffect(()=>{
-    if(router.pathname === "/timetable"){
-      setPage(1);
-    }else if(router.pathname === "/notice"){
-      setPage(2);
-    }else if(router.pathname === "/about"){
-      setPage(3);
-    }else if(router.pathname === "/booth"){
-      setPage(4);
-    }
-  })
+  // useEffect(()=>{
+  //   if(router.pathname === "/timetable"){
+  //     setPage(1);
+  //   }else if(router.pathname === "/notice"){
+  //     setPage(2);
+  //   }else if(router.pathname === "/about"){
+  //     setPage(3);
+  //   }else if(router.pathname === "/booth"){
+  //     setPage(4);
+  //   }
+  // })
 
   const Img = styled(Image)`
     width: 60%;
@@ -30,25 +30,25 @@ export default function PageTitle() {
   `
   
   return (
-    (page === 1 || !router.query.id === null ) ? 
+    ( router.pathname === "/timetable" || !router.query.id === null ) ? 
     <Img
       src={time}
       height={30}
       alt={"title"}
     /> : 
-    page === 2 ? 
+    router.pathname === "/notice" ? 
     <Img
       src={notice}
       height={30}
       alt={"title"}
     /> : 
-    page === 3 ? 
+    router.pathname === "/about" ? 
     <Img
       src={about}
       height={30}
       alt={"title"}
     />  : 
-    page === 4 ? 
+    router.pathname === "/booth" ? 
     <Img
       src={booth}
       height={30}

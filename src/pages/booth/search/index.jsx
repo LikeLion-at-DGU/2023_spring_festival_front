@@ -28,7 +28,7 @@ function Search() {
     {
       id: 2,
       name: "서희찬..",
-      type: "야간부스",
+      type: "푸드트럭",
       operator: "멋쟁이사자처럼",
       logo_image:
         "https://www.pngplay.com/wp-content/uploads/3/Apple-Siri-Logo-Download-Free-PNG.png",
@@ -42,7 +42,7 @@ function Search() {
     {
     id: 3,
     name: "멋쟁이!",
-    type: "푸드트럭",
+    type: "학교부스",
     operator: "대나무숲",
     logo_image: "https://www.pngplay.com/wp-content/uploads/3/Apple-Siri-Logo-Download-Free-PNG.png",
     like_cnt: 130,
@@ -59,7 +59,7 @@ function Search() {
     {
       id: 1,
       name: "코딩주점",
-      type: "주간부스",
+      type: "학교부스",
       operator: "멋쟁이사자처럼",
       logo_image:
         "https://www.pngplay.com/wp-content/uploads/3/Apple-Siri-Logo-Download-Free-PNG.png",
@@ -105,7 +105,7 @@ function Search() {
     {
         id: 1,
         name: "코딩주점",
-        type: "야간부스",
+        type: "학교부스",
         operator: "멋쟁이사자처럼",
         logo_image: "https://www.pngplay.com/wp-content/uploads/3/Apple-Siri-Logo-Download-Free-PNG.png",
         like_cnt: 100,
@@ -118,7 +118,7 @@ function Search() {
       {
         id: 2,
         name: "히찬부스",
-        type: "야간부스",
+        type: "학교부스",
         operator: "서희찬",
         logo_image: null,
         like_cnt: 120,
@@ -131,7 +131,7 @@ function Search() {
       {
         id: 3,
         name: "집가고싶다..",
-        type: "야간부스",
+        type: "학교부스",
         operator: "멋쟁이사자처럼",
         logo_image: "https://www.pngplay.com/wp-content/uploads/3/Apple-Siri-Logo-Download-Free-PNG.png",
         like_cnt: 100,
@@ -295,7 +295,7 @@ const fetchBooths = async() => {
               {
                 id: 1,
                 name: "으아아앙악..",
-                type: "주간부스",
+                type: "학교부스",
                 operator: "뭐리",
                 logo_image:
                   "https://www.pngplay.com/wp-content/uploads/3/Apple-Siri-Logo-Download-Free-PNG.png",

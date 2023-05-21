@@ -262,13 +262,18 @@ useEffect(() => {
                     전체메뉴 보기
                 </BoothDetailMenuAllSee> */}
             </BoothDetailMenuHeader>
-            <BoothImageWrapper>
-            <BoothMenuImage src={DeafultImage} 
-            alt="Booth Menu Image"
-            width={250}
-            height={250}
-            />
-            </BoothImageWrapper>
+            <BoothImageSlider>
+                <BoothMenuImage src={DeafultImage} 
+                    alt="Booth Menu Image"
+                    width={250}
+                    height={250}
+                    />
+                <BoothMenuImage src={DeafultImage} 
+                    alt="Booth Menu Image"
+                    width={250}
+                    height={250}
+                    />
+            </BoothImageSlider>
         </BoothDetailMenuWrapper>
 
         {/* 댓글 */}
