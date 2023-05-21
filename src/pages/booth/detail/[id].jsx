@@ -1,8 +1,11 @@
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import DeafultImage from "../../../../components/image/common/booth_deafault.png"
-import { BoothDetailContent, BoothDetailCotainer, BoothDetailHeader, BoothDetailHeaderWrapper, BoothDetailLine, BoothDetailLocation, BoothDetailLoveShareWrapper, BoothDetailMenuWrapper, BoothDetailOperator, BoothDetailSeparator, BoothDetailTime, BoothDetailTitle, BoothLogoImage, BoothLogoWrapper, DetailHeart, DetailHeartCnt, DetailHeartWrapper, DetailRibbon, DetailShareIcon, ShareIcon } from './style';
+import { BoothDetailContent, BoothDetailCotainer, BoothDetailHeader, BoothDetailHeaderWrapper, BoothDetailLine, BoothDetailLocation, BoothDetailLoveShareWrapper, BoothDetailMenuAllSee, BoothDetailMenuHeader, BoothDetailMenuTitle, BoothDetailMenuWrapper, BoothDetailOperator, BoothDetailSeparator, BoothDetailTime, BoothDetailTitle, BoothImageSlider, BoothImageWrapper, BoothLogoImage, BoothLogoWrapper, BoothMenuImage, CommentWrapper, DetailHeart, DetailHeartCnt, DetailHeartWrapper, DetailRibbon, DetailShareIcon, ShareIcon } from './style';
 import { BoothCardDetailHeartWrapper, CardDetailHeartCntWrapper, CardDetailHeartIcon, Ribbon } from '../search_style';
 import Booth from '..';
 import { faHeart, faShareNodes  } from "@fortawesome/free-solid-svg-icons";
@@ -34,9 +37,26 @@ const BoothDetailPage = () => {
                 "메뉴2":3000,
                 "메뉴3":4000,
                 },
-            menu_image: [],
+            menu_image: ["https://url.kr/c8j4ag","https://url.kr/c8j4ag","https://url.kr/c8j4ag"],
             is_liked: false
         }
+    );
+    const [comment, setComment] = useState([
+        {
+            id: 1,
+            writer: "chan",
+            content: "zzzz",
+            created_at: "2023-05-23",
+            replies: [
+                {
+                    id: 1,
+                    writer: "adss",
+                    content: "대박",
+                    created_at:"zzzzzz"
+                },
+            ]
+        },
+    ]
     );
     
 
@@ -89,9 +109,29 @@ const BoothDetailPage = () => {
         </BoothDetailTime>
         <BoothDetailSeparator />
         <BoothDetailMenuWrapper>
+            <BoothDetailMenuHeader>
+                <BoothDetailMenuTitle>
+                    메뉴
+                </BoothDetailMenuTitle>
+                {/* <BoothDetailMenuAllSee>
+                    전체메뉴 보기
+                </BoothDetailMenuAllSee> */}
+            </BoothDetailMenuHeader>
 
+
+            
+
+            <BoothImageWrapper>
+             <BoothMenuImage src={DeafultImage}/>
+            </BoothImageWrapper>
         </BoothDetailMenuWrapper>
+        <CommentWrapper>
+            <BoothDetailSeparator />
+                <BoothDetailMenuTitle>
+                    댓글 {comment.length}
+            </BoothDetailMenuTitle>
 
+        </CommentWrapper>
 
     </BoothDetailCotainer>
   );

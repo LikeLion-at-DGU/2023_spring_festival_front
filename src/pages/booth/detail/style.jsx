@@ -152,3 +152,34 @@ export const BoothDetailTime = styled.div`
 export const BoothDetailMenuWrapper = styled.div`
   
 `
+export const BoothDetailMenuHeader = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  line-height: 30px;
+`
+export const BoothDetailMenuTitle = styled.p`
+  font-family: "yg-jalnan";
+  font-size: 18px;
+  
+
+`
+export const BoothDetailMenuAllSee = styled.p`
+color:#656565;
+font-weight: 500;
+`
+export const BoothMenuImage = styled(Image)`
+
+margin: 20px 0px;
+width: 250px;
+border-radius: 10px;
+height: 250px;
+box-shadow: 2px 2px 8px rgba(41, 39, 39, 0.4);
+`
+export const BoothImageWrapper = styled.div`
+  display: flex;
+`
+export const CommentWrapper = styled.div`
+  
+`
+
