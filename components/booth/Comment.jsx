@@ -232,7 +232,7 @@ function CommentCard({commentId,writer,content,created_at,reply }) {
     >
         <ModalDelWrapper>
             <ModalDelHeader>
-            댓글 삭제
+             {isReply ? "답글 삭제":"댓글 삭제"}
             </ModalDelHeader>
             <ModalDelDes>
             댓글을 삭제하시겠습니까?

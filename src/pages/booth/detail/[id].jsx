@@ -24,6 +24,25 @@ const BoothDetailPage = () => {
     const [nickname, setNickname] = useState('');
     const [commentContent, setCommentContent] = useState('');
 
+   
+  const handleHeartClick = async () => {
+    try {
+        // axios요청 보내기 
+    //   const response = await axios.post(`/api/booths/${booth.id}/likes`);
+        console.log("하트 클릭");
+
+      if (response.status === 200) {
+        console.log("하트 클릭 성공");
+      } else {
+        // Handle error case
+        console.log("하트 클릭 실패");
+      }
+    } catch (error) {
+      // Handle error case
+    }
+  };
+
+      
     // 댓글 내용
     const handleCommentContentChange = (event) => {
         const inputValue = event.target.value;
@@ -192,6 +211,7 @@ useEffect(() => {
     // window.location.reload();
   };
 
+
   return (
     <BoothDetailCotainer>
         <BoothLogoWrapper>
@@ -209,7 +229,11 @@ useEffect(() => {
             </BoothDetailHeaderWrapper>
             <BoothDetailLoveShareWrapper>
                 <DetailHeartWrapper>
-                    <DetailHeart icon={booth.is_liked ? faHeart : emptyHeart} size='lg'/>
+                    <DetailHeart
+                           icon={booth.is_liked ? faHeart : emptyHeart}
+                           size="lg"
+                           onClick={handleHeartClick}
+                     />
                     <DetailHeartCnt>{booth.like_cnt}</DetailHeartCnt>
                 </DetailHeartWrapper>
                 
@@ -239,7 +263,11 @@ useEffect(() => {
                 </BoothDetailMenuAllSee> */}
             </BoothDetailMenuHeader>
             <BoothImageWrapper>
-             <BoothMenuImage src={DeafultImage}/>
+            <BoothMenuImage src={DeafultImage} 
+            alt="Booth Menu Image"
+            width={250}
+            height={250}
+            />
             </BoothImageWrapper>
         </BoothDetailMenuWrapper>
 
