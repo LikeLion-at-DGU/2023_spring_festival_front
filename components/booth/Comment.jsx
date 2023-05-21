@@ -6,7 +6,7 @@ import React, { useState } from "react";
 
 
 
-function CommentCard({CommentId,writer,content,created_at,reply }) {
+function CommentCard({commentId,writer,content,created_at,reply }) {
     
     const [replyPassword, setReplyPassword] = useState('');
     const [replyNickname, setReplyNickname] = useState('');
@@ -15,7 +15,8 @@ function CommentCard({CommentId,writer,content,created_at,reply }) {
     const [showDeleteModal, setShowDeleteModal] = useState(false);
 
     const [deletePassword, setDeletePassword] = useState("");
-
+    const [isReply, setIsReply] = useState(false); // 답글인지 댓글인지 구분하기 위한 상태
+    const [replyId, setReplyId] = useState('')
 
         // 댓글 내용
         const handleCommentContentChange = (event) => {
@@ -63,9 +64,23 @@ function CommentCard({CommentId,writer,content,created_at,reply }) {
 
       const handleDeleteModalConfirm = () => {
         // 서버에 DELETE 요청 보내는 로직 작성
+        console.log(isReply);
         const deleteRequest = async () => {
             try {
-                const endpoint = reply ? `/api/replies/${commentId}` : `/api/comments/${commentId}`;
+                let endpoint;
+                if (isReply) {
+                  // reply의 삭제버튼을 클릭한 경우
+
+                  // reply id 로 삭제 보내기
+                  endpoint = `/api/replies/${reply}`;
+                  console.log("답글 삭제");
+                  console.log(replyId);
+                } else {
+                    // 댓글의 삭제버튼을 클릭한 경우
+                    endpoint = `/api/comments/${commentId}`;
+                    console.log("댓글 삭제");
+                }
+                
                 const response = await fetch(endpoint, {
                   method: "DELETE",
                   headers: {
@@ -73,11 +88,13 @@ function CommentCard({CommentId,writer,content,created_at,reply }) {
                   },
                   body: JSON.stringify({ password: deletePassword }),
                 });
-        
+          
                 if (response.ok) {
                   // 삭제 성공 시 필요한 동작 수행
+                  alert("댓글이 삭제되었습니다.");
                 } else {
-                  // 삭제 실패 시 필요한 동작 수행
+                  // 삭제 실패 시 필요한 동작 수행 
+                  alert("비밀번호가 틀렸습니다.");
                 }
               } catch (error) {
                 console.error("Error deleting comment:", error);
@@ -89,8 +106,18 @@ function CommentCard({CommentId,writer,content,created_at,reply }) {
       };
     
       const handleDeleteButtonClick = () => {
+        setIsReply(false);
         setShowDeleteModal(true);
+        console.log(isReply);
       };
+
+      const handleReplyDeleteButtonClick = (replyId) =>{
+        setReplyId(replyId);
+        console.log(replyId);
+        setIsReply(true);
+        setShowDeleteModal(true);
+        console.log(isReply);
+      }
     
       const handleDeletePasswordChange = (event) => {
         const inputValue = event.target.value;
@@ -135,7 +162,7 @@ function CommentCard({CommentId,writer,content,created_at,reply }) {
                         </NameDate>
                         <ReplyDelete>
                             <FontAwesomeIcon icon={faTrashCan} size="xs" style={{color:"#525252"}}
-                            onClick={handleDeleteButtonClick}/>
+                            onClick={()=>handleReplyDeleteButtonClick(reply.id)}/>
                         </ReplyDelete>
                     </ReplyFrist>
                     <ReplySecond>
@@ -182,6 +209,7 @@ function CommentCard({CommentId,writer,content,created_at,reply }) {
             <h3>댓글 삭제</h3>
             <p>댓글을 삭제하시겠습니까?</p>
             <input
+                required
               type="password"
               placeholder="비밀번호"
               value={deletePassword}

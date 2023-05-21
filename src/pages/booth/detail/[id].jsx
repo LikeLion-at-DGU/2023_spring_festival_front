@@ -279,7 +279,7 @@ useEffect(() => {
                 {comment.map((comment) => (
                     <CommentCard
                         key={comment.id}
-                        CommentId={comment.id}
+                        commentId={comment.id}
                         writer={comment.writer}
                         content={comment.content}
                         created_at={comment.created_at}
