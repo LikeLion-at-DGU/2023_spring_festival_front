@@ -13,6 +13,7 @@ import {
   FilterSectionSub2,
   FilterSectionSub3,
   GuideMessage,
+  LocationTextSection,
   MapContainer,
   MapModalButton,
   MapModalSection,
@@ -146,8 +147,34 @@ export default function Booth() {
     );
   });
 
-  const boothSectorData = boothSectorArray[boothSector].map((sector) => {
-    return <MapModalButton key={sector.id}>{sector.location}</MapModalButton>;
+  const boothSectorData = boothSectorArray[boothSector].map((s) => {
+    return <MapModalButton key={s.id}>{s.location}</MapModalButton>;
+  });
+
+  const locationList = boothSectorArray[boothSector].map((loc) => {
+    if (loc.length > 1) {
+      loc.map((loc2) => {
+        return (
+          <SelectedLocation
+            key={loc2.id}
+            secondLeftMoved={thirdLeftScene}
+            secondRightMoved={thirdRightScene}
+          >
+            {loc2.location},{" "}
+          </SelectedLocation>
+        );
+      });
+    } else {
+      return (
+        <SelectedLocation
+          key={loc.id}
+          secondLeftMoved={thirdLeftScene}
+          secondRightMoved={thirdRightScene}
+        >
+          {loc.location}
+        </SelectedLocation>
+      );
+    }
   });
 
   return (
@@ -226,7 +253,7 @@ export default function Booth() {
         {guideMessage}
       </GuideMessage>
       <br />
-      {/* <SelectedLocation>{boothSectorArray[boothSector].location}</SelectedLocation> */}
+      <LocationTextSection>{locationList}</LocationTextSection>
       {/* GridSection---------------------------- */}
       <BoothFilterSection firstMoved={FirstMoved} className="fadeIn">
         <FilterSectionSub1 isFocus={isFocus} onClick={() => setIsFocus(0)}>
@@ -239,7 +266,7 @@ export default function Booth() {
           야간부스
         </FilterSectionSub3>
         {/* 희찬 검색어 작업 연결------------------ */}
-        <FilterSectionInput placeholder="검색어를 입력해주세요" />
+        {/* <FilterSectionInput placeholder="검색어를 입력해주세요" /> */}
       </BoothFilterSection>
       <BoothCardGridWrapper firstMoved={FirstMoved} className="FadeIn">
         {boothData}

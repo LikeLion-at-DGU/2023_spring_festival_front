@@ -252,11 +252,21 @@ export const GuideMessage = styled.h3`
   cursor: ${(props) => (props.secondLeftMoved || props.secondRightMoved ? "pointer" : "")};
 `;
 
-export const SelectedLocation = styled.h1`
+export const LocationTextSection = styled.section`
   width: 100%;
-  font-size: 30px;
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+`;
+
+export const SelectedLocation = styled.h1`
+  font-size: 24px;
   color: ${secondaryColor};
-  font-weight: 700;
+  font-weight: 900;
+  border-left: 1px solid ${secondaryColor};
+  border-right: 1px solid ${secondaryColor};
+  padding: 5px;
+  display: ${(props) => (props.secondLeftMoved || props.secondRightMoved ? "inline" : "none")};
 `;
 
 export const BoothFilterSection = styled.section`
@@ -267,7 +277,8 @@ export const BoothFilterSection = styled.section`
   align-items: center;
   font-size: 14px;
   color: ${secondaryColor};
-  margin-top: 50px;
+  margin-left: 15px;
+
   display: ${(props) => (props.firstMoved ? "none" : "flex")};
   @media all and (max-width: 420px) {
     font-size: 12px;
