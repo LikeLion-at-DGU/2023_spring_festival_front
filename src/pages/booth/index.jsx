@@ -140,6 +140,16 @@ export default function Booth() {
         ))}
       </DateSection>
       <MapContainer firstMoved={FirstMoved} onClick={handleMap} className="fadeIn">
+        {/* MapModalSection------------------------ */}
+        <MapModalSection
+          firstMoved={FirstMoved}
+          secondScene={secondScene}
+          secondLeftMoved={thirdLeftScene}
+          secondRightMoved={thirdRightScene}
+          className="fadeIn"
+        >
+          <MapModalButton>전체</MapModalButton>
+        </MapModalSection>
         {/* MapSection----------------------------- */}
         <MapSection
           secondScene={secondScene}
@@ -166,16 +176,6 @@ export default function Booth() {
             <Image src={pin} alt="pin" fill style={{ objectFit: "cover" }} />
           </Pin6>
         </MapSection>
-        {/* MapModalSection------------------------ */}
-        {/* <MapModalSection
-          firstMoved={FirstMoved}
-          secondScene={secondScene}
-          secondLeftMoved={thirdLeftScene}
-          secondRightMoved={thirdRightScene}
-          className="fadeIn"
-        >
-          <MapModalButton>전체</MapModalButton>
-        </MapModalSection> */}
       </MapContainer>
       {/* GuideLine------------------------------ */}
       <GuideMessage

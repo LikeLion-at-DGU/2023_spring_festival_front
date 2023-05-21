@@ -75,6 +75,7 @@ export const RankingHotButton = styled.button`
 export const MapContainer = styled.div`
   width: 100%;
   height: 300px;
+  position: relative;
   display: flex;
   transition: all 1s;
   margin-top: ${(props) => (props.firstMoved ? "0vh" : "-50px")};
@@ -88,34 +89,50 @@ export const MapSection = styled.section`
   transition: all 1s;
   margin-left: ${(props) =>
     props.secondLeftMoved && props.secondScene
-      ? "100px"
+      ? "80px"
       : props.secondRightMoved && props.secondScene
-      ? "-100px"
+      ? "-110px"
       : ""};
   cursor: pointer;
 `;
 
 export const MapModalSection = styled.section`
-  width: 130px;
+  width: 120px;
   min-height: 50px;
+  position: absolute;
+  left: ${(props) => (!props.secondRightMoved && props.secondLeftMoved ? "3%" : "67%")};
+  top: ${(props) => (!props.secondRightMoved && props.secondLeftMoved ? "33%" : "55%")};
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   gap: 5px;
   color: ${secondaryColor};
   border-radius: 30px;
   box-shadow: 3px 3px 20px -10px rgba(0, 0, 0, 0.7);
+  padding: 5px;
+  transition: all 1s;
+  z-index: 5;
+  display: ${(props) =>
+    props.secondScene && (props.secondLeftMoved || props.secondRightMoved) ? "flex" : "none"};
+  @media all and (max-width: 430px) {
+    width: 100px;
+    min-height: 30px;
+  }
 `;
 
 export const MapModalButton = styled.button`
-  width: 110px;
+  width: 100px;
   height: 40px;
   border-radius: 30px;
   background-color: ${secondaryColor};
   color: #fff;
   font-family: "Noto Sans KR", sans-serif;
-  font-size: 14px;
+  font-size: 12px;
+  @media all and (max-width: 430px) {
+    width: 80px;
+    height: 25px;
+  }
 `;
 
 export const Pin1 = styled.section`
