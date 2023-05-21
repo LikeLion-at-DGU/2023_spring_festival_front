@@ -194,7 +194,13 @@ export const GuideMessage = styled.h3`
   color: ${primaryColor};
   font-weight: 700;
   font-size: 14px;
-  animation: ${FadeInOut} 1s infinite alternate;
+  animation: ${(props) =>
+    props.secondLeftMoved || props.secondRightMoved
+      ? ""
+      : css`
+          ${FadeInOut} 1s infinite alternate
+        `};
+  cursor: ${(props) => (props.secondLeftMoved || props.secondRightMoved ? "pointer" : "")};
 `;
 
 export const BoothFilterSection = styled.section`

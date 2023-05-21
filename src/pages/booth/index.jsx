@@ -73,27 +73,31 @@ export default function Booth() {
 
   // Function 관리---------------------------------
   const handleMap = async () => {
-    setGuideMessage("원하시는 위치의 핀을 선택해주세요.");
-    setFirstScene(false);
-    setSecondScene(true);
+    if (firstScene && !secondScene) {
+      setGuideMessage("원하는 위치의 핀을 선택해주세요!");
+      setFirstScene(false);
+      setSecondScene(true);
+    }
   };
 
   const handlePinLeft = async () => {
+    setGuideMessage("전체 보기");
     setThirdLeftScene(true);
     setThirdRightScene(false);
-    setGuideMessage("전체 보기");
   };
 
   const handlePinRight = async () => {
+    setGuideMessage("전체 보기");
+    console.log(guideMessage);
     setThirdRightScene(true);
     setThirdLeftScene(false);
-    setGuideMessage("전체 보기");
   };
 
   const handlePinCenter = async () => {
     if (secondScene && (thirdLeftScene || thirdRightScene)) {
       setThirdLeftScene(false);
       setThirdRightScene(false);
+      setGuideMessage("원하는 위치의 핀을 선택해주세요!");
     }
   };
 
@@ -110,7 +114,7 @@ export default function Booth() {
       />
     );
   });
-  console.log(thirdLeftScene, thirdRightScene);
+
   return (
     <Container>
       {/* RankingSection------------------------- */}
