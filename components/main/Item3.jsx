@@ -82,9 +82,9 @@ export default function Item3(){
                             </> :
                             <>
                             <h6>(G)IDLE</h6>
-                            <h6>Kyoung Seo</h6>
+                            <h6>GyeongSeo</h6>
                             <h6>PUNCH</h6>
-                            <h6>윤딴딴</h6>
+                            <h6>YunDDanDDan</h6>
                             </>}
                         </Now>
                     </Content>
