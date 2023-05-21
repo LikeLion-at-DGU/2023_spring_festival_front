@@ -296,7 +296,7 @@ export const FilterSectionSub1 = styled.span`
   font-family: "Noto Sans KR", sans-serif;
   cursor: pointer;
   transition: all 0.3s;
-  color: ${(props) => (props.dayOrNight === "" ? `${primaryColor}` : "")};
+  color: ${(props) => (props.dayOrNight === "전체" ? `${primaryColor}` : "")};
 `;
 
 export const FilterSectionSub2 = styled.span`

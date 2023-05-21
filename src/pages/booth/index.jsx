@@ -76,7 +76,7 @@ export default function Booth() {
   // Booth Modal Button 디폴트 -> 전체
   const [boothSectorDetail, setBoothSectorDetail] = useState("");
   // 디폴트 -> 전체 부스 / 낮 -> 1 / 밤 -> 2
-  const [dayOrNight, setDayOrNight] = useState("");
+  const [dayOrNight, setDayOrNight] = useState("전체");
   const FirstMoved = useMemo(() => {
     return firstScene;
   }, [firstScene]);
@@ -297,7 +297,7 @@ export default function Booth() {
       <LocationTextSection>{locationList}</LocationTextSection>
       {/* GridSection---------------------------- */}
       <BoothFilterSection firstMoved={FirstMoved} className="fadeIn">
-        <FilterSectionSub1 dayOrNight={dayOrNight} onClick={() => setDayOrNight("")}>
+        <FilterSectionSub1 dayOrNight={dayOrNight} onClick={() => setDayOrNight("전체")}>
           전체
         </FilterSectionSub1>
         <FilterSectionSub2 dayOrNight={dayOrNight} onClick={() => setDayOrNight("주간부스")}>
