@@ -19,6 +19,13 @@ const nextConfig = {
         destination : "https://github.com/LikeLion-at-DGU",
         permanent : false,
       },
+
+      /* SK DEVOCEAN 링크 URL */
+      {
+        source : "/skdevocean",
+        destination : "https://instagram.com/skdevocean?igshid=MzRlODBiNWFlZA==",
+        permanent : false,
+      },
     ]
   },
 
