@@ -301,6 +301,7 @@ export const NameDate = styled.div`
 
 `
 export const CommentCardSecondRow = styled.div`
+  font-size: 14px;
   display: flex;
 `
 
