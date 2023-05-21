@@ -1,7 +1,7 @@
 export const testBoothDataArray = [
   {
     id: 1,
-    name: "아ㅏ아아ㅏ악..",
+    name: "1번 부스",
     type: "주간부스",
     operator: "멋쟁이사자처럼",
     logo_image: [],
@@ -21,12 +21,12 @@ export const testBoothDataArray = [
   },
   {
     id: 2,
-    name: "오우예아..",
+    name: "2번 부스",
     type: "야간부스",
     operator: "코끼리멋쟁이",
     logo_image: [],
     like_cnt: 12,
-    start_at: "2023-05-24",
+    start_at: "2023-05-25",
     end_at: "2023-05-25",
     location: "학생회관",
     section: 2,
@@ -41,7 +41,7 @@ export const testBoothDataArray = [
   },
   {
     id: 3,
-    name: "크으으아아아아ㅏㅇ",
+    name: "3번 부스",
     type: "야간부스",
     operator: "축기단",
     logo_image: [],
@@ -61,7 +61,7 @@ export const testBoothDataArray = [
   },
   {
     id: 4,
-    name: "쿠오ㅗㅓㅗㅇ오오오오오",
+    name: "4번 부스",
     type: "야간부스",
     operator: "멋쟁이홍보팀처럼",
     logo_image: [],
@@ -81,7 +81,7 @@ export const testBoothDataArray = [
   },
   {
     id: 5,
-    name: "하하하ㅏ하핳하",
+    name: "5번 부스",
     type: "주간부스",
     operator: "가보자고",
     logo_image: [],

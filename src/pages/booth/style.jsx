@@ -22,12 +22,10 @@ export const DateSection = styled.div`
 `;
 
 export const DayBox = styled.div`
-  bottom: 0;
-  margin: 0px 15px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: -2px;
+  margin: 0px 20px;
   cursor: pointer;
 `;
 // 준서------------------------------------------------
@@ -335,10 +333,10 @@ export const FilterSectionInput = styled.input`
 
 // 희찬------------------------------------------------
 export const BoxDate = styled.span`
-  opacity: ${(props) => (props.isActive ? 1 : 0.9)};
-  transition: all 0.3s;
-  margin-bottom: 5px;
   color: ${(props) => (props.isActive ? "#FC8CAE" : "#525252")};
+  margin-bottom: 5px;
+  transition: all 0.3s;
+  opacity: ${(props) => (props.isActive ? 1 : 0.9)};
 `;
 
 export const BoxDay = styled.span`

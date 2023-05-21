@@ -35,9 +35,8 @@ import Image from "next/image";
 import map from "../../../components/image/booth/campus_map.svg";
 import pin from "../../../components/image/booth/pin.png";
 import { BoothCardGridWrapper } from "./search_style";
-import { boothSectorArray, testBoothDataArray } from "./testData";
+import { boothSectorArray } from "./testData";
 import FilteredBooth from "components/booth/FilteredBooth";
-import BoothCard from "components/booth/BoothCard";
 
 // 날짜 배열
 const dayArray = [
@@ -61,8 +60,7 @@ const dayArray = [
 export default function Booth() {
   // DATE 관리-------------------------------------
   const day = new Date();
-  // 23일 -> 1, 24일 -> 2, 25일 -> 3 --------------
-  const todate = day.getDate() === 24 ? 2 : day.getDate() === 25 ? 3 : 1;
+  const todate = day.getDate() === 24 ? 24 : day.getDate() === 25 ? 25 : 23;
   const [isToday, setIsToday] = useState(todate);
 
   // State 관리------------------------------------
@@ -225,11 +223,11 @@ export default function Booth() {
       {/* DateSection---------------------------- */}
       <DateSection firstMoved={FirstMoved} className="fadeIn">
         {dayArray.map((i) => (
-          <DayBox key={i.id} onClick={() => setIsToday(i.id)}>
-            <BoxDate isActive={isToday === i.id}>
+          <DayBox key={i.id} onClick={() => setIsToday(i.date)}>
+            <BoxDate isActive={isToday === i.date}>
               <DateNum>{i.date}</DateNum>
             </BoxDate>
-            <BoxDay isActive={isToday === i.id}>
+            <BoxDay isActive={isToday === i.date}>
               <DateWeek>{i.day}</DateWeek>
             </BoxDay>
           </DayBox>
@@ -285,6 +283,7 @@ export default function Booth() {
           </Pin6>
         </MapSection>
       </MapContainer>
+      <br />
       {/* GuideLine------------------------------ */}
       <GuideMessage
         secondLeftMoved={thirdLeftScene}
@@ -310,7 +309,7 @@ export default function Booth() {
         {/* <FilterSectionInput placeholder="검색어를 입력해주세요" /> */}
       </BoothFilterSection>
       <BoothCardGridWrapper firstMoved={FirstMoved} className="FadeIn">
-        <FilteredBooth dayOrNight={dayOrNight} />
+        <FilteredBooth dayOrNight={dayOrNight} isToday={isToday} />
       </BoothCardGridWrapper>
     </Container>
   );
