@@ -8,6 +8,9 @@ import {
   DateContainer,
   DateSection,
   DayBox,
+  EmptyFilteredBooth,
+  EmptyFilteredIcon,
+  EmptyFilteredSection,
   FilterSectionInput,
   FilterSectionSub1,
   FilterSectionSub2,
@@ -37,6 +40,8 @@ import pin from "../../../components/image/booth/pin.png";
 import { BoothCardGridWrapper } from "./search_style";
 import { boothSectorArray } from "./testData";
 import FilteredBooth from "components/booth/FilteredBooth";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faRepublican } from "@fortawesome/free-solid-svg-icons";
 
 // 날짜 배열
 const dayArray = [
@@ -62,7 +67,6 @@ export default function Booth() {
   const day = new Date();
   const todate = day.getDate() === 24 ? 24 : day.getDate() === 25 ? 25 : 23;
   const [isToday, setIsToday] = useState(todate);
-
   // State 관리------------------------------------
   const [guideMessage, setGuideMessage] = useState("시작을 위해 지도를 클릭해주세요.");
   const [firstScene, setFirstScene] = useState(true);
@@ -310,6 +314,12 @@ export default function Booth() {
       </BoothFilterSection>
       <BoothCardGridWrapper firstMoved={FirstMoved} className="FadeIn">
         <FilteredBooth dayOrNight={dayOrNight} isToday={isToday} />
+        {/* <EmptyFilteredSection>
+          <EmptyFilteredIcon>
+            <FontAwesomeIcon icon={faRepublican} />
+          </EmptyFilteredIcon>
+          <EmptyFilteredBooth>조건에 맞는 부스가 없어요!</EmptyFilteredBooth>
+        </EmptyFilteredSection> */}
       </BoothCardGridWrapper>
     </Container>
   );

@@ -255,16 +255,15 @@ export const GuideMessage = styled.h3`
 export const LocationTextSection = styled.section`
   width: 100%;
   display: flex;
-  justify-content: center;
-  margin-top: 30px;
+  justify-content: flex-start;
+  margin: 30px 0 0 20px;
 `;
 
 export const SelectedLocation = styled.h1`
   font-size: 24px;
   color: ${secondaryColor};
   font-weight: 900;
-  border-left: 1px solid ${secondaryColor};
-  border-right: 1px solid ${secondaryColor};
+  font-family: "Noto Sans KR", sans-serif;
   padding: 5px;
   display: ${(props) => (props.secondLeftMoved || props.secondRightMoved ? "inline" : "none")};
 `;
@@ -289,7 +288,7 @@ export const FilterSectionSub1 = styled.span`
   display: flex;
   align-items: center;
   height: 18px;
-  border-right: 4px solid ${secondaryColor};
+  border-right: 2px solid ${secondaryColor};
   padding: 10px;
   font-family: "Noto Sans KR", sans-serif;
   cursor: pointer;
@@ -301,7 +300,7 @@ export const FilterSectionSub2 = styled.span`
   display: flex;
   align-items: center;
   height: 18px;
-  border-right: 4px solid ${secondaryColor};
+  border-right: 2px solid ${secondaryColor};
   padding: 10px;
   font-family: "Noto Sans KR", sans-serif;
   cursor: pointer;
@@ -329,6 +328,28 @@ export const FilterSectionInput = styled.input`
   font-family: "Noto Sans KR", sans-serif;
   background-color: ${subPinkColor};
   margin-left: 5px;
+`;
+
+export const EmptyFilteredSection = styled.section`
+  width: 100%;
+  grid-column: 1 / 3;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+`;
+
+export const EmptyFilteredIcon = styled.section`
+  font-size: 70px;
+  color: ${primaryColor};
+`;
+
+export const EmptyFilteredBooth = styled.p`
+  font-size: 14px;
+  font-family: "Noto Sans KR", sans-serif;
+  font-weight: 700;
+  color: ${primaryColor};
 `;
 
 // 희찬------------------------------------------------

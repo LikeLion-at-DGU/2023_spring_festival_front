@@ -21,6 +21,7 @@ export default function FilteredBooth({ dayOrNight, isToday }) {
       return boothCard;
     }
   });
+
   // 23, 24, 25일 필터링---------------------------------------------
   const filteredByIsToday = filteredByDayOrNight.filter((booth2) => {
     const firstDay = Number(booth2.start_at.slice(-2));
@@ -48,7 +49,7 @@ export default function FilteredBooth({ dayOrNight, isToday }) {
     }
   });
 
-  const filteredBooth = filteredByIsToday.map((booth) => {
+  const filteredBooth = filteredByIsToday?.map((booth) => {
     return (
       <BoothCard
         key={booth.id}
