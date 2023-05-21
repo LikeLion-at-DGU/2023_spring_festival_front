@@ -1,5 +1,6 @@
 import styled from "styled-components";
 
+
 const Container = styled.div`
     width: 100%;
     height: 90%;
@@ -7,6 +8,9 @@ const Container = styled.div`
         margin-top: 60px;
     }
 `
+
+
+
 
 export default function Second(){
     return(
