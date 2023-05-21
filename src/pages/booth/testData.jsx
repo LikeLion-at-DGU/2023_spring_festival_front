@@ -106,23 +106,23 @@ export const boothSectorArray = [
   [{ id: 1, location: "이해랑예술극장" }],
   // Section2
   [
-    { id: 2, location: "사회과학관" },
-    { id: 3, location: "혜화관" },
-    { id: 4, location: "혜화별관" },
+    { id: 1, location: "사회과학관" },
+    { id: 2, location: "혜화관" },
+    { id: 3, location: "혜화별관" },
   ],
   // Section3
   [
-    { id: 5, location: "명진관" },
-    { id: 6, location: "팔정도" },
+    { id: 1, location: "명진관" },
+    { id: 2, location: "팔정도" },
   ],
   // Section4
-  [{ id: 7, location: "원흥관 4층" }],
+  [{ id: 1, location: "원흥관 4층" }],
   // Section5
-  [{ id: 8, location: "만해광장" }],
+  [{ id: 1, location: "만해광장" }],
   // Section6
   [
-    { id: 9, location: "학생회관" },
-    { id: 10, location: "학림관" },
+    { id: 1, location: "학생회관" },
+    { id: 2, location: "학림관" },
   ],
 ];
 

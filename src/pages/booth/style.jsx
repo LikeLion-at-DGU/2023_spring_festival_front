@@ -110,7 +110,7 @@ export const MapModalSection = styled.section`
   box-shadow: 3px 3px 20px -10px rgba(0, 0, 0, 0.7);
   padding: 5px;
   transition: all 1s;
-  z-index: 5;
+  z-index: 99;
   display: ${(props) =>
     props.secondScene && (props.secondLeftMoved || props.secondRightMoved) ? "flex" : "none"};
   @media all and (max-width: 430px) {

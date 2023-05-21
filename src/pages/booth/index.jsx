@@ -73,10 +73,12 @@ export default function Booth() {
   const [secondScene, setSecondScene] = useState(false);
   const [thirdLeftScene, setThirdLeftScene] = useState(false);
   const [thirdRightScene, setThirdRightScene] = useState(false);
+  // ===========
   // Booth Modal 디폴트 -> 가운데 핀 index
   const [boothSector, setBoothSector] = useState(2);
   // Booth Modal Button 디폴트 -> 전체
-  const [boothSectorDetail, setBoothSectorDetail] = useState("");
+  const [boothSectorDetail, setBoothSectorDetail] = useState(0);
+  // ===========
   // 디폴트 -> 전체 부스 / 낮 -> 1 / 밤 -> 2
   const [dayOrNight, setDayOrNight] = useState("전체");
   const FirstMoved = useMemo(() => {
@@ -139,31 +141,9 @@ export default function Booth() {
     }
   };
 
-  const boothSectorData = boothSectorArray[boothSector]?.map((sec) => {
+  const boothSectorData = boothSectorArray[boothSector]?.map((sec, idx) => {
     let clickedLocation = false;
-    if (sec.length === 1) {
-      clickedLocation = true;
-      return (
-        <MapModalButton
-          key={sec.id}
-          clickedLocation={true}
-          onClick={() => setBoothSectorDetail(sec.id)}
-        >
-          {sec.location}
-        </MapModalButton>
-      );
-    } else if (sec.id === boothSectorDetail) {
-      clickedLocation = true;
-      return (
-        <MapModalButton
-          key={sec.id}
-          clickedLocation={clickedLocation}
-          onClick={() => setBoothSectorDetail(sec.id)}
-        >
-          {sec.location}
-        </MapModalButton>
-      );
-    } else if (sec.id === 0) {
+    if (sec.id === boothSectorDetail) {
       clickedLocation = true;
       return (
         <MapModalButton
@@ -313,7 +293,12 @@ export default function Booth() {
         {/* <FilterSectionInput placeholder="검색어를 입력해주세요" /> */}
       </BoothFilterSection>
       <BoothCardGridWrapper firstMoved={FirstMoved} className="FadeIn">
-        <FilteredBooth dayOrNight={dayOrNight} isToday={isToday} />
+        <FilteredBooth
+          dayOrNight={dayOrNight}
+          isToday={isToday}
+          boothSector={boothSector}
+          boothSectorDetail={boothSectorDetail}
+        />
         {/* <EmptyFilteredSection>
           <EmptyFilteredIcon>
             <FontAwesomeIcon icon={faRepublican} />
