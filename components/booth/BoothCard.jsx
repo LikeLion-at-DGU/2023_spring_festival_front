@@ -27,7 +27,7 @@ function BoothCard({ id, name, operator, logoImage, likeCnt, isLike, location, t
 
   // Determine the page type based on the pathname
   const pageType = pathname === '/booth/search' ? 'booth/search' : 'booth';
-  
+
   return (
     <Link href={`/booth/detail/${id}`}>
       <BoothCardWrapper>
@@ -35,7 +35,7 @@ function BoothCard({ id, name, operator, logoImage, likeCnt, isLike, location, t
         <BoothCardDetailWrapper>
           <Ribbon pageType={pageType} type={type}>{type}</Ribbon>
           <BoothCardDetailDes>
-            <RankBoothDetailTitle>{name}</RankBoothDetailTitle>
+            <RankBoothDetailTitle>{String(name).length < 8 ? name : `${String(name).slice(0,7)}...`}</RankBoothDetailTitle>
             <RannkBoothDetailOperator>{operator}</RannkBoothDetailOperator>
             <RankBoothDetailLocation>{location}</RankBoothDetailLocation>
           </BoothCardDetailDes>
