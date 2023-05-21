@@ -2,19 +2,19 @@ import styled, { css, keyframes } from "styled-components";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { primaryColor, secondaryColor } from "../_app";
+import { primaryColor, secondaryColor, subPinkColor } from "../_app";
 
 export const Container = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
   padding-top: 20px;
-  z-index: 1;
+  z-index: 100;
 `;
 // 날짜 컨테이너
 export const DateSection = styled.div`
   width: 100%;
-  height: 15vh;
+  height: 150px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -41,7 +41,7 @@ export const FadeInOut = keyframes`
 
 export const RankingSection = styled.section`
   width: 100%;
-  height: 20vh;
+  height: 200px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -72,13 +72,71 @@ export const RankingHotButton = styled.button`
   border-radius: 30px;
 `;
 
-export const MapSection = styled.section`
+export const MapContainer = styled.div`
   width: 100%;
-  height: 30vh;
-  cursor: pointer;
+  height: 300px;
   position: relative;
-  transition: all 0.5s;
-  margin-top: ${(props) => (props.firstMoved ? "0vh" : "-5vh")};
+  display: flex;
+  transition: all 1s;
+  margin-top: ${(props) => (props.firstMoved ? "0vh" : "-50px")};
+  overflow: hidden;
+`;
+
+export const MapSection = styled.section`
+  min-width: 100%;
+  height: 300px;
+  position: relative;
+  transition: all 1s;
+  margin-left: ${(props) =>
+    props.secondLeftMoved && props.secondScene
+      ? "80px"
+      : props.secondRightMoved && props.secondScene
+      ? "-110px"
+      : ""};
+  cursor: pointer;
+`;
+
+export const MapModalSection = styled.section`
+  width: 90px;
+  min-height: 50px;
+  position: absolute;
+  left: ${(props) => (!props.secondRightMoved && props.secondLeftMoved ? "3%" : "67%")};
+  top: ${(props) => (!props.secondRightMoved && props.secondLeftMoved ? "33%" : "55%")};
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 5px;
+  color: ${secondaryColor};
+  border-radius: 30px;
+  box-shadow: 3px 3px 20px -10px rgba(0, 0, 0, 0.7);
+  padding: 5px;
+  transition: all 1s;
+  z-index: 5;
+  display: ${(props) =>
+    props.secondScene && (props.secondLeftMoved || props.secondRightMoved) ? "flex" : "none"};
+  @media all and (max-width: 430px) {
+    width: 80px;
+    min-height: 30px;
+  }
+`;
+
+export const MapModalButton = styled.button`
+  width: 70px;
+  min-height: 35px;
+  border-radius: 30px;
+  background-color: ${secondaryColor};
+  color: #fff;
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: 10px;
+  transition: all 0.3s;
+  @media all and (max-width: 410px) {
+    min-height: 30px;
+  }
+  cursor: pointer;
+  &:hover {
+    box-shadow: 3px 3px 20px -10px rgba(0, 0, 0, 1);
+  }
 `;
 
 export const Pin1 = styled.section`
@@ -128,11 +186,12 @@ export const Pin3 = styled.section`
 `;
 
 export const Pin4 = styled.section`
+  /* 학생회관 4층 */
   width: 35px;
   height: 35px;
   position: absolute;
-  left: 62%;
-  bottom: 45%;
+  left: 73%;
+  bottom: 53%;
   animation: ${(props) =>
     props.secondScene
       ? css`
@@ -148,8 +207,8 @@ export const Pin5 = styled.section`
   width: 35px;
   height: 35px;
   position: absolute;
-  left: 73%;
-  bottom: 53%;
+  left: 62%;
+  bottom: 45%;
   animation: ${(props) =>
     props.secondScene
       ? css`
@@ -184,7 +243,30 @@ export const GuideMessage = styled.h3`
   color: ${primaryColor};
   font-weight: 700;
   font-size: 14px;
-  animation: ${FadeInOut} 1s infinite alternate;
+  animation: ${(props) =>
+    props.secondLeftMoved || props.secondRightMoved
+      ? ""
+      : css`
+          ${FadeInOut} 1s infinite alternate
+        `};
+  cursor: ${(props) => (props.secondLeftMoved || props.secondRightMoved ? "pointer" : "")};
+`;
+
+export const LocationTextSection = styled.section`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+`;
+
+export const SelectedLocation = styled.h1`
+  font-size: 24px;
+  color: ${secondaryColor};
+  font-weight: 900;
+  border-left: 1px solid ${secondaryColor};
+  border-right: 1px solid ${secondaryColor};
+  padding: 5px;
+  display: ${(props) => (props.secondLeftMoved || props.secondRightMoved ? "inline" : "none")};
 `;
 
 export const BoothFilterSection = styled.section`
@@ -193,8 +275,14 @@ export const BoothFilterSection = styled.section`
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  font-size: 14px;
   color: ${secondaryColor};
-  margin-top: 50px;
+  margin-left: 15px;
+
+  display: ${(props) => (props.firstMoved ? "none" : "flex")};
+  @media all and (max-width: 420px) {
+    font-size: 12px;
+  }
 `;
 
 export const FilterSectionSub1 = styled.span`
@@ -230,6 +318,17 @@ export const FilterSectionSub3 = styled.span`
   cursor: pointer;
   transition: all 0.3s;
   color: ${(props) => (props.isFocus === 2 ? `${primaryColor}` : "")};
+`;
+
+export const FilterSectionInput = styled.input`
+  width: 150px;
+  height: 22px;
+  padding: 10px;
+  border: none;
+  border-radius: 30px;
+  font-family: "Noto Sans KR", sans-serif;
+  background-color: ${subPinkColor};
+  margin-left: 5px;
 `;
 
 // 희찬------------------------------------------------

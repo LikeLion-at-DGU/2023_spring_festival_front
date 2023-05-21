@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import styled, { keyframes } from "styled-components";
 import NoticeCard from "components/notice/NoticeCard";
+import { animated, useTrail } from "react-spring";
 
 const Container = styled.div`
   width: 100%;
@@ -20,13 +21,14 @@ const TypeWrapper = styled.div`
 
 const Type = styled.button`
   width: 20%;
-  padding: 3% 3%;
+  padding: 3% 2%;
   background: transparent;
   border: none;
   border-bottom: 2px solid ${(props)=>props.isSelected ? '#FC8CAE' : '#979797'};
   color: ${(props)=>props.isSelected ? '#FC8CAE' : '#979797'};
   font-size: 18px;
   line-height: 19px;
+  font-family: "yg-jalnan";
 `;
 
 const TypeBody = styled.div`
@@ -85,7 +87,7 @@ export default function Notice(){
           "type": "main",
           "content": "글이 길면 어때? 글이 길면 어때? 글이 길면 어때? 글이 길면 어때? 글이 길면 어때? 글이 길면 어때? 글이 길면 어때? 글이 길면 어때? 글이 길면 어때?",
           "created_at": "2023-05-13T07:47:07.687842+09:00",
-          "images": []
+          "images": ["https://images.ctfassets.net",]
         },
         {
           "id": 2,
@@ -148,10 +150,7 @@ export default function Notice(){
           <NoticeCard 
             key={notice.id}
             id={notice.id}
-            title={notice.title}
-            content={notice.content}
-            created_at={notice.created_at}
-            images={notice.images}
+            notice={notice}
           />
         ))}
         
