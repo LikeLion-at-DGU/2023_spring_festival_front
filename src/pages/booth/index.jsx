@@ -1,4 +1,4 @@
-import { React, useEffect, useMemo, useState } from "react";
+import { React, useCallback, useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import {
   BoothFilterSection,
@@ -27,6 +27,7 @@ import {
   RankingLeftSection,
   RankingRightSection,
   RankingSection,
+  SelectedLocation,
 } from "./style";
 import { DateNum, DateWeek } from "../timetable/style";
 import Image from "next/image";
@@ -34,7 +35,7 @@ import map from "../../../components/image/booth/campus_map.svg";
 import pin from "../../../components/image/booth/pin.png";
 import { BoothCardGridWrapper } from "./search_style";
 import BoothCard from "components/booth/BoothCard";
-import { testBoothData } from "./testData";
+import { boothSectorArray, testBoothDataArray } from "./testData";
 
 // 날짜 배열
 const dayArray = [
@@ -69,12 +70,13 @@ export default function Booth() {
   const [thirdLeftScene, setThirdLeftScene] = useState(false);
   const [thirdRightScene, setThirdRightScene] = useState(false);
   const [isFocus, setIsFocus] = useState(0);
+  const [boothSector, setBoothSector] = useState(1);
   const FirstMoved = useMemo(() => {
     return firstScene;
   }, [firstScene]);
 
   // Function 관리---------------------------------
-  const handleMap = async () => {
+  const handleMap = () => {
     if (firstScene && !secondScene) {
       setGuideMessage("원하는 위치의 핀을 선택해주세요!");
       setFirstScene(false);
@@ -82,19 +84,46 @@ export default function Booth() {
     }
   };
 
-  const handlePinLeft = async () => {
+  // 핀 핸들링 코드 축약---------------------------
+  const leftPinHandling = useCallback(() => {
     setGuideMessage("전체 보기");
     setThirdLeftScene(true);
     setThirdRightScene(false);
-  };
-
-  const handlePinRight = async () => {
+  }, [thirdLeftScene, thirdRightScene]);
+  const rightPinHandling = useCallback(() => {
     setGuideMessage("전체 보기");
     setThirdRightScene(true);
     setThirdLeftScene(false);
-  };
+  }, [thirdLeftScene, thirdRightScene]);
 
-  const handlePinCenter = async () => {
+  // 좌측 핀 클릭 핸들링----------------------------
+  const handlePinLeft1 = useCallback(() => {
+    leftPinHandling();
+    setBoothSector(0);
+  }, [thirdLeftScene, thirdRightScene]);
+  const handlePinLeft2 = useCallback(() => {
+    leftPinHandling();
+    setBoothSector(1);
+  }, [thirdLeftScene, thirdRightScene]);
+  const handlePinLeft3 = useCallback(() => {
+    leftPinHandling();
+    setBoothSector(2);
+  }, [thirdLeftScene, thirdRightScene]);
+  // 우측 핀 클릭 핸들링----------------------------
+  const handlePinRight1 = useCallback(() => {
+    rightPinHandling();
+    setBoothSector(3);
+  }, [thirdLeftScene, thirdRightScene]);
+  const handlePinRight2 = useCallback(() => {
+    rightPinHandling();
+    setBoothSector(4);
+  }, [thirdLeftScene, thirdRightScene]);
+  const handlePinRight3 = useCallback(() => {
+    rightPinHandling();
+    setBoothSector(5);
+  }, [thirdLeftScene, thirdRightScene]);
+
+  const handlePinCenter = () => {
     if (secondScene && (thirdLeftScene || thirdRightScene)) {
       setThirdLeftScene(false);
       setThirdRightScene(false);
@@ -103,7 +132,7 @@ export default function Booth() {
   };
 
   // Data 관리-------------------------------------
-  const boothData = testBoothData.map((booth) => {
+  const boothData = testBoothDataArray.map((booth) => {
     return (
       <BoothCard
         key={booth.id}
@@ -115,6 +144,10 @@ export default function Booth() {
         location={booth.location}
       />
     );
+  });
+
+  const boothSectorData = boothSectorArray[boothSector].map((sector) => {
+    return <MapModalButton key={sector.id}>{sector.location}</MapModalButton>;
   });
 
   return (
@@ -148,7 +181,14 @@ export default function Booth() {
           secondRightMoved={thirdRightScene}
           className="fadeIn"
         >
-          <MapModalButton>전체</MapModalButton>
+          {boothSectorArray[boothSector].length === 1 ? (
+            boothSectorData
+          ) : (
+            <>
+              <MapModalButton>전체</MapModalButton>
+              {boothSectorData}
+            </>
+          )}
         </MapModalSection>
         {/* MapSection----------------------------- */}
         <MapSection
@@ -157,22 +197,22 @@ export default function Booth() {
           secondRightMoved={thirdRightScene}
         >
           <Image src={map} alt="campus_map" fill />
-          <Pin1 onClick={handlePinLeft} secondScene={secondScene}>
+          <Pin1 onClick={handlePinLeft1} secondScene={secondScene}>
             <Image src={pin} alt="pin" fill style={{ objectFit: "cover" }} />
           </Pin1>
-          <Pin2 onClick={handlePinLeft} secondScene={secondScene}>
+          <Pin2 onClick={handlePinLeft2} secondScene={secondScene}>
             <Image src={pin} alt="pin" fill style={{ objectFit: "cover" }} />
           </Pin2>
-          <Pin3 onClick={handlePinLeft} secondScene={secondScene}>
+          <Pin3 onClick={handlePinLeft3} secondScene={secondScene}>
             <Image src={pin} alt="pin" fill style={{ objectFit: "cover" }} />
           </Pin3>
-          <Pin4 onClick={handlePinRight} secondScene={secondScene}>
+          <Pin4 onClick={handlePinRight1} secondScene={secondScene}>
             <Image src={pin} alt="pin" fill style={{ objectFit: "cover" }} />
           </Pin4>
-          <Pin5 onClick={handlePinRight} secondScene={secondScene}>
+          <Pin5 onClick={handlePinRight2} secondScene={secondScene}>
             <Image src={pin} alt="pin" fill style={{ objectFit: "cover" }} />
           </Pin5>
-          <Pin6 onClick={handlePinRight} secondScene={secondScene}>
+          <Pin6 onClick={handlePinRight3} secondScene={secondScene}>
             <Image src={pin} alt="pin" fill style={{ objectFit: "cover" }} />
           </Pin6>
         </MapSection>
@@ -185,6 +225,8 @@ export default function Booth() {
       >
         {guideMessage}
       </GuideMessage>
+      <br />
+      {/* <SelectedLocation>{boothSectorArray[boothSector].location}</SelectedLocation> */}
       {/* GridSection---------------------------- */}
       <BoothFilterSection firstMoved={FirstMoved} className="fadeIn">
         <FilterSectionSub1 isFocus={isFocus} onClick={() => setIsFocus(0)}>

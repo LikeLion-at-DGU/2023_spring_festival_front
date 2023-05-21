@@ -97,7 +97,7 @@ export const MapSection = styled.section`
 `;
 
 export const MapModalSection = styled.section`
-  width: 120px;
+  width: 90px;
   min-height: 50px;
   position: absolute;
   left: ${(props) => (!props.secondRightMoved && props.secondLeftMoved ? "3%" : "67%")};
@@ -116,22 +116,26 @@ export const MapModalSection = styled.section`
   display: ${(props) =>
     props.secondScene && (props.secondLeftMoved || props.secondRightMoved) ? "flex" : "none"};
   @media all and (max-width: 430px) {
-    width: 100px;
+    width: 80px;
     min-height: 30px;
   }
 `;
 
 export const MapModalButton = styled.button`
-  width: 100px;
-  height: 40px;
+  width: 70px;
+  min-height: 35px;
   border-radius: 30px;
   background-color: ${secondaryColor};
   color: #fff;
   font-family: "Noto Sans KR", sans-serif;
-  font-size: 12px;
-  @media all and (max-width: 430px) {
-    width: 80px;
-    height: 25px;
+  font-size: 10px;
+  transition: all 0.3s;
+  @media all and (max-width: 410px) {
+    min-height: 30px;
+  }
+  cursor: pointer;
+  &:hover {
+    box-shadow: 3px 3px 20px -10px rgba(0, 0, 0, 1);
   }
 `;
 
@@ -246,6 +250,13 @@ export const GuideMessage = styled.h3`
           ${FadeInOut} 1s infinite alternate
         `};
   cursor: ${(props) => (props.secondLeftMoved || props.secondRightMoved ? "pointer" : "")};
+`;
+
+export const SelectedLocation = styled.h1`
+  width: 100%;
+  font-size: 30px;
+  color: ${secondaryColor};
+  font-weight: 700;
 `;
 
 export const BoothFilterSection = styled.section`
