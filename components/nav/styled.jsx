@@ -2,7 +2,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styled, { keyframes, css } from "styled-components";
 import { motion } from "framer-motion";
 
-
 export const slideIn = keyframes`
     
     from {
@@ -27,9 +26,9 @@ export const slideOut = keyframes`
 `;
 
 export const ModalWrapper = styled.div`
-
+    font-family: "yg-jalnan";
     background: #FFFFFF;
-    z-index: 100;
+    z-index: 150;
     height: 100vh;
     top: 0;
     position: absolute;
@@ -57,26 +56,26 @@ export const ModalOverlay = styled.div`
     width: 100%;
     height: 100%;
     background-color: #101010CC;
-    z-index: 99; 
+    z-index: 149; 
 `;
 
 export const ModalButton = styled(FontAwesomeIcon)`
-    width: 20px;
-    height: 5vh;
+  width: 20px;
+  height: 5vh;
 `;
 
 export const ModalHeader = styled.div`
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid #D2D2D2;
-    padding: 3.5vh 0 4vh 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #d2d2d2;
+  padding: 3.5vh 0 4vh 0;
 `;
 
 export const ModalTitle = styled.ul`
-    line-height: 2.5vh;
-    color: #525252;
+  line-height: 2.5vh;
+  color: #525252;
 `;
 
 export const ModalPages = styled.div`
@@ -85,24 +84,25 @@ export const ModalPages = styled.div`
     flex-direction: column;
     justify-content: space-between;
     gap: 4vh;
-    font-weight: 700;
     font-size: 32px;
 `;
 
 export const ModalPageSection = styled.a`
+    font-family: 'ygotjalnanfont';
+    font-weight: 700;
     width: 100%;
     display: flex;
     color: ${ ({is_active}) => ( !is_active ? '#525252' : '#FC8CAE') };
 
-    &:hover {
-        color: #FC8CAE;
-    }
+  &:hover {
+    color: #fc8cae;
+  }
 `;
 
 export const ModalFooter = styled.footer`
-    padding: 7vh 0;
-    display: flex;
-    font-weight: 500;
-    font-size: 12px;
-    color: #BBBBBB;
+  padding: 7vh 0;
+  display: flex;
+  font-weight: 500;
+  font-size: 12px;
+  color: #bbbbbb;
 `;

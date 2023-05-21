@@ -9,10 +9,10 @@ import Image from 'next/image';
 import test from '../../../components/image/about/about_seulgi.svg';
 
 const Container = styled.div`
-  width: 100%;
+  width: 90%;
   display: flex;
   flex-direction: column;
-  margin-top: 25px;
+  margin: 5%;
   z-index: 1;
   padding: 25px 0;
 `;
@@ -55,7 +55,7 @@ const Title = styled.div`
     color: #525252;
     font-family: 'AppleSDGothicNeoB00';
     font-style: normal;
-    font-weight: 400;
+    font-weight: 500;
     font-size: 24px;
 `;
 
@@ -144,22 +144,6 @@ export default function Detail(){
         typeArray.find((type)=>type.type === notice.type) ? typeArray.find((type)=>type.type === notice.type).content
         : ' ';
 
-    // 현재 url
-    //const location = useLocation();
-    useEffect(()=>{
-        console.log(location);
-    }, [location])
-
-    // 링크 복사 함수
-    const handleCopy = async (text) => {
-        try {
-            await navigator.clipboard.writeText(text);
-            alert("링크가 복사되었습니다.");
-        } catch (err) {
-            console.log('Error: '+err);
-        }
-    };
-
   return(
     <Container>
         <Header>
@@ -173,10 +157,10 @@ export default function Detail(){
         <Body>
             <BodyHeader>
                 <Title>{notice.title}</Title>
-                    <Share
+                    {/* <Share
                         icon={faPaperPlane}
                         onClick={()=>handleCopy(`${location.pathname}`)}
-                        ></Share>
+                        ></Share> */}
             </BodyHeader>
             <Content>
             {notice.content}

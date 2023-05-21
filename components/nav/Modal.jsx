@@ -1,75 +1,71 @@
 import { faArrowLeftLong } from "@fortawesome/free-solid-svg-icons";
 import React, { useState, useRef, useEffect } from "react";
-import Image from 'next/image';
-import Link from 'next/link';
+import Image from "next/image";
+import Link from "next/link";
 import { useRouter } from "next/router";
 import nav_logo from "../image/common/nav_logo.svg";
 import {
-    ModalWrapper,
-    ModalOverlay,
-    ModalButton,
-    ModalHeader,
-    ModalTitle,
-    ModalPages,
-    ModalPageSection,
-    ModalFooter
-} from './styled';
+  ModalWrapper,
+  ModalOverlay,
+  ModalButton,
+  ModalHeader,
+  ModalTitle,
+  ModalPages,
+  ModalPageSection,
+  ModalFooter,
+} from "./styled";
 
-export default function Modal({setModalOpen}) {
+export default function Modal({ setModalOpen }) {
+  // 모달창 애니메이션
+  const [isVisible, setIsVisible] = useState(false);
+  // 모달 처음 마운트 됨을 설정
+  const [isMounted, setIsMounted] = useState(false);
 
-    // 모달창 애니메이션 
-    const [isVisible, setIsVisible] = useState(false);
-    // 모달 처음 마운트 됨을 설정
-    const [isMounted, setIsMounted] = useState(false);
+  useEffect(() => {
+    setIsMounted(true);
+    setIsVisible(true);
+  }, []);
 
+  // 모달창 닫기
+  const closeModal = () => {
+    setIsVisible(false);
+
+    setTimeout(() => {
+      setModalOpen(false);
+    }, 500);
+  };
+
+  // 모달창 밖에 눌렀을 때
+  const outSection = useRef();
+
+  const useOnClickOutside = (ref, handler) => {
     useEffect(() => {
-        setIsMounted(true);
-        setIsVisible(true);
-    }, []);
+      const listener = (e) => {
+        if (!ref.current || ref.current.contains(e.target)) {
+          return;
+        }
+        handler();
+      };
 
-    
-    // 모달창 닫기
-    const closeModal = () => {
-        
-        setIsVisible(false);
+      document.addEventListener("mousedown", listener);
+      document.addEventListener("touchstart", listener);
 
-        setTimeout(()=> {
-            setModalOpen(false);
-        }, 500)
-    };
+      return () => {
+        document.removeEventListener("mousedown", listener);
+        document.removeEventListener("touchstart", listener);
+      };
+    });
+  };
 
+  useOnClickOutside(outSection, closeModal);
 
-    // 모달창 밖에 눌렀을 때
-    const outSection = useRef();
+  // router
+  const router = useRouter();
 
-    const useOnClickOutside = (ref, handler) => {
-    useEffect(() => {
-        const listener = (e) => {
-            if (!ref.current || ref.current.contains(e.target)) {
-                return;
-            }
-            handler();
-        };
-    
-        document.addEventListener('mousedown', listener);
-        document.addEventListener('touchstart', listener);
-
-        return () => {
-          document.removeEventListener('mousedown', listener);
-          document.removeEventListener('touchstart', listener);
-        };
-      });
-};
-
-    useOnClickOutside(outSection, closeModal);
-
-    // router
-    const router = useRouter();
-
-    // 모달이 완전히 열린 후 렌더링
-    if (!isMounted) {
-        return null;
-    }
+  // 모달이 완전히 열린 후 렌더링
+  if (!isMounted) {
+    return null;
+  }
 
     return(
         <>
@@ -104,6 +100,15 @@ export default function Modal({setModalOpen}) {
                             is_active = {router.pathname === '/booth'}
                             onClick={closeModal}
                             >booth</ModalPageSection>
+                    </Link>
+                    <Link href="/booth/search" passHref>
+                        <ModalPageSection
+                            is_active = {router.pathname === '/booth/search'}
+                            onClick={closeModal}
+                            style={{
+                                fontSize: '20px'
+                            }}
+                            >booth search</ModalPageSection>
                     </Link>
                     <Link href="/about" passHref>
                         <ModalPageSection
