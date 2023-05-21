@@ -228,6 +228,21 @@ margin-left: 10px;
   }
   
 `
-export const CommentContentInput = styled.input`
+export const CommentContentInput = styled.textarea`
+margin-top: 10px;
+  padding:7px;
+  width: 333px;
+  border: 1px solid #C4C4C4;
+  border-radius: 20px;
+  height: 30px;
 
+  &::placeholder{
+    font-family: 'AppleSDGothicNeoM00';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: -0.3px;
+    color: #CBCBCB;
+  }
 `

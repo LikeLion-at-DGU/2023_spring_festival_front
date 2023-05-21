@@ -19,6 +19,30 @@ import { RankBoothDetailLocation } from '../style';
 
 const BoothDetailPage = () => {
 
+    const [password, setPassword] = useState('');
+    const [nickname, setNickname] = useState('');
+    const [commentContent, setCommentContent] = useState('');
+
+    // 댓글 내용
+    const handleCommentContentChange = (event) => {
+        const inputValue = event.target.value;
+        setCommentContent(inputValue);
+    }
+    
+    // 닉네임
+    const handleNicknameChange = (event) => {
+        const inputValue = event.target.value;
+        setNickname(inputValue);
+    }
+
+    // 비번 
+    const handlePasswordChange = (event) => {
+        const inputValue = event.target.value;
+        if (/^[0-9]*$/.test(inputValue)) {
+          setPassword(inputValue);
+  
+        }
+    }
     const [booth, setBooth] = useState(
         {
             id: 1,
@@ -125,24 +149,30 @@ const BoothDetailPage = () => {
              <BoothMenuImage src={DeafultImage}/>
             </BoothImageWrapper>
         </BoothDetailMenuWrapper>
+
+        {/* 댓글 */}
         <CommentWrapper>
             <BoothDetailSeparator />
                 <BoothDetailMenuTitle>
                     댓글 {comment.length}
             </BoothDetailMenuTitle>
+
+            {/* 댓글 인풋 */}
             <CommentInputWrapper>
                 <CommentInfWrapper>
                     <CommentId>
                         작성자 명
-                        <CommentInput placeholder='닉네임'/>
+                        <CommentInput placeholder='닉네임'value={nickname}
+                  onChange={handleNicknameChange} required/>
                     </CommentId>
                     <CommentPassword>
                         비밀번호
-                        <CommentInput placeholder='숫자 4자리'/>
+                        <CommentInput placeholder='숫자 4자리' inputMode='numeric' minLength={4} maxLength={4} type='password' value={password}
+                  onChange={handlePasswordChange} required />
                     </CommentPassword>
                 </CommentInfWrapper>
                 <CommentContent>
-                    <CommentContentInput placeholder='숫자 4자리'/>
+                    <CommentContentInput placeholder='숫자 4자리' required value={commentContent} onChange={handleCommentContentChange}/>
                 </CommentContent>
             </CommentInputWrapper>
         </CommentWrapper>
