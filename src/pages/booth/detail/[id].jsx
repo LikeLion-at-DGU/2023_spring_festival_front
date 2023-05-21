@@ -5,7 +5,7 @@ import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import DeafultImage from "../../../../components/image/common/booth_deafault.png"
-import { BoothDetailContent, BoothDetailCotainer, BoothDetailHeader, BoothDetailHeaderWrapper, BoothDetailLine, BoothDetailLocation, BoothDetailLoveShareWrapper, BoothDetailMenuAllSee, BoothDetailMenuHeader, BoothDetailMenuTitle, BoothDetailMenuWrapper, BoothDetailOperator, BoothDetailSeparator, BoothDetailTime, BoothDetailTitle, BoothImageSlider, BoothImageWrapper, BoothLogoImage, BoothLogoWrapper, BoothMenuImage, CommentWrapper, DetailHeart, DetailHeartCnt, DetailHeartWrapper, DetailRibbon, DetailShareIcon, ShareIcon } from './style';
+import { BoothDetailContent, BoothDetailCotainer, BoothDetailHeader, BoothDetailHeaderWrapper, BoothDetailLine, BoothDetailLocation, BoothDetailLoveShareWrapper, BoothDetailMenuAllSee, BoothDetailMenuHeader, BoothDetailMenuTitle, BoothDetailMenuWrapper, BoothDetailOperator, BoothDetailSeparator, BoothDetailTime, BoothDetailTitle, BoothImageSlider, BoothImageWrapper, BoothLogoImage, BoothLogoWrapper, BoothMenuImage, CommentContent, CommentContentInput, CommentId, CommentInfWrapper, CommentInput, CommentInputWrapper, CommentPassword, CommentWrapper, DetailHeart, DetailHeartCnt, DetailHeartWrapper, DetailRibbon, DetailShareIcon, ShareIcon } from './style';
 import { BoothCardDetailHeartWrapper, CardDetailHeartCntWrapper, CardDetailHeartIcon, Ribbon } from '../search_style';
 import Booth from '..';
 import { faHeart, faShareNodes  } from "@fortawesome/free-solid-svg-icons";
@@ -130,8 +130,23 @@ const BoothDetailPage = () => {
                 <BoothDetailMenuTitle>
                     댓글 {comment.length}
             </BoothDetailMenuTitle>
-
+            <CommentInputWrapper>
+                <CommentInfWrapper>
+                    <CommentId>
+                        작성자 명
+                        <CommentInput placeholder='닉네임'/>
+                    </CommentId>
+                    <CommentPassword>
+                        비밀번호
+                        <CommentInput placeholder='숫자 4자리'/>
+                    </CommentPassword>
+                </CommentInfWrapper>
+                <CommentContent>
+                    <CommentContentInput placeholder='숫자 4자리'/>
+                </CommentContent>
+            </CommentInputWrapper>
         </CommentWrapper>
+
 
     </BoothDetailCotainer>
   );

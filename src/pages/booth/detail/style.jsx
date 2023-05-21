@@ -180,6 +180,54 @@ export const BoothImageWrapper = styled.div`
   display: flex;
 `
 export const CommentWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+ `
+
+ export const CommentInputWrapper = styled.div`
+  display: flex;
+  margin-top: 15px;
+  color: #6B6B6B;
+  flex-direction: column;
+  font-size: 14px;
+  font-weight: 600;
+ `
+
+export const CommentInfWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+`
+export const CommentId = styled.p`
+flex-grow: 1;
+`
+export const CommentPassword = styled.p`
+margin-left: 10px;
+flex-grow: 1;
   
 `
+export const CommentContent = styled.p`
+`
 
+export const CommentInput = styled.input`
+margin-left: 10px;
+  height: 30px;
+  width:100px;
+  border: 1px solid #C4C4C4;
+  border-radius: 20px;
+  padding-left: 10px;
+  &::placeholder{
+    font-family: 'AppleSDGothicNeoM00';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: -0.3px;
+    color: #CBCBCB;
+  }
+  
+`
+export const CommentContentInput = styled.input`
+
+`
