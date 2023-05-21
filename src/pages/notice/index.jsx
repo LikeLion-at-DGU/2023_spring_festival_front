@@ -72,7 +72,6 @@ export default function Notice(){
 
   const selectTypeHandler = (type) => {
     setCurrentType(type);
-    console.log(currentType);
   };
 
   // notice list fetch
@@ -162,7 +161,6 @@ export default function Notice(){
         })}
       </TypeWrapper>
       <TypeBody isVisible={typeNotices.length > 0}>
-        {/* {typeNotices.map((notice)=>( */}
         {trail.map((style, index) => (
           <animated.div key={typeNotices[index].id} style={style}>
             <NoticeCard 
@@ -171,14 +169,7 @@ export default function Notice(){
               notice={typeNotices[index]}
             />
           </animated.div>
-        ))}
-          {/* <NoticeCard 
-            key={notice.id}
-            id={notice.id}
-            notice={notice}
-          /> */}
-        {/* ))} */}
-        
+        ))}        
       </TypeBody>
     </Container>
   )

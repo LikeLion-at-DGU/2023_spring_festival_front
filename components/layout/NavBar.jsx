@@ -57,7 +57,6 @@ export default function HeadBar(){
 
     // 디테일 페이지 구분을 위한 변수
     const router = useRouter();
-    console.log(router.pathname.split('/')[2]);
 
     return(
         <Container>
