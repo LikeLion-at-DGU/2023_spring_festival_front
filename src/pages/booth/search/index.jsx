@@ -1,5 +1,5 @@
 import SearchHeader from "components/booth/SearchHeader";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { RecommandHeader, RecommandTitle } from "../style";
 import RecomandRowCard from "components/booth/RecomandRowCard";
 import { useTrail, useSpring, animated, useTransition } from "react-spring";
@@ -10,7 +10,7 @@ import { RecommandBoothTitle } from "../search_style";
 import { SearchContainer } from "../search_style";
 
 function Search() {
-  const [booth, setBooth] = useState([
+  const [booth, setBooth] = useState([     
     {
       id: 1,
       name: "으아아앙악..",
@@ -97,20 +97,8 @@ function Search() {
       section: "3",
       is_liked: true,
     },
-    {
-      id: 4,
-      name: "집가고싶다..",
-      type: "야간부스",
-      operator: "멋쟁이사자처럼",
-      logo_image:
-        "https://www.pngplay.com/wp-content/uploads/3/Apple-Siri-Logo-Download-Free-PNG.png",
-      like_cnt: 100,
-      start_at: "2023-05-23T18:00:07.687842+09:00",
-      end_at: "2023-05-23T23:00:07.687842+09:00",
-      location: "학생회관",
-      section: "3",
-      is_liked: true,
-    },    
+
+   
 ]);
   // 랜덤 추천, 매 호출 마다 다르값 불러옴 
   const [randomBooth, setRandomBooth] = useState([
@@ -153,22 +141,207 @@ function Search() {
         section: "3",
         is_liked: true
       },
+  ])
+  
+  const [searchValue, setSearchValue] = useState('');
+
+
+
+
+  // 부스 정보 가져오기 
+useEffect(() => {
+  fetchBooths();
+  fetchRecomandBooths();
+  featchRandmonBooths();
+}, []);
+
+
+const fetchRecomandBooths = async() => {
+  try {
+    const recomandBoothData = [
       {
-        id: 4,
+        id: 1,
+        name: "코딩주점",
+        type: "주간부스",
+        operator: "멋쟁이사자처럼",
+        logo_image:
+          "https://www.pngplay.com/wp-content/uploads/3/Apple-Siri-Logo-Download-Free-PNG.png",
+        like_cnt: 100,
+        start_at: "2023-05-23T18:00:07.687842+09:00",
+        end_at: "2023-05-23T23:00:07.687842+09:00",
+        location: "학생회관",
+        section: "1",
+        is_liked: true,
+      },
+      {
+        id: 2,
+        name: "히찬부스",
+        type: "야간부스",
+        operator: "서희찬",
+        logo_image: null,
+        like_cnt: 120,
+        start_at: "2023-05-23T18:00:07.687842+09:00",
+        end_at: "2023-05-23T23:00:07.687842+09:00",
+        location: "학생회관",
+        section: "2",
+        is_liked: false,
+      },
+      {
+        id: 3,
         name: "집가고싶다..",
         type: "야간부스",
         operator: "멋쟁이사자처럼",
-        logo_image: "https://www.pngplay.com/wp-content/uploads/3/Apple-Siri-Logo-Download-Free-PNG.png",
+        logo_image:
+          "https://www.pngplay.com/wp-content/uploads/3/Apple-Siri-Logo-Download-Free-PNG.png",
         like_cnt: 100,
         start_at: "2023-05-23T18:00:07.687842+09:00",
         end_at: "2023-05-23T23:00:07.687842+09:00",
         location: "학생회관",
         section: "3",
-        is_liked: true
+        is_liked: true,
       },
-  ])
-  
-  const [searchValue, setSearchValue] = useState('');
+      {
+        id: 4,
+        name: "집가고싶다..",
+        type: "야간부스",
+        operator: "멋쟁이사자처럼",
+        logo_image:
+          "https://www.pngplay.com/wp-content/uploads/3/Apple-Siri-Logo-Download-Free-PNG.png",
+        like_cnt: 100,
+        start_at: "2023-05-23T18:00:07.687842+09:00",
+        end_at: "2023-05-23T23:00:07.687842+09:00",
+        location: "학생회관",
+        section: "3",
+        is_liked: true,
+      },    
+  ]
+  setRecomandBooth(recomandBoothData);
+            console.log(recomandBoothData)
+    } catch (error) {
+        console.error('Error: ', error);
+  }
+}
+
+const featchRandmonBooths= async() => {
+  try {
+    const randomBoothData = [
+      {
+          id: 1,
+          name: "코딩주점",
+          type: "야간부스",
+          operator: "멋쟁이사자처럼",
+          logo_image: "https://www.pngplay.com/wp-content/uploads/3/Apple-Siri-Logo-Download-Free-PNG.png",
+          like_cnt: 100,
+          start_at: "2023-05-23T18:00:07.687842+09:00",
+          end_at: "2023-05-23T23:00:07.687842+09:00",
+          location: "학생회관",
+          section: "1",
+          is_liked: true
+        },
+        {
+          id: 2,
+          name: "히찬부스",
+          type: "야간부스",
+          operator: "서희찬",
+          logo_image: null,
+          like_cnt: 120,
+          start_at: "2023-05-23T18:00:07.687842+09:00",
+          end_at: "2023-05-23T23:00:07.687842+09:00",
+          location: "학생회관",
+          section: "2",
+          is_liked: false
+        },
+        {
+          id: 3,
+          name: "집가고싶다..",
+          type: "야간부스",
+          operator: "멋쟁이사자처럼",
+          logo_image: "https://www.pngplay.com/wp-content/uploads/3/Apple-Siri-Logo-Download-Free-PNG.png",
+          like_cnt: 100,
+          start_at: "2023-05-23T18:00:07.687842+09:00",
+          end_at: "2023-05-23T23:00:07.687842+09:00",
+          location: "학생회관",
+          section: "3",
+          is_liked: true
+        },
+        {
+          id: 4,
+          name: "집가고싶다..",
+          type: "야간부스",
+          operator: "멋쟁이사자처럼",
+          logo_image: "https://www.pngplay.com/wp-content/uploads/3/Apple-Siri-Logo-Download-Free-PNG.png",
+          like_cnt: 100,
+          start_at: "2023-05-23T18:00:07.687842+09:00",
+          end_at: "2023-05-23T23:00:07.687842+09:00",
+          location: "학생회관",
+          section: "3",
+          is_liked: true
+        },
+    ]
+    setRandomBooth(randomBoothData);
+    console.log(randomBoothData);
+  } catch (error) {
+    console.error('Error: ', error);
+  }
+}
+
+
+const fetchBooths = async() => {
+  try {
+      // const response = await axios.get(`posts/${id}`);
+      // const postData = response.data;
+      const boothData = 
+            [
+              {
+                id: 1,
+                name: "으아아앙악..",
+                type: "주간부스",
+                operator: "뭐리",
+                logo_image:
+                  "https://www.pngplay.com/wp-content/uploads/3/Apple-Siri-Logo-Download-Free-PNG.png",
+                like_cnt: 100,
+                start_at: "2023-05-23T18:00:07.687842+09:00",
+                end_at: "2023-05-23T23:00:07.687842+09:00",
+                location: "멋쟁이",
+                section: "3",
+                is_liked: true,
+              },
+              {
+                id: 2,
+                name: "서희찬..",
+                type: "야간부스",
+                operator: "멋쟁이사자처럼",
+                logo_image:
+                  "https://www.pngplay.com/wp-content/uploads/3/Apple-Siri-Logo-Download-Free-PNG.png",
+                like_cnt: 100,
+                start_at: "2023-05-23T18:00:07.687842+09:00",
+                end_at: "2023-05-23T23:00:07.687842+09:00",
+                location: "학생회관",
+                section: "3",
+                is_liked: true,
+              },
+              {
+              id: 3,
+              name: "멋쟁이!",
+              type: "푸드트럭",
+              operator: "대나무숲",
+              logo_image: "https://www.pngplay.com/wp-content/uploads/3/Apple-Siri-Logo-Download-Free-PNG.png",
+              like_cnt: 130,
+              start_at: "2023-05-23T18:00:07.687842+09:00",
+              end_at: "2023-05-23T23:00:07.687842+09:00",
+              location: "명진관",
+              section: "3",
+              is_liked: false
+            },
+            ]
+          setBooth(boothData);
+          console.log(boothData)
+  } catch (error) {
+      console.error('Error: ', error);
+  }
+};
+
+
 
   const renderTopBooth = () => {
     const trail = useTrail(3, {

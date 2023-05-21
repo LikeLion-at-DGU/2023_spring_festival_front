@@ -297,15 +297,45 @@ export const CommentCardFirstRow = styled.div`
 export const NameDate = styled.div`
   color : #808080;
   font-weight: 400;
+  
   font-size: 12px;
 
 `
 export const CommentCardSecondRow = styled.div`
   font-size: 14px;
+  background: #FFE9F0;
+  border-radius: 10px;
+  height: 64px;
   display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  justify-content: space-between;
+  padding: 10px;
+  
+  
 `
 
 export const ReplyDelete = styled.div`
   display: flex;
   color: #FC8CAE;
+`
+
+export const ReplyContent = styled.div`
+
+`
+
+export const ReplyWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  margin-top: 10px;
+`
+export const ReplyFrist = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+`
+export const ReplySecond = styled.div`
+  display: flex;
+  margin-top: 7px;
+  flex-grow:1;
 `
