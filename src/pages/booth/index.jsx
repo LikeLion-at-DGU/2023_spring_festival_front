@@ -325,12 +325,12 @@ export default function Booth() {
           boothSectorDetail={boothSectorDetail}
           setBoothLoaded={setBoothLoaded}
         />
-        {/* <EmptyFilteredSection>
+        <EmptyFilteredSection>
           <EmptyFilteredIcon>
             <Image src={elephant} alt="elephant" fill style={{ objectFit: "cover" }} />
           </EmptyFilteredIcon>
           <EmptyFilteredBooth>조건에 맞는 부스가 없어요!</EmptyFilteredBooth>
-        </EmptyFilteredSection> */}
+        </EmptyFilteredSection>
       </BoothCardGridWrapper>
     </Container>
   );
