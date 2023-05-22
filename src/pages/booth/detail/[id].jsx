@@ -58,9 +58,9 @@ const BoothDetailPage = ({myData}) => {
         try {
             // axios요청 보내기 
         console.log("하트 클릭");
+        setIsLikeClick(i=>!i)
         const response = await API.delete(`/store/${id}/love`);
         if (response.status === 200) {
-              setIsLikeClick(i=>!i)
             console.log("하트 클릭 성공");
           } else {
             // Handle error case

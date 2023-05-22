@@ -201,16 +201,25 @@ const isInputValid = () => {
                     {writer}&nbsp;{filterDate}&nbsp;{filterTime}
                 </NameDate>
                 <ReplyDelete>
-                    <FontAwesomeIcon icon={faTurnUp} size="xs" rotation={90} style={{marginRight:"10px"}} 
-                        onClick={handleReplyButtonClick} />
-
-                        {content !== ("삭제된 댓글입니다.") && (
+                {content !== "삭제된 댓글입니다." ? (
+                            <div>
+                            <FontAwesomeIcon
+                                icon={faTurnUp}
+                                size="xs"
+                                rotation={90}
+                                style={{ marginRight: "10px" }}
+                                onClick={handleReplyButtonClick}
+                            />
+                            <span>{content}</span>
                             <FontAwesomeIcon
                                 icon={faTrashCan}
                                 size="xs"
                                 onClick={handleDeleteButtonClick}
                             />
-    )}
+                            </div>
+                        ) : (
+                            <p></p>
+                        )}
                 </ReplyDelete>
             </CommentCardFirstRow>
             {content}
