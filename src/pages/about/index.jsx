@@ -145,7 +145,6 @@ margin-bottom: 80px;
 `
 const Gradation = styled.div`
 width: 100%;
-margin-left: -24px;
 height: 300px;
 background: linear-gradient(180deg, rgba(255, 233, 240, 0) 0%, rgba(255, 233, 240, 0.892708) 3  0.83%, rgba(255, 233, 240, 0) 100%);
 z-index:-10;
@@ -256,7 +255,6 @@ margin-bottom: 70px;
 `
 const Gradation2 = styled.div`
 width: 100%;
-margin-left: -24px;
 height: 300px;
 background: linear-gradient(180deg, rgba(255, 233, 240, 0) 0%, rgba(255, 233, 240, 0.892708) 50.83%, rgba(255, 233, 240, 0) 100%);
 z-index:-1;
@@ -264,7 +262,6 @@ position: absolute;
 `
 const Gradation4 = styled.div`
 width: 100%;
-margin-left: -24px;
 height: 300px;
 background: linear-gradient(180deg, rgba(255, 233, 240, 0) 0%, rgba(255, 233, 240, 0.892708) 40.83%, rgba(255, 233, 240, 0) 100%);
 z-index:-1;
@@ -331,7 +328,6 @@ color: #525252;
 `
 const Gradation3 = styled.div`
 width: 100%;
-margin-left: -24px;
 height: 600px;
 background: linear-gradient(180deg, rgba(255, 233, 240, 0) 0%, rgba(255, 233, 240, 0.892708) 50.83%, rgba(255, 233, 240, 0) 100%);
 z-index:-1;
@@ -340,13 +336,13 @@ position: absolute;
 const Line = styled(Image)`
 position: absolute;
 margin-top: 120px;
-margin-left: 50px;
+margin-left: 80px;
 
 `
 const Line2 = styled(Image)`
 position: absolute;
 margin-top: 80px;
-margin-left: 50px;
+margin-left: 100px;
 
 `
 
@@ -422,12 +418,12 @@ export default function Booth() {
         여러분의 청춘을 응원합니다 :)
       </Text1>
       <br/>
-      <Img1 src={about_da} data-aos="fade-up" ref={floating1Ref}/>
-      <Img2 src={about_si} data-aos="fade-up" ref={floating2Ref}/>
-      <Img3 src={about_bom} data-aos="fade-up" ref={floating3Ref}/>
+      <Img1 src={about_da} data-aos="fade-up" ref={floating1Ref} alt="about_da"/>
+      <Img2 src={about_si} data-aos="fade-up" ref={floating2Ref} alt="about_si"/>
+      <Img3 src={about_bom} data-aos="fade-up" ref={floating3Ref} alt="about_bom"/>
       
       <LargeText data-aos="fade-up">DONGGUK<br/>LIKELION</LargeText>
-      <LogoImg src={dgu} data-aos="fade-up"/>
+      <LogoImg src={dgu} data-aos="fade-up" alt="dgu"/>
       <Text2 data-aos="fade-up">멋쟁이사자처럼은 <br/>
 아이디어를 현실로 구현할 수 있는 <br/>
 IT 창업동아리입니다.</Text2>
@@ -443,10 +439,10 @@ IT 창업동아리입니다.</Text2>
         <SmallTitle>축제 기획단</SmallTitle>
         <SmallText href="https://instagram.com/donggukstuco?igshid=MzRlODBiNWFlZA==">@donggukstuco</SmallText>
       </Box>
-      <LogoImg2 src={dstuco}/>
+      <LogoImg2 src={dstuco} alt="dstuco"/>
       </Box2>
     <Box2 data-aos="zoom-in">
-      <LogoImg2 src={bamboo}/>
+      <LogoImg2 src={bamboo} alt="bamboo"/>
       <Box>
         <SmallTitle>동대 대나무 숲</SmallTitle>
         <SmallText href="https://instagram.com/dgu_bamboo?igshid=MzRlODBiNWFlZA==">@dgu_bamboo</SmallText>
@@ -454,7 +450,7 @@ IT 창업동아리입니다.</Text2>
     </Box2>
     <div data-aos="zoom-in">
       <SmallTitle2>후원사</SmallTitle2>
-      <LogoImg3 src={devocean}/>
+      <LogoImg3 src={devocean} alt="devocean"/>
       <SmallTitle3>DEVOCEAN</SmallTitle3>
       <SmallText2 href="https://instagram.com/skdevocean?igshid=MzRlODBiNWFlZA==">@skdevocean</SmallText2>
     </div>
@@ -464,55 +460,55 @@ IT 창업동아리입니다.</Text2>
     <Gradation2/>
     <Line src={line1} />
     <Name ref={floating4Ref}>
-      <ProfileImg src={leeyungnseo} /><br/> 이영서
+      <ProfileImg src={leeyungnseo} alt="leeyungseo" /><br/> 이영서
     </Name>
     <Name2 ref={floating5Ref}>
-      <ProfileImg src={yeowon}/><br/> 이여원
+      <ProfileImg src={yeowon} alt="yeowon"/><br/> 이여원
     </Name2>
     <RoleText2>FRONT-END</RoleText2>
     <Gradation3/>
     <Line src={line2} />
     <Name ref={floating6Ref}>
-      <ProfileImg src={sangdon2}/><br/>이상돈
+      <ProfileImg src={sangdon2} alt="sangdon2"/><br/>이상돈
     </Name>
     <Name4 ref={floating7Ref}>
-      <ProfileImg src={heechan}/><br/>서희찬
+      <ProfileImg src={heechan} alt="heechan"/><br/>서희찬
     </Name4>
     <Name3 ref={floating8Ref}>
-      <ProfileImg src={seulgi}/><br/>류슬기
+      <ProfileImg src={seulgi} alt="seulgi"/><br/>류슬기
     </Name3>
     <Name2 ref={floating14Ref}>
-      <ProfileImg src={junseo}/><br/>오준서
+      <ProfileImg src={junseo} alt="junseo"/><br/>오준서
     </Name2>
     <Name ref={floating9Ref}>
-      <ProfileImg src={yeowon2}/><br/>이여원
+      <ProfileImg src={yeowon2} alt="yeowon2"/><br/>이여원
     </Name>
     <RoleText2>BACK-END</RoleText2>
     <Gradation3/>
     <Line2 src={line3} />
     <Name2 ref={floating10Ref}>
-      <ProfileImg src={yuseong}/><br/>안유성
+      <ProfileImg src={yuseong} alt="yuseong"/><br/>안유성
     </Name2>
     <Name ref={floating11Ref}>
-      <ProfileImg src={sangjoon}/><br/>박상준
+      <ProfileImg src={sangjoon} alt="sangjoon"/><br/>박상준
     </Name>
     <Name5 ref={floating12Ref}>
-      <ProfileImg src={jenny}/><br/>김재니
+      <ProfileImg src={jenny} alt="jenny"/><br/>김재니
     </Name5>
     <Name4 ref={floating13Ref}>
-      <ProfileImg src={youngsin}/><br/>박영신
+      <ProfileImg src={youngsin} alt="youngsin"/><br/>박영신
     </Name4>
     <RoleText2>CORPORATE RELATIONS</RoleText2>
     <Gradation2/>
     <Line2 src={line4} />
     <Name4 ref={floating15Ref}>
-      <ProfileImg src={sooyoung}/><br/>김수영
+      <ProfileImg src={sooyoung} alt="sooyoung"/><br/>김수영
     </Name4>
     <Name ref={floating16Ref}>
-      <ProfileImg src={sangdon}/><br/>이상돈
+      <ProfileImg src={sangdon} alt="sangdon"/><br/>이상돈
     </Name>
     <Name4 ref={floating17Ref}>
-      <ProfileImg src={yoonyoungseo}/><br/>윤영서
+      <ProfileImg src={yoonyoungseo} alt="yoonyoungseo"/><br/>윤영서
     </Name4>
     <Box3 />
     </Container>

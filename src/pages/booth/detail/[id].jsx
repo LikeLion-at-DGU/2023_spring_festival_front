@@ -14,31 +14,79 @@ import { faLocationDot,faCircleExclamation } from '@fortawesome/free-solid-svg-i
 
 import { RankBoothDetailLocation } from '../style';
 import CommentCard from 'components/booth/Comment';
+import { API } from '@/pages/api';
+import Loading from 'components/common/Loading';
+
+
+export async function getServerSideProps(context) {
+    const {id} = context.query;
+    // 데이터를 가져오기 위한 비동기 작업을 수행합니다.
+    const fetchBooths = async(id) => {
+        try{
+            const res = await API.get(`/store/info/${id}`)
+            const boothData = res.data;
+            return boothData;
+        }catch(err){
+            console.log(err)
+            return null;
+        }
+    }
+
+    const boothData = await fetchBooths(id);
+
+    return {
+      props: {
+        myData: boothData,
+      },
+    };
+  }
 
 
 
-
-const BoothDetailPage = () => {
+const BoothDetailPage = ({myData}) => {
 
     const [password, setPassword] = useState('');
     const [nickname, setNickname] = useState('');
     const [commentContent, setCommentContent] = useState('');
-
+    const [isLikeClick,setIsLikeClick] = useState(false);
+    const [booth, setBooth] = useState([]);
    
   const handleHeartClick = async () => {
-    try {
-        // axios요청 보내기 
-    //   const response = await axios.post(`/api/booths/${booth.id}/likes`);
+    const id = router.query.id
+    console.log(id);
+    console.log(booth.is_liked);
+    if(booth.is_liked){
+        try {
+            // axios요청 보내기 
         console.log("하트 클릭");
-
-      if (response.status === 200) {
-        console.log("하트 클릭 성공");
-      } else {
-        // Handle error case
-        console.log("하트 클릭 실패");
-      }
-    } catch (error) {
-      // Handle error case
+        const response = await API.delete(`/store/${id}/love`);
+        if (response.status === 200) {
+              setIsLikeClick(i=>!i)
+            console.log("하트 클릭 성공");
+          } else {
+            // Handle error case
+            console.log("하트 클릭 실패");
+          }
+        } catch (error) {
+          // Handle error case
+        }
+    }else{
+        
+        try {
+            // axios요청 보내기 
+            console.log("하트 클릭");
+            const response = await API.post(`/store/${id}/love`);
+    
+          if (response.status === 200) {
+            console.log("하트 클릭 성공");
+            setIsLikeClick(i=>!i)
+          } else {
+            // Handle error case
+            console.log("하트 클릭 실패");
+          }
+        } catch (error) {
+          // Handle error case
+        }
     }
   };
 
@@ -63,13 +111,11 @@ const BoothDetailPage = () => {
   
         }
     }
-    const [booth, setBooth] = useState([]);
     const [comment, setComment] = useState([]);
-    
+  
 
-  const router = useRouter();
-  const { id } = router.query;
 
+    const router = useRouter();
 //   링크복사
   const handleCopyLink = () => {
     navigator.clipboard.writeText(window.location.href);
@@ -78,57 +124,12 @@ const BoothDetailPage = () => {
 
 
   const fetchComments = async() => {
+    const id = router.query.id
     try {
-      // const data = await response.json();
-      // 해당 id comments 불러오기
-    //   const response = await axios.get(`posts/${id}/comments`);
-    //   const commentData = response.data;
-    const commentData  = [
-        {
-            id: 1,
-            writer: "chan",
-            content: "zzzz",
-            created_at: "2023-05-21T21:24:42.354552",
-            replies: [
-                {
-                    id: 1,
-                    writer: "adss",
-                    content: "대박",
-                    created_at:"2023-05-21T21:24:42.354552"
-                },
-            ]
-        },
-        {
-            id: 2,
-            writer: "mens",
-            content: "zzzz",
-            created_at: "2023-05-21T21:24:42.354552",
-            replies: [
-                {
-                    id: 1,
-                    writer: "adss",
-                    content: "대박",
-                    created_at:"2023-05-21T21:24:42.354552"
-                },
-                {
-                    id: 2,
-                    writer: "adss",
-                    content: "대박",
-                    created_at:"2023-05-21T21:24:42.354552"
-                },
-            ]
-        },
-        {
-            id: 3,
-            writer: "mens",
-            content: "zzzz",
-            created_at: "2023-05-23",
-            replies: [
-
-            ]
-        },
-
-    ]
+      //해당 id comments 불러오기
+      const response = await API.get(`/store/${id}/respond`);
+      const commentData = response.data;
+   
     setComment(commentData);
     console.log(commentData);
     } catch (error) {
@@ -136,45 +137,35 @@ const BoothDetailPage = () => {
     }
   };
 
-const fetchBooths = async() => {
+
+
+const fetchBooth = async() => {
+    const sId = router.query.id
     try {
         // const response = await axios.get(`posts/${id}`);
         // const postData = response.data;
-        const boothData = 
-            {
-                id: 1,
-                name: "으아아앙악..",
-                type: "주간부스",
-                operator: "멋쟁이사자처럼",
-                logo_image: [],
-                like_cnt: 18,
-                start_at: "2023-05-23",
-                end_at: "2023-05-23",
-                location: "원흥관 9번",
-                section: "1",
-                description: "나는 ㅋㅋ너",
-                menu: {
-                    "메뉴1":2000,
-                    "메뉴2":3000,
-                    "메뉴3":4000,
-                    },
-                menu_image: ["https://url.kr/c8j4ag","https://url.kr/c8j4ag","https://url.kr/c8j4ag"],
-                is_liked: false
-            }
-            setBooth(boothData);
-            console.log(boothData)
+        const response = await API.get(`/store/info/${sId}`);
+        const boothDetailData = response.data;
+        setBooth(boothDetailData);
+        //console.log(boothDetailData.is_liked)
     } catch (error) {
         console.error('Error: ', error);
     }
 };
 
 useEffect(() => {
-    fetchBooths();
+    fetchBooth();
     fetchComments();
-}, []);
+}, [isLikeClick]);
+
+// booth 정보 없으면 로딩 표시
+  if (booth.length === 0) {
+    return <Loading />;
+  }
 
   // 댓글 등록
   const handleSubmission = (event) => {
+    const sId = router.query.id
     event.preventDefault(); // 폼 제출의 기본 동작인 페이지 새로고침을 방지합니다.
 
     const formData = {
@@ -182,33 +173,25 @@ useEffect(() => {
         password: password,
         content : commentContent,
       };
-      const dummyCommentData = {
-        writer : nickname,
-        password: password,
-        content : commentContent,
-      }
-
-      console.log(dummyCommentData);
-
     // 욕설 필터링 
     
     // 욕설 안걸렸을 시 통과 
 
-    //   // post보내기 
-    //   axios.post('reports', formData)
-    //     .then((response) => {
-    //       // console.log(response.data);
-    //     })
-    //     .catch((error) => {
-    //       // console.log( "제보 제출에러!");
-    //       // 오류 처리 로직을 추가합니다.
-    //       console.error('Error:', error);
-    //     });
+      // post보내기 
+      API.post(`/store/${sId}/respond`, formData)
+        .then((response) => {
+        //   console.log(response.data);
+        })
+        .catch((error) => {
+        //   console.log( "제보 제출에러!");
+        // //   오류 처리 로직을 추가합니다.
+        //   console.error('Error:', error);
+        });
 
       // 성공했을시 ReportDone으로 이동          
 
     // 성공했을시 페이지 새로고침 
-    // window.location.reload();
+    window.location.reload();
   };
 
 
@@ -262,13 +245,18 @@ useEffect(() => {
                     전체메뉴 보기
                 </BoothDetailMenuAllSee> */}
             </BoothDetailMenuHeader>
-            <BoothImageWrapper>
-            <BoothMenuImage src={DeafultImage} 
-            alt="Booth Menu Image"
-            width={250}
-            height={250}
-            />
-            </BoothImageWrapper>
+            <BoothImageSlider>
+                <BoothMenuImage src={DeafultImage} 
+                    alt="Booth Menu Image"
+                    width={250}
+                    height={250}
+                    />
+                <BoothMenuImage src={DeafultImage} 
+                    alt="Booth Menu Image"
+                    width={250}
+                    height={250}
+                    />
+            </BoothImageSlider>
         </BoothDetailMenuWrapper>
 
         {/* 댓글 */}
@@ -301,10 +289,11 @@ useEffect(() => {
                 <FontAwesomeIcon icon={faCircleExclamation} />
                 &nbsp;욕설이나 비방의 댓글은 필터링 기능에 의해 게시되지 않습니다.
                 </CommentWran>
-            </CommentInputWrapper>xw
+            </CommentInputWrapper>
                 
             <CommentListWrapper>
                 {comment.map((comment) => (
+                    <div key={comment.id}>
                     <CommentCard
                         key={comment.id}
                         commentId={comment.id}
@@ -313,6 +302,7 @@ useEffect(() => {
                         created_at={comment.created_at}
                         reply = {comment.replies}
                     />
+                    </div>
                     ))}
             </CommentListWrapper>
         </CommentWrapper>

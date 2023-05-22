@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
-import styled, { keyframes } from "styled-components";
+import styled, { keyframes, css } from "styled-components";
 import NoticeCard from "components/notice/NoticeCard";
 import { useTrail, animated } from "react-spring";
+import { API } from "../api";
 
 const Container = styled.div`
   width: 90%;
@@ -13,10 +14,11 @@ const Container = styled.div`
 
 const TypeWrapper = styled.div`
   width: 100%;
-  justify-content: center;
+  justify-content: space-between;
   display: flex;
   font-family: 'ygotjalnanfont';
   font-weight: 700;
+  
 `;
 
 const Type = styled.button`
@@ -29,6 +31,28 @@ const Type = styled.button`
   font-size: 18px;
   line-height: 19px;
   font-family: "yg-jalnan";
+  transition: border-color 0.3s ease-in-out;
+  position: relative;
+
+  &:before {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: ${(props) => (props.isSelected ? '#FC8CAE' : '#979797')};
+    transform: scaleX(${(props) => (props.isSelected ? 1 : 0)});
+    transform-origin: left center;
+    transition: transform 0.3s ease-in-out;
+  }
+`;
+
+const SelectedLine = styled.div`
+  height: 2px;
+  width: ${(props) => (props.isActive ? '100%' : '0%')};
+  background-color: ${(props) => (props.isActive ? '#FC8CAE' : '#000000')};
+  transition: width 0.3s ease-in-out;
 `;
 
 const TypeBody = styled.div`
@@ -72,56 +96,57 @@ export default function Notice(){
 
   const selectTypeHandler = (type) => {
     setCurrentType(type);
-    console.log(currentType);
   };
 
   // notice list fetch
   const [notice, setNotice] = useState([]);
   const fetchNotice = async() => {
     try {
+      const response = await API.get(`/alarm`);
+      const noticeData = response.data;
       // dummy
-      const noticeData = [
-        {
-          "id": 1,
-          "title": "main",
-          "type": "main",
-          "content": "글이 길면 어때? 글이 길면 어때? 글이 길면 어때? 글이 길면 어때? 글이 길면 어때? 글이 길면 어때? 글이 길면 어때? 글이 길면 어때? 글이 길면 어때?",
-          "created_at": "2023-05-13T07:47:07.687842+09:00",
-          "images": ["https://images.ctfassets.net",]
-        },
-        {
-          "id": 2,
-          "title": "festival",
-          "type": "festival",
-          "content": "festival!!Ds!",
-          "created_at": "2023-05-13T07:47:07.687842+09:00",
-          "images": []
-        },
-        {
-          "id": 3,
-          "title": "event",
-          "type": "event",
-          "content": "글이 길면 어때? 글이 길면 어때? 글이 길면 어때? 글이 길면 어때? 글이 길면 어때? 글이 길면 어때? 글이 길면 어때? 글이 길면 어때? 글이 길면 어때?",
-          "created_at": "2023-05-13T07:47:07.687842+09:00",
-          "images": []
-        },
-        {
-          "id": 4,
-          "title": "etc",
-          "type": "etc",
-          "content": "etc test",
-          "created_at": "2023-05-13T07:47:07.687842+09:00",
-          "images": []
-        },
-        {
-          "id": 5,
-          "title": "etc",
-          "type": "etc",
-          "content": "etc test",
-          "created_at": "2023-05-13T07:47:07.687842+09:00",
-          "images": []
-        },
-      ];
+      // const noticeData = [
+      //   {
+      //     "id": 1,
+      //     "title": "main",
+      //     "type": "main",
+      //     "content": "글이 길면 어때? 글이 길면 어때? 글이 길면 어때? 글이 길면 어때? 글이 길면 어때? 글이 길면 어때? 글이 길면 어때? 글이 길면 어때? 글이 길면 어때?",
+      //     "created_at": "2023-05-13T07:47:07.687842+09:00",
+      //     "images": ["https://images.ctfassets.net",]
+      //   },
+      //   {
+      //     "id": 2,
+      //     "title": "festival",
+      //     "type": "festival",
+      //     "content": "festival!!Ds!",
+      //     "created_at": "2023-05-13T07:47:07.687842+09:00",
+      //     "images": []
+      //   },
+      //   {
+      //     "id": 3,
+      //     "title": "event",
+      //     "type": "event",
+      //     "content": "글이 길면 어때? 글이 길면 어때? 글이 길면 어때? 글이 길면 어때? 글이 길면 어때? 글이 길면 어때? 글이 길면 어때? 글이 길면 어때? 글이 길면 어때?",
+      //     "created_at": "2023-05-13T07:47:07.687842+09:00",
+      //     "images": []
+      //   },
+      //   {
+      //     "id": 4,
+      //     "title": "etc",
+      //     "type": "etc",
+      //     "content": "etc test",
+      //     "created_at": "2023-05-13T07:47:07.687842+09:00",
+      //     "images": []
+      //   },
+      //   {
+      //     "id": 5,
+      //     "title": "etc",
+      //     "type": "etc",
+      //     "content": "etc test",
+      //     "created_at": "2023-05-13T07:47:07.687842+09:00",
+      //     "images": []
+      //   },
+      // ];
 
       setNotice(noticeData);
     } catch (error) {
@@ -162,7 +187,6 @@ export default function Notice(){
         })}
       </TypeWrapper>
       <TypeBody isVisible={typeNotices.length > 0}>
-        {/* {typeNotices.map((notice)=>( */}
         {trail.map((style, index) => (
           <animated.div key={typeNotices[index].id} style={style}>
             <NoticeCard 
@@ -171,14 +195,7 @@ export default function Notice(){
               notice={typeNotices[index]}
             />
           </animated.div>
-        ))}
-          {/* <NoticeCard 
-            key={notice.id}
-            id={notice.id}
-            notice={notice}
-          /> */}
-        {/* ))} */}
-        
+        ))}        
       </TypeBody>
     </Container>
   )

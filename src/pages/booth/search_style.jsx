@@ -67,11 +67,7 @@ export const Ribbon = styled.div`
   font-size: 12px;
 
   padding-left: ${(props) =>
-    props.pageType === 'booth' ? '31px' : 'unset'};
-
-  /* Booth/search page specific styles */
-  background-color: ${(props) =>
-    props.pageType === 'booth/search' ? '#E5E5E5' : 'unset'};
+    props.pageType === 'booth' ? '31px' : '13px'};
 
   background-color: ${(props) => {
     switch (props.type) {
@@ -81,6 +77,8 @@ export const Ribbon = styled.div`
         return "#6b6bf9"; // Blue color for 주간부스
       case "플리마켓":
         return "#c782f8"; // Purple color for 플리마켓
+      case "학교부스":
+        return "#FFA665"; // Purple color for 플리마켓
       default:
         return "#FFADDB"; // Default color
     }

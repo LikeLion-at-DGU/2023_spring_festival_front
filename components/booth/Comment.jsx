@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
 import Modal from 'react-modal';
 import { ModalWrapper } from "components/nav/styled";
+import { API } from "@/pages/api";
 
 
 
@@ -63,6 +64,7 @@ function CommentCard({commentId,writer,content,created_at,reply }) {
 
       const handleDeleteModalClose = () => {
         setShowDeleteModal(false);
+        setDeletePassword("");
       };
       
     const handleReplyButtonClick = () => {
@@ -72,15 +74,24 @@ function CommentCard({commentId,writer,content,created_at,reply }) {
 
     const handleSubmitReply = (event) => {
         event.preventDefault();
-        // 답글을 제출하는 로직을 작성하세요
         
         const formData = {
             writer : replyNickname,
             password: replyPassword,
             content : replyCommentContent,
           };
-          console.log(formData);
+          console.log(commentId);
+          API.post(`/respond/${commentId}/reaction`,formData)
+          .then((response) => {
+            // console.log(response.data);
+            window.location.reload();
+          })
+          .catch((error) => {
+          //   오류 처리 로직을 추가합니다.
+            console.error('Error:', error);
+          });
       };
+
 
 
       const handleDeleteModalConfirm = () => {
@@ -88,31 +99,48 @@ function CommentCard({commentId,writer,content,created_at,reply }) {
         console.log(isReply);
         const deleteRequest = async () => {
             try {
-                let endpoint;
                 if (isReply) {
                   // reply의 삭제버튼을 클릭한 경우
 
                   // reply id 로 삭제 보내기
-                  endpoint = `/api/replies/${reply}`;
-                  console.log("답글 삭제");
-                  console.log(replyId);
+                const response = await API.delete(`/reaction/${replyId}`, {
+                    data: {
+                        password: deletePassword,
+                    },
+                })
+
+                if(response.status === 200){
+                    console.log("댓글삭제 성공")
+                    window.location.reload();
+                }
+            
                 } else {
                     // 댓글의 삭제버튼을 클릭한 경우
-                    endpoint = `/api/comments/${commentId}`;
-                    console.log("댓글 삭제");
+                    // 삭제완 
+                    const response = await API.delete(`/respond/${commentId}`, {
+                        data: {
+                            password: deletePassword,
+                        },  
+                })
+                    if(response.status === 200){
+                        console.log("댓글삭제 성공");
+                        window.location.reload();
+                    }
                 }
                 
-                const response = await fetch(endpoint, {
-                  method: "DELETE",
-                  headers: {
-                    "Content-Type": "application/json",
-                  },
-                  body: JSON.stringify({ password: deletePassword }),
-                });
+                
+                // const response = await fetch(endpoint, {
+                //   method: "DELETE",
+                //   headers: {
+                //     "Content-Type": "application/json",
+                //   },
+                //   body: JSON.stringify({ password: deletePassword }),
+                // });
           
                 if (response.ok) {
                   // 삭제 성공 시 필요한 동작 수행
                   alert("댓글이 삭제되었습니다.");
+                  window.location.reload();
                 } else {
                   // 삭제 실패 시 필요한 동작 수행 
                   alert("비밀번호가 틀렸습니다.");
@@ -129,7 +157,6 @@ function CommentCard({commentId,writer,content,created_at,reply }) {
       const handleDeleteButtonClick = () => {
         setIsReply(false);
         setShowDeleteModal(true);
-        console.log(isReply);
       };
 
       const handleReplyDeleteButtonClick = (replyId) =>{
@@ -137,7 +164,6 @@ function CommentCard({commentId,writer,content,created_at,reply }) {
         console.log(replyId);
         setIsReply(true);
         setShowDeleteModal(true);
-        console.log(isReply);
       }
     
       const handleDeletePasswordChange = (event) => {
@@ -146,6 +172,20 @@ function CommentCard({commentId,writer,content,created_at,reply }) {
             setDeletePassword(inputValue);
         }
       };
+
+      // 비밀번호 입력이 유효한지 확인하는 함수
+const isInputValid = () => {
+    // 비밀번호가 4자리인지 확인
+    if (deletePassword.length !== 4) {
+        console.log("!");
+      return false;
+    }
+    
+    // 여기에 추가적인 유효성 검사 로직을 작성할 수 있습니다.
+    // 필요에 따라 비밀번호 패턴, 조건 등을 확인할 수 있습니다.
+    
+    return true; // 모든 유효성 검사 통과 시 true 반환
+  };
 
 
     const filterDate = created_at.split("T")[0]; // "T"를 기준으로 문자열을 분할하여 날짜 부분을 추출
@@ -164,15 +204,19 @@ function CommentCard({commentId,writer,content,created_at,reply }) {
                     <FontAwesomeIcon icon={faTurnUp} size="xs" rotation={90} style={{marginRight:"10px"}} 
                         onClick={handleReplyButtonClick} />
 
-                    <FontAwesomeIcon icon={faTrashCan} size="xs"
-                    onClick={handleDeleteButtonClick}
-                    />
+                        {content !== "삭제된 댓글입니다." && (
+                            <FontAwesomeIcon
+                                icon={faTrashCan}
+                                size="xs"
+                                onClick={handleDeleteButtonClick}
+                            />
+    )}
                 </ReplyDelete>
             </CommentCardFirstRow>
             {content}
             <>
             {reply && reply.map((reply) => (
-            <ReplyWrapper>
+            <ReplyWrapper key={reply.id}>
                 <FontAwesomeIcon icon={faTurnUp} size="xs" rotation={90} style={{marginRight:"7px",color:"#FC8CAE",marginTop:"7px"}}/>
                 <CommentCardSecondRow
                 key={reply.id}
@@ -182,8 +226,12 @@ function CommentCard({commentId,writer,content,created_at,reply }) {
                             {reply.writer}&nbsp;{String(reply.created_at).split("T")[0]}&nbsp;{String(reply.created_at).split("T")[1].slice(0,5)}
                         </NameDate>
                         <ReplyDelete>
-                            <FontAwesomeIcon icon={faTrashCan} size="xs" style={{color:"#525252"}}
-                            onClick={()=>handleReplyDeleteButtonClick(reply.id)}/>
+                            {
+                                reply.content !== "삭제된 댓글입니다." &&(
+                                    <FontAwesomeIcon icon={faTrashCan} size="xs" style={{color:"#525252"}}
+                                    onClick={()=>handleReplyDeleteButtonClick(reply.id)}/>
+                                )
+                            }
                         </ReplyDelete>
                     </ReplyFrist>
                     <ReplySecond>
@@ -224,38 +272,36 @@ function CommentCard({commentId,writer,content,created_at,reply }) {
         )}
 
         </CommentCardWrapper>
-      <Modal
-      isOpen={showDeleteModal}
-      onRequestClose={handleDeleteModalClose}
-      style={customModalStyles}
-      contentLabel="댓글 삭제"
-    >
-        <ModalDelWrapper>
+<Modal isOpen={showDeleteModal} onRequestClose={handleDeleteModalClose} style={customModalStyles} contentLabel="댓글 삭제">
+    <form onSubmit={handleDeleteModalConfirm}>
+    <ModalDelWrapper>
             <ModalDelHeader>
-             {isReply ? "답글 삭제":"댓글 삭제"}
+                {isReply ? "답글 삭제" : "댓글 삭제"}
             </ModalDelHeader>
             <ModalDelDes>
-            댓글을 삭제하시겠습니까?
+                댓글을 삭제하시겠습니까?
             </ModalDelDes>
-        <ModalDelInput
-          required
-          type="password"
-          placeholder="비밀번호"
-          value={deletePassword}
-          onChange={handleDeletePasswordChange}
-        />
-
-        
+            <ModalDelInput
+                required
+                type="password"
+                placeholder="비밀번호"
+                inputMode='numeric' 
+                minLength={4}
+                maxLength={4} 
+                value={deletePassword}
+                onChange={handleDeletePasswordChange}
+            />
             <ModalDelBtnWrapper>
                 <MdoalBtn onClick={handleDeleteModalClose}>
-                    뒤로가기
+                뒤로가기
                 </MdoalBtn>
-                <MdoalBtn onClick={handleDeleteModalConfirm}>
-                    제출하기
+                <MdoalBtn>
+                제출하기
                 </MdoalBtn>
             </ModalDelBtnWrapper>
-        </ModalDelWrapper>
-    </Modal>
+    </ModalDelWrapper>
+    </form>
+</Modal>
     
 
         </>

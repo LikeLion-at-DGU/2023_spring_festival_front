@@ -1,5 +1,6 @@
 import { useRouter } from "next/router";
 import Image from 'next/image';
+import Link from 'next/link';
 import time from "../image/common/timetable.svg"
 import booth from "../image/common/booth.svg"
 import about from "../image/common/about.svg"
@@ -12,48 +13,56 @@ export default function PageTitle() {
   const router = useRouter();
   const [page, setPage] = useState(0);
 
-  useEffect(()=>{
-    if(router.pathname === "/timetable"){
-      setPage(1);
-    }else if(router.pathname === "/notice"){
-      setPage(2);
-    }else if(router.pathname === "/about"){
-      setPage(3);
-    }else if(router.pathname === "/booth"){
-      setPage(4);
-    }
-  })
+  // useEffect(()=>{
+  //   if(router.pathname === "/timetable"){
+  //     setPage(1);
+  //   }else if(router.pathname === "/notice"){
+  //     setPage(2);
+  //   }else if(router.pathname === "/about"){
+  //     setPage(3);
+  //   }else if(router.pathname === "/booth"){
+  //     setPage(4);
+  //   }
+  // })
 
   const Img = styled(Image)`
     width: 60%;
-    margin-top: 10px;
+    justify-content: center;
+    margin: 10px 20%;
   `
+
+  const MainLink = styled(Link)`
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+  `;
   
   return (
-    (page === 1 || !router.query.id === null ) ? 
+    <MainLink href="/">
+    { router.pathname === "/timetable" || !router.query.id === null  ? 
     <Img
       src={time}
       height={30}
-      alt={"title"}
+      alt="title"
     /> : 
-    page === 2 ? 
+    router.pathname === "/notice" ? 
     <Img
       src={notice}
       height={30}
-      alt={"title"}
+      alt="title"
     /> : 
-    page === 3 ? 
+    router.pathname === "/about" ? 
     <Img
       src={about}
       height={30}
-      alt={"title"}
+      alt="title"
     />  : 
-    page === 4 ? 
+    router.pathname === "/booth" ? 
     <Img
       src={booth}
       height={30}
-      alt={"title"}
-    />  : null
-    
+      alt="title"
+    />  : null }
+    </MainLink>
   );
 }

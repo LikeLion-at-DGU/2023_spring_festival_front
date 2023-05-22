@@ -1,7 +1,7 @@
 export const testBoothDataArray = [
   {
     id: 1,
-    name: "아ㅏ아아ㅏ악..",
+    name: "1번 부스",
     type: "주간부스",
     operator: "멋쟁이사자처럼",
     logo_image: [],
@@ -21,12 +21,12 @@ export const testBoothDataArray = [
   },
   {
     id: 2,
-    name: "오우예아..",
+    name: "2번 부스",
     type: "야간부스",
     operator: "코끼리멋쟁이",
     logo_image: [],
     like_cnt: 12,
-    start_at: "2023-05-24",
+    start_at: "2023-05-25",
     end_at: "2023-05-25",
     location: "학생회관",
     section: 2,
@@ -41,7 +41,7 @@ export const testBoothDataArray = [
   },
   {
     id: 3,
-    name: "크으으아아아아ㅏㅇ",
+    name: "3번 부스",
     type: "야간부스",
     operator: "축기단",
     logo_image: [],
@@ -61,7 +61,7 @@ export const testBoothDataArray = [
   },
   {
     id: 4,
-    name: "쿠오ㅗㅓㅗㅇ오오오오오",
+    name: "4번 부스",
     type: "야간부스",
     operator: "멋쟁이홍보팀처럼",
     logo_image: [],
@@ -81,7 +81,7 @@ export const testBoothDataArray = [
   },
   {
     id: 5,
-    name: "하하하ㅏ하핳하",
+    name: "5번 부스",
     type: "주간부스",
     operator: "가보자고",
     logo_image: [],
@@ -106,23 +106,23 @@ export const boothSectorArray = [
   [{ id: 1, location: "이해랑예술극장" }],
   // Section2
   [
-    { id: 2, location: "사회과학관" },
-    { id: 3, location: "혜화관" },
-    { id: 4, location: "혜화별관" },
+    { id: 1, location: "사회과학관" },
+    { id: 2, location: "혜화관" },
+    { id: 3, location: "혜화별관" },
   ],
   // Section3
   [
-    { id: 5, location: "명진관" },
-    { id: 6, location: "팔정도" },
+    { id: 1, location: "명진관" },
+    { id: 2, location: "팔정도" },
   ],
   // Section4
-  [{ id: 7, location: "원흥관 4층" }],
+  [{ id: 1, location: "원흥관 4층" }],
   // Section5
-  [{ id: 8, location: "만해광장" }],
+  [{ id: 1, location: "만해광장" }],
   // Section6
   [
-    { id: 9, location: "학생회관" },
-    { id: 10, location: "학림관" },
+    { id: 1, location: "학생회관" },
+    { id: 2, location: "학림관" },
   ],
 ];
 

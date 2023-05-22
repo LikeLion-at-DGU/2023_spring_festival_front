@@ -22,12 +22,10 @@ export const DateSection = styled.div`
 `;
 
 export const DayBox = styled.div`
-  bottom: 0;
-  margin: 0px 15px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: -2px;
+  margin: 0px 20px;
   cursor: pointer;
 `;
 // 준서------------------------------------------------
@@ -112,7 +110,7 @@ export const MapModalSection = styled.section`
   box-shadow: 3px 3px 20px -10px rgba(0, 0, 0, 0.7);
   padding: 5px;
   transition: all 1s;
-  z-index: 5;
+  z-index: 99;
   display: ${(props) =>
     props.secondScene && (props.secondLeftMoved || props.secondRightMoved) ? "flex" : "none"};
   @media all and (max-width: 430px) {
@@ -130,14 +128,14 @@ export const MapModalButton = styled.button`
   color: ${(props) => (props.clickedLocation ? "#fff" : `${secondaryColor}`)};
   font-family: "Noto Sans KR", sans-serif;
   font-size: 10px;
-  transition: all 0.3s;
+  transition: all 0.5s;
   @media all and (max-width: 410px) {
     width: 60px;
     min-height: 30px;
   }
   cursor: pointer;
   &:hover {
-    box-shadow: 3px 3px 20px -10px rgba(0, 0, 0, 1);
+    text-decoration: underline;
   }
 `;
 
@@ -257,16 +255,15 @@ export const GuideMessage = styled.h3`
 export const LocationTextSection = styled.section`
   width: 100%;
   display: flex;
-  justify-content: center;
-  margin-top: 30px;
+  justify-content: flex-start;
+  margin: 30px 0 0 20px;
 `;
 
 export const SelectedLocation = styled.h1`
   font-size: 24px;
   color: ${secondaryColor};
   font-weight: 900;
-  border-left: 1px solid ${secondaryColor};
-  border-right: 1px solid ${secondaryColor};
+  font-family: "Noto Sans KR", sans-serif;
   padding: 5px;
   display: ${(props) => (props.secondLeftMoved || props.secondRightMoved ? "inline" : "none")};
 `;
@@ -291,7 +288,7 @@ export const FilterSectionSub1 = styled.span`
   display: flex;
   align-items: center;
   height: 18px;
-  border-right: 4px solid ${secondaryColor};
+  border-right: 2px solid ${secondaryColor};
   padding: 10px;
   font-family: "Noto Sans KR", sans-serif;
   cursor: pointer;
@@ -303,7 +300,7 @@ export const FilterSectionSub2 = styled.span`
   display: flex;
   align-items: center;
   height: 18px;
-  border-right: 4px solid ${secondaryColor};
+  border-right: 2px solid ${secondaryColor};
   padding: 10px;
   font-family: "Noto Sans KR", sans-serif;
   cursor: pointer;
@@ -333,12 +330,34 @@ export const FilterSectionInput = styled.input`
   margin-left: 5px;
 `;
 
+export const EmptyFilteredSection = styled.section`
+  width: 100%;
+  grid-column: 1 / 3;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+`;
+
+export const EmptyFilteredIcon = styled.section`
+  font-size: 70px;
+  color: ${primaryColor};
+`;
+
+export const EmptyFilteredBooth = styled.p`
+  font-size: 14px;
+  font-family: "Noto Sans KR", sans-serif;
+  font-weight: 700;
+  color: ${primaryColor};
+`;
+
 // 희찬------------------------------------------------
 export const BoxDate = styled.span`
-  opacity: ${(props) => (props.isActive ? 1 : 0.9)};
-  transition: all 0.3s;
-  margin-bottom: 5px;
   color: ${(props) => (props.isActive ? "#FC8CAE" : "#525252")};
+  margin-bottom: 5px;
+  transition: all 0.3s;
+  opacity: ${(props) => (props.isActive ? 1 : 0.9)};
 `;
 
 export const BoxDay = styled.span`

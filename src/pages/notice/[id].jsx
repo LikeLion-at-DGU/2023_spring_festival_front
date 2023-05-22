@@ -7,6 +7,9 @@ import Image from 'next/image';
 
 // test용 사진
 import test from '../../../components/image/about/about_seulgi.svg';
+import { useRouter } from "next/router";
+import { API } from "../api";
+import Loading from "components/common/Loading";
 
 const Container = styled.div`
   width: 90%;
@@ -98,19 +101,59 @@ const Img = styled(Image)`
     margin-right: 2%;
 `;
 
-export default function Detail(){
 
-    // dummy
-    const notice = 
-        {
-            "id": 1,
-            "title": "main",
-            "type": "main",
-            "content": "글이 길면 어때? 글이 길면 어때? 글이 길면 어때? 글이 길면 어때? 글이 길면 어때? 글이 길면 어때? 글이 길면 어때? 글이 길면 어때? 글이 길면 어때?",
-            "created_at": "2023-05-13T07:47:07.687842+09:00",
-            "images": ["https://images.ctfassets.net",]
-        };
-    
+export async function getServerSideProps(context) {
+    const {id} = context.query;
+    // 데이터를 가져오기 위한 비동기 작업을 수행합니다.
+    const fetchNotice = async(id) => {
+        try{
+            const res = await API.get(`/alarm/${id}`)
+            const noticeData = res.data;
+            return noticeData;
+        }catch(err){
+            console.log(err)
+            return null;
+        }
+    }
+
+    const noticeData = await fetchNotice(id);
+
+    return {
+      props: {
+        myData: noticeData,
+      },
+    };
+  }
+
+
+
+export default function Detail(myData){
+
+
+    const router = useRouter();
+    const [notice, setNotice] = useState(null);
+const fetchNotice = async() => {
+    const sId = router.query.id
+    try {
+        // const response = await axios.get(`posts/${id}`);
+        // const postData = response.data;
+        const response = await API.get(`/alarm/${sId}`);
+        console.log(response);
+        const noticeDetailData = response.data;
+        setNotice(noticeDetailData);
+    } catch (error) {
+        console.error('Error: ', error);
+    }
+};
+
+useEffect(() => {
+    fetchNotice();
+}, [router.query.id]);
+
+
+if (!notice) {
+    return <Loading />; // 로딩 중이라면 로딩 표시를 보여줍니다.
+  }
     // type 매칭
     const typeArray = [
             {
@@ -151,7 +194,8 @@ export default function Detail(){
                 {content}공지
             </Notice>
             <Date>
-                {notice.created_at.slice(0,10)}
+            {notice && notice.created_at.slice(0, 10)}
+
             </Date>
         </Header>
         <Body>
