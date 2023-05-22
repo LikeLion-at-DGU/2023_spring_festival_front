@@ -138,7 +138,6 @@ const fetchNotice = async() => {
         // const response = await axios.get(`posts/${id}`);
         // const postData = response.data;
         const response = await API.get(`/alarm/${sId}`);
-        console.log(response);
         const noticeDetailData = response.data;
         setNotice(noticeDetailData);
     } catch (error) {

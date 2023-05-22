@@ -39,16 +39,8 @@ export const ModalWrapper = styled.div`
     justify-content: space-between;
     width: 70%;
     right: 0;
-    /* visibility: hidden; */
-    /* visibility: ${(props)=> !(props.isVisible || props.modalOpen)? 'hidden' : 'visible'}; */
-
-    /* display: ${(props) => props.modalOpen? "flex" : "none" }; */
-    /* opacity: ${(props) => ( props.isVisible ? 1 : 0)}; */
     animation-name: ${(props) => (props.isVisible ? slideIn : slideOut) };
     animation-duration: 0.5s;
-    /* animation-fill-mode: forwards; */
-
-    /* overflow: ${(props)=> props.isVisible ? 'hidden' : 'unset' }; */
 `;
 
 export const ModalOverlay = styled.div`
@@ -77,9 +69,9 @@ export const ModalHeader = styled.div`
 `;
 
 export const ModalTitle = styled.ul`
-  line-height: 2.5vh;
+  line-height: 3vh;
   color: #525252;
-  font-weight: 400;
+  font-weight: 500;
   font-size: 20px;
   text-align: left;
 `;
