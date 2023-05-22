@@ -199,7 +199,15 @@ useEffect(() => {
     <BoothDetailCotainer>
         <BoothLogoWrapper>
             <DetailRibbon type={booth.type}>{booth.type}</DetailRibbon>
-            <BoothLogoImage src={DeafultImage}/>
+            { booth.logo_image ? 
+              <BoothLogoImage 
+                src={booth.logo_image}
+                alt={booth.logo_image}
+                /> : 
+              <BoothLogoImage 
+                src={DeafultImage}
+                alt="booth defaultimage"
+                /> }
         </BoothLogoWrapper>
         <BoothDetailHeader>
             <BoothDetailHeaderWrapper>
@@ -245,18 +253,21 @@ useEffect(() => {
                     전체메뉴 보기
                 </BoothDetailMenuAllSee> */}
             </BoothDetailMenuHeader>
-            <BoothImageSlider>
-                <BoothMenuImage src={DeafultImage} 
+            { ( booth.menu_image && booth.menu_image.length > 0 ) ?
+              <BoothImageSlider>
+                { booth.menu_image.map((image)=>{
+                  <BoothMenuImage 
+                    key={image.id}
+                    src={image.url} 
                     alt="Booth Menu Image"
                     width={250}
                     height={250}
-                    />
-                <BoothMenuImage src={DeafultImage} 
-                    alt="Booth Menu Image"
-                    width={250}
-                    height={250}
-                    />
-            </BoothImageSlider>
+                  />
+                }) }
+              </BoothImageSlider> : <BoothImageSlider>
+                메뉴 사진이 없습니다.
+              </BoothImageSlider>
+            }
         </BoothDetailMenuWrapper>
 
         {/* 댓글 */}
