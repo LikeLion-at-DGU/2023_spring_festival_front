@@ -94,7 +94,7 @@ export default function Booth() {
       const getBoothList = await API.get(`/store/list`);
       setBoothList(getBoothList.data);
       const boothTop10 = await API.get(`/store/top`);
-      console.log("boothTop10", boothTop10);
+      // console.log("boothTop10", boothTop10);
     } catch (error) {
       console.error("Error: ", error);
     }
@@ -223,7 +223,9 @@ export default function Booth() {
         <RankingLeftSection>
           <RankingHotButton>HOT</RankingHotButton>
         </RankingLeftSection>
-        <BoothTop10 />
+        <RankingRightSection>
+          <BoothTop10 boothList={boothList} />
+        </RankingRightSection>
       </RankingSection>
       {/* DateSection---------------------------- */}
       <DateSection firstMoved={FirstMoved} className="fadeIn">
@@ -323,12 +325,12 @@ export default function Booth() {
           boothSectorDetail={boothSectorDetail}
           setBoothLoaded={setBoothLoaded}
         />
-        <EmptyFilteredSection>
+        {/* <EmptyFilteredSection>
           <EmptyFilteredIcon>
             <Image src={elephant} alt="elephant" fill style={{ objectFit: "cover" }} />
           </EmptyFilteredIcon>
           <EmptyFilteredBooth>조건에 맞는 부스가 없어요!</EmptyFilteredBooth>
-        </EmptyFilteredSection>
+        </EmptyFilteredSection> */}
       </BoothCardGridWrapper>
     </Container>
   );
