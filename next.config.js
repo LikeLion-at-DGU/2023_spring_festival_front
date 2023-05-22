@@ -75,7 +75,7 @@ const nextConfig = {
                 destination: `http://${APIURL}/api/comments/:respond_id/replies`,
             },
             {
-                // 각 댓글의 답글 생성 (DELETE)
+                // 각 댓글의 답글 삭제 (DELETE)
                 source: "/reaction/:reaction_id",
                 destination: `http://${APIURL}/api/replies/:reaction_id`,
             },

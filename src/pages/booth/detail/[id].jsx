@@ -15,6 +15,7 @@ import { faLocationDot,faCircleExclamation } from '@fortawesome/free-solid-svg-i
 import { RankBoothDetailLocation } from '../style';
 import CommentCard from 'components/booth/Comment';
 import { API } from '@/pages/api';
+import Loading from 'components/common/Loading';
 
 
 export async function getServerSideProps(context) {
@@ -57,9 +58,8 @@ const BoothDetailPage = ({myData}) => {
             // axios요청 보내기 
         console.log("하트 클릭");
         setIsLikeClick(i=>!i)
-          const response = await API.delete(`/store/${id}/love`);
-          if (response.status === 200) {
-            console.log("하트 클릭 성공");
+        const response = await API.delete(`/store/${id}/love`);
+        if (response.status === 200) {
           } else {
             // Handle error case
             console.log("하트 클릭 실패");
@@ -68,10 +68,11 @@ const BoothDetailPage = ({myData}) => {
           // Handle error case
         }
     }else{
+
         try {
             // axios요청 보내기 
             console.log("하트 클릭");
-          const response = await API.post(`/store/${id}/love`);
+            const response = await API.post(`/store/${id}/love`);
     
           if (response.status === 200) {
             console.log("하트 클릭 성공");
@@ -115,9 +116,8 @@ const BoothDetailPage = ({myData}) => {
 //   링크복사
   const handleCopyLink = () => {
     navigator.clipboard.writeText(window.location.href);
-    alert('지금 있는 페이지의 링크가 복사되었습니다.');
+    alert('현재 페이지의 링크가 복사되었습니다.');
   };
-
 
   const fetchComments = async() => {
     const id = router.query.id
@@ -154,6 +154,11 @@ useEffect(() => {
     fetchComments();
 }, [isLikeClick]);
 
+// booth 정보 없으면 로딩 표시
+  if (booth.length === 0) {
+    return <Loading />;
+  }
+
   // 댓글 등록
   const handleSubmission = (event) => {
     const sId = router.query.id
@@ -171,12 +176,12 @@ useEffect(() => {
       // post보내기 
       API.post(`/store/${sId}/respond`, formData)
         .then((response) => {
-          console.log(response.data);
+        //   console.log(response.data);
         })
         .catch((error) => {
-          console.log( "제보 제출에러!");
-        //   오류 처리 로직을 추가합니다.
-          console.error('Error:', error);
+        //   console.log( "제보 제출에러!");
+        // //   오류 처리 로직을 추가합니다.
+        //   console.error('Error:', error);
         });
 
       // 성공했을시 ReportDone으로 이동          
@@ -190,7 +195,7 @@ useEffect(() => {
     <BoothDetailCotainer>
         <BoothLogoWrapper>
             <DetailRibbon type={booth.type}>{booth.type}</DetailRibbon>
-            <BoothLogoImage src={DeafultImage}/>
+            <BoothLogoImage src={DeafultImage} alt="부스로고이미지"/>
         </BoothLogoWrapper>
         <BoothDetailHeader>
             <BoothDetailHeaderWrapper>

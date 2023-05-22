@@ -6,6 +6,7 @@ import React, { useState } from "react";
 import Modal from 'react-modal';
 import { ModalWrapper } from "components/nav/styled";
 import { API } from "@/pages/api";
+import { Alert } from "@mui/material";
 
 
 
@@ -64,6 +65,7 @@ function CommentCard({commentId,writer,content,created_at,reply }) {
 
       const handleDeleteModalClose = () => {
         setShowDeleteModal(false);
+        setDeletePassword("");
       };
       
     const handleReplyButtonClick = () => {
@@ -73,7 +75,6 @@ function CommentCard({commentId,writer,content,created_at,reply }) {
 
     const handleSubmitReply = (event) => {
         event.preventDefault();
-        // 답글을 제출하는 로직을 작성하세요
         
         const formData = {
             writer : replyNickname,
@@ -83,15 +84,15 @@ function CommentCard({commentId,writer,content,created_at,reply }) {
           console.log(commentId);
           API.post(`/respond/${commentId}/reaction`,formData)
           .then((response) => {
-            // console.log(response.data);
+            alert("댓글이 작성되었습니다.");
             window.location.reload();
           })
           .catch((error) => {
-            console.log( "제보 제출에러!");
           //   오류 처리 로직을 추가합니다.
             console.error('Error:', error);
           });
       };
+
 
 
       const handleDeleteModalConfirm = () => {
@@ -110,7 +111,7 @@ function CommentCard({commentId,writer,content,created_at,reply }) {
                 })
 
                 if(response.status === 200){
-                    console.log("댓글삭제 성공")
+                    alert("댓글이 삭제됐습니다.");
                     window.location.reload();
                 }
             
@@ -123,7 +124,7 @@ function CommentCard({commentId,writer,content,created_at,reply }) {
                         },  
                 })
                     if(response.status === 200){
-                        console.log("댓글삭제 성공");
+                        alert("댓글이 삭제됐습니다.");
                         window.location.reload();
                     }
                 }
@@ -201,12 +202,24 @@ const isInputValid = () => {
                     {writer}&nbsp;{filterDate}&nbsp;{filterTime}
                 </NameDate>
                 <ReplyDelete>
-                    <FontAwesomeIcon icon={faTurnUp} size="xs" rotation={90} style={{marginRight:"10px"}} 
-                        onClick={handleReplyButtonClick} />
-
-                    <FontAwesomeIcon icon={faTrashCan} size="xs"
-                    onClick={handleDeleteButtonClick}
-                    />
+                {content !== "삭제된 댓글입니다." ? (
+                            <div>
+                            <FontAwesomeIcon
+                                icon={faTurnUp}
+                                size="xs"
+                                rotation={90}
+                                style={{ marginRight: "10px" }}
+                                onClick={handleReplyButtonClick}
+                            />
+                            <FontAwesomeIcon
+                                icon={faTrashCan}
+                                size="xs"
+                                onClick={handleDeleteButtonClick}
+                            />
+                            </div>
+                        ) : (
+                            <p></p>
+                        )}
                 </ReplyDelete>
             </CommentCardFirstRow>
             {content}
@@ -222,8 +235,12 @@ const isInputValid = () => {
                             {reply.writer}&nbsp;{String(reply.created_at).split("T")[0]}&nbsp;{String(reply.created_at).split("T")[1].slice(0,5)}
                         </NameDate>
                         <ReplyDelete>
-                            <FontAwesomeIcon icon={faTrashCan} size="xs" style={{color:"#525252"}}
-                            onClick={()=>handleReplyDeleteButtonClick(reply.id)}/>
+                            {
+                                reply.content !== "삭제된 댓글입니다." &&(
+                                    <FontAwesomeIcon icon={faTrashCan} size="xs" style={{color:"#525252"}}
+                                    onClick={()=>handleReplyDeleteButtonClick(reply.id)}/>
+                                )
+                            }
                         </ReplyDelete>
                     </ReplyFrist>
                     <ReplySecond>

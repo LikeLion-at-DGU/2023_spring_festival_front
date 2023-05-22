@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars, faChevronLeft } from "@fortawesome/free-solid-svg-icons";
+import { faBars, faChevronLeft, faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import styled from "styled-components";
 import Modal from "../nav/Modal";
 import { useState } from "react";
@@ -8,6 +8,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import notice_page_logo from '../image/common/notice.svg';
 import booth_page_logo from '../image/common/booth.svg';
+import Booth from "@/pages/about";
 
 const Container = styled.nav`
     width: 100%;
@@ -32,6 +33,7 @@ const BackButton = styled(FontAwesomeIcon)`
     font-size: 20px;
     width: 15px;
     z-index: 100;
+    cursor: pointer;
 `
 
 const Img = styled(Image)`
@@ -39,17 +41,37 @@ const Img = styled(Image)`
     padding-right: 5%;
 `;
 
-const NavToggle = styled(FontAwesomeIcon)`
+const ImgLink = styled(Link)`
+    margin: 0 auto;
+    display: flex;
+    
+`;
+
+const NavToggle = styled.div`
     font-size: 25px;
     position: fixed;
     right: 0;
-    margin-right: 26px;
-    width: 25px;
+    margin-right: 25px;
     z-index: 100;
+    cursor: pointer;
+    display: flex;
+    gap: 20px;
+
     @media (min-width: 430px) {
         position: absolute;
     }
 `
+
+const BoothSearch = styled(FontAwesomeIcon)`
+    font-size: 20px;
+    margin-right: 30%;
+    display: flex;
+`;
+
+const ButtonSection =styled.div`
+    display: flex;
+    align-items: center;
+`;
 
 export default function HeadBar(){
 
@@ -73,11 +95,17 @@ export default function HeadBar(){
                     style={{color: "#000000",}}
                     onClick={()=>router.back()} />
                 { router.pathname.split('/')[1] === 'notice' &&
-                    <Img src={notice_page_logo} alt="notice_page_logo"/>}
+                    <ImgLink href="/"><Img src={notice_page_logo} alt="notice_page_logo"/></ImgLink>}
                 { (router.pathname.split('/')[1] === 'booth') &&
-                    <Img src={booth_page_logo} alt="booth_page_logo"/>}
+                    <ImgLink href="/"><Img src={booth_page_logo} alt="booth_page_logo"/></ImgLink>}
             </>}
-            <NavToggle icon={faBars} onClick={()=>showModal()}/>
+            <NavToggle>
+                { (router.pathname.split('/')[1] === 'booth') && (router.pathname.split('/')[2] != 'search') &&
+                <Link href='/booth/search'>
+                <FontAwesomeIcon icon={faMagnifyingGlass} style={{color: "#FC8CAE",}}/>
+                </Link>}
+                <FontAwesomeIcon icon={faBars} onClick={()=>showModal()}/>
+            </NavToggle>
             {modalOpen && <Modal setModalOpen={setModalOpen}/>}
         </Container>
     )
