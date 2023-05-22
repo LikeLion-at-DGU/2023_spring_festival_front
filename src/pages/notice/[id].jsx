@@ -9,6 +9,7 @@ import Image from 'next/image';
 import test from '../../../components/image/about/about_seulgi.svg';
 import { useRouter } from "next/router";
 import { API } from "../api";
+import Loading from "components/common/Loading";
 
 const Container = styled.div`
   width: 90%;
@@ -151,7 +152,7 @@ useEffect(() => {
 
 
 if (!notice) {
-    return <div>Loading...</div>; // 로딩 중이라면 로딩 표시를 보여줍니다.
+    return <Loading />; // 로딩 중이라면 로딩 표시를 보여줍니다.
   }
     // type 매칭
     const typeArray = [

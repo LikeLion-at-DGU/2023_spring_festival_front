@@ -102,7 +102,7 @@ export default function HeadBar(){
             <NavToggle>
                 { (router.pathname.split('/')[1] === 'booth') && (router.pathname.split('/')[2] != 'search') &&
                 <Link href='/booth/search'>
-                <FontAwesomeIcon icon={faMagnifyingGlass}/>
+                <FontAwesomeIcon icon={faMagnifyingGlass} style={{color: "#FC8CAE",}}/>
                 </Link>}
                 <FontAwesomeIcon icon={faBars} onClick={()=>showModal()}/>
             </NavToggle>
