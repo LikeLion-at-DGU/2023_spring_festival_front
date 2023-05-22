@@ -23,7 +23,7 @@ const TypeWrapper = styled.div`
 
 const Type = styled.button`
   width: 20%;
-  padding: 3% 2%;
+  padding: 3% 1%;
   background: transparent;
   border: none;
   border-bottom: 2px solid ${(props)=>props.isSelected ? '#FC8CAE' : '#979797'};
