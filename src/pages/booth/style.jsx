@@ -47,7 +47,7 @@ export const RankingSection = styled.section`
 `;
 
 export const RankingLeftSection = styled.section`
-  width: 50%;
+  width: 40%;
   height: 100%;
   display: flex;
   justify-content: flex-end;
@@ -56,8 +56,72 @@ export const RankingLeftSection = styled.section`
 `;
 
 export const RankingRightSection = styled.section`
-  width: 50%;
+  width: 60%;
   height: 100%;
+  overflow: hidden;
+  position: relative;
+`;
+
+export const BoothTop10Box = styled.section`
+  @keyframes moveBox {
+    0% {
+      top: -30px;
+      opacity: 0;
+      font-size: 0.3rem;
+      font-weight: 100;
+    }
+    25% {
+      top: 20px;
+      opacity: 0.5;
+      font-size: 0.6rem;
+      font-weight: 300;
+    }
+    50% {
+      top: 80px;
+      opacity: 1;
+      font-size: 1rem;
+      font-weight: 900;
+    }
+    75% {
+      top: 150px;
+      opacity: 0.5;
+      font-size: 0.6rem;
+      font-weight: 300;
+    }
+    100% {
+      top: 200px;
+      opacity: 0.1;
+      font-size: 0.3rem;
+      font-weight: 100;
+    }
+  }
+  width: 90%;
+  height: 40px;
+  position: absolute;
+  display: flex;
+  opacity: 0;
+  justify-content: space-between;
+  color: ${primaryColor};
+  font-weight: 700;
+  transition: all 0.5s;
+  animation: moveBox 5s ease-in-out infinite;
+  cursor: pointer;
+`;
+
+export const BoothTop10LeftBox = styled.section`
+  width: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Noto Sans KR", sans-serif;
+`;
+
+export const BoothTop10RightBox = styled.section`
+  width: 70%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  font-family: "Noto Sans KR", sans-serif;
 `;
 
 export const RankingHotButton = styled.button`
@@ -341,7 +405,9 @@ export const EmptyFilteredSection = styled.section`
 `;
 
 export const EmptyFilteredIcon = styled.section`
-  font-size: 70px;
+  width: 75px;
+  height: 75px;
+  position: relative;
   color: ${primaryColor};
 `;
 
