@@ -1,11 +1,11 @@
-import YunDDanDDan from "../../../components/image/timetable/singerThumbnail1.png";
-import YoungK from "../../../components/image/timetable/singerThumbnail2.png";
-import Bol4 from "../../../components/image/timetable/singerThumbnail3.png";
-import GyeongSeo from "../../../components/image/timetable/singerThumbnail4.png";
-import BeO from "../../../components/image/timetable/singerThumbnail5.png";
-import Punch from "../../../components/image/timetable/singerThumbnail6.png";
-import HighLight from "../../../components/image/timetable/singerThumbnail7.png";
-import Idle from "../../../components/image/timetable/singerThumbnail8.png";
+import YunDDanDDan from "../components/image/timetable/singerThumbnail1.png";
+import YoungK from "../components/image/timetable/singerThumbnail2.png";
+import Bol4 from "../components/image/timetable/singerThumbnail3.png";
+import GyeongSeo from "../components/image/timetable/singerThumbnail4.png";
+import BeO from "../components/image/timetable/singerThumbnail5.png";
+import Punch from "../components/image/timetable/singerThumbnail6.png";
+import HighLight from "../components/image/timetable/singerThumbnail7.png";
+import Idle from "../components/image/timetable/singerThumbnail8.png";
 
 // 날짜 배열
 export const dayArray = [
