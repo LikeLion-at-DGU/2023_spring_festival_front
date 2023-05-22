@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 
-const APIURL = "dgu-bom.site";
+const APIURL = "127.0.0.1:8000";
 
 const nextConfig = {
     reactStrictMode: true,
