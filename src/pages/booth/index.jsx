@@ -97,9 +97,11 @@ export default function Booth() {
       setBoothList(getBoothList.data);
       const boothTop10 = await API.get(`/store/top`);
       setBoothTop10List(boothTop10);
+
     } catch (error) {
       console.error("Error: ", error);
     }
+
   };
   useEffect(() => {
     fetchBooths();

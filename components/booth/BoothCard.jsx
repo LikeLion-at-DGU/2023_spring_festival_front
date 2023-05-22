@@ -47,7 +47,9 @@ function BoothCard({
     >
       <BoothCardWrapper>
         <BoothCardImage
+
           src={logo_image == undefined ? DeafultImage : logo_image}
+
           alt="부스 이미지"
           width={160}
           height={160}
