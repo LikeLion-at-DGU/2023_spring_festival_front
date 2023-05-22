@@ -218,11 +218,11 @@ if (!notice) {
                             alt={image.alt}
                         />
                     })}
+                    {/* <Img src={test} alt="test"/>
                     <Img src={test} alt="test"/>
                     <Img src={test} alt="test"/>
                     <Img src={test} alt="test"/>
-                    <Img src={test} alt="test"/>
-                    <Img src={test} alt="test"/>
+                    <Img src={test} alt="test"/> */}
                 </ImgBox>
             }
         </Body>
