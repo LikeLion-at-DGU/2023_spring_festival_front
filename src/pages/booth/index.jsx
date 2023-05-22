@@ -76,6 +76,7 @@ export default function Booth() {
   const [thirdLeftScene, setThirdLeftScene] = useState(false);
   const [thirdRightScene, setThirdRightScene] = useState(false);
   const [boothList, setBoothList] = useState(null);
+  const [boothTop10List, setBoothTop10List] = useState(null);
   // Booth Modal 디폴트 -> 가운데 핀 index
   const [boothSector, setBoothSector] = useState(2);
   // Booth Modal Button 디폴트 -> 전체
@@ -94,6 +95,7 @@ export default function Booth() {
       const getBoothList = await API.get(`/store/list`);
       setBoothList(getBoothList.data);
       const boothTop10 = await API.get(`/store/top`);
+      setBoothTop10List(boothTop10);
       // console.log("boothTop10", boothTop10);
     } catch (error) {
       console.error("Error: ", error);
@@ -224,7 +226,7 @@ export default function Booth() {
           <RankingHotButton>HOT</RankingHotButton>
         </RankingLeftSection>
         <RankingRightSection>
-          <BoothTop10 boothList={boothList} router={router} />
+          <BoothTop10 boothList={boothTop10List} router={router} />
         </RankingRightSection>
       </RankingSection>
       {/* DateSection---------------------------- */}
