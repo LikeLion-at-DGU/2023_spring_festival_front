@@ -37,11 +37,12 @@ import { DateNum, DateWeek } from "../timetable/style";
 import Image from "next/image";
 import map from "../../../components/image/booth/campus_map.svg";
 import pin from "../../../components/image/booth/pin.png";
+import elephant from "../../../components/image/booth/elephant.svg";
 import { BoothCardGridWrapper } from "./search_style";
 import { boothSectorArray } from "./testData";
 import FilteredBooth from "components/booth/FilteredBooth";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faRepublican } from "@fortawesome/free-solid-svg-icons";
+import { API } from "../api";
+import BoothTop10 from "components/booth/BoothTop10";
 
 // 날짜 배열
 const dayArray = [
@@ -73,6 +74,8 @@ export default function Booth() {
   const [secondScene, setSecondScene] = useState(false);
   const [thirdLeftScene, setThirdLeftScene] = useState(false);
   const [thirdRightScene, setThirdRightScene] = useState(false);
+  const [boothList, setBoothList] = useState(null);
+  const [boothLoaded, setBoothLoaded] = useState(false);
   // ===========
   // Booth Modal 디폴트 -> 가운데 핀 index
   const [boothSector, setBoothSector] = useState(2);
@@ -84,6 +87,21 @@ export default function Booth() {
   const FirstMoved = useMemo(() => {
     return firstScene;
   }, [firstScene]);
+
+  // ComponentDidMount----------------------------
+  const fetchBooths = async () => {
+    try {
+      const getBoothList = await API.get(`/store/list`);
+      setBoothList(getBoothList.data);
+      const boothTop10 = await API.get(`/store/top`);
+      // console.log("boothTop10", boothTop10);
+    } catch (error) {
+      console.error("Error: ", error);
+    }
+  };
+  useEffect(() => {
+    fetchBooths();
+  }, []);
 
   // Function 관리---------------------------------
   const handleMap = () => {
@@ -109,7 +127,6 @@ export default function Booth() {
     setGuideMessage("전체 보기");
     setThirdRightScene(true);
     setThirdLeftScene(false);
-
     if (boothSectorArray[boothSector].length > 1) {
       setBoothSectorDetail(null);
     } else {
@@ -148,6 +165,8 @@ export default function Booth() {
     if (secondScene && (thirdLeftScene || thirdRightScene)) {
       setThirdLeftScene(false);
       setThirdRightScene(false);
+      setBoothSector(2);
+      setBoothSectorDetail(null);
       setGuideMessage("원하는 위치의 핀을 선택해주세요!");
     }
   };
@@ -204,7 +223,9 @@ export default function Booth() {
         <RankingLeftSection>
           <RankingHotButton>HOT</RankingHotButton>
         </RankingLeftSection>
-        <RankingRightSection></RankingRightSection>
+        <RankingRightSection>
+          <BoothTop10 boothList={boothList} />
+        </RankingRightSection>
       </RankingSection>
       {/* DateSection---------------------------- */}
       <DateSection firstMoved={FirstMoved} className="fadeIn">
@@ -297,14 +318,16 @@ export default function Booth() {
       </BoothFilterSection>
       <BoothCardGridWrapper firstMoved={FirstMoved} className="FadeIn">
         <FilteredBooth
+          boothList={boothList}
           dayOrNight={dayOrNight}
           isToday={isToday}
           boothSector={boothSector}
           boothSectorDetail={boothSectorDetail}
+          setBoothLoaded={setBoothLoaded}
         />
         {/* <EmptyFilteredSection>
           <EmptyFilteredIcon>
-            <FontAwesomeIcon icon={faRepublican} />
+            <Image src={elephant} alt="elephant" fill style={{ objectFit: "cover" }} />
           </EmptyFilteredIcon>
           <EmptyFilteredBooth>조건에 맞는 부스가 없어요!</EmptyFilteredBooth>
         </EmptyFilteredSection> */}
