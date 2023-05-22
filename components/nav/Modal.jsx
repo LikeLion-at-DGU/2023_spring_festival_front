@@ -110,7 +110,7 @@ export default function Modal({ setModalOpen }) {
                             onClick={closeModal}
                             style={{
                                 fontSize: '20px',
-                                color: '#979797'
+                                color: currentPage === 'booth' && boothSearch === 'search' ? '#fc8cae' : '#979797'
                             }}
                             >booth search</ModalPageSection>
                     </Link>
