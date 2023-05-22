@@ -64,7 +64,6 @@ export default function FilteredBooth({ dayOrNight, isToday, boothSector, boothS
         />
       );
     }
-    console.log(boothSectorArray[boothSector]?.map((b) => b.location).includes(all.location));
   });
 
   // 부스맵 핀 로케이션 필터링

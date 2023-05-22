@@ -99,11 +99,13 @@ export default function Booth() {
     setGuideMessage("전체 보기");
     setThirdLeftScene(true);
     setThirdRightScene(false);
+    setBoothSectorDetail(1);
   }, [thirdLeftScene, thirdRightScene]);
   const rightPinHandling = useCallback(() => {
     setGuideMessage("전체 보기");
     setThirdRightScene(true);
     setThirdLeftScene(false);
+    setBoothSectorDetail(1);
   }, [thirdLeftScene, thirdRightScene]);
 
   // 좌측 핀 클릭 핸들링----------------------------
@@ -143,21 +145,28 @@ export default function Booth() {
 
   const boothSectorData = boothSectorArray[boothSector]?.map((sec, idx) => {
     let clickedLocation = false;
-    const mapModalButton = (
-      <MapModalButton
-        key={sec.id}
-        clickedLocation={clickedLocation}
-        onClick={() => setBoothSectorDetail(sec.id)}
-      >
-        {sec.location}
-      </MapModalButton>
-    );
     if (sec.id === boothSectorDetail) {
       clickedLocation = true;
-      return mapModalButton;
+      return (
+        <MapModalButton
+          key={sec.id}
+          clickedLocation={clickedLocation}
+          onClick={() => setBoothSectorDetail(sec.id)}
+        >
+          {sec.location}
+        </MapModalButton>
+      );
     } else {
       clickedLocation = false;
-      return mapModalButton;
+      return (
+        <MapModalButton
+          key={sec.id}
+          clickedLocation={clickedLocation}
+          onClick={() => setBoothSectorDetail(sec.id)}
+        >
+          {sec.location}
+        </MapModalButton>
+      );
     }
   });
 
