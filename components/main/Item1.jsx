@@ -104,7 +104,7 @@ export default function Item1(){
                     <Content>
                         <Now>
                             <h1>Now</h1>
-                            <h6>{daytime <= -8 ? "준비중" : daytime >= 0 ? "야간부스, 푸드트럭" : "주간부스, 플리마켓, 푸드트럭"}</h6>
+                            <h6>{daytime <= -8 ? "Coming Soon..." : daytime >= 0 ? "야간부스, 푸드트럭" : "주간부스, 플리마켓, 푸드트럭"}</h6>
                         </Now>
                         <NowFooter>
                             <FooterLeft>
