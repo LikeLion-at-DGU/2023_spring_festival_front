@@ -44,7 +44,10 @@ function BoothCard({
       }}
     >
       <BoothCardWrapper>
-        <BoothCardImage src={DeafultImage} alt="부스 이미지" />
+        <BoothCardImage
+          src={logoImage?.length === 0 ? DeafultImage : logoImage}
+          alt="부스 이미지"
+        />
         <BoothCardDetailWrapper>
           <Ribbon pageType={pageType} type={type}>
             {type}

@@ -25,7 +25,13 @@ export default function FilteredBooth({
         section={booth1.section} // num || null
       />
     );
-    if (booth1.type === dayOrNight) {
+    if (booth1.type === "야간부스") {
+      return boothCard;
+    } else if (
+      booth1.type === "학교부스" &&
+      booth1.type === "외부부스" &&
+      booth1.type === "플리마켓"
+    ) {
       // console.log("주간 야간 필터링 >", filteredByDayOrNight);
       return boothCard;
     } else if (booth1.type !== dayOrNight && dayOrNight === "전체") {
