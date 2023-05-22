@@ -1,4 +1,4 @@
-import { boothSectorArray } from "@/pages/booth/testData";
+import { boothSectorArray } from "@/testData";
 import BoothCard from "./BoothCard";
 
 export default function FilteredBooth({
