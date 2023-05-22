@@ -247,13 +247,14 @@ function Search() {
         <RecomandBoothWrapper>
           {trail.map((style, index) => (
             <animated.div key={index} style={style}>
+              
               <BoothCard
                 id={randomBooth[index].id}
                 name={randomBooth[index].name}
                 operator={randomBooth[index].operator}
-                logoImage={randomBooth[index].logo_image}
-                likeCnt={randomBooth[index].like_cnt}
-                isLike={randomBooth[index].is_liked}
+                logo_image={randomBooth[index].logo_image}
+                like_cnt={randomBooth[index].like_cnt}
+                is_liked={randomBooth[index].is_liked}
                 location={randomBooth[index].location}
                 type={randomBooth[index].type}
               />

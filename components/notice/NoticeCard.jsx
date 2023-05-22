@@ -74,6 +74,7 @@ const Img = styled(Image)`
 `;
 
 const NoticeCard = ({id, notice}) => {
+    console.log(notice.images)
     
     const date = notice.created_at.slice(0,10);
 
