@@ -1,9 +1,16 @@
 import { boothSectorArray, testBoothDataArray } from "@/pages/booth/testData";
 import BoothCard from "./BoothCard";
 
-export default function FilteredBooth({ dayOrNight, isToday, boothSector, boothSectorDetail }) {
+export default function FilteredBooth({
+  boothList,
+  dayOrNight,
+  isToday,
+  boothSector,
+  boothSectorDetail,
+  setBoothLoaded,
+}) {
   // 전체 / 주간 / 야간 부스 필터링------------------------------------
-  const filteredByDayOrNight = testBoothDataArray.filter((booth1) => {
+  const filteredByDayOrNight = boothList?.filter((booth1) => {
     const boothCard = (
       <BoothCard
         key={booth1.id}
@@ -23,7 +30,7 @@ export default function FilteredBooth({ dayOrNight, isToday, boothSector, boothS
   });
 
   // 23, 24, 25일 필터링---------------------------------------------
-  const filteredByIsToday = filteredByDayOrNight.filter((booth2) => {
+  const filteredByIsToday = filteredByDayOrNight?.filter((booth2) => {
     const firstDay = Number(booth2.start_at.slice(-2));
     const secondDay = Number(booth2.end_at.slice(-2));
     const boothCard2 = (
@@ -67,7 +74,7 @@ export default function FilteredBooth({ dayOrNight, isToday, boothSector, boothS
   });
 
   // 부스맵 핀 로케이션 필터링
-  const filteredByLocation = filteredByIsToday.filter((booth3) => {
+  const filteredByLocation = filteredByIsToday?.filter((booth3) => {
     const boothCard3 = (
       <BoothCard
         key={booth3.id}

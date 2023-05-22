@@ -45,13 +45,14 @@ export default function Layout({ children }) {
   //useEffect(()=>{
   //    document.getElementById("outWrapper").style.minHeight = `${window.innerHeight - 56 - 100}px`;
   //}, [])
+  console.log(router.pathname)
 
   return (
     <Wrapper>
       <HeadTitle />
       <NavBar />
       { (router.pathname.split('/')[1] === 'notice' && router.pathname.split('/')[2] )
-        || (router.pathname.split('/')[1] === 'booth' && router.pathname.split('/')[2] === 'search')
+        || (router.pathname.split('/')[1] === 'booth' && router.pathname.split('/')[2] === 'search') || ( router.pathname=== '/')
       ? null : <Gradation /> }
       <Content id="outWrapper">
         <PageTitle />

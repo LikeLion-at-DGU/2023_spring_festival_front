@@ -53,16 +53,13 @@ const BoothDetailPage = ({myData}) => {
    
   const handleHeartClick = async () => {
     const id = router.query.id
-    console.log(id);
-    console.log(booth.is_liked);
     if(booth.is_liked){
         try {
             // axios요청 보내기 
         console.log("하트 클릭");
+        setIsLikeClick(i=>!i)
         const response = await API.delete(`/store/${id}/love`);
         if (response.status === 200) {
-              setIsLikeClick(i=>!i)
-            console.log("하트 클릭 성공");
           } else {
             // Handle error case
             console.log("하트 클릭 실패");
@@ -71,7 +68,7 @@ const BoothDetailPage = ({myData}) => {
           // Handle error case
         }
     }else{
-        
+
         try {
             // axios요청 보내기 
             console.log("하트 클릭");
@@ -119,9 +116,8 @@ const BoothDetailPage = ({myData}) => {
 //   링크복사
   const handleCopyLink = () => {
     navigator.clipboard.writeText(window.location.href);
-    alert('지금 있는 페이지의 링크가 복사되었습니다.');
+    alert('현재 페이지의 링크가 복사되었습니다.');
   };
-
 
   const fetchComments = async() => {
     const id = router.query.id
