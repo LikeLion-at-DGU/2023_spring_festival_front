@@ -156,6 +156,7 @@ useEffect(() => {
 
   // 댓글 등록
   const handleSubmission = (event) => {
+    const sId = router.query.id
     event.preventDefault(); // 폼 제출의 기본 동작인 페이지 새로고침을 방지합니다.
 
     const formData = {
@@ -163,33 +164,25 @@ useEffect(() => {
         password: password,
         content : commentContent,
       };
-      const dummyCommentData = {
-        writer : nickname,
-        password: password,
-        content : commentContent,
-      }
-
-      console.log(dummyCommentData);
-
     // 욕설 필터링 
     
     // 욕설 안걸렸을 시 통과 
 
-    //   // post보내기 
-    //   axios.post('reports', formData)
-    //     .then((response) => {
-    //       // console.log(response.data);
-    //     })
-    //     .catch((error) => {
-    //       // console.log( "제보 제출에러!");
-    //       // 오류 처리 로직을 추가합니다.
-    //       console.error('Error:', error);
-    //     });
+      // post보내기 
+      API.post(`/store/${sId}/respond`, formData)
+        .then((response) => {
+          console.log(response.data);
+        })
+        .catch((error) => {
+          console.log( "제보 제출에러!");
+        //   오류 처리 로직을 추가합니다.
+          console.error('Error:', error);
+        });
 
       // 성공했을시 ReportDone으로 이동          
 
     // 성공했을시 페이지 새로고침 
-    // window.location.reload();
+    window.location.reload();
   };
 
 
@@ -291,6 +284,7 @@ useEffect(() => {
                 
             <CommentListWrapper>
                 {comment.map((comment) => (
+                    <div key={comment.id}>
                     <CommentCard
                         key={comment.id}
                         commentId={comment.id}
@@ -299,6 +293,7 @@ useEffect(() => {
                         created_at={comment.created_at}
                         reply = {comment.replies}
                     />
+                    </div>
                     ))}
             </CommentListWrapper>
         </CommentWrapper>
