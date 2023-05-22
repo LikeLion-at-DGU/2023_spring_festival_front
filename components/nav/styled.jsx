@@ -87,7 +87,7 @@ export const ModalPages = styled.div`
     font-size: 32px;
 `;
 
-export const ModalPageSection = styled.a`
+export const ModalPageSection = styled.span`
     font-family: 'ygotjalnanfont';
     font-weight: 700;
     width: 100%;
