@@ -91,7 +91,7 @@ export default function FilteredBooth({ dayOrNight, isToday, boothSector, boothS
       return boothCard3;
     }
   });
-  console.log("boothSector >", boothSector, "boothSectorDetail >", boothSectorDetail);
+  // console.log("boothSector >", boothSector, "boothSectorDetail >", boothSectorDetail);
   // console.log(boothSectorArray[boothSector]);
 
   const filteredAllBooth = filteredByAllLocation?.map((booth) => {

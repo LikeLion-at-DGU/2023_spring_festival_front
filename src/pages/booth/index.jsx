@@ -99,13 +99,22 @@ export default function Booth() {
     setGuideMessage("전체 보기");
     setThirdLeftScene(true);
     setThirdRightScene(false);
-    setBoothSectorDetail(1);
+    if (boothSectorArray[boothSector].length > 1) {
+      setBoothSectorDetail(null);
+    } else {
+      setBoothSectorDetail(1);
+    }
   }, [thirdLeftScene, thirdRightScene]);
   const rightPinHandling = useCallback(() => {
     setGuideMessage("전체 보기");
     setThirdRightScene(true);
     setThirdLeftScene(false);
-    setBoothSectorDetail(1);
+
+    if (boothSectorArray[boothSector].length > 1) {
+      setBoothSectorDetail(null);
+    } else {
+      setBoothSectorDetail(1);
+    }
   }, [thirdLeftScene, thirdRightScene]);
 
   // 좌측 핀 클릭 핸들링----------------------------
@@ -171,28 +180,19 @@ export default function Booth() {
   });
 
   const locationList = boothSectorArray[boothSector]?.map((loc) => {
-    if (loc.length > 1) {
-      loc?.map((loc2) => {
-        return (
-          <SelectedLocation
-            key={loc2.id}
-            secondLeftMoved={thirdLeftScene}
-            secondRightMoved={thirdRightScene}
-          >
-            {loc2.location}
-          </SelectedLocation>
-        );
-      });
-    } else {
-      return (
-        <SelectedLocation
-          key={loc.id}
-          secondLeftMoved={thirdLeftScene}
-          secondRightMoved={thirdRightScene}
-        >
-          {loc.location}
-        </SelectedLocation>
-      );
+    const selectedLocation = (
+      <SelectedLocation
+        key={loc.id}
+        secondLeftMoved={thirdLeftScene}
+        secondRightMoved={thirdRightScene}
+      >
+        {loc.location}
+      </SelectedLocation>
+    );
+    if (loc.id === boothSectorDetail) {
+      return selectedLocation;
+    } else if (boothSectorDetail === null) {
+      return selectedLocation;
     }
   });
 
