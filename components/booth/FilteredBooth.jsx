@@ -25,17 +25,20 @@ export default function FilteredBooth({
         section={booth1.section} // num || null
       />
     );
-    if (booth1.type === "야간부스") {
+
+    if (booth1.type === "야간부스" && dayOrNight === "야간부스") {
+      // console.log("야간 부스 필터링 >", filteredByDayOrNight);
+
       return boothCard;
     } else if (
-      booth1.type === "학교부스" &&
-      booth1.type === "외부부스" &&
-      booth1.type === "플리마켓"
+      (booth1.type === "학교부스" ||
+        booth1.type === "외부부스" ||
+        booth1.type === "플리마켓") &&
+      dayOrNight === "주간부스"
     ) {
-      // console.log("주간 야간 필터링 >", filteredByDayOrNight);
+
       return boothCard;
     } else if (booth1.type !== dayOrNight && dayOrNight === "전체") {
-      // console.log("주야 전체 필터링 >", filteredByDayOrNight);
       return boothCard;
     }
   });
@@ -61,18 +64,14 @@ export default function FilteredBooth({
     );
     if (isToday === 23 && firstDay === 23) {
       // 23일 필터링
-      // console.log("23일 날짜 필터링", filteredByIsToday);
       return boothCard2;
     } else if (isToday === 24 && (firstDay === 24 || secondDay === 24)) {
       // 24일 필터링
-      // console.log("24일 날짜 필터링", filteredByIsToday);
       return boothCard2;
     } else if (isToday === 25 && secondDay === 25) {
       // 25일 필터링
-      // console.log("25일 날짜 필터링", filteredByIsToday);
       return boothCard2;
     }
-    // console.log("날짜 필터링 >", filteredByDayOrNight);
   });
 
   // 핀 디테일 장소 선택되지 않았을 때, 부스맵 핀 로케이션 해당 섹터 모든 부스 필터링
@@ -82,10 +81,6 @@ export default function FilteredBooth({
         ?.map((b) => b.location)
         .includes(all.location)
     ) {
-      // console.log(
-      //   "3차 all -> 선택 섹션 장소 중 2차 필터링 끝낸 곳들 중 장소 겹치는 부스",
-      //   filteredByAllLocation
-      // );
       return (
         <BoothCard
           key={all.id}
@@ -133,8 +128,6 @@ export default function FilteredBooth({
       return boothCard3;
     }
   });
-  // console.log("boothSector >", boothSector, "boothSectorDetail >", boothSectorDetail);
-  // console.log(boothSectorArray[boothSector]);
 
   const filteredAllBooth = filteredByAllLocation?.map((booth) => {
     return (

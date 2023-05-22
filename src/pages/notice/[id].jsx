@@ -112,7 +112,6 @@ export async function getServerSideProps(context) {
             const noticeData = res.data;
             return noticeData;
         }catch(err){
-            console.log(err)
             return null;
         }
     }

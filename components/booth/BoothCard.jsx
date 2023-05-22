@@ -23,19 +23,21 @@ import { useRouter } from "next/router";
 function BoothCard({
   id,
   name,
-  operator,
-  logoImage,
-  likeCnt,
-  isLike,
-  location,
   type,
+  operator,
+  logo_image,
+  is_liked,
+  like_cnt,
+  start_at,
+  end_at,
+  location,
+  section
 }) {
   const router = useRouter();
   const { pathname } = router;
 
   // Determine the page type based on the pathname
   const pageType = pathname === "/booth/search" ? "booth/search" : "booth";
-
   return (
     <div
       onClick={() => {
@@ -45,8 +47,12 @@ function BoothCard({
     >
       <BoothCardWrapper>
         <BoothCardImage
-          src={logoImage?.length === 0 ? DeafultImage : logoImage}
+
+          src={logo_image == undefined ? DeafultImage : logo_image}
+
           alt="부스 이미지"
+          width={160}
+          height={160}
         />
         <BoothCardDetailWrapper>
           <Ribbon pageType={pageType} type={type}>
@@ -64,8 +70,8 @@ function BoothCard({
 
           <BoothCardDetailHeartWrapper>
             {/* 하트 어떻게..? */}
-            <CardDetailHeartIcon icon={isLike ? faHeart : emptyHeart} />
-            <CardDetailHeartCntWrapper>{likeCnt}</CardDetailHeartCntWrapper>
+            <CardDetailHeartIcon icon={is_liked ? faHeart : emptyHeart} />
+            <CardDetailHeartCntWrapper>{like_cnt}</CardDetailHeartCntWrapper>
           </BoothCardDetailHeartWrapper>
         </BoothCardDetailWrapper>
       </BoothCardWrapper>

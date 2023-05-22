@@ -104,13 +104,13 @@ const BoothDetailPage = ({ myData }) => {
     if (booth.is_liked) {
       try {
         // axios요청 보내기
-        console.log("하트 클릭");
+
         setIsLikeClick((i) => !i);
         const response = await API.delete(`/store/${id}/love`);
         if (response.status === 200) {
         } else {
           // Handle error case
-          console.log("하트 클릭 실패");
+
         }
       } catch (error) {
         // Handle error case
@@ -118,15 +118,15 @@ const BoothDetailPage = ({ myData }) => {
     } else {
       try {
         // axios요청 보내기
-        console.log("하트 클릭");
+
         const response = await API.post(`/store/${id}/love`);
 
         if (response.status === 200) {
-          console.log("하트 클릭 성공");
+
           setIsLikeClick((i) => !i);
         } else {
           // Handle error case
-          console.log("하트 클릭 실패");
+
         }
       } catch (error) {
         // Handle error case
@@ -170,7 +170,7 @@ const BoothDetailPage = ({ myData }) => {
       const commentData = response.data;
 
       setComment(commentData);
-      console.log(commentData);
+
     } catch (error) {
       console.error("Error: ", error);
     }
@@ -184,7 +184,6 @@ const BoothDetailPage = ({ myData }) => {
       const response = await API.get(`/store/info/${sId}`);
       const boothDetailData = response.data;
       setBooth(boothDetailData);
-      //console.log(boothDetailData.is_liked)
     } catch (error) {
       console.error("Error: ", error);
     }
@@ -217,12 +216,10 @@ const BoothDetailPage = ({ myData }) => {
     // post보내기
     API.post(`/store/${sId}/respond`, formData)
       .then((response) => {
-        //   console.log(response.data);
       })
       .catch((error) => {
-        //   console.log( "제보 제출에러!");
         // //   오류 처리 로직을 추가합니다.
-        //   console.error('Error:', error);
+          console.error('Error:', error);
       });
 
     // 성공했을시 ReportDone으로 이동
@@ -231,14 +228,15 @@ const BoothDetailPage = ({ myData }) => {
     window.location.reload();
   };
 
+
   return (
     <BoothDetailCotainer>
       <BoothLogoWrapper>
         <DetailRibbon type={booth.type}>{booth.type}</DetailRibbon>
-        {booth.logo_image.length === 1 ? (
+        {booth.logo_image[0] != undefined ? (
           <BoothLogoImage
-            src={booth.logo_image}
-            alt={booth.logo_image}
+            src={booth.logo_image[0]}
+            alt="부스이미지"
             width={300}
             height={300}
           />
@@ -280,7 +278,7 @@ const BoothDetailPage = ({ myData }) => {
             <BoothDetailMenuHeader>
               <BoothDetailMenuTitle>
                 메뉴
-                {console.log(booth.menu_image)}
+
               </BoothDetailMenuTitle>
             </BoothDetailMenuHeader>
             <BoothImageSlider>

@@ -89,6 +89,7 @@ export default function Booth() {
   // router
   const router = useRouter();
 
+
   // ComponentDidMount----------------------------
   const fetchBooths = async () => {
     try {
@@ -96,10 +97,11 @@ export default function Booth() {
       setBoothList(getBoothList.data);
       const boothTop10 = await API.get(`/store/top`);
       setBoothTop10List(boothTop10);
-      // console.log("boothTop10", boothTop10);
+
     } catch (error) {
       console.error("Error: ", error);
     }
+
   };
   useEffect(() => {
     fetchBooths();
