@@ -204,7 +204,7 @@ const isInputValid = () => {
                     <FontAwesomeIcon icon={faTurnUp} size="xs" rotation={90} style={{marginRight:"10px"}} 
                         onClick={handleReplyButtonClick} />
 
-                        {content !== "삭제된 댓글입니다." && (
+                        {content !== ("삭제된 댓글입니다.") && (
                             <FontAwesomeIcon
                                 icon={faTrashCan}
                                 size="xs"

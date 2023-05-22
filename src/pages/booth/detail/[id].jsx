@@ -70,7 +70,7 @@ const BoothDetailPage = ({myData}) => {
           // Handle error case
         }
     }else{
-        
+
         try {
             // axios요청 보내기 
             console.log("하트 클릭");
@@ -120,7 +120,6 @@ const BoothDetailPage = ({myData}) => {
     navigator.clipboard.writeText(window.location.href);
     alert('지금 있는 페이지의 링크가 복사되었습니다.');
   };
-
 
   const fetchComments = async() => {
     const id = router.query.id
@@ -193,7 +192,7 @@ useEffect(() => {
     <BoothDetailCotainer>
         <BoothLogoWrapper>
             <DetailRibbon type={booth.type}>{booth.type}</DetailRibbon>
-            <BoothLogoImage src={DeafultImage}/>
+            <BoothLogoImage src={DeafultImage} alt="부스로고이미지"/>
         </BoothLogoWrapper>
         <BoothDetailHeader>
             <BoothDetailHeaderWrapper>
