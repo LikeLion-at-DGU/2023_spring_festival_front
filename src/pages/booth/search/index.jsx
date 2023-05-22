@@ -64,92 +64,9 @@ function Search() {
 
   // 좋아요 탑 10중 3개 추천, 매번 다르값 불러옴
   const [recomandBooth, setRecomandBooth] = useState([
-    {
-      id: 1,
-      name: "코딩주점",
-      type: "학교부스",
-      operator: "멋쟁이사자처럼",
-      logo_image:
-        "https://www.pngplay.com/wp-content/uploads/3/Apple-Siri-Logo-Download-Free-PNG.png",
-      like_cnt: 100,
-      start_at: "2023-05-23T18:00:07.687842+09:00",
-      end_at: "2023-05-23T23:00:07.687842+09:00",
-      location: "학생회관",
-      section: "1",
-      is_liked: true,
-    },
-    {
-      id: 2,
-      name: "히찬부스",
-      type: "야간부스",
-      operator: "서희찬",
-      logo_image: null,
-      like_cnt: 120,
-      start_at: "2023-05-23T18:00:07.687842+09:00",
-      end_at: "2023-05-23T23:00:07.687842+09:00",
-      location: "학생회관",
-      section: "2",
-      is_liked: false,
-    },
-    {
-      id: 3,
-      name: "집가고싶다..",
-      type: "야간부스",
-      operator: "멋쟁이사자처럼",
-      logo_image:
-        "https://www.pngplay.com/wp-content/uploads/3/Apple-Siri-Logo-Download-Free-PNG.png",
-      like_cnt: 100,
-      start_at: "2023-05-23T18:00:07.687842+09:00",
-      end_at: "2023-05-23T23:00:07.687842+09:00",
-      location: "학생회관",
-      section: "3",
-      is_liked: true,
-    },
   ]);
   // 랜덤 추천, 매 호출 마다 다르값 불러옴
-  const [randomBooth, setRandomBooth] = useState([
-    {
-      id: 1,
-      name: "코딩주점",
-      type: "학교부스",
-      operator: "멋쟁이사자처럼",
-      logo_image:
-        "https://www.pngplay.com/wp-content/uploads/3/Apple-Siri-Logo-Download-Free-PNG.png",
-      like_cnt: 100,
-      start_at: "2023-05-23T18:00:07.687842+09:00",
-      end_at: "2023-05-23T23:00:07.687842+09:00",
-      location: "학생회관",
-      section: "1",
-      is_liked: true,
-    },
-    {
-      id: 2,
-      name: "히찬부스",
-      type: "학교부스",
-      operator: "서희찬",
-      logo_image: null,
-      like_cnt: 120,
-      start_at: "2023-05-23T18:00:07.687842+09:00",
-      end_at: "2023-05-23T23:00:07.687842+09:00",
-      location: "학생회관",
-      section: "2",
-      is_liked: false,
-    },
-    {
-      id: 3,
-      name: "집가고싶다..",
-      type: "학교부스",
-      operator: "멋쟁이사자처럼",
-      logo_image:
-        "https://www.pngplay.com/wp-content/uploads/3/Apple-Siri-Logo-Download-Free-PNG.png",
-      like_cnt: 100,
-      start_at: "2023-05-23T18:00:07.687842+09:00",
-      end_at: "2023-05-23T23:00:07.687842+09:00",
-      location: "학생회관",
-      section: "3",
-      is_liked: true,
-    },
-  ]);
+  const [randomBooth, setRandomBooth] = useState([]);
 
   const [searchValue, setSearchValue] = useState("");
 
@@ -216,25 +133,31 @@ function Search() {
     });
 
     return (
+      
       <>
         <animated.div style={fadeOut}>
           {searchValue.length === 0 && (
             <RecommandHeader>
               <RecommandTitle>실시간 인기 부스</RecommandTitle>
-              {trail.map((props, idx) => (
-                <animated.div key={idx} style={props}>
-                  <RecomandRowCard
-                    ranking={idx}
-                    id={recomandBooth[idx].id}
-                    logoImage={recomandBooth[idx].logo_image}
-                    boothName={recomandBooth[idx].name}
-                    boothOperator={recomandBooth[idx].operator}
-                    boothLocation={recomandBooth[idx].location}
-                    likeCnt={recomandBooth[idx].like_cnt}
-                    is_liked={recomandBooth[idx].is_liked}
-                  />
-                </animated.div>
-              ))}
+             
+          {recomandBooth && recomandBooth.length > 0 ? (
+            trail.map((props, idx) => (
+              <animated.div key={idx} style={props}>
+                <RecomandRowCard
+                  ranking={idx}
+                  id={recomandBooth[idx].id}
+                  logoImage={recomandBooth[idx].logo_image}
+                  boothName={recomandBooth[idx].name}
+                  boothOperator={recomandBooth[idx].operator}
+                  boothLocation={recomandBooth[idx].location}
+                  likeCnt={recomandBooth[idx].like_cnt}
+                  is_liked={recomandBooth[idx].is_liked}
+                />
+              </animated.div>
+                ))
+          ) : (
+            <p style={{marginTop:"30px", fontWeight:"500"}}>현재 인기 부스가 없습니다.</p>
+          )}
             </RecommandHeader>
           )}
         </animated.div>
@@ -281,6 +204,18 @@ function Search() {
   });
 
   const renderSearchBooth = () => {
+
+    if(!randomBooth || !randomBooth)
+    {
+      return (
+        <>
+        로딩중ㅋ
+        </>
+      )
+    }
+
+
+    
     return (
       <SearchContentWrapper>
         <SearchContentHeader>'{searchValue}' 검색결과</SearchContentHeader>
