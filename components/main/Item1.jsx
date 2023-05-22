@@ -46,6 +46,9 @@ const Content = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    @media (max-device-width:360px) {
+        width: 90%;
+    }
 `
 
 const Now = styled.div`
@@ -109,7 +112,7 @@ export default function Item1(){
                         <NowFooter>
                             <FooterLeft>
                                 <span>Coming Next</span>
-                                <span>{daytime <= -8 ? "주간부스 etc" : daytime >= 0 ? "Next Day" : "야간 부스"}</span>
+                                <span>{daytime <= -8 ? "주간부스" : daytime >= 0 ? "Next Day" : "야간 부스"}</span>
                             </FooterLeft>
                             <FooterGo onClick={()=>{router.push("/booth")}}>
                                 <FontAwesomeIcon icon={faArrowRight} />

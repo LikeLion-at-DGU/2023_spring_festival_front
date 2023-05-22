@@ -18,10 +18,10 @@ const Container = styled.div`
     }
     @media (max-device-height:690px) and (min-device-height:800px) {
         margin-top: -40px;
-    }
+    }*/
     @media (min-device-height:800px) {
-        margin-top: 30px;
-    } */
+        margin-top: 35px;
+    }
 `
 
 const move = keyframes`
@@ -31,8 +31,8 @@ const move = keyframes`
             transform: translateZ(0) translateX(0) translateY(0);
   }
   50% {
-    -webkit-transform: translateZ(100px) translateX(-24px) translateY(-24px);
-            transform: translateZ(100px) translateX(-24px) translateY(-24px);
+    -webkit-transform: translateZ(180px) translateX(-50px) translateY(-40px);
+            transform: translateZ(180px) translateX(-50px) translateY(-40px);
   }
   100% {
     -webkit-transform: translateZ(0) translateX(0) translateY(0);
@@ -46,8 +46,8 @@ const move2 = keyframes`
             transform: translateZ(0) translateX(0) translateY(0);
   }
   50% {
-    -webkit-transform: translateZ(100px) translateX(24px) translateY(-24px);
-            transform: translateZ(100px) translateX(24px) translateY(-24px);
+    -webkit-transform: translateZ(120px) translateX(20px) translateY(-40px);
+            transform: translateZ(120px) translateX(20px) translateY(-40px);
   }
   100% {
     -webkit-transform: translateZ(0) translateX(0) translateY(0);
@@ -61,8 +61,8 @@ const move3 = keyframes`
             transform: translateZ(0) translateY(0);
   }
   50% {
-    -webkit-transform: translateZ(100px) translateY(-24px);
-            transform: translateZ(100px) translateY(-24px);
+    -webkit-transform: translateZ(140px) translateY(-40px);
+            transform: translateZ(140px) translateY(-40px);
   }
   100% {
     -webkit-transform: translateZ(0) translateX(0) translateY(0);
@@ -76,9 +76,9 @@ position: absolute;
     right : 0;
     min-width: 220px;
     width: 74%;
-    -webkit-animation: ${move} 20s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-	  animation: ${move}  20s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-    animation-delay: 1s;
+    -webkit-animation: ${move} 30s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+	  animation: ${move}  30s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    animation-delay: 0.5s;
     animation-iteration-count : infinite;
     will-change: opacity;
 `
@@ -90,9 +90,9 @@ const Img2 = styled(Image)`
     position: absolute;
     top : 130px;
     left: 2%;
-    -webkit-animation: ${move2} 24s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-	animation: ${move2} 24s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-    animation-delay: 2s;
+    -webkit-animation: ${move2} 36s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+	animation: ${move2} 36s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    animation-delay: 1.2s;
     animation-iteration-count : infinite;
     will-change: opacity;
 `
@@ -104,9 +104,9 @@ const Img3 = styled(Image)`
     top : 340px;
     right: -5%;
     animation-delay: 3s;
-    -webkit-animation: ${move3} 18s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-	animation: ${move3} 18s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-    animation-delay: 5s;
+    -webkit-animation: ${move3} 22s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+	animation: ${move3} 22s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    animation-delay: 2.5s;
     animation-iteration-count : infinite;
     will-change: opacity;
 `

@@ -7,8 +7,8 @@ const Container = styled.div`
     height: 90%;
     display: flex;
     flex-direction: column;
-    @media (max-device-height:840px) {
-        margin-top: 60px;
+    @media (max-device-height:820px) {
+        margin-top: 15px;
     }
     justify-content: flex-end;
 `

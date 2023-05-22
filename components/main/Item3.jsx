@@ -36,13 +36,16 @@ const InnerItem = styled.div`
 `
 
 const Content = styled.div`
-    
-    width: 80%;
+    width: 82%;
     height: 120px;
     z-index: 20;
     display: flex;
+    margin-top: -5px;
     flex-direction: column;
     justify-content: flex-start;
+    @media (max-device-width:370px) {
+        width: 88%;
+    }
 `
 
 const Now = styled.div`
@@ -50,6 +53,9 @@ const Now = styled.div`
     h1{
         font-family: "yg-jalnan";
         font-size: 30px;
+        @media (max-device-width:380px) {
+        font-size : 26px;
+    }
     }
     h6{
         font-family: 'Noto Sans KR', sans-serif;
