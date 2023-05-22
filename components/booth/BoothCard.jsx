@@ -29,7 +29,10 @@ function BoothCard({ id, name, operator, logoImage, likeCnt, isLike, location, t
   const pageType = pathname === '/booth/search' ? 'booth/search' : 'booth';
 
   return (
-    <Link href={`/booth/detail/${id}`}>
+    <div onClick={()=>{
+      sessionStorage.setItem("id",id)
+      router.push(`/booth/detail/${id}`)
+    }}>
       <BoothCardWrapper>
         <BoothCardImage src={DeafultImage} alt="부스 이미지" />
         <BoothCardDetailWrapper>
@@ -47,7 +50,7 @@ function BoothCard({ id, name, operator, logoImage, likeCnt, isLike, location, t
           </BoothCardDetailHeartWrapper>
         </BoothCardDetailWrapper>
       </BoothCardWrapper>
-    </Link>
+    </div>
   );
 }
 

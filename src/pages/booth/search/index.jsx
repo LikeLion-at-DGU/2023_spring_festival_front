@@ -8,6 +8,7 @@ import { BoothCardGridWrapper, RecommandWrapper, SearchContentHeader, SearchCont
 import { RecomandBoothWrapper } from "../search_style";
 import { RecommandBoothTitle } from "../search_style";
 import { SearchContainer } from "../search_style";
+import { API } from "@/pages/api";
 
 function Search() {
   const [booth, setBooth] = useState([     
@@ -288,8 +289,9 @@ const featchRandmonBooths= async() => {
 
 const fetchBooths = async() => {
   try {
-      // const response = await axios.get(`posts/${id}`);
-      // const postData = response.data;
+      const response = await API.get(`/store/list`);
+      const postData = response.data;
+      console.log(postData)
       const boothData = 
             [
               {
@@ -334,8 +336,8 @@ const fetchBooths = async() => {
               is_liked: false
             },
             ]
-          setBooth(boothData);
-          console.log(boothData)
+          setBooth(postData);
+          
   } catch (error) {
       console.error('Error: ', error);
   }
