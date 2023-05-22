@@ -10,67 +10,62 @@ import notice_page_logo from '../image/common/notice.svg';
 import booth_page_logo from '../image/common/booth.svg';
 import Booth from "@/pages/about";
 
-const Container = styled.nav`
-    width: 100%;
-    height: 70px;
+const Container = styled.div`
+    background: transparent;
+    padding: 25px;
     display: flex;
+    flex-direction: row;
     align-items: center;
-    position: relative;
-    padding: 0 26px;
-`
+    width: 100%;
+    justify-content: space-between;
+`;
 
 const Title = styled(Link)`
     font-family: 'TmonMonsori';
-    font-size: 24px;
-    z-index: 100;
-`
-
+    font-size: 25px;
+    cursor: pointer;
+    width: 25%;
+`;
 
 const BackButton = styled(FontAwesomeIcon)`
     color: #525252;
-    top : 10px;
-    left: 0;
-    font-size: 20px;
-    width: 15px;
-    z-index: 100;
+    font-size: 25px;
+    width: 5%;
+    margin-right: 15%;
     cursor: pointer;
-`
-
-const Img = styled(Image)`
-    margin: 0 auto;
-    padding-right: 5%;
 `;
 
 const ImgLink = styled(Link)`
-    margin: 0 auto;
+    width: 60%;
     display: flex;
-    
+    align-items: center;
+    justify-content: center;  
+`;
+
+const Img = styled(Image)`
+    cursor: pointer;
+    width: 50%;
+    margin: 0 auto;
 `;
 
 const NavToggle = styled.div`
+    width: 25%;
     font-size: 25px;
-    position: fixed;
-    right: 0;
-    margin-right: 25px;
-    z-index: 100;
+    text-align: right;
+    display: flex;
+    gap: 20%;
+    justify-content: flex-end;
+    align-items: center;
     cursor: pointer;
-    display: flex;
-    gap: 20px;
-
-    @media (min-width: 430px) {
-        position: absolute;
-    }
-`
-
-const BoothSearch = styled(FontAwesomeIcon)`
-    font-size: 20px;
-    margin-right: 30%;
-    display: flex;
+    z-index: 100;
 `;
 
-const ButtonSection =styled.div`
-    display: flex;
-    align-items: center;
+const BoothButton = styled(FontAwesomeIcon)`
+    padding-right: 40px;
+`;
+
+const SideButton = styled(FontAwesomeIcon)`
+    position: fixed;
 `;
 
 export default function HeadBar(){
@@ -79,6 +74,7 @@ export default function HeadBar(){
     
     const showModal = () => {
         setModalOpen(i=>!i);
+        document.body.style.overflow = 'hidden';
     };
 
     // 디테일 페이지 구분을 위한 변수
@@ -89,24 +85,19 @@ export default function HeadBar(){
             { !router.query.id && (router.pathname.split('/')[2] != 'search') ? 
             <Title href="/">
                     다시, 봄
-            </Title> : <>
-                <BackButton 
-                    icon={faChevronLeft} 
-                    style={{color: "#000000",}}
-                    onClick={()=>router.back()} />
-                { router.pathname.split('/')[1] === 'notice' &&
-                    <ImgLink href="/"><Img src={notice_page_logo} alt="notice_page_logo"/></ImgLink>}
-                { (router.pathname.split('/')[1] === 'booth') &&
-                    <ImgLink href="/"><Img src={booth_page_logo} alt="booth_page_logo"/></ImgLink>}
-            </>}
+            </Title> : <><BackButton icon={faChevronLeft} onClick={()=>router.back()} />
+            { router.pathname.split('/')[1] === 'notice' &&
+                <ImgLink href="/"><Img src={notice_page_logo} alt="notice_page_logo"/></ImgLink> }
+            { (router.pathname.split('/')[1] === 'booth') &&
+                <ImgLink href="/"><Img src={booth_page_logo} alt="booth_page_logo"/></ImgLink> } </> }
             <NavToggle>
-                { (router.pathname.split('/')[1] === 'booth') && (router.pathname.split('/')[2] != 'search') &&
+            { (router.pathname.split('/')[1] === 'booth') && (router.pathname.split('/')[2] != 'search') &&
                 <Link href='/booth/search'>
-                <FontAwesomeIcon icon={faMagnifyingGlass} style={{color: "#FC8CAE",}}/>
+                    <BoothButton icon={faMagnifyingGlass} style={{color: "#FC8CAE",}}/>
                 </Link>}
-                <FontAwesomeIcon icon={faBars} onClick={()=>showModal()}/>
+                <SideButton icon={faBars} onClick={()=>showModal()}/>
+                {modalOpen && <Modal setModalOpen={setModalOpen}/>}
             </NavToggle>
-            {modalOpen && <Modal setModalOpen={setModalOpen}/>}
         </Container>
     )
 };
