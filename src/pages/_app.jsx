@@ -132,6 +132,13 @@ export default function App({ Component, pageProps }) {
           *[hidden] {
             display: none;
           }
+          *{
+            -ms-overflow-style: none; /* IE and Edge */
+            scrollbar-width: none; /* Firefox */
+          }
+          *::-webkit-scrollbar {
+            display: none; /* Chrome, Safari, Opera*/
+          }
           body {
             line-height: 1;
           }

@@ -39,8 +39,10 @@ const InnerItem = styled.div`
 `
 
 const Content = styled.div`
-    
-    width: 80%;
+    width: 82%;
+    @media (max-device-width:360px) {
+        width: 90%;
+    }
     height: 110px;
     z-index: 20;
     display: flex;
