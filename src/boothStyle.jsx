@@ -10,6 +10,7 @@ export const Container = styled.div`
   flex-direction: column;
   padding-top: 20px;
   z-index: 10;
+  overflow: hidden;
 `;
 // 날짜 컨테이너
 export const DateSection = styled.div`
@@ -65,13 +66,13 @@ export const RankingRightSection = styled.section`
 export const BoothTop10Box = styled.section`
   @keyframes moveBox {
     0% {
-      top: 0px;
+      top: -30px;
       opacity: 0;
       font-size: 0.3rem;
       font-weight: 100;
     }
     25% {
-      top: 30px;
+      top: 20px;
       opacity: 0.5;
       font-size: 0.6rem;
       font-weight: 300;
@@ -83,14 +84,14 @@ export const BoothTop10Box = styled.section`
       font-weight: 900;
     }
     75% {
-      top: 170px;
+      top: 150px;
       opacity: 0.5;
       font-size: 0.6rem;
       font-weight: 300;
     }
     100% {
       top: 200px;
-      opacity: 0;
+      opacity: 0.1;
       font-size: 0.3rem;
       font-weight: 100;
     }
@@ -117,7 +118,7 @@ export const BoothTop10LeftBox = styled.section`
 `;
 
 export const BoothTop10RightBox = styled.section`
-  width: 70%;
+  width: 75%;
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -156,6 +157,7 @@ export const MapSection = styled.section`
       ? "-110px"
       : ""};
   cursor: pointer;
+  overflow: hidden;
 `;
 
 export const MapModalSection = styled.section`

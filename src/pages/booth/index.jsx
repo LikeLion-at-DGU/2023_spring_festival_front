@@ -336,7 +336,7 @@ export default function Booth() {
           boothSector={boothSector}
           boothSectorDetail={boothSectorDetail}
         />
-        <EmptyFilteredSection>
+        {/* <EmptyFilteredSection>
           <EmptyFilteredIcon>
             <Image
               src={elephant}
@@ -346,7 +346,7 @@ export default function Booth() {
             />
           </EmptyFilteredIcon>
           <EmptyFilteredBooth>조건에 맞는 부스가 없어요!</EmptyFilteredBooth>
-        </EmptyFilteredSection>
+        </EmptyFilteredSection> */}
       </BoothCardGridWrapper>
     </Container>
   );
