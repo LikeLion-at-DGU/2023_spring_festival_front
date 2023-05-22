@@ -101,7 +101,7 @@ function CommentCard({ commentId, writer, content, created_at, reply }) {
       password: replyPassword,
       content: replyCommentContent,
     };
-    console.log(commentId);
+
     API.post(`/respond/${commentId}/reaction`, formData)
       .then((response) => {
         alert("댓글이 작성되었습니다.");
@@ -115,7 +115,7 @@ function CommentCard({ commentId, writer, content, created_at, reply }) {
 
   const handleDeleteModalConfirm = () => {
     // 서버에 DELETE 요청 보내는 로직 작성
-    console.log(isReply);
+
     const deleteRequest = async () => {
       try {
         if (isReply) {
@@ -178,7 +178,7 @@ function CommentCard({ commentId, writer, content, created_at, reply }) {
 
   const handleReplyDeleteButtonClick = (replyId) => {
     setReplyId(replyId);
-    console.log(replyId);
+
     setIsReply(true);
     setShowDeleteModal(true);
   };
@@ -194,7 +194,7 @@ function CommentCard({ commentId, writer, content, created_at, reply }) {
   const isInputValid = () => {
     // 비밀번호가 4자리인지 확인
     if (deletePassword.length !== 4) {
-      console.log("!");
+
       return false;
     }
 

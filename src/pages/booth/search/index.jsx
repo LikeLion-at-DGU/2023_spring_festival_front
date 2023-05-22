@@ -64,92 +64,9 @@ function Search() {
 
   // 좋아요 탑 10중 3개 추천, 매번 다르값 불러옴
   const [recomandBooth, setRecomandBooth] = useState([
-    {
-      id: 1,
-      name: "코딩주점",
-      type: "학교부스",
-      operator: "멋쟁이사자처럼",
-      logo_image:
-        "https://www.pngplay.com/wp-content/uploads/3/Apple-Siri-Logo-Download-Free-PNG.png",
-      like_cnt: 100,
-      start_at: "2023-05-23T18:00:07.687842+09:00",
-      end_at: "2023-05-23T23:00:07.687842+09:00",
-      location: "학생회관",
-      section: "1",
-      is_liked: true,
-    },
-    {
-      id: 2,
-      name: "히찬부스",
-      type: "야간부스",
-      operator: "서희찬",
-      logo_image: null,
-      like_cnt: 120,
-      start_at: "2023-05-23T18:00:07.687842+09:00",
-      end_at: "2023-05-23T23:00:07.687842+09:00",
-      location: "학생회관",
-      section: "2",
-      is_liked: false,
-    },
-    {
-      id: 3,
-      name: "집가고싶다..",
-      type: "야간부스",
-      operator: "멋쟁이사자처럼",
-      logo_image:
-        "https://www.pngplay.com/wp-content/uploads/3/Apple-Siri-Logo-Download-Free-PNG.png",
-      like_cnt: 100,
-      start_at: "2023-05-23T18:00:07.687842+09:00",
-      end_at: "2023-05-23T23:00:07.687842+09:00",
-      location: "학생회관",
-      section: "3",
-      is_liked: true,
-    },
   ]);
   // 랜덤 추천, 매 호출 마다 다르값 불러옴
-  const [randomBooth, setRandomBooth] = useState([
-    {
-      id: 1,
-      name: "코딩주점",
-      type: "학교부스",
-      operator: "멋쟁이사자처럼",
-      logo_image:
-        "https://www.pngplay.com/wp-content/uploads/3/Apple-Siri-Logo-Download-Free-PNG.png",
-      like_cnt: 100,
-      start_at: "2023-05-23T18:00:07.687842+09:00",
-      end_at: "2023-05-23T23:00:07.687842+09:00",
-      location: "학생회관",
-      section: "1",
-      is_liked: true,
-    },
-    {
-      id: 2,
-      name: "히찬부스",
-      type: "학교부스",
-      operator: "서희찬",
-      logo_image: null,
-      like_cnt: 120,
-      start_at: "2023-05-23T18:00:07.687842+09:00",
-      end_at: "2023-05-23T23:00:07.687842+09:00",
-      location: "학생회관",
-      section: "2",
-      is_liked: false,
-    },
-    {
-      id: 3,
-      name: "집가고싶다..",
-      type: "학교부스",
-      operator: "멋쟁이사자처럼",
-      logo_image:
-        "https://www.pngplay.com/wp-content/uploads/3/Apple-Siri-Logo-Download-Free-PNG.png",
-      like_cnt: 100,
-      start_at: "2023-05-23T18:00:07.687842+09:00",
-      end_at: "2023-05-23T23:00:07.687842+09:00",
-      location: "학생회관",
-      section: "3",
-      is_liked: true,
-    },
-  ]);
+  const [randomBooth, setRandomBooth] = useState([]);
 
   const [searchValue, setSearchValue] = useState("");
 
@@ -176,7 +93,7 @@ function Search() {
       const response = await API.get(`/store/top`);
       const recomandBoothData = response.data;
       setRecomandBooth(recomandBoothData);
-      console.log(recomandBoothData);
+
     } catch (error) {
       console.error("Error: ", error);
     }
@@ -187,7 +104,6 @@ function Search() {
       const response = await API.get(`/store/random`);
       const randomBoothData = response.data;
       setRandomBooth(randomBoothData);
-      console.log(randomBoothData);
     } catch (error) {
       console.error("Error: ", error);
     }
@@ -197,7 +113,6 @@ function Search() {
     try {
       const response = await API.get(`/store/list`);
       const postData = response.data;
-      console.log(postData);
       setBooth(postData);
     } catch (error) {
       console.error("Error: ", error);
@@ -218,25 +133,31 @@ function Search() {
     });
 
     return (
+      
       <>
         <animated.div style={fadeOut}>
           {searchValue.length === 0 && (
             <RecommandHeader>
               <RecommandTitle>실시간 인기 부스</RecommandTitle>
-              {trail.map((props, idx) => (
-                <animated.div key={idx} style={props}>
-                  <RecomandRowCard
-                    ranking={idx}
-                    id={recomandBooth[idx].id}
-                    logoImage={recomandBooth[idx].logo_image}
-                    boothName={recomandBooth[idx].name}
-                    boothOperator={recomandBooth[idx].operator}
-                    boothLocation={recomandBooth[idx].location}
-                    likeCnt={recomandBooth[idx].like_cnt}
-                    is_liked={recomandBooth[idx].is_liked}
-                  />
-                </animated.div>
-              ))}
+             
+          {recomandBooth && recomandBooth.length > 0 ? (
+            trail.map((props, idx) => (
+              <animated.div key={idx} style={props}>
+                <RecomandRowCard
+                  ranking={idx}
+                  id={recomandBooth[idx].id}
+                  logoImage={recomandBooth[idx].logo_image}
+                  boothName={recomandBooth[idx].name}
+                  boothOperator={recomandBooth[idx].operator}
+                  boothLocation={recomandBooth[idx].location}
+                  likeCnt={recomandBooth[idx].like_cnt}
+                  is_liked={recomandBooth[idx].is_liked}
+                />
+              </animated.div>
+                ))
+          ) : (
+            <p style={{marginTop:"30px", fontWeight:"500"}}>현재 인기 부스가 없습니다.</p>
+          )}
             </RecommandHeader>
           )}
         </animated.div>
@@ -283,6 +204,18 @@ function Search() {
   });
 
   const renderSearchBooth = () => {
+
+    if(!randomBooth || !randomBooth)
+    {
+      return (
+        <>
+        로딩중ㅋ
+        </>
+      )
+    }
+
+
+    
     return (
       <SearchContentWrapper>
         <SearchContentHeader>'{searchValue}' 검색결과</SearchContentHeader>
@@ -293,14 +226,18 @@ function Search() {
             {transition((style, item) => (
               <animated.div style={style}>
                 <BoothCard
-                  id={item.id}
-                  name={item.name}
-                  operator={item.operator}
-                  logoImage={item.logo_image}
-                  likeCnt={item.like_cnt}
-                  isLike={item.is_liked}
-                  location={item.location}
-                  type={item.type}
+                key={item.id}
+                id={item.id}
+                name={item.name} // string
+                type={item.type} // string
+                operator={item.operator} // string
+                logo_image={item.logo_image} // string
+                is_liked={item.is_liked} // boolean
+                like_cnt={item.like_cnt} // number
+                start_at={item.start_at} // string
+                end_at={item.end_at} // string
+                location={item.location} // string
+                section={item.section} // num || null
                 />
               </animated.div>
             ))}
@@ -310,13 +247,14 @@ function Search() {
         <RecomandBoothWrapper>
           {trail.map((style, index) => (
             <animated.div key={index} style={style}>
+              
               <BoothCard
                 id={randomBooth[index].id}
                 name={randomBooth[index].name}
                 operator={randomBooth[index].operator}
-                logoImage={randomBooth[index].logo_image}
-                likeCnt={randomBooth[index].like_cnt}
-                isLike={randomBooth[index].is_liked}
+                logo_image={randomBooth[index].logo_image}
+                like_cnt={randomBooth[index].like_cnt}
+                is_liked={randomBooth[index].is_liked}
                 location={randomBooth[index].location}
                 type={randomBooth[index].type}
               />

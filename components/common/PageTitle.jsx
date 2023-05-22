@@ -38,7 +38,7 @@ export default function PageTitle() {
   `;
   
   return (
-    <MainLink href="/">
+    <>
     { router.pathname === "/timetable" || !router.query.id === null  ? 
     <Img
       src={time}
@@ -63,6 +63,6 @@ export default function PageTitle() {
       height={30}
       alt="title"
     />  : null }
-    </MainLink>
+    </>
   );
 }
