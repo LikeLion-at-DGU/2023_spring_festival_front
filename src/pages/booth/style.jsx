@@ -58,6 +58,36 @@ export const RankingLeftSection = styled.section`
 export const RankingRightSection = styled.section`
   width: 50%;
   height: 100%;
+  border: 1px solid pink;
+  overflow: hidden;
+`;
+
+export const BoothTop10Box = styled.section`
+  width: 90%;
+  height: 40px;
+  display: flex;
+  justify-content: space-between;
+  color: ${primaryColor};
+  font-weight: 700;
+  border: 1px solid pink;
+`;
+
+export const BoothTop10LeftBox = styled.section`
+  width: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Noto Sans KR", sans-serif;
+  border: 1px solid pink;
+`;
+
+export const BoothTop10RightBox = styled.section`
+  width: 70%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  font-family: "Noto Sans KR", sans-serif;
+  border: 1px solid pink;
 `;
 
 export const RankingHotButton = styled.button`
@@ -341,7 +371,9 @@ export const EmptyFilteredSection = styled.section`
 `;
 
 export const EmptyFilteredIcon = styled.section`
-  font-size: 70px;
+  width: 75px;
+  height: 75px;
+  position: relative;
   color: ${primaryColor};
 `;
 
