@@ -45,7 +45,7 @@ import {
   DetailRibbon,
   DetailShareIcon,
   ShareIcon,
-} from "../../boothDetailStyle";
+} from "../../../boothDetailStyle";
 import {
   BoothCardDetailHeartWrapper,
   CardDetailHeartCntWrapper,

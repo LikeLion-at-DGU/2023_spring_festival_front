@@ -38,7 +38,7 @@ import map from "../../../components/image/booth/campus_map.svg";
 import pin from "../../../components/image/booth/pin.png";
 import elephant from "../../../components/image/booth/elephant.svg";
 import { BoothCardGridWrapper } from "../../search_style";
-import { boothSectorArray } from "./testData";
+import { boothSectorArray } from "../../testData";
 import FilteredBooth from "components/booth/FilteredBooth";
 import { API } from "../api";
 import BoothTop10 from "components/booth/BoothTop10";
