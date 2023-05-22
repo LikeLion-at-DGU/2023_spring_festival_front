@@ -292,50 +292,6 @@ const fetchBooths = async() => {
       const response = await API.get(`/store/list`);
       const postData = response.data;
       console.log(postData)
-      const boothData = 
-            [
-              {
-                id: 1,
-                name: "으아아앙악..",
-                type: "학교부스",
-                operator: "뭐리",
-                logo_image:
-                  "https://www.pngplay.com/wp-content/uploads/3/Apple-Siri-Logo-Download-Free-PNG.png",
-                like_cnt: 100,
-                start_at: "2023-05-23T18:00:07.687842+09:00",
-                end_at: "2023-05-23T23:00:07.687842+09:00",
-                location: "멋쟁이",
-                section: "3",
-                is_liked: true,
-              },
-              {
-                id: 2,
-                name: "서희찬..",
-                type: "야간부스",
-                operator: "멋쟁이사자처럼",
-                logo_image:
-                  "https://www.pngplay.com/wp-content/uploads/3/Apple-Siri-Logo-Download-Free-PNG.png",
-                like_cnt: 100,
-                start_at: "2023-05-23T18:00:07.687842+09:00",
-                end_at: "2023-05-23T23:00:07.687842+09:00",
-                location: "학생회관",
-                section: "3",
-                is_liked: true,
-              },
-              {
-              id: 3,
-              name: "멋쟁이!",
-              type: "푸드트럭",
-              operator: "대나무숲",
-              logo_image: "https://www.pngplay.com/wp-content/uploads/3/Apple-Siri-Logo-Download-Free-PNG.png",
-              like_cnt: 130,
-              start_at: "2023-05-23T18:00:07.687842+09:00",
-              end_at: "2023-05-23T23:00:07.687842+09:00",
-              location: "명진관",
-              section: "3",
-              is_liked: false
-            },
-            ]
           setBooth(postData);
           
   } catch (error) {

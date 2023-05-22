@@ -73,7 +73,6 @@ function CommentCard({commentId,writer,content,created_at,reply }) {
 
     const handleSubmitReply = (event) => {
         event.preventDefault();
-        // 답글을 제출하는 로직을 작성하세요
         
         const formData = {
             writer : replyNickname,
@@ -87,11 +86,11 @@ function CommentCard({commentId,writer,content,created_at,reply }) {
             window.location.reload();
           })
           .catch((error) => {
-            console.log( "제보 제출에러!");
           //   오류 처리 로직을 추가합니다.
             console.error('Error:', error);
           });
       };
+
 
 
       const handleDeleteModalConfirm = () => {
@@ -204,9 +203,13 @@ const isInputValid = () => {
                     <FontAwesomeIcon icon={faTurnUp} size="xs" rotation={90} style={{marginRight:"10px"}} 
                         onClick={handleReplyButtonClick} />
 
-                    <FontAwesomeIcon icon={faTrashCan} size="xs"
-                    onClick={handleDeleteButtonClick}
-                    />
+                        {content !== "삭제된 댓글입니다." && (
+                            <FontAwesomeIcon
+                                icon={faTrashCan}
+                                size="xs"
+                                onClick={handleDeleteButtonClick}
+                            />
+    )}
                 </ReplyDelete>
             </CommentCardFirstRow>
             {content}
@@ -222,8 +225,12 @@ const isInputValid = () => {
                             {reply.writer}&nbsp;{String(reply.created_at).split("T")[0]}&nbsp;{String(reply.created_at).split("T")[1].slice(0,5)}
                         </NameDate>
                         <ReplyDelete>
-                            <FontAwesomeIcon icon={faTrashCan} size="xs" style={{color:"#525252"}}
-                            onClick={()=>handleReplyDeleteButtonClick(reply.id)}/>
+                            {
+                                reply.content !== "삭제된 댓글입니다." &&(
+                                    <FontAwesomeIcon icon={faTrashCan} size="xs" style={{color:"#525252"}}
+                                    onClick={()=>handleReplyDeleteButtonClick(reply.id)}/>
+                                )
+                            }
                         </ReplyDelete>
                     </ReplyFrist>
                     <ReplySecond>
