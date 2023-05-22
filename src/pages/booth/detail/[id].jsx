@@ -118,7 +118,7 @@ const BoothDetailPage = ({myData}) => {
 //   링크복사
   const handleCopyLink = () => {
     navigator.clipboard.writeText(window.location.href);
-    alert('지금 있는 페이지의 링크가 복사되었습니다.');
+    alert('현재 페이지의 링크가 복사되었습니다.');
   };
 
   const fetchComments = async() => {
