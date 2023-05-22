@@ -1,5 +1,4 @@
 import { React, useCallback, useEffect, useMemo, useState } from "react";
-import { motion } from "framer-motion";
 import {
   BoothFilterSection,
   BoxDate,
@@ -76,7 +75,6 @@ export default function Booth() {
   const [thirdLeftScene, setThirdLeftScene] = useState(false);
   const [thirdRightScene, setThirdRightScene] = useState(false);
   const [boothList, setBoothList] = useState(null);
-  const [boothLoaded, setBoothLoaded] = useState(false);
   // ===========
   // Booth Modal 디폴트 -> 가운데 핀 index
   const [boothSector, setBoothSector] = useState(2);
@@ -337,7 +335,6 @@ export default function Booth() {
           isToday={isToday}
           boothSector={boothSector}
           boothSectorDetail={boothSectorDetail}
-          setBoothLoaded={setBoothLoaded}
         />
         <EmptyFilteredSection>
           <EmptyFilteredIcon>

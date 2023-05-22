@@ -1,4 +1,4 @@
-import { boothSectorArray, testBoothDataArray } from "@/pages/booth/testData";
+import { boothSectorArray } from "@/pages/booth/testData";
 import BoothCard from "./BoothCard";
 
 export default function FilteredBooth({
@@ -7,7 +7,6 @@ export default function FilteredBooth({
   isToday,
   boothSector,
   boothSectorDetail,
-  setBoothLoaded,
 }) {
   // 전체 / 주간 / 야간 부스 필터링------------------------------------
   const filteredByDayOrNight = boothList?.filter((booth1) => {
@@ -17,9 +16,12 @@ export default function FilteredBooth({
         name={booth1.name}
         type={booth1.type}
         operator={booth1.operator}
-        likeCnt={booth1.like_cnt}
-        isLike={booth1.is_liked}
+        start_at={booth1.start_at}
+        end_at={booth1.end_at}
         location={booth1.location}
+        description={booth1.description}
+        menu={booth1.menu}
+        concept={booth1.concept}
       />
     );
     if (booth1.type === dayOrNight) {
@@ -39,9 +41,12 @@ export default function FilteredBooth({
         name={booth2.name}
         type={booth2.type}
         operator={booth2.operator}
-        likeCnt={booth2.like_cnt}
-        isLike={booth2.is_liked}
+        start_at={booth2.start_at}
+        end_at={booth2.end_at}
         location={booth2.location}
+        description={booth2.description}
+        menu={booth2.menu}
+        concept={booth2.concept}
       />
     );
     if (isToday === 23 && firstDay === 23) {
@@ -58,16 +63,23 @@ export default function FilteredBooth({
 
   // 핀 디테일 장소 선택되지 않았을 때, 부스맵 핀 로케이션 해당 섹터 모든 부스 필터링
   const filteredByAllLocation = filteredByIsToday?.filter((all) => {
-    if (boothSectorArray[boothSector]?.map((b) => b.location).includes(all.location)) {
+    if (
+      boothSectorArray[boothSector]
+        ?.map((b) => b.location)
+        .includes(all.location)
+    ) {
       return (
         <BoothCard
           key={all.id}
           name={all.name}
           type={all.type}
           operator={all.operator}
-          likeCnt={all.like_cnt}
-          isLike={all.is_liked}
+          start_at={all.start_at}
+          end_at={all.end_at}
           location={all.location}
+          description={all.description}
+          menu={all.menu}
+          concept={all.concept}
         />
       );
     }
@@ -81,9 +93,12 @@ export default function FilteredBooth({
         name={booth3.name}
         type={booth3.type}
         operator={booth3.operator}
-        likeCnt={booth3.like_cnt}
-        isLike={booth3.is_liked}
+        start_at={booth3.start_at}
+        end_at={booth3.end_at}
         location={booth3.location}
+        description={booth3.description}
+        menu={booth3.menu}
+        concept={booth3.concept}
       />
     );
     const clickedLocationObj = boothSectorArray[boothSector]?.find((sec) => {
@@ -108,9 +123,12 @@ export default function FilteredBooth({
         name={booth.name}
         type={booth.type}
         operator={booth.operator}
-        likeCnt={booth.like_cnt}
-        isLike={booth.is_liked}
+        start_at={booth.start_at}
+        end_at={booth.end_at}
         location={booth.location}
+        description={booth.description}
+        menu={booth.menu}
+        concept={booth.concept}
       />
     );
   });
@@ -122,9 +140,12 @@ export default function FilteredBooth({
         name={booth.name}
         type={booth.type}
         operator={booth.operator}
-        likeCnt={booth.like_cnt}
-        isLike={booth.is_liked}
+        start_at={booth.start_at}
+        end_at={booth.end_at}
         location={booth.location}
+        description={booth.description}
+        menu={booth.menu}
+        concept={booth.concept}
       />
     );
   });
