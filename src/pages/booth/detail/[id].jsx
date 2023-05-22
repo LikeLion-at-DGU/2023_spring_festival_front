@@ -52,8 +52,6 @@ const BoothDetailPage = ({myData}) => {
    
   const handleHeartClick = async () => {
     const id = router.query.id
-    console.log(id);
-    console.log(booth.is_liked);
     if(booth.is_liked){
         try {
             // axios요청 보내기 
@@ -61,7 +59,6 @@ const BoothDetailPage = ({myData}) => {
         setIsLikeClick(i=>!i)
         const response = await API.delete(`/store/${id}/love`);
         if (response.status === 200) {
-            console.log("하트 클릭 성공");
           } else {
             // Handle error case
             console.log("하트 클릭 실패");
