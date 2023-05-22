@@ -235,8 +235,13 @@ const BoothDetailPage = ({ myData }) => {
     <BoothDetailCotainer>
       <BoothLogoWrapper>
         <DetailRibbon type={booth.type}>{booth.type}</DetailRibbon>
-        {booth.logo_image ? (
-          <BoothLogoImage src={booth.logo_image} alt={booth.logo_image} />
+        {booth.logo_image.length === 1 ? (
+          <BoothLogoImage
+            src={"https://me2.kr/GSOFJ"}
+            alt={booth.logo_image}
+            width={300}
+            height={300}
+          />
         ) : (
           <BoothLogoImage src={DeafultImage} alt="booth defaultimage" />
         )}
@@ -268,30 +273,32 @@ const BoothDetailPage = ({ myData }) => {
         <FontAwesomeIcon icon={faClock} style={{ marginRight: "10px" }} />
         {booth.start_at} ~ {booth.end_at}
       </BoothDetailTime>
-      <BoothDetailSeparator />
-      <BoothDetailMenuWrapper>
-        <BoothDetailMenuHeader>
-          <BoothDetailMenuTitle>메뉴</BoothDetailMenuTitle>
-          {/* <BoothDetailMenuAllSee>
-                    전체메뉴 보기
-                </BoothDetailMenuAllSee> */}
-        </BoothDetailMenuHeader>
-        {booth.menu_image && booth.menu_image.length > 0 ? (
-          <BoothImageSlider>
-            {booth.menu_image.map((image) => {
-              <BoothMenuImage
-                key={image.id}
-                src={image.url}
-                alt="Booth Menu Image"
-                width={250}
-                height={250}
-              />;
-            })}
-          </BoothImageSlider>
-        ) : (
-          <BoothImageSlider>메뉴 사진이 없습니다.</BoothImageSlider>
-        )}
-      </BoothDetailMenuWrapper>
+      {booth.menu_image.length != 0 ? (
+        <>
+          <BoothDetailSeparator />
+          <BoothDetailMenuWrapper>
+            <BoothDetailMenuHeader>
+              <BoothDetailMenuTitle>
+                메뉴
+                {console.log(booth.menu_image)}
+              </BoothDetailMenuTitle>
+            </BoothDetailMenuHeader>
+            <BoothImageSlider>
+              {booth.menu_image.map((image, idx) => (
+                <BoothMenuImage
+                  key={idx}
+                  src={image}
+                  alt="Booth Menu Image"
+                  width={250}
+                  height={250}
+                />
+              ))}
+            </BoothImageSlider>
+          </BoothDetailMenuWrapper>
+        </>
+      ) : (
+        <></>
+      )}
 
       {/* 댓글 */}
       <CommentWrapper>
