@@ -219,6 +219,8 @@ export default function Booth() {
     }
   });
 
+  console.log(boothList)
+
   //
   return (
     <Container>
