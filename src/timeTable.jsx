@@ -1,5 +1,5 @@
 import styled, { keyframes } from "styled-components";
-import { primaryColor, subPinkColor, secondaryColor } from "../_app";
+import { primaryColor, subPinkColor, secondaryColor } from "./pages/_app";
 
 export const Container = styled.div`
   width: 100%;
