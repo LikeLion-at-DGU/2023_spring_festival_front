@@ -83,7 +83,7 @@ const ImgBox = styled.div`
     flex-direction: row;
     justify-items: center;
     align-items: center;
-    height: 140px;
+    height: 200px;
     align-items: center;
     flex-wrap: nowrap;
     overflow-x: auto;
@@ -99,6 +99,7 @@ const ImgBox = styled.div`
 const Img = styled(Image)`
     height: 90%;
     margin-right: 2%;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 `;
 
 
@@ -138,7 +139,6 @@ const fetchNotice = async() => {
         // const response = await axios.get(`posts/${id}`);
         // const postData = response.data;
         const response = await API.get(`/alarm/${sId}`);
-        console.log(response);
         const noticeDetailData = response.data;
         setNotice(noticeDetailData);
     } catch (error) {
@@ -209,15 +209,17 @@ if (!notice) {
             <Content>
             {notice.content}
             </Content>
-            { ( notice.images && notice.images.length > 0 ) &&
+            { ( notice.images.length > 0 ) &&
                 <ImgBox>
-                    {notice.images.map((image)=>{
+                    {notice.images.map((image, idx)=>(
                         <Img
-                            key={image.id}
-                            src={image.url}
-                            alt={image.alt}
+                            key={idx}
+                            src={image}
+                            alt="notice image"
+                            width={300}
+                            height={300}
                         />
-                    })}
+                    ))}
                     {/* <Img src={test} alt="test"/>
                     <Img src={test} alt="test"/>
                     <Img src={test} alt="test"/>

@@ -1,4 +1,5 @@
-import { faArrowLeftLong } from "@fortawesome/free-solid-svg-icons";
+import { faArrowLeftLong, faCaretRight, faTurnUp } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
@@ -12,6 +13,7 @@ import {
   ModalTitle,
   ModalPages,
   ModalPageSection,
+  ModalPageSearchSection,
   ModalFooter,
 } from "./styled";
 
@@ -105,14 +107,15 @@ export default function Modal({ setModalOpen }) {
                             >booth</ModalPageSection>
                     </Link>
                     <Link href="/booth/search" passHref>
-                        <ModalPageSection
+                        <ModalPageSearchSection
                             is_active = {currentPage === 'booth' && boothSearch === 'search'}
                             onClick={closeModal}
                             style={{
-                                fontSize: '20px',
-                                color: '#979797'
+                                fontSize: '22px',
+                                color: currentPage === 'booth' && boothSearch === 'search' ? '#fc8cae' : '#979797',
+                                
                             }}
-                            >booth search</ModalPageSection>
+                            >booth search</ModalPageSearchSection>
                     </Link>
                     <Link href="/about" passHref>
                         <ModalPageSection

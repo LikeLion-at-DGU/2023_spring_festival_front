@@ -45,7 +45,6 @@ export default function Layout({ children }) {
   //useEffect(()=>{
   //    document.getElementById("outWrapper").style.minHeight = `${window.innerHeight - 56 - 100}px`;
   //}, [])
-  console.log(router.pathname)
 
   return (
     <Wrapper>
