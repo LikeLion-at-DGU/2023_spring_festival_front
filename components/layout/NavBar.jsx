@@ -94,12 +94,12 @@ export default function HeadBar() {
         <>
           <BackButton icon={faChevronLeft} onClick={() => router.back()} />
           {router.pathname.split("/")[1] === "notice" && (
-            <ImgLink href="/">
+            <ImgLink href="/notice">
               <Img src={notice_page_logo} alt="notice_page_logo" />
             </ImgLink>
           )}
           {router.pathname.split("/")[1] === "booth" && (
-            <ImgLink href="/">
+            <ImgLink href="/booth">
               <Img src={booth_page_logo} alt="booth_page_logo" />
             </ImgLink>
           )}{" "}

@@ -176,7 +176,7 @@ function Search() {
       const response = await API.get(`/store/top`);
       const recomandBoothData = response.data;
       setRecomandBooth(recomandBoothData);
-      console.log(recomandBoothData);
+
     } catch (error) {
       console.error("Error: ", error);
     }
@@ -187,7 +187,6 @@ function Search() {
       const response = await API.get(`/store/random`);
       const randomBoothData = response.data;
       setRandomBooth(randomBoothData);
-      console.log(randomBoothData);
     } catch (error) {
       console.error("Error: ", error);
     }
@@ -197,7 +196,6 @@ function Search() {
     try {
       const response = await API.get(`/store/list`);
       const postData = response.data;
-      console.log(postData);
       setBooth(postData);
     } catch (error) {
       console.error("Error: ", error);
@@ -293,14 +291,18 @@ function Search() {
             {transition((style, item) => (
               <animated.div style={style}>
                 <BoothCard
-                  id={item.id}
-                  name={item.name}
-                  operator={item.operator}
-                  logoImage={item.logo_image}
-                  likeCnt={item.like_cnt}
-                  isLike={item.is_liked}
-                  location={item.location}
-                  type={item.type}
+                key={item.id}
+                id={item.id}
+                name={item.name} // string
+                type={item.type} // string
+                operator={item.operator} // string
+                logo_image={item.logo_image} // string
+                is_liked={item.is_liked} // boolean
+                like_cnt={item.like_cnt} // number
+                start_at={item.start_at} // string
+                end_at={item.end_at} // string
+                location={item.location} // string
+                section={item.section} // num || null
                 />
               </animated.div>
             ))}

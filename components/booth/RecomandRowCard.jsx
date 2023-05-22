@@ -34,7 +34,6 @@ function RecomandRowCard({
   is_liked,
 }) {
   const handleClick = () => {
-    console.log("하트 클릭");
   };
 
   // 이미지 적용 어떻게?
