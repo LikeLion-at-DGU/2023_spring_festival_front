@@ -6,6 +6,7 @@ import React, { useState } from "react";
 import Modal from 'react-modal';
 import { ModalWrapper } from "components/nav/styled";
 import { API } from "@/pages/api";
+import { Alert } from "@mui/material";
 
 
 
@@ -83,7 +84,7 @@ function CommentCard({commentId,writer,content,created_at,reply }) {
           console.log(commentId);
           API.post(`/respond/${commentId}/reaction`,formData)
           .then((response) => {
-            // console.log(response.data);
+            alert("댓글이 작성되었습니다.");
             window.location.reload();
           })
           .catch((error) => {
@@ -110,7 +111,7 @@ function CommentCard({commentId,writer,content,created_at,reply }) {
                 })
 
                 if(response.status === 200){
-                    console.log("댓글삭제 성공")
+                    alert("댓글이 삭제됐습니다.");
                     window.location.reload();
                 }
             
@@ -123,7 +124,7 @@ function CommentCard({commentId,writer,content,created_at,reply }) {
                         },  
                 })
                     if(response.status === 200){
-                        console.log("댓글삭제 성공");
+                        alert("댓글이 삭제됐습니다.");
                         window.location.reload();
                     }
                 }
@@ -201,16 +202,24 @@ const isInputValid = () => {
                     {writer}&nbsp;{filterDate}&nbsp;{filterTime}
                 </NameDate>
                 <ReplyDelete>
-                    <FontAwesomeIcon icon={faTurnUp} size="xs" rotation={90} style={{marginRight:"10px"}} 
-                        onClick={handleReplyButtonClick} />
-
-                        {content !== "삭제된 댓글입니다." && (
+                {content !== "삭제된 댓글입니다." ? (
+                            <div>
+                            <FontAwesomeIcon
+                                icon={faTurnUp}
+                                size="xs"
+                                rotation={90}
+                                style={{ marginRight: "10px" }}
+                                onClick={handleReplyButtonClick}
+                            />
                             <FontAwesomeIcon
                                 icon={faTrashCan}
                                 size="xs"
                                 onClick={handleDeleteButtonClick}
                             />
-    )}
+                            </div>
+                        ) : (
+                            <p></p>
+                        )}
                 </ReplyDelete>
             </CommentCardFirstRow>
             {content}
