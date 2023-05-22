@@ -96,6 +96,19 @@ export const ModalPageSection = styled.span`
   }
 `;
 
+export const ModalPageSearchSection = styled.span`
+  margin-top: 0;
+  font-family: "yg-jalnan";
+  align-items: center;
+  font-weight: 0;
+  padding-left: 15px;
+  width: 100%;
+  display: flex;
+  &:hover {
+    color: #fc8cae;
+  }
+`;
+
 export const ModalFooter = styled.footer`
   padding: 5vh 0;
   display: flex;
