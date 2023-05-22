@@ -15,6 +15,7 @@ import { faLocationDot,faCircleExclamation } from '@fortawesome/free-solid-svg-i
 import { RankBoothDetailLocation } from '../style';
 import CommentCard from 'components/booth/Comment';
 import { API } from '@/pages/api';
+import Loading from 'components/common/Loading';
 
 
 export async function getServerSideProps(context) {
@@ -156,6 +157,11 @@ useEffect(() => {
     fetchBooth();
     fetchComments();
 }, [isLikeClick]);
+
+// booth 정보 없으면 로딩 표시
+  if (booth.length === 0) {
+    return <Loading />;
+  }
 
   // 댓글 등록
   const handleSubmission = (event) => {
