@@ -47,6 +47,8 @@ export const ModalWrapper = styled.div`
     animation-name: ${(props) => (props.isVisible ? slideIn : slideOut) };
     animation-duration: 0.5s;
     /* animation-fill-mode: forwards; */
+
+    /* overflow: ${(props)=> props.isVisible ? 'hidden' : 'unset' }; */
 `;
 
 export const ModalOverlay = styled.div`
@@ -77,6 +79,9 @@ export const ModalHeader = styled.div`
 export const ModalTitle = styled.ul`
   line-height: 2.5vh;
   color: #525252;
+  font-weight: 400;
+  font-size: 20px;
+  text-align: left;
 `;
 
 export const ModalPages = styled.div`
@@ -89,8 +94,7 @@ export const ModalPages = styled.div`
 `;
 
 export const ModalPageSection = styled.span`
-    font-family: 'ygotjalnanfont';
-    font-weight: 700;
+    font-family: "yg-jalnan";
     width: 100%;
     display: flex;
     color: ${ ({is_active}) => ( !is_active ? '#525252' : '#FC8CAE') };
@@ -101,7 +105,7 @@ export const ModalPageSection = styled.span`
 `;
 
 export const ModalFooter = styled.footer`
-  padding: 7vh 0;
+  padding: 5vh 0;
   display: flex;
   font-weight: 500;
   font-size: 12px;

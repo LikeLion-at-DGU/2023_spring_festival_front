@@ -29,6 +29,7 @@ export default function Modal({ setModalOpen }) {
   // 모달창 닫기
   const closeModal = () => {
     setIsVisible(false);
+    document.body.style.overflow = 'auto';
 
     setTimeout(() => {
       setModalOpen(false);
@@ -108,7 +109,8 @@ export default function Modal({ setModalOpen }) {
                             is_active = {currentPage === 'booth' && boothSearch === 'search'}
                             onClick={closeModal}
                             style={{
-                                fontSize: '20px'
+                                fontSize: '20px',
+                                color: '#979797'
                             }}
                             >booth search</ModalPageSection>
                     </Link>
