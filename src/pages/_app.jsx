@@ -2,7 +2,7 @@ import Layout from "components/layout/Layout";
 import styled from "styled-components";
 
 const Body = styled.div`
-  width: 100vw;
+  /* width: 100vw; */
   display: flex;
   align-items: center;
   flex-direction: column;
