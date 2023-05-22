@@ -199,11 +199,11 @@ useEffect(() => {
               <BoothLogoImage 
                 src={booth.logo_image}
                 alt={booth.logo_image}
-                /> : 
+              /> : 
               <BoothLogoImage 
                 src={DeafultImage}
                 alt="booth defaultimage"
-                /> }
+              /> }
         </BoothLogoWrapper>
         <BoothDetailHeader>
             <BoothDetailHeaderWrapper>
@@ -239,32 +239,30 @@ useEffect(() => {
         <FontAwesomeIcon icon={faClock} style={{marginRight:"10px"}}/>
             {booth.start_at} ~ {booth.end_at}
         </BoothDetailTime>
-        <BoothDetailSeparator />
-        <BoothDetailMenuWrapper>
+
+        { ( booth.menu_image.length != 0 ) ?
+        <>
+          <BoothDetailSeparator />
+          <BoothDetailMenuWrapper>
             <BoothDetailMenuHeader>
-                <BoothDetailMenuTitle>
-                    메뉴
-                </BoothDetailMenuTitle>
-                {/* <BoothDetailMenuAllSee>
-                    전체메뉴 보기
-                </BoothDetailMenuAllSee> */}
+              <BoothDetailMenuTitle>
+                메뉴
+              </BoothDetailMenuTitle>
             </BoothDetailMenuHeader>
-            { ( booth.menu_image && booth.menu_image.length > 0 ) ?
-              <BoothImageSlider>
-                { booth.menu_image.map((image)=>{
-                  <BoothMenuImage 
-                    key={image.id}
-                    src={image.url} 
-                    alt="Booth Menu Image"
-                    width={250}
-                    height={250}
-                  />
-                }) }
-              </BoothImageSlider> : <BoothImageSlider>
-                메뉴 사진이 없습니다.
-              </BoothImageSlider>
-            }
-        </BoothDetailMenuWrapper>
+            <BoothImageSlider>
+              { booth.menu_image.map((image)=>{
+                <BoothMenuImage 
+                  key={image.id}
+                  src={image.url} 
+                  alt="Booth Menu Image"
+                  width={250}
+                  height={250}
+                />
+              }) }
+            </BoothImageSlider>
+          </BoothDetailMenuWrapper>
+        </>
+        : <></> }
 
         {/* 댓글 */}
         <CommentWrapper>
