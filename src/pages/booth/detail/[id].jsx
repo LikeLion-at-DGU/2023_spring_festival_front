@@ -52,13 +52,15 @@ const BoothDetailPage = ({myData}) => {
    
   const handleHeartClick = async () => {
     const id = router.query.id
+    console.log(id);
+    console.log(booth.is_liked);
     if(booth.is_liked){
         try {
             // axios요청 보내기 
         console.log("하트 클릭");
-        setIsLikeClick(i=>!i)
-          const response = await API.delete(`/store/${id}/love`);
-          if (response.status === 200) {
+        const response = await API.delete(`/store/${id}/love`);
+        if (response.status === 200) {
+              setIsLikeClick(i=>!i)
             console.log("하트 클릭 성공");
           } else {
             // Handle error case
@@ -68,10 +70,11 @@ const BoothDetailPage = ({myData}) => {
           // Handle error case
         }
     }else{
+        
         try {
             // axios요청 보내기 
             console.log("하트 클릭");
-          const response = await API.post(`/store/${id}/love`);
+            const response = await API.post(`/store/${id}/love`);
     
           if (response.status === 200) {
             console.log("하트 클릭 성공");
@@ -171,12 +174,12 @@ useEffect(() => {
       // post보내기 
       API.post(`/store/${sId}/respond`, formData)
         .then((response) => {
-          console.log(response.data);
+        //   console.log(response.data);
         })
         .catch((error) => {
-          console.log( "제보 제출에러!");
-        //   오류 처리 로직을 추가합니다.
-          console.error('Error:', error);
+        //   console.log( "제보 제출에러!");
+        // //   오류 처리 로직을 추가합니다.
+        //   console.error('Error:', error);
         });
 
       // 성공했을시 ReportDone으로 이동          

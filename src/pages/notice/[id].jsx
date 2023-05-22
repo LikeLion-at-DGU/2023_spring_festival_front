@@ -149,6 +149,7 @@ useEffect(() => {
     fetchNotice();
 }, [router.query.id]);
 
+
 if (!notice) {
     return <div>Loading...</div>; // 로딩 중이라면 로딩 표시를 보여줍니다.
   }

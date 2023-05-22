@@ -64,6 +64,7 @@ function CommentCard({commentId,writer,content,created_at,reply }) {
 
       const handleDeleteModalClose = () => {
         setShowDeleteModal(false);
+        setDeletePassword("");
       };
       
     const handleReplyButtonClick = () => {

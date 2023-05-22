@@ -150,72 +150,32 @@ function Search() {
 
 
   // 부스 정보 가져오기 
+// useEffect(() => {
+//   fetchBooths();
+//   fetchRecomandBooths();
+//   featchRandmonBooths();
+// }, []);
+
+
+
+useEffect(() => {
+  if (searchValue === '') {
+    fetchRecomandBooths();
+    featchRandmonBooths();
+  }
+}, [searchValue]);
+
 useEffect(() => {
   fetchBooths();
-  fetchRecomandBooths();
-  featchRandmonBooths();
 }, []);
+
+
 
 
 const fetchRecomandBooths = async() => {
   try {
-    const recomandBoothData = [
-      {
-        id: 1,
-        name: "코딩주점",
-        type: "주간부스",
-        operator: "멋쟁이사자처럼",
-        logo_image:
-          "https://www.pngplay.com/wp-content/uploads/3/Apple-Siri-Logo-Download-Free-PNG.png",
-        like_cnt: 100,
-        start_at: "2023-05-23T18:00:07.687842+09:00",
-        end_at: "2023-05-23T23:00:07.687842+09:00",
-        location: "학생회관",
-        section: "1",
-        is_liked: true,
-      },
-      {
-        id: 2,
-        name: "히찬부스",
-        type: "야간부스",
-        operator: "서희찬",
-        logo_image: null,
-        like_cnt: 120,
-        start_at: "2023-05-23T18:00:07.687842+09:00",
-        end_at: "2023-05-23T23:00:07.687842+09:00",
-        location: "학생회관",
-        section: "2",
-        is_liked: false,
-      },
-      {
-        id: 3,
-        name: "집가고싶다..",
-        type: "야간부스",
-        operator: "멋쟁이사자처럼",
-        logo_image:
-          "https://www.pngplay.com/wp-content/uploads/3/Apple-Siri-Logo-Download-Free-PNG.png",
-        like_cnt: 100,
-        start_at: "2023-05-23T18:00:07.687842+09:00",
-        end_at: "2023-05-23T23:00:07.687842+09:00",
-        location: "학생회관",
-        section: "3",
-        is_liked: true,
-      },
-      {
-        id: 4,
-        name: "집가고싶다..",
-        type: "야간부스",
-        operator: "멋쟁이사자처럼",
-        logo_image:
-          "https://www.pngplay.com/wp-content/uploads/3/Apple-Siri-Logo-Download-Free-PNG.png",
-        like_cnt: 100,
-        start_at: "2023-05-23T18:00:07.687842+09:00",
-        end_at: "2023-05-23T23:00:07.687842+09:00",
-        location: "학생회관",
-        section: "3",
-        is_liked: true,
-      },    
-  ]
+    const response = await API.get(`/store/top`);
+    const recomandBoothData =response.data;
   setRecomandBooth(recomandBoothData);
             console.log(recomandBoothData)
     } catch (error) {
@@ -225,60 +185,8 @@ const fetchRecomandBooths = async() => {
 
 const featchRandmonBooths= async() => {
   try {
-    const randomBoothData = [
-      {
-          id: 1,
-          name: "코딩주점",
-          type: "야간부스",
-          operator: "멋쟁이사자처럼",
-          logo_image: "https://www.pngplay.com/wp-content/uploads/3/Apple-Siri-Logo-Download-Free-PNG.png",
-          like_cnt: 100,
-          start_at: "2023-05-23T18:00:07.687842+09:00",
-          end_at: "2023-05-23T23:00:07.687842+09:00",
-          location: "학생회관",
-          section: "1",
-          is_liked: true
-        },
-        {
-          id: 2,
-          name: "히찬부스",
-          type: "야간부스",
-          operator: "서희찬",
-          logo_image: null,
-          like_cnt: 120,
-          start_at: "2023-05-23T18:00:07.687842+09:00",
-          end_at: "2023-05-23T23:00:07.687842+09:00",
-          location: "학생회관",
-          section: "2",
-          is_liked: false
-        },
-        {
-          id: 3,
-          name: "집가고싶다..",
-          type: "야간부스",
-          operator: "멋쟁이사자처럼",
-          logo_image: "https://www.pngplay.com/wp-content/uploads/3/Apple-Siri-Logo-Download-Free-PNG.png",
-          like_cnt: 100,
-          start_at: "2023-05-23T18:00:07.687842+09:00",
-          end_at: "2023-05-23T23:00:07.687842+09:00",
-          location: "학생회관",
-          section: "3",
-          is_liked: true
-        },
-        {
-          id: 4,
-          name: "집가고싶다..",
-          type: "야간부스",
-          operator: "멋쟁이사자처럼",
-          logo_image: "https://www.pngplay.com/wp-content/uploads/3/Apple-Siri-Logo-Download-Free-PNG.png",
-          like_cnt: 100,
-          start_at: "2023-05-23T18:00:07.687842+09:00",
-          end_at: "2023-05-23T23:00:07.687842+09:00",
-          location: "학생회관",
-          section: "3",
-          is_liked: true
-        },
-    ]
+    const response = await API.get(`/store/random`);
+    const randomBoothData = response.data;
     setRandomBooth(randomBoothData);
     console.log(randomBoothData);
   } catch (error) {
@@ -298,8 +206,6 @@ const fetchBooths = async() => {
       console.error('Error: ', error);
   }
 };
-
-
 
   const renderTopBooth = () => {
     const trail = useTrail(3, {
