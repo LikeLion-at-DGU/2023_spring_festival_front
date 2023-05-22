@@ -65,13 +65,13 @@ export const RankingRightSection = styled.section`
 export const BoothTop10Box = styled.section`
   @keyframes moveBox {
     0% {
-      top: -220px;
+      top: 0px;
       opacity: 0;
       font-size: 0.3rem;
       font-weight: 100;
     }
     25% {
-      top: 0px;
+      top: 30px;
       opacity: 0.5;
       font-size: 0.6rem;
       font-weight: 300;
@@ -83,20 +83,20 @@ export const BoothTop10Box = styled.section`
       font-weight: 900;
     }
     75% {
-      top: 200px;
+      top: 170px;
       opacity: 0.5;
       font-size: 0.6rem;
       font-weight: 300;
     }
     100% {
-      top: 340px;
-      opacity: 0.1;
+      top: 200px;
+      opacity: 0;
       font-size: 0.3rem;
       font-weight: 100;
     }
   }
   width: 90%;
-  height: 66px;
+  height: 40px;
   position: absolute;
   display: flex;
   opacity: 0;
@@ -104,7 +104,7 @@ export const BoothTop10Box = styled.section`
   color: ${primaryColor};
   font-weight: 700;
   transition: all 0.5s;
-  animation: moveBox 10s ease-in-out infinite;
+  animation: moveBox 5s ease-in-out infinite;
   cursor: pointer;
 `;
 

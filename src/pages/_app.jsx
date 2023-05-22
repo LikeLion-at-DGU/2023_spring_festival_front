@@ -158,6 +158,7 @@ export default function App({ Component, pageProps }) {
 
           * {
             box-sizing: border-box;
+            font-display: optional;
           }
 
           a {
