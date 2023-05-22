@@ -50,7 +50,9 @@ export default function Layout({ children }) {
     <Wrapper>
       <HeadTitle />
       <NavBar />
-      {router.pathname !== "/" ? <Gradation /> : null}
+      { (router.pathname.split('/')[1] === 'notice' && router.pathname.split('/')[2] )
+        || (router.pathname.split('/')[1] === 'booth' && router.pathname.split('/')[2] === 'search')
+      ? null : <Gradation /> }
       <Content id="outWrapper">
         <PageTitle />
         {children}

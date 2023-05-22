@@ -34,25 +34,25 @@ export default function PageTitle() {
     <Img
       src={time}
       height={30}
-      alt={"title"}
+      alt="title"
     /> : 
     router.pathname === "/notice" ? 
     <Img
       src={notice}
       height={30}
-      alt={"title"}
+      alt="title"
     /> : 
     router.pathname === "/about" ? 
     <Img
       src={about}
       height={30}
-      alt={"title"}
+      alt="title"
     />  : 
     router.pathname === "/booth" ? 
     <Img
       src={booth}
       height={30}
-      alt={"title"}
+      alt="title"
     />  : null
     
   );

@@ -21,6 +21,7 @@ const Container = styled.nav`
 const Title = styled(Link)`
     font-family: 'TmonMonsori';
     font-size: 24px;
+    z-index: 100;
 `
 
 
@@ -30,6 +31,7 @@ const BackButton = styled(FontAwesomeIcon)`
     left: 0;
     font-size: 20px;
     width: 15px;
+    z-index: 100;
 `
 
 const Img = styled(Image)`
@@ -43,6 +45,7 @@ const NavToggle = styled(FontAwesomeIcon)`
     right: 0;
     margin-right: 26px;
     width: 25px;
+    z-index: 100;
     @media (min-width: 430px) {
         position: absolute;
     }
