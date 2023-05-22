@@ -128,14 +128,14 @@ export const MapModalButton = styled.button`
   color: ${(props) => (props.clickedLocation ? "#fff" : `${secondaryColor}`)};
   font-family: "Noto Sans KR", sans-serif;
   font-size: 10px;
-  transition: all 0.3s;
+  transition: all 0.5s;
   @media all and (max-width: 410px) {
     width: 60px;
     min-height: 30px;
   }
   cursor: pointer;
   &:hover {
-    box-shadow: 3px 3px 20px -10px rgba(0, 0, 0, 1);
+    text-decoration: underline;
   }
 `;
 

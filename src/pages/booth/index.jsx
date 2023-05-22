@@ -77,7 +77,7 @@ export default function Booth() {
   // Booth Modal 디폴트 -> 가운데 핀 index
   const [boothSector, setBoothSector] = useState(2);
   // Booth Modal Button 디폴트 -> 전체
-  const [boothSectorDetail, setBoothSectorDetail] = useState(0);
+  const [boothSectorDetail, setBoothSectorDetail] = useState(null);
   // ===========
   // 디폴트 -> 전체 부스 / 낮 -> 1 / 밤 -> 2
   const [dayOrNight, setDayOrNight] = useState("전체");
@@ -143,28 +143,21 @@ export default function Booth() {
 
   const boothSectorData = boothSectorArray[boothSector]?.map((sec, idx) => {
     let clickedLocation = false;
+    const mapModalButton = (
+      <MapModalButton
+        key={sec.id}
+        clickedLocation={clickedLocation}
+        onClick={() => setBoothSectorDetail(sec.id)}
+      >
+        {sec.location}
+      </MapModalButton>
+    );
     if (sec.id === boothSectorDetail) {
       clickedLocation = true;
-      return (
-        <MapModalButton
-          key={sec.id}
-          clickedLocation={clickedLocation}
-          onClick={() => setBoothSectorDetail(sec.id)}
-        >
-          {sec.location}
-        </MapModalButton>
-      );
+      return mapModalButton;
     } else {
       clickedLocation = false;
-      return (
-        <MapModalButton
-          key={sec.id}
-          clickedLocation={clickedLocation}
-          onClick={() => setBoothSectorDetail(sec.id)}
-        >
-          {sec.location}
-        </MapModalButton>
-      );
+      return mapModalButton;
     }
   });
 
@@ -226,7 +219,7 @@ export default function Booth() {
           secondRightMoved={thirdRightScene}
           className="fadeIn"
         >
-          {boothSectorArray[boothSector]?.length === 1 ? (
+          {/* {boothSectorArray[boothSector]?.length === 1 ? (
             boothSectorData
           ) : (
             <>
@@ -238,7 +231,8 @@ export default function Booth() {
               </MapModalButton>
               {boothSectorData}
             </>
-          )}
+          )} */}
+          {boothSectorData}
         </MapModalSection>
         {/* MapSection----------------------------- */}
         <MapSection
