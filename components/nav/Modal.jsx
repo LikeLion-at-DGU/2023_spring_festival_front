@@ -11,6 +11,7 @@ import {
   ModalButton,
   ModalHeader,
   ModalTitle,
+  Img,
   ModalPages,
   ModalPageSection,
   ModalPageSearchSection,
@@ -79,7 +80,7 @@ export default function Modal({ setModalOpen }) {
                 <ModalButton icon={faArrowLeftLong} onClick={closeModal} />
                 <ModalHeader>
                     <ModalTitle>동국대학교<br/>봄 백상대동제</ModalTitle>
-                    <ModalTitle><Image src={nav_logo} alt="nav_logo"/></ModalTitle>
+                    <Img src={nav_logo} alt="nav_logo"/>
                 </ModalHeader>
                 <ModalPages>
                     <Link href="/" passHref>
@@ -111,7 +112,7 @@ export default function Modal({ setModalOpen }) {
                             is_active = {currentPage === 'booth' && boothSearch === 'search'}
                             onClick={closeModal}
                             style={{
-                                fontSize: '22px',
+                                fontSize: '70%',
                                 color: currentPage === 'booth' && boothSearch === 'search' ? '#fc8cae' : '#979797',
                                 
                             }}

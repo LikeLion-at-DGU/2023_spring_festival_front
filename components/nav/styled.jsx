@@ -1,6 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styled, { keyframes, css } from "styled-components";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 export const slideIn = keyframes`
     
@@ -72,17 +73,21 @@ export const ModalTitle = styled.ul`
   line-height: 3vh;
   color: #525252;
   font-weight: 500;
-  font-size: 20px;
+  font-size: 55%;
   text-align: left;
 `;
 
+export const Img = styled(Image)`
+  width: 40%;
+`;
+
 export const ModalPages = styled.div`
-    padding: 10vh 0;
+    padding: 8vh 0;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     gap: 4vh;
-    font-size: 32px;
+    font-size: 100%;
 `;
 
 export const ModalPageSection = styled.span`
@@ -110,9 +115,9 @@ export const ModalPageSearchSection = styled.span`
 `;
 
 export const ModalFooter = styled.footer`
-  padding: 5vh 0;
+  padding: 3vh 0;
   display: flex;
   font-weight: 500;
-  font-size: 12px;
+  font-size: 8%;
   color: #bbbbbb;
 `;
