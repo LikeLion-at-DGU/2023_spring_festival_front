@@ -184,6 +184,7 @@ export const TableBand = styled.section`
 export const CardSection = styled.section`
   width: 95%;
   height: 350px;
+  position: relative;
   display: flex;
   align-items: center;
   flex-wrap: nowrap;
@@ -199,6 +200,18 @@ export const CardSection = styled.section`
   }
   display: ${(props) => (props.isOpen ? "" : "none")};
 `;
+
+// export const CardSectionShadow = styled.section`
+//   width: 15%;
+//   height: 250px;
+//   position: absolute;
+//   top: 50%;
+//   right: 0;
+//   transform: translate(0, -52%);
+//   border-radius: 30px 0 0 30px;
+//   box-shadow: -33px 2px 61px 2px rgba(0, 0, 0, 0.2) inset;
+//   z-index: 1;
+// `;
 
 export const ImgBox = styled.section`
   width: 25px;

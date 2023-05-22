@@ -9,7 +9,7 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   padding-top: 20px;
-  z-index: 100;
+  z-index: 10;
 `;
 // 날짜 컨테이너
 export const DateSection = styled.div`
@@ -174,7 +174,7 @@ export const MapModalSection = styled.section`
   box-shadow: 3px 3px 20px -10px rgba(0, 0, 0, 0.7);
   padding: 5px;
   transition: all 1s;
-  z-index: 99;
+  z-index: 10;
   display: ${(props) =>
     props.secondScene && (props.secondLeftMoved || props.secondRightMoved) ? "flex" : "none"};
   @media all and (max-width: 430px) {
