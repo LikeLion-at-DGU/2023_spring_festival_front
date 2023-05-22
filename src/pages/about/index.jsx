@@ -145,7 +145,6 @@ margin-bottom: 80px;
 `
 const Gradation = styled.div`
 width: 100%;
-margin-left: -24px;
 height: 300px;
 background: linear-gradient(180deg, rgba(255, 233, 240, 0) 0%, rgba(255, 233, 240, 0.892708) 3  0.83%, rgba(255, 233, 240, 0) 100%);
 z-index:-10;
@@ -256,7 +255,6 @@ margin-bottom: 70px;
 `
 const Gradation2 = styled.div`
 width: 100%;
-margin-left: -24px;
 height: 300px;
 background: linear-gradient(180deg, rgba(255, 233, 240, 0) 0%, rgba(255, 233, 240, 0.892708) 50.83%, rgba(255, 233, 240, 0) 100%);
 z-index:-1;
@@ -264,7 +262,6 @@ position: absolute;
 `
 const Gradation4 = styled.div`
 width: 100%;
-margin-left: -24px;
 height: 300px;
 background: linear-gradient(180deg, rgba(255, 233, 240, 0) 0%, rgba(255, 233, 240, 0.892708) 40.83%, rgba(255, 233, 240, 0) 100%);
 z-index:-1;
@@ -331,7 +328,6 @@ color: #525252;
 `
 const Gradation3 = styled.div`
 width: 100%;
-margin-left: -24px;
 height: 600px;
 background: linear-gradient(180deg, rgba(255, 233, 240, 0) 0%, rgba(255, 233, 240, 0.892708) 50.83%, rgba(255, 233, 240, 0) 100%);
 z-index:-1;
@@ -340,13 +336,13 @@ position: absolute;
 const Line = styled(Image)`
 position: absolute;
 margin-top: 120px;
-margin-left: 50px;
+margin-left: 80px;
 
 `
 const Line2 = styled(Image)`
 position: absolute;
 margin-top: 80px;
-margin-left: 50px;
+margin-left: 100px;
 
 `
 
