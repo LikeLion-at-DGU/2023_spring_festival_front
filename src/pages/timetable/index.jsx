@@ -24,14 +24,14 @@ import {
   TimeTableBox,
   ToggleHeader,
   ToggleSub,
-} from "./style";
+} from "../../timeTable";
 import {
   Guest24Array,
   Guest25Array,
   dayArray,
   performance24Array,
   performance25Array,
-} from "./staticData";
+} from "../../staticData";
 import Performance404 from "components/timetable/Performance404";
 
 export default function TimeTable() {
@@ -41,7 +41,9 @@ export default function TimeTable() {
   const hours = day.getHours();
   const minutes = day.getMinutes();
   const nowTime = parseInt(
-    `${hours.toString().padStart(2, "0")}${minutes.toString().padStart(2, "0")}`,
+    `${hours.toString().padStart(2, "0")}${minutes
+      .toString()
+      .padStart(2, "0")}`,
     10
   );
   let nowPerformance24 = false;
@@ -125,7 +127,9 @@ export default function TimeTable() {
       return (
         <TableSection key={perf.index} isOpen={performance} isNow={isNow}>
           <TableIndex>{perf.index} </TableIndex>
-          <TableClock isNow={isNow}>{perf.startTime + " - " + perf.endTime}</TableClock>
+          <TableClock isNow={isNow}>
+            {perf.startTime + " - " + perf.endTime}
+          </TableClock>
           <TableBand>{perf.name} </TableBand>
         </TableSection>
       );
@@ -143,7 +147,9 @@ export default function TimeTable() {
       return (
         <TableSection key={perf.index} isOpen={performance} isNow={isNow}>
           <TableIndex>{perf.index} </TableIndex>
-          <TableClock isNow={isNow}>{perf.startTime + " - " + perf.endTime}</TableClock>
+          <TableClock isNow={isNow}>
+            {perf.startTime + " - " + perf.endTime}
+          </TableClock>
           <TableBand>{perf.name} </TableBand>
         </TableSection>
       );
@@ -182,12 +188,18 @@ export default function TimeTable() {
         </DateSection>
         <br /> <br />
         {/* PERFORMANCE-------------------------------------- */}
-        <PerfToggleBox isOpen={performance} onClick={handleShrink} className="fadeIn">
+        <PerfToggleBox
+          isOpen={performance}
+          onClick={handleShrink}
+          className="fadeIn"
+        >
           <ToggleHeader>
             <IconBox>{performance ? "▼" : "▶"} </IconBox>
             PERFORMANCE
           </ToggleHeader>
-          {clickedDate <= dayArray[0].date ? Performance24Thumbnail : Performance25Thumbnail}
+          {clickedDate <= dayArray[0].date
+            ? Performance24Thumbnail
+            : Performance25Thumbnail}
           <Performance404
             nowPerf24={nowPerformance24}
             nowPerf25={nowPerformance25}
@@ -202,12 +214,18 @@ export default function TimeTable() {
           </LocationHeader>
           <br />
           <TimeTableBox>
-            {clickedDate <= dayArray[0].date ? [...Performance24Data] : [...Performance25Data]}
+            {clickedDate <= dayArray[0].date
+              ? [...Performance24Data]
+              : [...Performance25Data]}
           </TimeTableBox>
         </PerfToggleBox>
         <br />
         {/* SPECIAL GUEST------------------------------------ */}
-        <GuestToggleBox isOpen={specialGuest} onClick={handleGrow} className="fadeIn">
+        <GuestToggleBox
+          isOpen={specialGuest}
+          onClick={handleGrow}
+          className="fadeIn"
+        >
           <ToggleHeader>
             <IconBox>{specialGuest ? "▼" : "▶"}</IconBox>
             SPECIAL GUEST
@@ -219,7 +237,9 @@ export default function TimeTable() {
             대운동장
           </LocationHeader>
           <CardSection isOpen={specialGuest}>
-            {clickedDate <= dayArray[0].date ? [...Guest24Data] : [...Guest25Data]}
+            {clickedDate <= dayArray[0].date
+              ? [...Guest24Data]
+              : [...Guest25Data]}
           </CardSection>
         </GuestToggleBox>
       </Container>

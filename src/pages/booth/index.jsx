@@ -1,5 +1,4 @@
 import { React, useCallback, useEffect, useMemo, useState } from "react";
-import { motion } from "framer-motion";
 import {
   BoothFilterSection,
   BoxDate,
@@ -32,13 +31,13 @@ import {
   RankingRightSection,
   RankingSection,
   SelectedLocation,
-} from "./style";
-import { DateNum, DateWeek } from "../timetable/style";
+} from "../../boothStyle";
+import { DateNum, DateWeek } from "../../timeTable";
 import Image from "next/image";
 import map from "../../../components/image/booth/campus_map.svg";
 import pin from "../../../components/image/booth/pin.png";
 import elephant from "../../../components/image/booth/elephant.svg";
-import { BoothCardGridWrapper } from "./search_style";
+import { BoothCardGridWrapper } from "../../search_style";
 import { boothSectorArray } from "./testData";
 import FilteredBooth from "components/booth/FilteredBooth";
 import { API } from "../api";
@@ -69,13 +68,13 @@ export default function Booth() {
   const todate = day.getDate() === 24 ? 24 : day.getDate() === 25 ? 25 : 23;
   const [isToday, setIsToday] = useState(todate);
   // State 관리------------------------------------
-  const [guideMessage, setGuideMessage] = useState("시작을 위해 지도를 클릭해주세요.");
+  const [guideMessage, setGuideMessage] =
+    useState("시작을 위해 지도를 클릭해주세요.");
   const [firstScene, setFirstScene] = useState(true);
   const [secondScene, setSecondScene] = useState(false);
   const [thirdLeftScene, setThirdLeftScene] = useState(false);
   const [thirdRightScene, setThirdRightScene] = useState(false);
   const [boothList, setBoothList] = useState(null);
-  const [boothLoaded, setBoothLoaded] = useState(false);
   // ===========
   // Booth Modal 디폴트 -> 가운데 핀 index
   const [boothSector, setBoothSector] = useState(2);
@@ -240,7 +239,11 @@ export default function Booth() {
           </DayBox>
         ))}
       </DateSection>
-      <MapContainer firstMoved={FirstMoved} onClick={handleMap} className="fadeIn">
+      <MapContainer
+        firstMoved={FirstMoved}
+        onClick={handleMap}
+        className="fadeIn"
+      >
         {/* MapModalSection------------------------ */}
         <MapModalSection
           firstMoved={FirstMoved}
@@ -304,13 +307,22 @@ export default function Booth() {
       <LocationTextSection>{locationList}</LocationTextSection>
       {/* GridSection---------------------------- */}
       <BoothFilterSection firstMoved={FirstMoved} className="fadeIn">
-        <FilterSectionSub1 dayOrNight={dayOrNight} onClick={() => setDayOrNight("전체")}>
+        <FilterSectionSub1
+          dayOrNight={dayOrNight}
+          onClick={() => setDayOrNight("전체")}
+        >
           전체
         </FilterSectionSub1>
-        <FilterSectionSub2 dayOrNight={dayOrNight} onClick={() => setDayOrNight("주간부스")}>
+        <FilterSectionSub2
+          dayOrNight={dayOrNight}
+          onClick={() => setDayOrNight("주간부스")}
+        >
           주간부스
         </FilterSectionSub2>
-        <FilterSectionSub3 dayOrNight={dayOrNight} onClick={() => setDayOrNight("야간부스")}>
+        <FilterSectionSub3
+          dayOrNight={dayOrNight}
+          onClick={() => setDayOrNight("야간부스")}
+        >
           야간부스
         </FilterSectionSub3>
         {/* 희찬 검색어 작업 연결------------------ */}
@@ -323,14 +335,18 @@ export default function Booth() {
           isToday={isToday}
           boothSector={boothSector}
           boothSectorDetail={boothSectorDetail}
-          setBoothLoaded={setBoothLoaded}
         />
-        {/* <EmptyFilteredSection>
+        <EmptyFilteredSection>
           <EmptyFilteredIcon>
-            <Image src={elephant} alt="elephant" fill style={{ objectFit: "cover" }} />
+            <Image
+              src={elephant}
+              alt="elephant"
+              fill
+              style={{ objectFit: "cover" }}
+            />
           </EmptyFilteredIcon>
           <EmptyFilteredBooth>조건에 맞는 부스가 없어요!</EmptyFilteredBooth>
-        </EmptyFilteredSection> */}
+        </EmptyFilteredSection>
       </BoothCardGridWrapper>
     </Container>
   );

@@ -2,7 +2,7 @@ import styled, { css, keyframes } from "styled-components";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { primaryColor, secondaryColor, subPinkColor } from "../_app";
+import { primaryColor, secondaryColor, subPinkColor } from "./pages/_app";
 
 export const Container = styled.div`
   width: 100%;
@@ -65,13 +65,13 @@ export const RankingRightSection = styled.section`
 export const BoothTop10Box = styled.section`
   @keyframes moveBox {
     0% {
-      top: -30px;
+      top: -220px;
       opacity: 0;
       font-size: 0.3rem;
       font-weight: 100;
     }
     25% {
-      top: 20px;
+      top: 0px;
       opacity: 0.5;
       font-size: 0.6rem;
       font-weight: 300;
@@ -83,20 +83,20 @@ export const BoothTop10Box = styled.section`
       font-weight: 900;
     }
     75% {
-      top: 150px;
+      top: 200px;
       opacity: 0.5;
       font-size: 0.6rem;
       font-weight: 300;
     }
     100% {
-      top: 200px;
+      top: 340px;
       opacity: 0.1;
       font-size: 0.3rem;
       font-weight: 100;
     }
   }
   width: 90%;
-  height: 40px;
+  height: 66px;
   position: absolute;
   display: flex;
   opacity: 0;
@@ -104,7 +104,7 @@ export const BoothTop10Box = styled.section`
   color: ${primaryColor};
   font-weight: 700;
   transition: all 0.5s;
-  animation: moveBox 5s ease-in-out infinite;
+  animation: moveBox 10s ease-in-out infinite;
   cursor: pointer;
 `;
 
@@ -162,8 +162,10 @@ export const MapModalSection = styled.section`
   width: 90px;
   min-height: 50px;
   position: absolute;
-  left: ${(props) => (!props.secondRightMoved && props.secondLeftMoved ? "3%" : "67%")};
-  top: ${(props) => (!props.secondRightMoved && props.secondLeftMoved ? "33%" : "55%")};
+  left: ${(props) =>
+    !props.secondRightMoved && props.secondLeftMoved ? "3%" : "67%"};
+  top: ${(props) =>
+    !props.secondRightMoved && props.secondLeftMoved ? "33%" : "55%"};
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -176,7 +178,9 @@ export const MapModalSection = styled.section`
   transition: all 1s;
   z-index: 10;
   display: ${(props) =>
-    props.secondScene && (props.secondLeftMoved || props.secondRightMoved) ? "flex" : "none"};
+    props.secondScene && (props.secondLeftMoved || props.secondRightMoved)
+      ? "flex"
+      : "none"};
   @media all and (max-width: 430px) {
     width: 80px;
     min-height: 30px;
@@ -188,7 +192,8 @@ export const MapModalButton = styled.button`
   min-height: 40px;
   border: none;
   border-radius: 30px;
-  background-color: ${(props) => (props.clickedLocation ? `${secondaryColor}` : "transparent")};
+  background-color: ${(props) =>
+    props.clickedLocation ? `${secondaryColor}` : "transparent"};
   color: ${(props) => (props.clickedLocation ? "#fff" : `${secondaryColor}`)};
   font-family: "Noto Sans KR", sans-serif;
   font-size: 10px;
@@ -313,7 +318,8 @@ export const GuideMessage = styled.h3`
       : css`
           ${FadeInOut} 1s infinite alternate
         `};
-  cursor: ${(props) => (props.secondLeftMoved || props.secondRightMoved ? "pointer" : "")};
+  cursor: ${(props) =>
+    props.secondLeftMoved || props.secondRightMoved ? "pointer" : ""};
 `;
 
 export const LocationTextSection = styled.section`
@@ -329,7 +335,8 @@ export const SelectedLocation = styled.h1`
   font-weight: 900;
   font-family: "Noto Sans KR", sans-serif;
   padding: 5px;
-  display: ${(props) => (props.secondLeftMoved || props.secondRightMoved ? "inline" : "none")};
+  display: ${(props) =>
+    props.secondLeftMoved || props.secondRightMoved ? "inline" : "none"};
 `;
 
 export const BoothFilterSection = styled.section`
@@ -369,7 +376,8 @@ export const FilterSectionSub2 = styled.span`
   font-family: "Noto Sans KR", sans-serif;
   cursor: pointer;
   transition: all 0.3s;
-  color: ${(props) => (props.dayOrNight === "주간부스" ? `${primaryColor}` : "")};
+  color: ${(props) =>
+    props.dayOrNight === "주간부스" ? `${primaryColor}` : ""};
 `;
 
 export const FilterSectionSub3 = styled.span`
@@ -380,7 +388,8 @@ export const FilterSectionSub3 = styled.span`
   font-family: "Noto Sans KR", sans-serif;
   cursor: pointer;
   transition: all 0.3s;
-  color: ${(props) => (props.dayOrNight === "야간부스" ? `${primaryColor}` : "")};
+  color: ${(props) =>
+    props.dayOrNight === "야간부스" ? `${primaryColor}` : ""};
 `;
 
 export const FilterSectionInput = styled.input`

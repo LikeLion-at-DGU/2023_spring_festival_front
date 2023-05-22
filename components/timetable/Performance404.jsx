@@ -1,8 +1,13 @@
-import { SubItem404, ToggleSub } from "@/pages/timetable/style";
+import { SubItem404, ToggleSub } from "@/timeTable";
 import { faRepublican } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-export default function Performance404({ nowPerf24, nowPerf25, clickedDate, isOpen }) {
+export default function Performance404({
+  nowPerf24,
+  nowPerf25,
+  clickedDate,
+  isOpen,
+}) {
   if (clickedDate <= 24) {
     if (nowPerf24) {
       return;

@@ -201,6 +201,17 @@ export const testBoothDataArray = [
   },
 ];
 
+// 부스 응답 JSON
+// name
+// type
+// operator
+// start_at
+// end_at
+// location
+// description
+// menu
+// concept
+
 export const boothSectorArray = [
   // Section1
   [{ id: 1, location: "이해랑예술극장" }],
