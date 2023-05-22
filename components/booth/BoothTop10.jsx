@@ -7,7 +7,7 @@ import {
 export default function BoothTop10({ boothList, router }) {
   const boothSortByLikeCount = boothList?.sort((a, b) => {
     // like 대신 id로 임시 정렬
-    return b.id - a.id;
+    return b.like_cnt - a.like_cnt;
   });
 
   // 부스 리스트 배열 무작위 정렬
