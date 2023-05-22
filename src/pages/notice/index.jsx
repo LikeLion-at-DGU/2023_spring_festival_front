@@ -105,48 +105,6 @@ export default function Notice(){
       const response = await API.get(`/alarm`);
       const noticeData = response.data;
       // dummy
-      // const noticeData = [
-      //   {
-      //     "id": 1,
-      //     "title": "main",
-      //     "type": "main",
-      //     "content": "글이 길면 어때? 글이 길면 어때? 글이 길면 어때? 글이 길면 어때? 글이 길면 어때? 글이 길면 어때? 글이 길면 어때? 글이 길면 어때? 글이 길면 어때?",
-      //     "created_at": "2023-05-13T07:47:07.687842+09:00",
-      //     "images": ["https://images.ctfassets.net",]
-      //   },
-      //   {
-      //     "id": 2,
-      //     "title": "festival",
-      //     "type": "festival",
-      //     "content": "festival!!Ds!",
-      //     "created_at": "2023-05-13T07:47:07.687842+09:00",
-      //     "images": []
-      //   },
-      //   {
-      //     "id": 3,
-      //     "title": "event",
-      //     "type": "event",
-      //     "content": "글이 길면 어때? 글이 길면 어때? 글이 길면 어때? 글이 길면 어때? 글이 길면 어때? 글이 길면 어때? 글이 길면 어때? 글이 길면 어때? 글이 길면 어때?",
-      //     "created_at": "2023-05-13T07:47:07.687842+09:00",
-      //     "images": []
-      //   },
-      //   {
-      //     "id": 4,
-      //     "title": "etc",
-      //     "type": "etc",
-      //     "content": "etc test",
-      //     "created_at": "2023-05-13T07:47:07.687842+09:00",
-      //     "images": []
-      //   },
-      //   {
-      //     "id": 5,
-      //     "title": "etc",
-      //     "type": "etc",
-      //     "content": "etc test",
-      //     "created_at": "2023-05-13T07:47:07.687842+09:00",
-      //     "images": []
-      //   },
-      // ];
 
       setNotice(noticeData);
     } catch (error) {

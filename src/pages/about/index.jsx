@@ -78,7 +78,7 @@ left: 77%;
 top: 410px;
 `
 const LargeText = styled.div`
-font-family: 'ygotjalnanfont';
+font-family: "yg-jalnan";
 font-style: normal;
 font-weight: 700;
 font-size: 40px;
@@ -132,7 +132,7 @@ margin-left: 20px;
 `
 
 const LargeText2 = styled.div`
-font-family: 'ygotjalnanfont';
+font-family: "yg-jalnan";
 font-style: normal;
 font-weight: 700;
 font-size: 33px;
@@ -151,17 +151,18 @@ z-index:-10;
 position: absolute;
 `
 const SmallTitle = styled.div`
+display: flex;
 font-family: 'AppleSDGothicNeoB00';
 font-style: normal;
 font-weight: 400;
 font-size: 21px;
-line-height: 29px;
 letter-spacing: -0.447096px;
 color: #525252;
 padding-bottom:16px;
 
 `
 const SmallText = styled.a`
+display: flex;
 font-family: 'Inter';
 font-style: normal;
 font-weight: 500;
@@ -170,17 +171,18 @@ line-height: 19px;
 color: #727272;
 `
 const Box = styled.div`
-display: inline-block;
-margin-bottom: 20px;
-margin-left: 40px;
-position: relative;
-
+display: flex;
+flex-direction: column;
+justify-content: space-between;
 `
 const Box2 = styled.div`
 position: relative;
-left: 5%;
+display: flex;
+justify-content: space-between;
+width: 60%;
+align-items: center;
 z-index:10;
-margin-top: 20px;
+margin: 80px auto;
 `
 const Box3 = styled.div`
 position: relative;
@@ -197,17 +199,17 @@ line-height: 19px;
 color: #FC8CAE;
 letter-spacing: -0.466392px;
 text-align: center;
-margin-top: 30px;
+margin-top: 100px;
+margin: 0 auto;
+width: 100%;
 `
 const LogoImg2 = styled(Image)`
-display: inline-block;
-margin-left:40px;
-padding-top: 10px;
+
 `
 const LogoImg3 = styled(Image)`
-position: relative;
-left: 40%;
 margin-top: 25px;
+margin: 5% auto;
+width: 100%;
 margin-bottom: 10px;
 `
 const SmallTitle3 = styled.div`
@@ -443,7 +445,7 @@ IT 창업동아리입니다.</Text2>
       </Box2>
     <Box2 data-aos="zoom-in">
       <LogoImg2 src={bamboo} alt="bamboo"/>
-      <Box>
+      <Box >
         <SmallTitle>동대 대나무 숲</SmallTitle>
         <SmallText href="https://instagram.com/dgu_bamboo?igshid=MzRlODBiNWFlZA==">@dgu_bamboo</SmallText>
       </Box>
