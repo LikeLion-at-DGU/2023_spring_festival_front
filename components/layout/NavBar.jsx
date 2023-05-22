@@ -32,6 +32,7 @@ const BackButton = styled(FontAwesomeIcon)`
     font-size: 20px;
     width: 15px;
     z-index: 100;
+    cursor: pointer;
 `
 
 const Img = styled(Image)`
@@ -46,6 +47,8 @@ const NavToggle = styled(FontAwesomeIcon)`
     margin-right: 26px;
     width: 25px;
     z-index: 100;
+    cursor: pointer;
+
     @media (min-width: 430px) {
         position: absolute;
     }

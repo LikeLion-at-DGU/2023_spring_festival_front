@@ -1,5 +1,6 @@
 import { useRouter } from "next/router";
 import Image from 'next/image';
+import Link from 'next/link';
 import time from "../image/common/timetable.svg"
 import booth from "../image/common/booth.svg"
 import about from "../image/common/about.svg"
@@ -26,11 +27,19 @@ export default function PageTitle() {
 
   const Img = styled(Image)`
     width: 60%;
-    margin-top: 10px;
+    justify-content: center;
+    margin: 10px 20%;
   `
+
+  const MainLink = styled(Link)`
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+  `;
   
   return (
-    ( router.pathname === "/timetable" || !router.query.id === null ) ? 
+    <MainLink href="/">
+    { router.pathname === "/timetable" || !router.query.id === null  ? 
     <Img
       src={time}
       height={30}
@@ -53,7 +62,7 @@ export default function PageTitle() {
       src={booth}
       height={30}
       alt="title"
-    />  : null
-    
+    />  : null }
+    </MainLink>
   );
 }

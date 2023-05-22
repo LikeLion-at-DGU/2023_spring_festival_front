@@ -62,6 +62,7 @@ export const ModalOverlay = styled.div`
 export const ModalButton = styled(FontAwesomeIcon)`
   width: 20px;
   height: 5vh;
+  cursor: pointer;
 `;
 
 export const ModalHeader = styled.div`
