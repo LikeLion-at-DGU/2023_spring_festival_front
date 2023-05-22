@@ -6,6 +6,7 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   z-index: 1;
+  padding: 30px;
 `;
 
 export const DateSection = styled.section`
@@ -55,9 +56,7 @@ export const PerfToggleBox = styled.section`
   background-color: #fff;
   font-weight: 700;
   padding-left: 15px;
-  /* animation: ${Landing} 1s ease; */
   animation-delay: ${(props) => (props.delay ? `1s` : ``)};
-  /* display: ${(props) => (props.delay ? "none" : "")}; */
   transition: all 0.5s;
   cursor: pointer;
 `;
@@ -183,8 +182,9 @@ export const TableBand = styled.section`
 `;
 
 export const CardSection = styled.section`
-  width: 100%;
-  height: 300px;
+  width: 95%;
+  height: 350px;
+  position: relative;
   display: flex;
   align-items: center;
   flex-wrap: nowrap;
@@ -201,6 +201,18 @@ export const CardSection = styled.section`
   display: ${(props) => (props.isOpen ? "" : "none")};
 `;
 
+// export const CardSectionShadow = styled.section`
+//   width: 15%;
+//   height: 250px;
+//   position: absolute;
+//   top: 50%;
+//   right: 0;
+//   transform: translate(0, -52%);
+//   border-radius: 30px 0 0 30px;
+//   box-shadow: -33px 2px 61px 2px rgba(0, 0, 0, 0.2) inset;
+//   z-index: 1;
+// `;
+
 export const ImgBox = styled.section`
   width: 25px;
   height: 25px;
@@ -208,8 +220,8 @@ export const ImgBox = styled.section`
 `;
 
 export const Card = styled.div`
-  min-width: 200px;
-  min-height: 250px;
+  min-width: 220px;
+  min-height: 275px;
   position: relative;
   object-fit: cover;
 `;
