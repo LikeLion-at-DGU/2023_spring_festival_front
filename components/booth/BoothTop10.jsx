@@ -4,7 +4,7 @@ import {
   BoothTop10RightBox,
 } from "@/boothStyle";
 
-export default function BoothTop10({ boothList }) {
+export default function BoothTop10({ boothList, router }) {
   const boothSortByLikeCount = boothList?.sort((a, b) => {
     // like 대신 id로 임시 정렬
     return b.id - a.id;
@@ -20,7 +20,11 @@ export default function BoothTop10({ boothList }) {
 
   const boothTop10Data = getRandomBooth5?.map((top, idx) => {
     return (
-      <BoothTop10Box key={top.id} style={{ animationDelay: `${idx}s` }}>
+      <BoothTop10Box
+        key={top.id}
+        style={{ animationDelay: `${idx}s` }}
+        onClick={() => router.push(`/booth/detail/${top.id}`)}
+      >
         <BoothTop10LeftBox>{top.id}</BoothTop10LeftBox>
         <BoothTop10RightBox>{top.operator}</BoothTop10RightBox>
       </BoothTop10Box>

@@ -42,6 +42,7 @@ import { boothSectorArray } from "../../testData";
 import FilteredBooth from "components/booth/FilteredBooth";
 import { API } from "../api";
 import BoothTop10 from "components/booth/BoothTop10";
+import { useRouter } from "next/router";
 
 // 날짜 배열
 const dayArray = [
@@ -75,17 +76,17 @@ export default function Booth() {
   const [thirdLeftScene, setThirdLeftScene] = useState(false);
   const [thirdRightScene, setThirdRightScene] = useState(false);
   const [boothList, setBoothList] = useState(null);
-  // ===========
   // Booth Modal 디폴트 -> 가운데 핀 index
   const [boothSector, setBoothSector] = useState(2);
   // Booth Modal Button 디폴트 -> 전체
   const [boothSectorDetail, setBoothSectorDetail] = useState(null);
-  // ===========
   // 디폴트 -> 전체 부스 / 낮 -> 1 / 밤 -> 2
   const [dayOrNight, setDayOrNight] = useState("전체");
   const FirstMoved = useMemo(() => {
     return firstScene;
   }, [firstScene]);
+  // router
+  const router = useRouter();
 
   // ComponentDidMount----------------------------
   const fetchBooths = async () => {
@@ -223,7 +224,7 @@ export default function Booth() {
           <RankingHotButton>HOT</RankingHotButton>
         </RankingLeftSection>
         <RankingRightSection>
-          <BoothTop10 boothList={boothList} />
+          <BoothTop10 boothList={boothList} router={router} />
         </RankingRightSection>
       </RankingSection>
       {/* DateSection---------------------------- */}
