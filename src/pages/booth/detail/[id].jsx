@@ -237,7 +237,7 @@ const BoothDetailPage = ({ myData }) => {
         <DetailRibbon type={booth.type}>{booth.type}</DetailRibbon>
         {booth.logo_image.length === 1 ? (
           <BoothLogoImage
-            src={"https://me2.kr/GSOFJ"}
+            src={booth.logo_image}
             alt={booth.logo_image}
             width={300}
             height={300}

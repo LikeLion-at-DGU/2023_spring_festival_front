@@ -134,6 +134,7 @@ export default function FilteredBooth({
     return (
       <BoothCard
         key={booth.id}
+        id={booth.id}
         name={booth.name} // string
         type={booth.type} // string
         operator={booth.operator} // string
@@ -152,6 +153,7 @@ export default function FilteredBooth({
     return (
       <BoothCard
         key={booth.id}
+        id={booth.id}
         name={booth.name} // string
         type={booth.type} // string
         operator={booth.operator} // string
