@@ -4,6 +4,15 @@ const APIURL = "3.35.61.159";
 
 const nextConfig = {
     reactStrictMode: true,
+
+    images: {
+        remotePatterns: [
+            {
+                protocol: 'http',
+                hostname: '3.35.61.159',
+            },
+        ],
+    },
     async redirects() {
         return [
             /* 멋쟁이 사자처럼 동국대학교 인스타 계정 연결 URL */
