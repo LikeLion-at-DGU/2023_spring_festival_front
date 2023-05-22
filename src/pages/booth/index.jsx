@@ -8,6 +8,9 @@ import {
   DateContainer,
   DateSection,
   DayBox,
+  EmptyFilteredBooth,
+  EmptyFilteredIcon,
+  EmptyFilteredSection,
   FilterSectionInput,
   FilterSectionSub1,
   FilterSectionSub2,
@@ -35,9 +38,10 @@ import Image from "next/image";
 import map from "../../../components/image/booth/campus_map.svg";
 import pin from "../../../components/image/booth/pin.png";
 import { BoothCardGridWrapper } from "./search_style";
-import { boothSectorArray, testBoothDataArray } from "./testData";
+import { boothSectorArray } from "./testData";
 import FilteredBooth from "components/booth/FilteredBooth";
-import BoothCard from "components/booth/BoothCard";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faRepublican } from "@fortawesome/free-solid-svg-icons";
 
 // 날짜 배열
 const dayArray = [
@@ -61,20 +65,20 @@ const dayArray = [
 export default function Booth() {
   // DATE 관리-------------------------------------
   const day = new Date();
-  // 23일 -> 1, 24일 -> 2, 25일 -> 3 --------------
-  const todate = day.getDate() === 24 ? 2 : day.getDate() === 25 ? 3 : 1;
+  const todate = day.getDate() === 24 ? 24 : day.getDate() === 25 ? 25 : 23;
   const [isToday, setIsToday] = useState(todate);
-
   // State 관리------------------------------------
   const [guideMessage, setGuideMessage] = useState("시작을 위해 지도를 클릭해주세요.");
   const [firstScene, setFirstScene] = useState(true);
   const [secondScene, setSecondScene] = useState(false);
   const [thirdLeftScene, setThirdLeftScene] = useState(false);
   const [thirdRightScene, setThirdRightScene] = useState(false);
+  // ===========
   // Booth Modal 디폴트 -> 가운데 핀 index
   const [boothSector, setBoothSector] = useState(2);
   // Booth Modal Button 디폴트 -> 전체
-  const [boothSectorDetail, setBoothSectorDetail] = useState("");
+  const [boothSectorDetail, setBoothSectorDetail] = useState(null);
+  // ===========
   // 디폴트 -> 전체 부스 / 낮 -> 1 / 밤 -> 2
   const [dayOrNight, setDayOrNight] = useState("전체");
   const FirstMoved = useMemo(() => {
@@ -95,11 +99,22 @@ export default function Booth() {
     setGuideMessage("전체 보기");
     setThirdLeftScene(true);
     setThirdRightScene(false);
+    if (boothSectorArray[boothSector].length > 1) {
+      setBoothSectorDetail(null);
+    } else {
+      setBoothSectorDetail(1);
+    }
   }, [thirdLeftScene, thirdRightScene]);
   const rightPinHandling = useCallback(() => {
     setGuideMessage("전체 보기");
     setThirdRightScene(true);
     setThirdLeftScene(false);
+
+    if (boothSectorArray[boothSector].length > 1) {
+      setBoothSectorDetail(null);
+    } else {
+      setBoothSectorDetail(1);
+    }
   }, [thirdLeftScene, thirdRightScene]);
 
   // 좌측 핀 클릭 핸들링----------------------------
@@ -137,31 +152,9 @@ export default function Booth() {
     }
   };
 
-  const boothSectorData = boothSectorArray[boothSector]?.map((sec) => {
+  const boothSectorData = boothSectorArray[boothSector]?.map((sec, idx) => {
     let clickedLocation = false;
-    if (sec.length === 1) {
-      clickedLocation = true;
-      return (
-        <MapModalButton
-          key={sec.id}
-          clickedLocation={true}
-          onClick={() => setBoothSectorDetail(sec.id)}
-        >
-          {sec.location}
-        </MapModalButton>
-      );
-    } else if (sec.id === boothSectorDetail) {
-      clickedLocation = true;
-      return (
-        <MapModalButton
-          key={sec.id}
-          clickedLocation={clickedLocation}
-          onClick={() => setBoothSectorDetail(sec.id)}
-        >
-          {sec.location}
-        </MapModalButton>
-      );
-    } else if (sec.id === 0) {
+    if (sec.id === boothSectorDetail) {
       clickedLocation = true;
       return (
         <MapModalButton
@@ -187,28 +180,19 @@ export default function Booth() {
   });
 
   const locationList = boothSectorArray[boothSector]?.map((loc) => {
-    if (loc.length > 1) {
-      loc?.map((loc2) => {
-        return (
-          <SelectedLocation
-            key={loc2.id}
-            secondLeftMoved={thirdLeftScene}
-            secondRightMoved={thirdRightScene}
-          >
-            {loc2.location}
-          </SelectedLocation>
-        );
-      });
-    } else {
-      return (
-        <SelectedLocation
-          key={loc.id}
-          secondLeftMoved={thirdLeftScene}
-          secondRightMoved={thirdRightScene}
-        >
-          {loc.location}
-        </SelectedLocation>
-      );
+    const selectedLocation = (
+      <SelectedLocation
+        key={loc.id}
+        secondLeftMoved={thirdLeftScene}
+        secondRightMoved={thirdRightScene}
+      >
+        {loc.location}
+      </SelectedLocation>
+    );
+    if (loc.id === boothSectorDetail) {
+      return selectedLocation;
+    } else if (boothSectorDetail === null) {
+      return selectedLocation;
     }
   });
 
@@ -225,11 +209,11 @@ export default function Booth() {
       {/* DateSection---------------------------- */}
       <DateSection firstMoved={FirstMoved} className="fadeIn">
         {dayArray.map((i) => (
-          <DayBox key={i.id} onClick={() => setIsToday(i.id)}>
-            <BoxDate isActive={isToday === i.id}>
+          <DayBox key={i.id} onClick={() => setIsToday(i.date)}>
+            <BoxDate isActive={isToday === i.date}>
               <DateNum>{i.date}</DateNum>
             </BoxDate>
-            <BoxDay isActive={isToday === i.id}>
+            <BoxDay isActive={isToday === i.date}>
               <DateWeek>{i.day}</DateWeek>
             </BoxDay>
           </DayBox>
@@ -244,7 +228,7 @@ export default function Booth() {
           secondRightMoved={thirdRightScene}
           className="fadeIn"
         >
-          {boothSectorArray[boothSector]?.length === 1 ? (
+          {/* {boothSectorArray[boothSector]?.length === 1 ? (
             boothSectorData
           ) : (
             <>
@@ -256,7 +240,8 @@ export default function Booth() {
               </MapModalButton>
               {boothSectorData}
             </>
-          )}
+          )} */}
+          {boothSectorData}
         </MapModalSection>
         {/* MapSection----------------------------- */}
         <MapSection
@@ -285,6 +270,7 @@ export default function Booth() {
           </Pin6>
         </MapSection>
       </MapContainer>
+      <br />
       {/* GuideLine------------------------------ */}
       <GuideMessage
         secondLeftMoved={thirdLeftScene}
@@ -310,7 +296,18 @@ export default function Booth() {
         {/* <FilterSectionInput placeholder="검색어를 입력해주세요" /> */}
       </BoothFilterSection>
       <BoothCardGridWrapper firstMoved={FirstMoved} className="FadeIn">
-        <FilteredBooth dayOrNight={dayOrNight} />
+        <FilteredBooth
+          dayOrNight={dayOrNight}
+          isToday={isToday}
+          boothSector={boothSector}
+          boothSectorDetail={boothSectorDetail}
+        />
+        {/* <EmptyFilteredSection>
+          <EmptyFilteredIcon>
+            <FontAwesomeIcon icon={faRepublican} />
+          </EmptyFilteredIcon>
+          <EmptyFilteredBooth>조건에 맞는 부스가 없어요!</EmptyFilteredBooth>
+        </EmptyFilteredSection> */}
       </BoothCardGridWrapper>
     </Container>
   );

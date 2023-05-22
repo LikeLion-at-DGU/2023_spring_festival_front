@@ -27,15 +27,18 @@ function BoothCard({ id, name, operator, logoImage, likeCnt, isLike, location, t
 
   // Determine the page type based on the pathname
   const pageType = pathname === '/booth/search' ? 'booth/search' : 'booth';
-  
+
   return (
-    <Link href={`/booth/detail/${id}`}>
+    <div onClick={()=>{
+      sessionStorage.setItem("id",id)
+      router.push(`/booth/detail/${id}`)
+    }}>
       <BoothCardWrapper>
         <BoothCardImage src={DeafultImage} alt="부스 이미지" />
         <BoothCardDetailWrapper>
           <Ribbon pageType={pageType} type={type}>{type}</Ribbon>
           <BoothCardDetailDes>
-            <RankBoothDetailTitle>{name}</RankBoothDetailTitle>
+            <RankBoothDetailTitle>{String(name).length < 8 ? name : `${String(name).slice(0,7)}...`}</RankBoothDetailTitle>
             <RannkBoothDetailOperator>{operator}</RannkBoothDetailOperator>
             <RankBoothDetailLocation>{location}</RankBoothDetailLocation>
           </BoothCardDetailDes>
@@ -47,7 +50,7 @@ function BoothCard({ id, name, operator, logoImage, likeCnt, isLike, location, t
           </BoothCardDetailHeartWrapper>
         </BoothCardDetailWrapper>
       </BoothCardWrapper>
-    </Link>
+    </div>
   );
 }
 
