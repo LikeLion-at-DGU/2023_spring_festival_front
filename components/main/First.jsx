@@ -222,6 +222,25 @@ const boxVariants = {
     }
   }
 
+const Gradation = styled.div`
+  width: 200px;
+  margin-top: 60px;
+  height: 200px;
+  border-radius: 50%;
+  position: absolute;
+  background: radial-gradient(50% 50% at 50% 50%, #FFEDF4 0%, #FFFEFF 100%);
+  z-index: -1;
+`;
+
+const Gradation2 = styled.div`
+  width: 200px;
+  top: 180px;
+  height: 200px;
+  border-radius: 50%;
+  position: absolute;
+  background: radial-gradient(50% 50% at 50% 50%, #FFEDF4 0%, #FFFEFF 100%);
+  z-index: -1;
+`;
 
 
 export default function First(){
@@ -259,6 +278,8 @@ export default function First(){
                 <h6>동국대학교 <br></br> 2023 봄 백상 대동제</h6>
                 <h1>RE:SPRING</h1>
             </Title>
+            <Gradation />
+            <Gradation2 />
         </Container>
     )
 }
