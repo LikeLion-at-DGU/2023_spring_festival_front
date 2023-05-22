@@ -195,10 +195,12 @@ useEffect(() => {
     <BoothDetailCotainer>
         <BoothLogoWrapper>
             <DetailRibbon type={booth.type}>{booth.type}</DetailRibbon>
-            { booth.logo_image ? 
+            { booth.logo_image.length === 1 ? 
               <BoothLogoImage 
-                src={booth.logo_image}
+                src={"https://me2.kr/GSOFJ"}
                 alt={booth.logo_image}
+                width={300}
+                height={300}
               /> : 
               <BoothLogoImage 
                 src={DeafultImage}
@@ -239,7 +241,6 @@ useEffect(() => {
         <FontAwesomeIcon icon={faClock} style={{marginRight:"10px"}}/>
             {booth.start_at} ~ {booth.end_at}
         </BoothDetailTime>
-
         { ( booth.menu_image.length != 0 ) ?
         <>
           <BoothDetailSeparator />
@@ -247,18 +248,19 @@ useEffect(() => {
             <BoothDetailMenuHeader>
               <BoothDetailMenuTitle>
                 메뉴
+                {console.log(booth.menu_image)}
               </BoothDetailMenuTitle>
             </BoothDetailMenuHeader>
             <BoothImageSlider>
-              { booth.menu_image.map((image)=>{
-                <BoothMenuImage 
-                  key={image.id}
-                  src={image.url} 
+              {booth.menu_image.map((image, idx) => (
+                <BoothMenuImage
+                  key={idx}
+                  src={image} 
                   alt="Booth Menu Image"
                   width={250}
                   height={250}
                 />
-              }) }
+              ))}
             </BoothImageSlider>
           </BoothDetailMenuWrapper>
         </>

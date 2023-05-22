@@ -68,8 +68,9 @@ const ImgBox = styled.div`
 `;
 
 const Img = styled(Image)`
-    height: 90%;
     margin-right: 2%;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    
 `;
 
 const NoticeCard = ({id, notice}) => {
@@ -92,20 +93,17 @@ const NoticeCard = ({id, notice}) => {
                             <>{notice.content}</> : <>{notice.content.slice(0,60)}...</>
                         }
                     </Body>
-                    { ( notice.images && notice.images.length > 0 ) &&
+                    { ( notice.images.length != 0 ) &&
                     <ImgBox>
-                        {notice.images.map((image)=>{
-                            <Image
-                                key={image.id}
-                                src={image.url}
-                                alt={image.alt}
+                        {notice.images.map((image, idx)=>(
+                            <Img
+                                key={idx}
+                                src={image}
+                                alt="notice image"
+                                width={90}
+                                height={90}
                             />
-                        })}
-                        <Img src={test} alt="test"/>
-                        <Img src={test} alt="test"/>
-                        <Img src={test} alt="test"/>
-                        <Img src={test} alt="test"/>
-                        <Img src={test} alt="test"/>
+                        ))}
                     </ImgBox>
                     }
                 </LinkBox>
