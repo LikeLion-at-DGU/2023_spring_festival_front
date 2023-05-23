@@ -16,6 +16,7 @@ export const subPinkColor = "#FFE9F0";
 export default function App({ Component, pageProps }) {
   return (
     <Body className="Container">
+      <meta property="og:image"  contet="../../components/image/common/pre.png"/>
       <Layout>
         <Component {...pageProps} />
       </Layout>
