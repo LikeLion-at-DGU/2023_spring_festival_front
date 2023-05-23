@@ -75,8 +75,8 @@ export default function Booth() {
   const [secondScene, setSecondScene] = useState(false);
   const [thirdLeftScene, setThirdLeftScene] = useState(false);
   const [thirdRightScene, setThirdRightScene] = useState(false);
-  const [boothList, setBoothList] = useState(null);
-  const [boothTop10List, setBoothTop10List] = useState(null);
+  const [boothList, setBoothList] = useState([]); // 수정
+  const [boothTop10List, setBoothTop10List] = useState([]); // 수정
   // Booth Modal 디폴트 -> 가운데 핀 index
   const [boothSector, setBoothSector] = useState(2);
   // Booth Modal Button 디폴트 -> 전체
@@ -216,7 +216,7 @@ export default function Booth() {
     }
   });
 
-  console.log(boothList);
+  // console.log(boothList);
 
   //
   return (

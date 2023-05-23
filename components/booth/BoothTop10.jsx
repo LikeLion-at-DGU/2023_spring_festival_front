@@ -5,7 +5,7 @@ import {
 } from "@/boothStyle";
 
 export default function BoothTop10({ boothList, router }) {
-  const boothSortByLikeCount = boothList?.sort((a, b) => {
+  const boothSortByLikeCount = Array.from(boothList).sort((a, b) => { // 수정
     // like 대신 id로 임시 정렬
     return b.like_cnt - a.like_cnt;
   });
