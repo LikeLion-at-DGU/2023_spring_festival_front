@@ -223,7 +223,7 @@ const BoothDetailPage = ({ myData }) => {
       });
 
     // 성공했을시 ReportDone으로 이동
-
+    alert("댓글 작성을 성공하셨습니다.");
     // 성공했을시 페이지 새로고침
     window.location.reload();
   };
