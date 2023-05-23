@@ -104,7 +104,7 @@ function CommentCard({ commentId, writer, content, created_at, reply }) {
 
     API.post(`/respond/${commentId}/reaction`, formData)
       .then((response) => {
-        alert("댓글이 작성되었습니다.");
+        alert("답글이 작성되었습니다.");
         window.location.reload();
       })
       .catch((error) => {
@@ -129,38 +129,34 @@ function CommentCard({ commentId, writer, content, created_at, reply }) {
           });
 
           if (response.status === 200) {
-            alert("댓글이 삭제됐습니다.");
+            alert("답글이 삭제됐습니다.");
             window.location.reload();
+          }else{
+            alert("비밀번호가 틀렸습니다.");
           }
         } else {
           // 댓글의 삭제버튼을 클릭한 경우
           // 삭제완
-          const response = await API.delete(`/respond/${commentId}`, {
+          console.log("댓글 삭제 할려고 ");
+
+          console.log(commentId);
+          
+          const response2 = await API.delete(`/respond/${commentId}`, {
             data: {
               password: deletePassword,
             },
           });
-          if (response.status === 200) {
+          console.log(response2.status);
+
+
+
+          if (response2.status === 200) {
             alert("댓글이 삭제됐습니다.");
             window.location.reload();
           }
-        }
-
-        // const response = await fetch(endpoint, {
-        //   method: "DELETE",
-        //   headers: {
-        //     "Content-Type": "application/json",
-        //   },
-        //   body: JSON.stringify({ password: deletePassword }),
-        // });
-
-        if (response.ok) {
-          // 삭제 성공 시 필요한 동작 수행
-          alert("댓글이 삭제되었습니다.");
-          window.location.reload();
-        } else {
-          // 삭제 실패 시 필요한 동작 수행
-          alert("비밀번호가 틀렸습니다.");
+          else{
+            alert("비밀번호가 틀렸습니다.");
+          }
         }
       } catch (error) {
         console.error("Error deleting comment:", error);
