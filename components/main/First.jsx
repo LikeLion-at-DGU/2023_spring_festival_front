@@ -20,7 +20,7 @@ const Container = styled.div`
         margin-top: -40px;
     }*/
     @media (min-device-height:800px) {
-        margin-top: 35px;
+        margin-top: 10px;
     }
 `
 
