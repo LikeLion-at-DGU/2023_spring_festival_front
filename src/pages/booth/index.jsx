@@ -216,8 +216,6 @@ export default function Booth() {
     }
   });
 
-  // console.log(boothList);
-
   //
   return (
     <Container>
@@ -227,7 +225,7 @@ export default function Booth() {
           <RankingHotButton>HOT</RankingHotButton>
         </RankingLeftSection>
         <RankingRightSection>
-          <BoothTop10 boothList={boothTop10List} router={router} />
+          <BoothTop10 boothTop10List={boothTop10List} router={router} />
         </RankingRightSection>
       </RankingSection>
       {/* DateSection---------------------------- */}
