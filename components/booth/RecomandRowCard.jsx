@@ -47,7 +47,7 @@ function RecomandRowCard({
           <RankText>TOP{ranking + 1}</RankText>
         </RankWrapper>
         {/* 랭킹 부스 이미지 */}
-        <RankBoothImage src={DeafultImage} alt="부스이미지" />
+        <RankBoothImage src={DetailLogoImage} alt="부스이미지" width={80} height={80}/>
         {/* 랭킹 부스 세부 내용 */}
         <RankBoothDetail>
           <RankBoothDetailTitle>{boothName}</RankBoothDetailTitle>
