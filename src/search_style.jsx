@@ -54,11 +54,11 @@ left: -20px;
 `;
 export const Ribbon = styled.div`
   position: absolute;
-  width: 96.13px;
+  width: 106.13px;
   height: 26.01px;
-  top: -110px;
+  top: -113px;
   left: -30px;
-  padding: 7px 0px 0px 13px;
+  padding: 7px 8px 0px 17px;
   box-shadow: 1px 1px 2px rgba(41, 39, 39, 0.4);
   transform: rotate(-45deg);
   z-index: 2;
