@@ -16,6 +16,14 @@ const nextConfig = {
     },
     async redirects() {
         return [
+            /* 멋쟁이 사자처럼 동국대학교 공식 홈페이지 URL */
+            {
+                source: "/dgu-likelion-home",
+                destination:
+                    "https://likeliondgu.oopy.io/",
+                permanent: false,
+            },
+
             /* 멋쟁이 사자처럼 동국대학교 인스타 계정 연결 URL */
             {
                 source: "/dgu-likelion-instar",
@@ -28,6 +36,21 @@ const nextConfig = {
             {
                 source: "/dgu-likelion-github",
                 destination: "https://github.com/LikeLion-at-DGU",
+                permanent: false,
+            },
+
+            /* 멋쟁이 사자처럼 동국대학교 깃허브 링크 URL */
+            {
+                source: "/dgu-bamboo",
+                destination: "https://instagram.com/dgu_bamboo?igshid=MzRlODBiNWFlZA==",
+                permanent: false,
+            },
+
+            /* 축기단 인스타 계정 연결 URL */
+            {
+                source: "/dgu-stuco",
+                destination:
+                    "https://instagram.com/donggukstuco?igshid=MzRlODBiNWFlZA==",
                 permanent: false,
             },
 

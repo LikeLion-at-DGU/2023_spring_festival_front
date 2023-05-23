@@ -30,6 +30,7 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 import {useEffect, useRef} from 'react';
 import gsap from 'gsap';
+import { useRouter } from "next/router";
 
 const Container = styled.div`
   z-index: 10;
@@ -119,7 +120,7 @@ letter-spacing: -0.02em;
 margin-top: 80px;
 margin: 20px;
 `
-const Text4 = styled.a`
+const Text4 = styled.div`
 font-family: 'AppleSDGothicNeoB00';
 font-style: normal;
 font-weight: 400;
@@ -161,7 +162,7 @@ color: #525252;
 padding-bottom:16px;
 
 `
-const SmallText = styled.a`
+const SmallText = styled.div`
 display: flex;
 font-family: 'Inter';
 font-style: normal;
@@ -349,6 +350,7 @@ margin-left: 100px;
 `
 
 export default function Booth() {
+  const router = useRouter();
   useEffect(() => {
     AOS.init({duration:2000})
   },[]);
@@ -431,30 +433,30 @@ export default function Booth() {
 IT 창업동아리입니다.</Text2>
       <Text3 data-aos="fade-up">100만 이상 유저가 사용한 크리스마스 '진저호텔' 서비스, <br/>
 2022 동국대학교 가을 축제 사이트 등 일상과 밀접한 의미가 있는 서비스를 다수 배출하고 있습니다.</Text3>
-<Text4 href="https://likeliondgu.oopy.io/" data-aos="zoom-in">동대 멋사 홈페이지 가기 </Text4>
+<Text4 data-aos="fade-up" onClick ={()=>router.push("/dgu-likelion-home")} >동대 멋사 홈페이지 가기 </Text4>
 
     <LargeText2 data-aos="fade-up">COLLABORATION</LargeText2>
     <Gradation2/>
 
-    <Box2 data-aos="zoom-in">
-      <Box>
+    <Box2 onClick ={()=>router.push("/dgu-stuco")} data-aos="zoom-in">
+      <Box >
         <SmallTitle>축제 기획단</SmallTitle>
-        <SmallText href="https://instagram.com/donggukstuco?igshid=MzRlODBiNWFlZA==">@donggukstuco</SmallText>
+        <SmallText >@donggukstuco</SmallText>
       </Box>
       <LogoImg2 src={dstuco} alt="dstuco"/>
       </Box2>
-    <Box2 data-aos="zoom-in">
+    <Box2 onClick ={()=>router.push("/dgu-bamboo")} data-aos="zoom-in">
       <LogoImg2 src={bamboo} alt="bamboo"/>
       <Box >
         <SmallTitle>동대 대나무 숲</SmallTitle>
-        <SmallText href="https://instagram.com/dgu_bamboo?igshid=MzRlODBiNWFlZA==">@dgu_bamboo</SmallText>
+        <SmallText >@dgu_bamboo</SmallText>
       </Box>
     </Box2>
     <div data-aos="zoom-in">
       <SmallTitle2>후원사</SmallTitle2>
-      <LogoImg3 src={devocean} alt="devocean"/>
+      <LogoImg3 onClick ={()=>router.push("/skdevocean")} src={devocean} alt="devocean"/>
       <SmallTitle3>DEVOCEAN</SmallTitle3>
-      <SmallText2 href="https://instagram.com/skdevocean?igshid=MzRlODBiNWFlZA==">@skdevocean</SmallText2>
+      <SmallText2 >@skdevocean</SmallText2>
     </div>
     <LargeText2 data-aos="fade-up">CONTRIBUTER</LargeText2>
 
