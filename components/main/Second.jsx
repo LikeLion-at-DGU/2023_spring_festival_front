@@ -87,7 +87,7 @@ const Content = styled.div`
 export default function Second(){
     const day = new Date();
     // todate는 24일에 24, 25일에 25, 그 외(28일)에는 23
-    const todate = day.getDate() - 23 === 2 ? 25 : day.getDate() - 23 === 1 ? 30 : 23;
+    const todate = day.getDate() - 23 === 2 ? 25 : day.getDate() - 23 === 1 ? 24 : 23;
     return(
         <Container>
             <Title>
