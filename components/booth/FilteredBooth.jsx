@@ -31,12 +31,9 @@ export default function FilteredBooth({
 
       return boothCard;
     } else if (
-      (booth1.type === "학교부스" ||
-        booth1.type === "외부부스" ||
-        booth1.type === "플리마켓") &&
+      (booth1.type === "학교부스" || booth1.type === "외부부스" || booth1.type === "플리마켓") &&
       dayOrNight === "주간부스"
     ) {
-
       return boothCard;
     } else if (booth1.type !== dayOrNight && dayOrNight === "전체") {
       return boothCard;
@@ -76,11 +73,7 @@ export default function FilteredBooth({
 
   // 핀 디테일 장소 선택되지 않았을 때, 부스맵 핀 로케이션 해당 섹터 모든 부스 필터링
   const filteredByAllLocation = filteredByIsToday?.filter((all) => {
-    if (
-      boothSectorArray[boothSector]
-        ?.map((b) => b.location)
-        .includes(all.location)
-    ) {
+    if (boothSectorArray[boothSector]?.map((b) => b.location).includes(all.location)) {
       return (
         <BoothCard
           key={all.id}
@@ -166,8 +159,7 @@ export default function FilteredBooth({
       />
     );
   });
-  // Slam Drunk 23 23 명진관 섹션3
-  // 회계세끼 23 23 혜화별관 섹션2
+
   if (boothSectorDetail === null) {
     return filteredAllBooth;
   } else if (boothSectorDetail !== null) {
