@@ -69,8 +69,7 @@ export default function Booth() {
   const todate = day.getDate() === 24 ? 24 : day.getDate() === 25 ? 25 : 23;
   const [isToday, setIsToday] = useState(todate);
   // State 관리------------------------------------
-  const [guideMessage, setGuideMessage] =
-    useState("시작을 위해 지도를 클릭해주세요.");
+  const [guideMessage, setGuideMessage] = useState("시작을 위해 지도를 클릭해주세요.");
   const [firstScene, setFirstScene] = useState(true);
   const [secondScene, setSecondScene] = useState(false);
   const [thirdLeftScene, setThirdLeftScene] = useState(false);
@@ -222,7 +221,9 @@ export default function Booth() {
       {/* RankingSection------------------------- */}
       <RankingSection firstMoved={FirstMoved}>
         <RankingLeftSection>
-          <RankingHotButton>HOT</RankingHotButton>
+          <RankingHotButton>
+            HOT <br /> TODAY
+          </RankingHotButton>
         </RankingLeftSection>
         <RankingRightSection>
           <BoothTop10 boothTop10List={boothTop10List} router={router} />
@@ -241,11 +242,7 @@ export default function Booth() {
           </DayBox>
         ))}
       </DateSection>
-      <MapContainer
-        firstMoved={FirstMoved}
-        onClick={handleMap}
-        className="fadeIn"
-      >
+      <MapContainer firstMoved={FirstMoved} onClick={handleMap} className="fadeIn">
         {/* MapModalSection------------------------ */}
         <MapModalSection
           firstMoved={FirstMoved}
@@ -309,22 +306,13 @@ export default function Booth() {
       <LocationTextSection>{locationList}</LocationTextSection>
       {/* GridSection---------------------------- */}
       <BoothFilterSection firstMoved={FirstMoved} className="fadeIn">
-        <FilterSectionSub1
-          dayOrNight={dayOrNight}
-          onClick={() => setDayOrNight("전체")}
-        >
+        <FilterSectionSub1 dayOrNight={dayOrNight} onClick={() => setDayOrNight("전체")}>
           전체
         </FilterSectionSub1>
-        <FilterSectionSub2
-          dayOrNight={dayOrNight}
-          onClick={() => setDayOrNight("주간부스")}
-        >
+        <FilterSectionSub2 dayOrNight={dayOrNight} onClick={() => setDayOrNight("주간부스")}>
           주간부스
         </FilterSectionSub2>
-        <FilterSectionSub3
-          dayOrNight={dayOrNight}
-          onClick={() => setDayOrNight("야간부스")}
-        >
+        <FilterSectionSub3 dayOrNight={dayOrNight} onClick={() => setDayOrNight("야간부스")}>
           야간부스
         </FilterSectionSub3>
         {/* 희찬 검색어 작업 연결------------------ */}
