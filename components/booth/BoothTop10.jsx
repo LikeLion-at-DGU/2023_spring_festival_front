@@ -2,7 +2,6 @@ import { BoothTop10Box, BoothTop10LeftBox, BoothTop10RightBox } from "@/boothSty
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-
 export default function BoothTop10({ boothTop10List, router }) {
   // 좋아요 순 정렬된 부스 리스트 임의로 5개로 추출
   const getRandomBooth5 = boothTop10List.data?.slice(0, 5);
@@ -15,7 +14,8 @@ export default function BoothTop10({ boothTop10List, router }) {
         onClick={() => router.push(`/booth/detail/${top.id}`)}
       >
         <BoothTop10LeftBox>
-          <FontAwesomeIcon icon={faHeart} /> <div style={{marginLeft : "2px", marginRight : "-8px"}}>{top.like_cnt >= 1000 ? `+999` : top.like_cnt}</div> 
+          <FontAwesomeIcon icon={faHeart} />
+          {top.like_cnt >= 1000 ? `+999` : top.like_cnt}
         </BoothTop10LeftBox>
         <BoothTop10RightBox>{top.operator}</BoothTop10RightBox>
       </BoothTop10Box>

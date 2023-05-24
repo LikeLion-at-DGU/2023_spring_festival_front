@@ -111,7 +111,7 @@ export const BoothTop10Box = styled.section`
 `;
 
 export const BoothTop10LeftBox = styled.section`
-  width: 20%;
+  width: 30%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -120,7 +120,7 @@ export const BoothTop10LeftBox = styled.section`
 `;
 
 export const BoothTop10RightBox = styled.section`
-  width: 75%;
+  width: 70%;
   display: flex;
   justify-content: flex-start;
   align-items: center;
