@@ -168,6 +168,9 @@ export default function Booth() {
       setBoothSector(2);
       setBoothSectorDetail(null);
       setGuideMessage("원하는 위치의 핀을 선택해주세요!");
+    } else if (guideMessage === "원하는 위치의 핀을 선택해주세요!") {
+      setBoothSector(2);
+      setBoothSectorDetail(null);
     }
   };
 
