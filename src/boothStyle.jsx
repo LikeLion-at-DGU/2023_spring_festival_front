@@ -127,12 +127,16 @@ export const BoothTop10RightBox = styled.section`
 
 export const RankingHotButton = styled.button`
   width: 80px;
-  height: 30px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: transparent;
   color: ${primaryColor};
   font-weight: 700;
-  border: 1px solid ${primaryColor};
+  border: none;
   border-radius: 30px;
+  box-shadow: 3px 3px 20px -10px rgba(252, 140, 174, 1);
 `;
 
 export const MapContainer = styled.div`
@@ -161,13 +165,11 @@ export const MapSection = styled.section`
 `;
 
 export const MapModalSection = styled.section`
-  width: 90px;
+  width: 100px;
   min-height: 50px;
   position: absolute;
-  left: ${(props) =>
-    !props.secondRightMoved && props.secondLeftMoved ? "3%" : "67%"};
-  top: ${(props) =>
-    !props.secondRightMoved && props.secondLeftMoved ? "33%" : "55%"};
+  left: ${(props) => (!props.secondRightMoved && props.secondLeftMoved ? "3%" : "67%")};
+  top: ${(props) => (!props.secondRightMoved && props.secondLeftMoved ? "33%" : "55%")};
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -180,28 +182,25 @@ export const MapModalSection = styled.section`
   transition: all 1s;
   z-index: 10;
   display: ${(props) =>
-    props.secondScene && (props.secondLeftMoved || props.secondRightMoved)
-      ? "flex"
-      : "none"};
-  @media all and (max-width: 430px) {
-    width: 80px;
+    props.secondScene && (props.secondLeftMoved || props.secondRightMoved) ? "flex" : "none"};
+  @media all and (max-width: 410px) {
+    width: 90px;
     min-height: 30px;
   }
 `;
 
 export const MapModalButton = styled.button`
-  width: 80px;
+  width: 90px;
   min-height: 40px;
   border: none;
   border-radius: 30px;
-  background-color: ${(props) =>
-    props.clickedLocation ? `${secondaryColor}` : "transparent"};
+  background-color: ${(props) => (props.clickedLocation ? `${secondaryColor}` : "transparent")};
   color: ${(props) => (props.clickedLocation ? "#fff" : `${secondaryColor}`)};
   font-family: "Noto Sans KR", sans-serif;
   font-size: 10px;
   transition: all 0.5s;
   @media all and (max-width: 410px) {
-    width: 60px;
+    width: 80px;
     min-height: 30px;
   }
   cursor: pointer;
@@ -320,8 +319,7 @@ export const GuideMessage = styled.h3`
       : css`
           ${FadeInOut} 1s infinite alternate
         `};
-  cursor: ${(props) =>
-    props.secondLeftMoved || props.secondRightMoved ? "pointer" : ""};
+  cursor: ${(props) => (props.secondLeftMoved || props.secondRightMoved ? "pointer" : "")};
 `;
 
 export const LocationTextSection = styled.section`
@@ -337,8 +335,7 @@ export const SelectedLocation = styled.h1`
   font-weight: 900;
   font-family: "Noto Sans KR", sans-serif;
   padding: 5px;
-  display: ${(props) =>
-    props.secondLeftMoved || props.secondRightMoved ? "inline" : "none"};
+  display: ${(props) => (props.secondLeftMoved || props.secondRightMoved ? "inline" : "none")};
 `;
 
 export const BoothFilterSection = styled.section`
@@ -347,10 +344,8 @@ export const BoothFilterSection = styled.section`
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  font-size: 14px;
   color: ${secondaryColor};
   margin-left: 15px;
-
   display: ${(props) => (props.firstMoved ? "none" : "flex")};
   @media all and (max-width: 420px) {
     font-size: 12px;
@@ -361,7 +356,8 @@ export const FilterSectionSub1 = styled.span`
   display: flex;
   align-items: center;
   height: 18px;
-  border-right: 2px solid ${secondaryColor};
+  font-size: 15px;
+  border-right: 1px solid ${secondaryColor};
   padding: 10px;
   font-family: "Noto Sans KR", sans-serif;
   cursor: pointer;
@@ -373,25 +369,25 @@ export const FilterSectionSub2 = styled.span`
   display: flex;
   align-items: center;
   height: 18px;
-  border-right: 2px solid ${secondaryColor};
+  font-size: 15px;
+  border-right: 1px solid ${secondaryColor};
   padding: 10px;
   font-family: "Noto Sans KR", sans-serif;
   cursor: pointer;
   transition: all 0.3s;
-  color: ${(props) =>
-    props.dayOrNight === "주간부스" ? `${primaryColor}` : ""};
+  color: ${(props) => (props.dayOrNight === "주간부스" ? `${primaryColor}` : "")};
 `;
 
 export const FilterSectionSub3 = styled.span`
   display: flex;
   align-items: center;
   height: 18px;
+  font-size: 15px;
   padding: 10px;
   font-family: "Noto Sans KR", sans-serif;
   cursor: pointer;
   transition: all 0.3s;
-  color: ${(props) =>
-    props.dayOrNight === "야간부스" ? `${primaryColor}` : ""};
+  color: ${(props) => (props.dayOrNight === "야간부스" ? `${primaryColor}` : "")};
 `;
 
 export const FilterSectionInput = styled.input`

@@ -54,11 +54,11 @@ left: -20px;
 `;
 export const Ribbon = styled.div`
   position: absolute;
-  width: 96.13px;
+  width: 106.13px;
   height: 26.01px;
-  top: -110px;
+  top: -113px;
   left: -30px;
-  padding: 7px 0px 0px 13px;
+  padding: 7px 8px 0px 17px;
   box-shadow: 1px 1px 2px rgba(41, 39, 39, 0.4);
   transform: rotate(-45deg);
   z-index: 2;
@@ -71,16 +71,16 @@ export const Ribbon = styled.div`
 
   background-color: ${(props) => {
     switch (props.type) {
-      case "푸드트럭":
-        return "#71d570"; // Green color for 푸드트럭
-      case "주간부스":
-        return "#6b6bf9"; // Blue color for 주간부스
-      case "플리마켓":
-        return "#c782f8"; // Purple color for 플리마켓
-      case "학교부스":
-        return "#FFA665"; // Purple color for 플리마켓
+      case '푸드트럭':
+        return '#71D86F'; 
+      case '야간부스':
+        return '#579AFF'; 
+      case '외부부스':
+        return '#DF8CFC'; 
+      case '학교부스':
+        return "#FFA665"
       default:
-        return "#FFADDB"; // Default color
+        return '#FFADDB'; 
     }
     
   }};

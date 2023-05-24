@@ -34,6 +34,7 @@ export default function Main(){
 
   return(
     <Container>
+      <a style={{display:"none"}}href="https://hits.seeyoufarm.com"><img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=http%3A%2F%2Fdgu-bom.site&count_bg=%23FFB84E&title_bg=%23EC8E8E&icon=apacheairflow.svg&icon_color=%23E7E7E7&title=hits&edge_flat=false"/></a>
       <SectionsContainer {...options}>
         <Scene>
           <First />

@@ -9,14 +9,14 @@ const Body = styled.div`
   background-color: #f5f5f5;
 `;
 
-export const primaryColor = "#FC8CAE";
+export const primaryColor = "#fc8cae";
 export const secondaryColor = "#525252";
 export const subPinkColor = "#FFE9F0";
 
 export default function App({ Component, pageProps }) {
   return (
     <Body className="Container">
-      <meta property="og:image"  contet="../../components/image/common/pre.png"/>
+      <meta property="og:image" contet="../../components/image/common/pre.png" />
       <Layout>
         <Component {...pageProps} />
       </Layout>
@@ -133,7 +133,7 @@ export default function App({ Component, pageProps }) {
           *[hidden] {
             display: none;
           }
-          *{
+          * {
             -ms-overflow-style: none; /* IE and Edge */
             scrollbar-width: none; /* Firefox */
           }

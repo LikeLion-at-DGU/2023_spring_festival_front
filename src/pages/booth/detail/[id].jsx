@@ -2,7 +2,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import DeafultImage from "../../../../components/image/common/booth_deafault.png";
 import {
@@ -262,7 +262,14 @@ const BoothDetailPage = ({ myData }) => {
           <ShareIcon icon={faPaperPlane} size="lg" onClick={handleCopyLink} />
         </BoothDetailLoveShareWrapper>
       </BoothDetailHeader>
-      <BoothDetailContent>{booth.description}</BoothDetailContent>
+      
+      <BoothDetailContent>{booth.description.split('\n').map((line, index) => (
+        <React.Fragment key={index}>
+          {line}
+          <br />
+        </React.Fragment>
+        ))}</BoothDetailContent>
+
       <BoothDetailLocation>
         <FontAwesomeIcon icon={faLocationDot} style={{ marginRight: "10px" }} />
         {booth.location}
