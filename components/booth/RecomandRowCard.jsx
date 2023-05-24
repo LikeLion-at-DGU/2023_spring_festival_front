@@ -60,7 +60,7 @@ function RecomandRowCard({
             icon={is_liked ? faHeart : emptyHeart}
             onClick={handleClick}
           />
-          <HeartCntWrapper>{likeCnt}</HeartCntWrapper>
+          <HeartCntWrapper>{likeCnt >= 1000 ? `+999` : likeCnt}</HeartCntWrapper>
         </RankBoothHeartWrapper>
       </RecomandRowCardWrapper>
     </Link>
