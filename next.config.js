@@ -6,7 +6,6 @@ const nextConfig = {
     reactStrictMode: true,
 
     images: {
-        formats: ["svg", "png", "jpeg", "jpg", "gif"],
         remotePatterns: [
             {
                 protocol: "http",
