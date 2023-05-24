@@ -102,6 +102,7 @@ export const BoothTop10Box = styled.section`
   display: flex;
   opacity: 0;
   justify-content: space-between;
+  align-items: center;
   color: ${primaryColor};
   font-weight: 700;
   transition: all 0.5s;
@@ -114,6 +115,7 @@ export const BoothTop10LeftBox = styled.section`
   display: flex;
   justify-content: center;
   align-items: center;
+  font-size: 13px;
   font-family: "Noto Sans KR", sans-serif;
 `;
 
@@ -122,6 +124,7 @@ export const BoothTop10RightBox = styled.section`
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  font-size: 15px;
   font-family: "Noto Sans KR", sans-serif;
 `;
 
