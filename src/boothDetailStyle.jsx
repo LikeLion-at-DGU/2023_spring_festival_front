@@ -41,15 +41,15 @@ text-align: center;
     background-color: ${(props) => {
     switch (props.type) {
       case '푸드트럭':
-        return '#71D86F'; // Green color for 푸드트럭
-      case '주간부스':
-        return '#579AFF'; // Blue color for 주간부스
-      case '플리마켓':
-        return '#DF8CFC'; // Purple color for 플리마켓
+        return '#71D86F'; 
+      case '야간부스':
+        return '#579AFF'; 
+      case '외부부스':
+        return '#DF8CFC'; 
       case '학교부스':
         return "#FFA665"
       default:
-        return '#FFADDB'; // Default color
+        return '#FFADDB'; 
     }
   }};
 `

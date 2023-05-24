@@ -6,11 +6,11 @@ const nextConfig = {
     reactStrictMode: true,
 
     images: {
+        formats: ["svg", "png", "jpeg", "jpg", "gif"],
         remotePatterns: [
             {
                 protocol: "http",
-                hostname: '3.35.61.159',
-                
+                hostname: "3.35.61.159",
             },
         ],
     },
@@ -19,8 +19,7 @@ const nextConfig = {
             /* 멋쟁이 사자처럼 동국대학교 공식 홈페이지 URL */
             {
                 source: "/dgu-likelion-home",
-                destination:
-                    "https://likeliondgu.oopy.io/",
+                destination: "https://likeliondgu.oopy.io/",
                 permanent: false,
             },
 
@@ -42,7 +41,8 @@ const nextConfig = {
             /* 멋쟁이 사자처럼 동국대학교 깃허브 링크 URL */
             {
                 source: "/dgu-bamboo",
-                destination: "https://instagram.com/dgu_bamboo?igshid=MzRlODBiNWFlZA==",
+                destination:
+                    "https://instagram.com/dgu_bamboo?igshid=MzRlODBiNWFlZA==",
                 permanent: false,
             },
 
