@@ -71,16 +71,16 @@ export const Ribbon = styled.div`
 
   background-color: ${(props) => {
     switch (props.type) {
-      case "푸드트럭":
-        return "#71d570"; // Green color for 푸드트럭
-      case "주간부스":
-        return "#6b6bf9"; // Blue color for 주간부스
-      case "플리마켓":
-        return "#c782f8"; // Purple color for 플리마켓
-      case "학교부스":
-        return "#FFA665"; // Purple color for 플리마켓
+      case '푸드트럭':
+        return '#71D86F'; 
+      case '야간부스':
+        return '#579AFF'; 
+      case '외부부스':
+        return '#DF8CFC'; 
+      case '학교부스':
+        return "#FFA665"
       default:
-        return "#FFADDB"; // Default color
+        return '#FFADDB'; 
     }
     
   }};
