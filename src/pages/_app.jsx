@@ -1,5 +1,7 @@
 import Layout from "components/layout/Layout";
+import Head from "next/head";
 import styled from "styled-components";
+import ogImg from "../../components/image/pre.png"
 
 const Body = styled.div`
   /* width: 100vw; */
@@ -16,7 +18,9 @@ export const subPinkColor = "#FFE9F0";
 export default function App({ Component, pageProps }) {
   return (
     <Body className="Container">
-      <meta property="og:image" contet="../../components/image/common/pre.png" />
+      <Head>
+        <meta property="og:image" contet="../../components/image/common/pre.png" />
+      </Head>
       <Layout>
         <Component {...pageProps} />
       </Layout>
