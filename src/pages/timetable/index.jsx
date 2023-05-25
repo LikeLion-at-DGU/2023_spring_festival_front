@@ -50,7 +50,7 @@ export default function TimeTable() {
   let nowPerformance25 = false;
 
   // State 관리----------------------------------------
-  const [firstDate, setFirstDate] = useState(true);
+  const [firstDate, setFirstDate] = useState(false);
   const [secondDate, setSecondDate] = useState(false);
   const [performance, setPerformance] = useState(false);
   const [specialGuest, setSpecialGuest] = useState(false);
@@ -58,6 +58,13 @@ export default function TimeTable() {
 
   // ComponentDidMount--------------------------------
   useEffect(() => {
+    if (date === 25) {
+      setSecondDate(true);
+      setFirstDate(false);
+    } else {
+      setFirstDate(true);
+      setSecondDate(false);
+    }
     setTimeout(() => setSpecialGuest(true), 500);
   }, []);
 
